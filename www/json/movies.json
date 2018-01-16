@@ -1,49 +1,45 @@
 [
   {
-    "title": "Call me by your name",
+    "title": "THE PARTY",
     "productionCountries": [
-      "Italien",
-      "USA"
+      "UK"
     ],
     "productionYear": 2017,
-    "length": 132,
-    "genre": "Drama",
-    "distributor": "UIP",
+    "length": 71,
+    "genre": "Komedi",
+    "distributor": "Noble",
     "language": "engelska",
     "subtitles": "svenska",
     "director": "Luca Guadagnino",
     "actors": [
-      "Armie Hammer",
-      "Timothée Chalamet",
-      "Michael Stuhlbarg"
+      "Patricia Clarkson",
+      "Bruno Ganz",
+      "Cherry Jones",
+      "Emily Mortimer",
+      "Cillian Murphy"
     ],
-    "description": "<p>Filmen utspelas i norra Italien sommaren 1983. En ung amerikansk-italienare blir förälskad i en amerikansk student som kommer för att studera och bo hos hans familj.</p><p>Tillsammans upplever de en oförglömlig sommar - full av musik, mat och kärlek - som för evigt kommer att förändra dem.</p>",
+    "description": "<p>Janet har en liten tillställning för sina närmsta vänner för att fira sin nya roll i parlamentet. Allt går, nästan, som planerat tills hennes man Bill avslöjar två stora hemligheter som sparkar igång en serie händelser som påverkar alla i rummet. Innan kvällen är över har glas krossats, pistoler riktats och blod spillts.</p>",
     "images": [
        "call-me-poster1.jpg",
        "call-me-poster2.jpg"
     ],
     "youtubeTrailers": [
-      "Z9AYPxH5NTM"
+      "FCRLyidKR2k"
     ], 
     "reviews": [
       {
         "source": "Sydsvenskan",
-        "quote": "ett drama berättat med stor ömhet",
+        "quote": "mumma för skådespelare med kammarspelet i blodet",
         "stars": 4,
         "max": 5
       },
       {
         "source": "Svenska Dagbladet",
-        "quote": "en film att förälska sig i",
+        "quote": "En regelrätt fest för biobesökarna",
         "stars": 5,
-        "max": 5
-      },
-      {
-        "source": "DN",
-        "quote": "en het romans i åttiotalskostym",
-        "stars": 4,
         "max": 5
       }
     ]
   }
+  
 ]
