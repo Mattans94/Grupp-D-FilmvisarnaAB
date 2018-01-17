@@ -265,4 +265,93 @@
       }
     ]
   }
+  {
+    "title": "Let the sunshine in",
+    "productionCountries": [
+      "Frankrike"
+    ],
+    "productionYear": 2017,
+    "length": 94,
+    "genre": "Drama",
+    "distributor": " ",
+    "language": "franska",
+    "subtitles": "svenska",
+    "director": "Claire Denis",
+    "actors": [
+      "Juliette Binoche",
+      "Gérard Depardieu",
+      "Valeria Bruni Tedeschi",
+      "Philippe Katerine"
+    ],
+    "description": "<p>Juliette Binoche är lysande i rollen som Isabelle, en frånskild konstnär i 50-års åldern, som försöker sålla bland alla självcentrerade män i hopp om att åter finna kärleken. En elegant romantisk komedi av kritikerrosade Claire Denis om vad som är viktigt i livet och om vad man vill ha i en mogen relation.</p>",
+    "images": [
+       "call-me-poster1.jpg",
+       "call-me-poster2.jpg"
+    ],
+    "youtubeTrailers": [
+      "http://player.vimeo.com/video/243663986",
+      "https://youtu.be/0w_thDNw8Ww"
+    ], 
+    "reviews": [
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "en av årets mest sorglustiga filmer",
+        "stars": 5,
+        "max": 6
+      },
+      {
+        "source": "DN",
+        "quote": "extra känslig och lysande",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  }
+  {
+    "title": "Call me by your name",
+    "productionCountries": [
+      "Italien",
+      "USA"
+    ],
+    "productionYear": 2017,
+    "length": 132,
+    "genre": "Drama",
+    "distributor": "UIP",
+    "language": "engelska",
+    "subtitles": "svenska",
+    "director": "Luca Guadagnino",
+    "actors": [
+      "Armie Hammer",
+      "Timothée Chalamet",
+      "Michael Stuhlbarg"
+    ],
+    "description": "<p>Filmen utspelas i norra Italien sommaren 1983. En ung amerikansk-italienare blir förälskad i en amerikansk student som kommer för att studera och bo hos hans familj.</p><p>Tillsammans upplever de en oförglömlig sommar - full av musik, mat och kärlek - som för evigt kommer att förändra dem.</p>",
+    "images": [
+       "call-me-poster1.jpg",
+       "call-me-poster2.jpg"
+    ],
+    "youtubeTrailers": [
+      "Z9AYPxH5NTM"
+    ], 
+    "reviews": [
+      {
+        "source": "Sydsvenskan",
+        "quote": "ett drama berättat med stor ömhet",
+        "stars": 4,
+        "max": 5
+      },
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "en film att förälska sig i",
+        "stars": 5,
+        "max": 5
+      },
+      {
+        "source": "DN",
+        "quote": "en het romans i åttiotalskostym",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  }
 ]
