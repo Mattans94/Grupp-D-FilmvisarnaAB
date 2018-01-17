@@ -1,0 +1,357 @@
+[
+  {
+    "title": "THE PARTY",
+    "productionCountries": [
+      "UK"
+    ],
+    "productionYear": 2017,
+    "length": 71,
+    "genre": "Komedi",
+    "distributor": "Noble",
+    "language": "engelska",
+    "subtitles": "svenska",
+    "director": "Luca Guadagnino",
+    "actors": [
+      "Patricia Clarkson",
+      "Bruno Ganz",
+      "Cherry Jones",
+      "Emily Mortimer",
+      "Cillian Murphy"
+    ],
+    "description": "<p>Janet har en liten tillställning för sina närmsta vänner för att fira sin nya roll i parlamentet. Allt går, nästan, som planerat tills hennes man Bill avslöjar två stora hemligheter som sparkar igång en serie händelser som påverkar alla i rummet. Innan kvällen är över har glas krossats, pistoler riktats och blod spillts.</p>",
+    "images": [
+       "call-me-poster1.jpg",
+       "call-me-poster2.jpg"
+    ],
+    "youtubeTrailers": [
+      "FCRLyidKR2k",
+      "Z9AYPxH5NTM",
+      "https://youtu.be/Z9AYPxH5NTM"
+    ], 
+    "reviews": [
+      {
+        "source": "Sydsvenskan",
+        "quote": "mumma för skådespelare med kammarspelet i blodet",
+        "stars": 4,
+        "max": 5
+      },
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "En regelrätt fest för biobesökarna",
+        "stars": 5,
+        "max": 5
+      }
+    ]
+  }
+  {
+    "title": "Nattskuggor",
+    "productionCountries": [
+      "Chile", "Frankrike", "Tyskland", "Grekland", "Colombia"
+    ],
+    "productionYear": 2016,
+    "length": 83,
+    "genre": "Drama",
+    "distributor": "Novemberfilm",
+    "language": "Spanska",
+    "subtitles": "Svenska",
+    "director": "Fernando Guzzoni",
+    "actors": [
+      "Sebastián Ayala",
+      "Nicolás Durán",
+      "Alejandro Goic"
+    ],
+    "description": "<p>Artonårige Jesús bor ensam med sin pappa i Santiago, Chile. Då pappan ofta är bortrest under veckorna för att jobba får Jesús sköta sig själv. Skolan går inget vidare och trots faderns uppmaningar är något extrajobb inte i sikte. Fritiden ägnar han åt att träna in dansnummer till K-pophits med några kompisar och tillsammans ställer de upp i lokala talangtävlingar. Nätterna blir ofta sena med alkohol, droger och tillfälligt sex med både tjejer och killar.</p><p>En natt inträffar en tragisk händelse som blir till ett uppvaknande och tillnyktrande för Jesús samt en moralisk prövning för både far och son. Finns det några gränser för en förälders kärlek till sitt barn?</p>",
+    "images": [
+       "call-me-poster1.jpg",
+       "call-me-poster2.jpg"
+    ],
+    "youtubeTrailers": [
+      "http://player.vimeo.com/video/243131284"
+    ], 
+    "reviews": [
+      {
+        "source": "Sydsvenskan",
+        "quote": "Historien är universell",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  }
+  {
+    "title": "Let the sunshine in",
+    "productionCountries": [
+      "Frankrike"
+    ],
+    "productionYear": 2017,
+    "length": 94,
+    "genre": "Drama",
+    "distributor": " ",
+    "language": "franska",
+    "subtitles": "svenska",
+    "director": "Claire Denis",
+    "actors": [
+      "Juliette Binoche",
+      "Gérard Depardieu",
+      "Valeria Bruni Tedeschi",
+      "Philippe Katerine"
+    ],
+    "description": "<p>Juliette Binoche är lysande i rollen som Isabelle, en frånskild konstnär i 50-års åldern, som försöker sålla bland alla självcentrerade män i hopp om att åter finna kärleken. En elegant romantisk komedi av kritikerrosade Claire Denis om vad som är viktigt i livet och om vad man vill ha i en mogen relation.</p>",
+    "images": [
+       "call-me-poster1.jpg",
+       "call-me-poster2.jpg"
+    ],
+    "youtubeTrailers": [
+      "http://player.vimeo.com/video/243663986",
+      "https://youtu.be/0w_thDNw8Ww"
+    ], 
+    "reviews": [
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "en av årets mest sorglustiga filmer",
+        "stars": 5,
+        "max": 6
+      },
+      {
+        "source": "DN",
+        "quote": "extra känslig och lysande",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  }
+  {
+    "title": "Wind River",
+    "productionCountries": [
+      "Storbrittanien",
+      "USA",
+      "Kanada"
+    ],
+    "productionYear": 2017,
+    "length": 107,
+    "genre": "Kriminaldrama",
+    "distributor": "Scanbox",
+    "language": "engelska",
+    "subtitles": "svenska",
+    "director": "Taylor Sheridan",
+    "actors": [
+      "Jeremy Renner",
+      "Elizabeth Olsen",
+      "Jon Bernthal"
+    ],
+    "description": "<p>En flicka av uramerikanskt ursprung hittas död av lokale vildmarkspolisen Cory Lambert (Jeremy Renner). För att lösa fallet skickar FBI Jane Banner (Elizabeth Olsen) från Las Vegas-kontoret, som anländer i en vräkig suv. Banner och Lambert utgör ett högst omaka par i jakten på mördaren.</p>",
+    "images": [
+       "call-me-poster1.jpg",
+       "call-me-poster2.jpg"
+    ],
+    "youtubeTrailers": [
+      "https://youtu.be/zN9PDOoLAfg"
+    ], 
+    "reviews": [
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "genrefilm med sorgsen twist",
+        "stars": 4,
+        "max": 6
+      },
+      {
+        "source": "SVT Kulturnyheterna",
+        "quote": "otäckt spännande",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  }   
+  {
+    "title": "Three Billboards Outside Ebbing, Missouri",
+    "productionCountries": [
+      "USA"
+    ],
+    "productionYear": 2017,
+    "length": 115,
+    "genre": "Drama",
+    "distributor": "Fox",
+    "language": "engelska",
+    "subtitles": "svenska",
+    "director": "Martin McDonagh",
+    "actors": [
+      "Woody Harrelson",
+      "Frances McDormand",
+      "Sam Rockwell"
+    ],
+    "description": "<p>En flicka av uramerikanskt ursprung hittas död av lokale vildmarkspolisen Cory Lambert (Jeremy Renner). För att lösa fallet skickar FBI Jane Banner (Elizabeth Olsen) från Las Vegas-kontoret, som anländer i en vräkig suv. Banner och Lambert utgör ett högst omaka par i jakten på mördaren.</p>",
+    "images": [
+       "call-me-poster1.jpg",
+       "call-me-poster2.jpg"
+    ],
+    "youtubeTrailers": [
+      "https://youtu.be/Jit3YhGx5pU"
+    ], 
+    "reviews": [
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "självlysande Frances McDormand",
+        "stars": 4,
+        "max": 6
+      },
+      {
+        "source": "Sydsvenskan",
+        "quote": "Martin McDonagh komplicerar och nyanserar.",
+        "stars": 5,
+        "max": 5
+      },
+      {
+        "source": "P1 Kulturnytt",
+        "quote": "rör sig (...) mellan slapstick och svart drama",
+        "stars": 4,
+        "max": 5
+      },
+      {
+        "source": "SVT Kulturnyheterna",
+        "quote": "ingenting är riktigt som det verkar",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  }
+  {
+    "title": "Tjuren Ferdinand",
+    "productionCountries": [
+      "USA"
+    ],
+    "productionYear": 2017,
+    "length": 108,
+    "genre": "Animerat",
+    "distributor": "20th Century FOX",
+    "language": "engelska",
+    "subtitles": "svenska",
+    "director": "Carlos Saldanha",
+    "actors": [
+      "John Cena",
+      "Kate McKinnon",
+      "Anthony Anderson"
+    ],
+    "description": "<p>Den klassiska berättelsen om den stora tjuren med ett stort hjärta, som hellre luktar på blommor än stångas med de andra tjurarna. En dag misstas Ferdinand för att vara farlig och blir bortförd för att delta vid tjurfäktningar. Fast besluten att återvända till sin familj samlar han ett udda gäng och ger sig ut på ett fantastiskt äventyr. Du kommer bli förtjurst!</p>",
+    "images": [
+       "call-me-poster1.jpg",
+       "call-me-poster2.jpg"
+    ],
+    "youtubeTrailers": [
+      "https://youtu.be/n7RkOfN8KvE"
+    ], 
+    "reviews": [
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "självlysande Frances McDormand",
+        "stars": 4,
+        "max": 6
+      },
+      {
+        "source": "Sydsvenskan",
+        "quote": "Martin McDonagh komplicerar och nyanserar.",
+        "stars": 5,
+        "max": 5
+      },
+      {
+        "source": "P1 Kulturnytt",
+        "quote": "rör sig (...) mellan slapstick och svart drama",
+        "stars": 4,
+        "max": 5
+      },
+      {
+        "source": "SVT Kulturnyheterna",
+        "quote": "ingenting är riktigt som det verkar",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  }
+  {
+    "title": "Let the sunshine in",
+    "productionCountries": [
+      "Frankrike"
+    ],
+    "productionYear": 2017,
+    "length": 94,
+    "genre": "Drama",
+    "distributor": " ",
+    "language": "franska",
+    "subtitles": "svenska",
+    "director": "Claire Denis",
+    "actors": [
+      "Juliette Binoche",
+      "Gérard Depardieu",
+      "Valeria Bruni Tedeschi",
+      "Philippe Katerine"
+    ],
+    "description": "<p>Juliette Binoche är lysande i rollen som Isabelle, en frånskild konstnär i 50-års åldern, som försöker sålla bland alla självcentrerade män i hopp om att åter finna kärleken. En elegant romantisk komedi av kritikerrosade Claire Denis om vad som är viktigt i livet och om vad man vill ha i en mogen relation.</p>",
+    "images": [
+       "call-me-poster1.jpg",
+       "call-me-poster2.jpg"
+    ],
+    "youtubeTrailers": [
+      "http://player.vimeo.com/video/243663986",
+      "https://youtu.be/0w_thDNw8Ww"
+    ], 
+    "reviews": [
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "en av årets mest sorglustiga filmer",
+        "stars": 5,
+        "max": 6
+      },
+      {
+        "source": "DN",
+        "quote": "extra känslig och lysande",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  }
+  {
+    "title": "Call me by your name",
+    "productionCountries": [
+      "Italien",
+      "USA"
+    ],
+    "productionYear": 2017,
+    "length": 132,
+    "genre": "Drama",
+    "distributor": "UIP",
+    "language": "engelska",
+    "subtitles": "svenska",
+    "director": "Luca Guadagnino",
+    "actors": [
+      "Armie Hammer",
+      "Timothée Chalamet",
+      "Michael Stuhlbarg"
+    ],
+    "description": "<p>Filmen utspelas i norra Italien sommaren 1983. En ung amerikansk-italienare blir förälskad i en amerikansk student som kommer för att studera och bo hos hans familj.</p><p>Tillsammans upplever de en oförglömlig sommar - full av musik, mat och kärlek - som för evigt kommer att förändra dem.</p>",
+    "images": [
+       "call-me-poster1.jpg",
+       "call-me-poster2.jpg"
+    ],
+    "youtubeTrailers": [
+      "Z9AYPxH5NTM"
+    ], 
+    "reviews": [
+      {
+        "source": "Sydsvenskan",
+        "quote": "ett drama berättat med stor ömhet",
+        "stars": 4,
+        "max": 5
+      },
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "en film att förälska sig i",
+        "stars": 5,
+        "max": 5
+      },
+      {
+        "source": "DN",
+        "quote": "en het romans i åttiotalskostym",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  }
+]
