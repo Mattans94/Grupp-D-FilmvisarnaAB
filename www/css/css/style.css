@@ -66,9 +66,14 @@ footer .myheight {
 }
 #accordion {
   box-shadow: 0px 0px 6px #000;
-}
-#accordion div {
   background-color: #add8e6;
+}
+#accordion .listShowTimes {
+  list-style: none;
+  margin-left: -40px;
+}
+#accordion .listShowTimes li:nth-child(odd) {
+  background-color: #FFF;
 }
 #accordion a {
   color: #000;

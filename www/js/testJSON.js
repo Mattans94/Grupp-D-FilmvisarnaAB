@@ -53,16 +53,27 @@ class GetJSON {
   		actors += '<li>'+ actor +'</li>';
   	}
   	return actors;
- }
-
-  renderShowtime(movieObject){
-   let allShows = this.checkShows(movieObject.title);
-   console.log(allShows);
-   setTimeout(()=>{console.log(allShows)},1000)
-   return `<li>Var: ${allShows[0].auditorium} Datum: ${allShows[0].date} Tid: ${allShows[0].time}`
   }
 
-  renderDescription(movieTitle) {
+  convertMinutesToHours(movieObject){
+    let totalMinutes = movieObject.length;
+    let hours = Math.floor(totalMinutes / 60);
+    let minutes = totalMinutes % 60;
+    return hours + 'h ' + minutes + 'm';
+  }
+
+  renderShowtime(movieObject){
+   let allShowTimes = this.checkShows(movieObject.title);
+   let showTimesRendered = '';
+   let co = 0;
+   for (let showTimeObject of allShowTimes) {
+     showTimesRendered += `<li data-movieTime="${co}"><div class="col-4 d-inline-block"><strong>${showTimeObject.date}</strong></div><div class="col-4 d-inline-block">${showTimeObject.auditorium}</div> <div class="col-3 d-inline-block">${showTimeObject.time}</div></li>`
+     co++
+   }
+   return showTimesRendered;
+  }
+
+  renderMovie(movieTitle) {
     let movieObject = this.checkMovie(movieTitle);
     $('main').html(`
 
@@ -87,9 +98,11 @@ class GetJSON {
 
                   <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="p-3">
-                      <ul>
-                        ${this.renderShowtime(movieObject)}
-                      </ul>
+                      <h3 class="ml-4">Visningar ${movieObject.title}:</h3>
+                      <div class="col-12">
+                      <div class="col-4 d-inline-block"><strong>Datum:</strong></div><div class="col-4 d-inline-block"><strong>Biograf:</strong></div> <div class="col-3 d-inline-block"><strong>Tid:</strong></div>
+                        <ul class="listShowTimes">${this.renderShowtime(movieObject)}</ul>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -100,7 +113,7 @@ class GetJSON {
                     <ul class="p-3 info-box mb-0">
                       <li><strong>Land: </strong>${movieObject.productionCountries}</li>
                       <li><strong>Produktionsår: </strong>${movieObject.productionYear}</li>
-                      <li><strong>Längd: </strong>${movieObject.length}</li>
+                      <li><strong>Längd: </strong>${this.convertMinutesToHours(movieObject)}</li>
                       <li><strong>Genre: </strong>${movieObject.genre}</li>
                       <li><strong>Språk: </strong>${movieObject.language}</li>
                       <li><strong>Textning: </strong>${movieObject.subtitles}</li>
@@ -112,7 +125,8 @@ class GetJSON {
                     <p>${movieObject.description}</p>
 
                     <p><strong>&ldquo;${movieObject.reviews[0].quote}&ldquo;</strong><em>- ${movieObject.reviews[0].source}</em></p>
-                    <p><strong>Medverkande:</strong>${this.getActors(movieObject)}</p>
+                    <p><strong class="mb-0">Medverkande:</strong></p>
+                    <ul>${this.getActors(movieObject)}</ul>
                   </div>
               </div>
 
