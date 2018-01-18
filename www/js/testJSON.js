@@ -62,6 +62,14 @@ class GetJSON {
     return hours + 'h ' + minutes + 'm';
   }
 
+  getAllReviews(movieObject){
+    let allReviews = "";
+    for(let review of movieObject.reviews){
+      allReviews += `<p><strong>&ldquo;${review.quote}&ldquo;</strong><em>- ${review.source}</em></p>`;
+    }
+    return allReviews;
+  }
+
   renderShowtime(movieObject){
    let allShowTimes = this.checkShows(movieObject.title);
    let showTimesRendered = '';
@@ -73,6 +81,42 @@ class GetJSON {
    return showTimesRendered;
   }
 
+  renderTrailer(movieObject){
+    return `<div class="embed-responsive embed-responsive-16by9 mt-3">
+      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/${movieObject.youtubeTrailers[0]}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>`
+  }
+
+  renderCarousel(movieObject){
+    return `<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="/img/slides/cmbyn1.jpg" alt="First slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>${movieObject.title}</h2>
+            <button class="showTrailer btn">Trailer</button>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="/img/slides/cmbyn2.jpg" alt="Second slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>${movieObject.title}</h2>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="/img/slides/cmbyn3.jpg" alt="Third slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>${movieObject.title}</h2>
+          </div>
+        </div>
+      </div>`
+  }
+
   renderMovie(movieTitle) {
     let movieObject = this.checkMovie(movieTitle);
     $('main').html(`
@@ -81,9 +125,22 @@ class GetJSON {
 
           <section class="col-lg-7 d-flex flex-wrap d-md-block bg-dark mt-5 pb-3">
 
+          ${this.renderTrailer(movieObject)}
+          ${this.renderCarousel(movieObject)}
 
-            <div class="embed-responsive embed-responsive-16by9 mt-3">
-              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/${movieObject.youtubeTrailers[0]}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+
+
+
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
             </div>
 
 
@@ -124,7 +181,7 @@ class GetJSON {
                     <h2>${movieObject.title}</h2>
                     <p>${movieObject.description}</p>
 
-                    <p><strong>&ldquo;${movieObject.reviews[0].quote}&ldquo;</strong><em>- ${movieObject.reviews[0].source}</em></p>
+                    ${this.getAllReviews(movieObject)}
                     <p><strong class="mb-0">Medverkande:</strong></p>
                     <ul>${this.getActors(movieObject)}</ul>
                   </div>
@@ -161,5 +218,8 @@ let x = new GetJSON
 
 $(document).on('click', 'button', function() {
   let myBtn = $(this).data('btn')
-  x.renderDescription(myBtn);
+  x.renderMovie(myBtn);
 });
+
+
+setTimeout(function(){ x.renderMovie('Call Me By Your Name'); }, 200);
