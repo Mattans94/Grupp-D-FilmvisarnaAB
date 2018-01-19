@@ -1,8 +1,19 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 html {
   position: relative;
   min-height: 100%;
 }
+html body {
+  background-color: #f4ffff;
+}
 footer {
+  background-color: #add8e6;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -13,7 +24,7 @@ footer {
   border-top: 1px solid #e0e0e0;
 }
 footer .color {
-  background-color: #d7d7d7;
+  background-color: #deeff5;
   border-radius: 20px 20px;
   padding: 10px 30px;
 }
@@ -46,4 +57,29 @@ footer p a:hover {
 }
 footer .myheight {
   height: 120px;
+}
+.info-box {
+  background-color: #add8e6;
+}
+.info-box li {
+  list-style: none;
+}
+#accordion {
+  box-shadow: 0px 0px 6px #000;
+  background-color: #add8e6;
+}
+#accordion .listShowTimes {
+  list-style: none;
+  margin-left: -40px;
+}
+#accordion .listShowTimes li:nth-child(odd) {
+  background-color: #FFF;
+}
+#accordion a {
+  color: #000;
+}
+header {
+  background-color: #add8e6;
+  box-shadow: 0px 3px 15px #000;
+  font-size: 1.3em;
 }

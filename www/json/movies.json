@@ -1,6 +1,6 @@
 [
   {
-    "title": "THE PARTY",
+    "title": "The Party",
     "productionCountries": [
       "UK"
     ],
@@ -25,13 +25,12 @@
     ],
     "youtubeTrailers": [
       "FCRLyidKR2k",
-      "Z9AYPxH5NTM",
-      "https://youtu.be/Z9AYPxH5NTM"
-    ], 
+      "Z9AYPxH5NTM"
+    ],
     "reviews": [
       {
         "source": "Sydsvenskan",
-        "quote": "mumma för skådespelare med kammarspelet i blodet",
+        "quote": "Mumma för skådespelare med kammarspelet i blodet",
         "stars": 4,
         "max": 5
       },
@@ -42,43 +41,9 @@
         "max": 5
       }
     ]
-  }
+  },
   {
-    "title": "Nattskuggor",
-    "productionCountries": [
-      "Chile", "Frankrike", "Tyskland", "Grekland", "Colombia"
-    ],
-    "productionYear": 2016,
-    "length": 83,
-    "genre": "Drama",
-    "distributor": "Novemberfilm",
-    "language": "Spanska",
-    "subtitles": "Svenska",
-    "director": "Fernando Guzzoni",
-    "actors": [
-      "Sebastián Ayala",
-      "Nicolás Durán",
-      "Alejandro Goic"
-    ],
-    "description": "<p>Artonårige Jesús bor ensam med sin pappa i Santiago, Chile. Då pappan ofta är bortrest under veckorna för att jobba får Jesús sköta sig själv. Skolan går inget vidare och trots faderns uppmaningar är något extrajobb inte i sikte. Fritiden ägnar han åt att träna in dansnummer till K-pophits med några kompisar och tillsammans ställer de upp i lokala talangtävlingar. Nätterna blir ofta sena med alkohol, droger och tillfälligt sex med både tjejer och killar.</p><p>En natt inträffar en tragisk händelse som blir till ett uppvaknande och tillnyktrande för Jesús samt en moralisk prövning för både far och son. Finns det några gränser för en förälders kärlek till sitt barn?</p>",
-    "images": [
-       "call-me-poster1.jpg",
-       "call-me-poster2.jpg"
-    ],
-    "youtubeTrailers": [
-      "http://player.vimeo.com/video/243131284"
-    ], 
-    "reviews": [
-      {
-        "source": "Sydsvenskan",
-        "quote": "Historien är universell",
-        "stars": 4,
-        "max": 5
-      }
-    ]
-  }
-  {
-    "title": "Let the sunshine in",
+    "title": "Let The Sunshine In",
     "productionCountries": [
       "Frankrike"
     ],
@@ -101,9 +66,8 @@
        "call-me-poster2.jpg"
     ],
     "youtubeTrailers": [
-      "http://player.vimeo.com/video/243663986",
-      "https://youtu.be/0w_thDNw8Ww"
-    ], 
+      "0w_thDNw8Ww"
+    ],
     "reviews": [
       {
         "source": "Svenska Dagbladet",
@@ -118,7 +82,7 @@
         "max": 5
       }
     ]
-  }
+  },
   {
     "title": "Wind River",
     "productionCountries": [
@@ -144,8 +108,8 @@
        "call-me-poster2.jpg"
     ],
     "youtubeTrailers": [
-      "https://youtu.be/zN9PDOoLAfg"
-    ], 
+      "zN9PDOoLAfg"
+    ],
     "reviews": [
       {
         "source": "Svenska Dagbladet",
@@ -160,7 +124,7 @@
         "max": 5
       }
     ]
-  }   
+  },
   {
     "title": "Three Billboards Outside Ebbing, Missouri",
     "productionCountries": [
@@ -184,8 +148,8 @@
        "call-me-poster2.jpg"
     ],
     "youtubeTrailers": [
-      "https://youtu.be/Jit3YhGx5pU"
-    ], 
+      "Jit3YhGx5pU"
+    ],
     "reviews": [
       {
         "source": "Svenska Dagbladet",
@@ -212,7 +176,7 @@
         "max": 5
       }
     ]
-  }
+  },
   {
     "title": "Tjuren Ferdinand",
     "productionCountries": [
@@ -236,8 +200,8 @@
        "call-me-poster2.jpg"
     ],
     "youtubeTrailers": [
-      "https://youtu.be/n7RkOfN8KvE"
-    ], 
+      "n7RkOfN8KvE"
+    ],
     "reviews": [
       {
         "source": "Svenska Dagbladet",
@@ -264,9 +228,9 @@
         "max": 5
       }
     ]
-  }
+  },
   {
-    "title": "Let the sunshine in",
+    "title": "Let The Sunshine In",
     "productionCountries": [
       "Frankrike"
     ],
@@ -289,9 +253,8 @@
        "call-me-poster2.jpg"
     ],
     "youtubeTrailers": [
-      "http://player.vimeo.com/video/243663986",
-      "https://youtu.be/0w_thDNw8Ww"
-    ], 
+      "0w_thDNw8Ww"
+    ],
     "reviews": [
       {
         "source": "Svenska Dagbladet",
@@ -306,9 +269,9 @@
         "max": 5
       }
     ]
-  }
+  },
   {
-    "title": "Call me by your name",
+    "title": "Call Me By Your Name",
     "productionCountries": [
       "Italien",
       "USA"
@@ -332,7 +295,7 @@
     ],
     "youtubeTrailers": [
       "Z9AYPxH5NTM"
-    ], 
+    ],
     "reviews": [
       {
         "source": "Sydsvenskan",

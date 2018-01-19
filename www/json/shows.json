@@ -1,5 +1,4 @@
-{
-  "Shows": [
+[
     {
       "date": "2018-03-01",
       "auditorium": "Stora Salongen",
@@ -504,5 +503,4 @@
       "film": "Let The Sunshine In",
       "time": "22.40"
     }
-  ]
-}
+]
