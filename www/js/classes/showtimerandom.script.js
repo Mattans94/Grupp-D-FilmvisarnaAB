@@ -5,8 +5,8 @@ class Showtime{
     this.theater = ['Stora Salongen', 'Lilla Salongen'];
     this.times = ['18.40', '21.00', '22.40'];
     this.myArrayOfObjects = [];
-    this.randomWriteObjectsToArray();
-    this.saveToJSON(this.myArrayOfObjects);
+    // this.randomWriteObjectsToArray();
+    // this.saveToJSON(this.myArrayOfObjects);
       }
 
   randomMovie() {
@@ -47,12 +47,8 @@ class Showtime{
 
   saveToJSON(object){
     JSON._save('shows.json', {
-        Shows: object
+        object
     });
   }
 
 }
-
-
-
-

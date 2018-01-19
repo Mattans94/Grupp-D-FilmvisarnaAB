@@ -115,6 +115,7 @@ class GetJSON {
           </div>
         </div>
       </div>`
+
   }
 
   renderMovie(movieTitle) {
@@ -125,8 +126,9 @@ class GetJSON {
 
           <section class="col-lg-7 d-flex flex-wrap d-md-block bg-dark mt-5 pb-3">
 
-          ${this.renderTrailer(movieObject)}
-          ${this.renderCarousel(movieObject)}
+          <div class="headerOfMoviePage">
+            ${this.renderCarousel(movieObject)}
+          </div>
 
 
 
@@ -210,16 +212,9 @@ class GetJSON {
       `)
   }
 
-
 }
 
 let x = new GetJSON
 
 
-$(document).on('click', 'button', function() {
-  let myBtn = $(this).data('btn')
-  x.renderMovie(myBtn);
-});
-
-
-setTimeout(function(){ x.renderMovie('Call Me By Your Name'); }, 200);
+setTimeout(function(){ x.renderMovie('Call Me By Your Name'); }, 1000);
