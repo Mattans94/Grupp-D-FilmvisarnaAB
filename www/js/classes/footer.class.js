@@ -1,6 +1,6 @@
-class Footer {
+class Footer extends Base {
   constructor() {
-    this.footerFix();
+    super();
     this.fixOnResize();
   }
 
@@ -17,5 +17,3 @@ class Footer {
     });
   }
 }
-
-const footerFix = new Footer();
