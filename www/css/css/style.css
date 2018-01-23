@@ -2,6 +2,40 @@ html {
   position: relative;
   min-height: 100%;
 }
+.free {
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+  background-color: green;
+  border-radius: 15px;
+  text-align: center;
+  float: right;
+  color: white;
+  /*font-weight: bold;*/
+}
+.booked {
+  height: 50px;
+  width: 50px;
+  border: 1px solid white;
+  background-color: red;
+  border-radius: 15px;
+  text-align: center;
+  float: right;
+  color: white;
+  /*font-weight: bold;*/
+}
+.theater,
+.theater-holder {
+  background-color: black;
+  /*align-content: center;*/
+}
+.seat-row {
+  float: right;
+}
+.curtain {
+  width: 65%;
+  height: 15%;
+}
 footer {
   position: absolute;
   bottom: 0;

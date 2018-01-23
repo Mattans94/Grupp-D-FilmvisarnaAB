@@ -6,23 +6,26 @@ class Theater {
 			this.start();
 		});
 
-	} //end 
+	} //end
 
 	start(){
 		this.eventHandler();
-		this.getTheaterObject("Lilla Salongen");
+		this.getTheaterObject("Stora Salongen");
 		this.getSeatsPerRow(this.theaterObject);
+		this.setWidth();
+		this.setHeight();
+		this.renderTheater();
+		this.scale();
 	}
 
 	getTheaterObject(theaterName) {
-		this.theaterObject = this.theaterObjects.find((x) => theaterName == x.name); 
+		this.theaterObject = this.theaterObjects.find((x) => theaterName == x.name);
 		console.log(this.theaterObject);
 	}
 
-	getSeatsPerRow(theaterObject) {	
+	getSeatsPerRow(theaterObject) {
 		let rowlength = theaterObject.seatsPerRow;
 		this.seatsStoran = rowlength;
-		this.renderTheater();
 		return rowlength;
 	}
 
@@ -32,34 +35,59 @@ class Theater {
 		let status = 'free';
 
 		for (let row = 0; row < this.seatsStoran.length; row++) {
-			html += `<div class="row d-flex flex-row-reverse theater seat-row">`;
 			this.seatsPerRow = this.seatsStoran[row];
-			
+			html += `<div class="col-12 row d-flex flex-row-reverse justify-content-center flex-nowrap seat-row m-0">`;
+
 			for (let seat = 0; seat < this.seatsPerRow; seat++) {
-				html += `<div class="${status} seat mr-2 mb-2" id="seat" data-rowid="${row}" data-seatid="${row}${seat}">${seatnumber}</div>`;
-				
+
+				html += `<div class="${status} seat mt-1 ml-1" id="seat" data-rowid="${row}" data-seatid="${row}${seat}">${seatnumber}</div>`;
+
 				seatnumber++;
 			}
 			html += '</div>';
 		}
-		$('.theater').html(html);	
+		$('#theater').html(html);
+
+		$('html, body').animate({
+        scrollTop: $("#theater").offset().top -20
+    }, 500);
+
+
+	}
+
+	setHeight(){
+		let fullHeight = this.seatsStoran.length * 55;
+		console.log(fullHeight);
+		$('#theater').css('height', `${fullHeight}`);
+	}
+
+	setWidth(){
+		let longestRow = 0;
+		for (let rowLength of this.seatsStoran){
+			if (longestRow < rowLength) {
+				longestRow = rowLength;
+			}
+		}
+		let fullWidth = longestRow * 55;
+		$('#theater').css('width', `${fullWidth}`);
 	}
 
 	scale() {
-		// let orgW = 600, orgH = 480;
-		let orgW = 960, orgH = 720;
-		let w = $(window).width();
+		let orgW = $('#theater').width(), orgH = $('#theater').height();
+		let w = $(window).width()
 		let h = $(window).height();
-		h -= $('header').outerHeight() + 80 + 140;
 		w -= 20 * 2;
-		let wScale = w / orgW;
-		let hScale = h / orgH;
+		h -= 20 * 2;
+		const wScale = w / orgW;
+		const hScale = h / orgH;
 		let scaling = Math.min(wScale, hScale);
-		$('.theater .booked .free').css('transform', `scale(${scaling})`);
-		$('.theater .booked .free').show();
-		$('.theater').width(orgW * scaling);
-		$('.theater').height(orgH * scaling);
+
+		$('#theater').css('transform', `scale(${scaling})`);
+		$('#theater-holder').width(orgW * scaling);
+		$('#theater-holder').height(orgH * scaling);
 	}
+
+
 
 	eventHandler() {
 		$(document).ready();
@@ -70,10 +98,10 @@ class Theater {
 
 			if (seatID == seat.data('seatid') ) {
     		$(seat).toggleClass('booked');
-    		$(seat).toggleClass('free');    		
+    		$(seat).toggleClass('free');
     		console.log(seatID);
     	}
-    	else 
+    	else
     		console.log(this.seatid);
 		});
 	}
@@ -82,7 +110,3 @@ class Theater {
 
 
 } //end class
-
-
-
-
