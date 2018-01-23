@@ -50,6 +50,8 @@ footer .myheight {
 .kalendarium {
   text-align: center;
   border-bottom: 1px solid black;
+  background: linear-gradient(#ff0000, #000000);
+  color: white;
 }
 .bigSal {
   border-right: 2px solid black;
