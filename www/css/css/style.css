@@ -2,6 +2,20 @@ html {
   position: relative;
   min-height: 100%;
 }
+body {
+  background-color: gray;
+}
+.card-img-top {
+  margin-top: 7px;
+}
+.card {
+  border: none;
+  box-shadow: 2px 2px 2px 2px;
+  border-radius: 10px;
+}
+.btn-info {
+  float: right;
+}
 footer {
   position: absolute;
   bottom: 0;
@@ -47,11 +61,16 @@ footer p a:hover {
 footer .myheight {
   height: 120px;
 }
+header nav {
+  background: linear-gradient(#ff0000, #000000);
+  box-shadow: 5px 5px 5px 5px;
+}
 .kalendarium {
   text-align: center;
   border-bottom: 1px solid black;
   background: linear-gradient(#ff0000, #000000);
   color: white;
+  box-shadow: 2px 2px 2px 2px;
 }
 .bigSal {
   border-right: 2px solid black;
@@ -64,6 +83,10 @@ footer .myheight {
   padding-left: 10px;
   left: 0;
 }
+.kalend-box {
+  box-shadow: 2px 2px 2px 2px;
+  border-radius: 10px;
+}
 .dropdown {
   float: right;
   padding-top: 10;
@@ -74,5 +97,7 @@ footer .myheight {
 }
 .movie-dates {
   display: none;
-  border: 1px solid black;
+}
+.times {
+  float: right;
 }
