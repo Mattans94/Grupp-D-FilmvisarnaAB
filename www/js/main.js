@@ -1,0 +1,1 @@
+let theater = new Theater();
