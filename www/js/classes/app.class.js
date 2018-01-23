@@ -1,20 +1,22 @@
-class App {
+class Data {}
+
+class App extends Base {
 
   constructor(){
 
+    super()
     // Tell jsonflex to recreate instances of the class Garment
     // JSON._classes(Garment);
-
 
     // Load shows, add as a property, then start the app
     JSON._load('shows').then((shows) => {
       // Retrieve the app from JSON
-      this.showObjects = shows;
+      Data.showObjects = this.showObjects = shows;
     });
 
     JSON._load('movies').then((movies) => {
       // Retrieve the app from JSON
-      this.movieObjects = movies;
+      Data.movieObjects = this.showObjects = movies;
       this.start();
     });
 
@@ -39,8 +41,8 @@ class App {
     this.startPage.render('main');
 
     // Sending movies and shows to Movieclass
-    this.movieSite = new Movie(this.movieObjects, this.showObjects);
-
+    this.Base = new Base(this);
+    
     // Then call renderMovie() to render the movie with the same title.
 
     // Initiate handling of SPA push/pop-state

@@ -70,4 +70,14 @@ class Base {
     }
   }
 
+  // New global methods
+
+  getMovieObject(movieTitle) {
+    return Data.movieObjects.find((m) => movieTitle == m.title)
+  }
+
+  getShowObject(movieTitle) {
+    return Data.showObjects.filter((m) => movieTitle == m.film);
+  }
+
 }

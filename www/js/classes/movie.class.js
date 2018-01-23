@@ -1,20 +1,7 @@
 class Movie extends Base {
-  constructor(movieObjects, showObjects){
+  constructor(movieTitle){
     super();
-    this.movieObjects = movieObjects;
-    this.showObjects = showObjects;
-  }
-
-
-  // Use this to send in movie-titles later on to use the right movie-object
-  getMovieObject(movieTitle) {
-    this.movieObject = this.movieObjects.find((m) => movieTitle == m.title)
-
-    // return this.movieObjects.find((m) => movieTitle == m.title)
-  }
-
-  getShowObject(movieTitle) {
-    return this.showObjects.filter((m) => movieTitle == m.film);
+    this.movieObject = this.getMovieObject(movieTitle);
   }
 
   getActors(movieObject){
