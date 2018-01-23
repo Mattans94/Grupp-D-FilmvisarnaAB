@@ -1,0 +1,1 @@
+let myApp = new App;
