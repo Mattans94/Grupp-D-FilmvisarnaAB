@@ -1,6 +1,6 @@
 //main: style.less
 footer {
-  background-color: @mainColor;
+  background-color: @secondaryColor;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -8,16 +8,16 @@ footer {
   height: auto;
   line-height: 30px;
   /* Vertically center the text there */
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid @mainColor + 55;
   .color {
-    background-color: @secondaryColor;
+    background-color: @mainColor;
     border-radius: 20px 20px;
     padding: 10px 30px;
   }
   p {
     line-height: 1.6em;
     margin-bottom: 0;
-    color: #3f3f3f;
+    color: #fff;
     // Icons
     .fa {
       line-height: 30px;
@@ -37,7 +37,7 @@ footer {
     }
     // Links in footer
     a, a:hover {
-      color: #3f3f3f;
+      color: #fff;
     }
   }
   // Set hight for boxes

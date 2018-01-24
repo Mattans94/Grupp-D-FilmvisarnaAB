@@ -5,13 +5,14 @@ class StartPage extends Base {
 
 	renderMovie(movieTitle){
 		let movieObject = this.getMovieObject(movieTitle);
-		return `<div class="card col-12 col-md-6 bg-dark mt-2">
-      <img class="card-img-top" src="/img/posters/${movieObject.images[0]}" alt="Card image cap">
-      <div class="card-block">
-        <h4 class="card-title text-white">${movieObject.title}</h4>
-        <button type="button" class="btn align-self-end ml-auto bg-info text-light btn-info">Visa mer!</button>
-      </div>
-    </div>`
+		return `
+		<div class="col-6 col-md-6 movieBlock mb-3 d-flex flex-column">
+			<img class="img-fluid" src="/img/posters/${movieObject.images[0]}">
+
+			<h4 class="mt-2 mb-2">${movieObject.title}</h4>
+			<button type="button" class="btn btn-danger align-self-end mt-auto showmorebtn">Visa mer!</button>
+
+		</div>`
 	}
 
 
