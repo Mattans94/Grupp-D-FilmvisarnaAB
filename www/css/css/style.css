@@ -1,0 +1,207 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+html body {
+  background-color: #f4ffff;
+}
+body {
+  background-color: gray;
+}
+.card-img-top {
+  margin-top: 7px;
+}
+.card {
+  border: none;
+  box-shadow: 2px 2px 2px 2px;
+  border-radius: 10px;
+}
+.btn-info {
+  float: right;
+}
+button,
+a {
+  cursor: pointer;
+}
+.free {
+  width: 50px;
+  height: 50px;
+  border: 1px solid white;
+  background-color: green;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  /*font-weight: bold;*/
+}
+.booked {
+  width: 50px;
+  height: 50px;
+  border: 1px solid white;
+  background-color: red;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  /*font-weight: bold;*/
+}
+.curtain {
+  width: 65%;
+  height: 15%;
+}
+#theater-holder {
+  overflow: hidden;
+  /* set width and height from js*/
+}
+#theater {
+  transform-origin: 0 0;
+  background: #000;
+}
+footer {
+  background-color: #add8e6;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: auto;
+  line-height: 30px;
+  /* Vertically center the text there */
+  border-top: 1px solid #e0e0e0;
+}
+footer .color {
+  background-color: #deeff5;
+  border-radius: 20px 20px;
+  padding: 10px 30px;
+}
+footer p {
+  line-height: 1.6em;
+  margin-bottom: 0;
+  color: #3f3f3f;
+}
+footer p .fa {
+  line-height: 30px;
+  font-size: 20px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+footer p .fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+footer p .fa-envelope,
+footer p .fa-address-card,
+footer p .fa-phone {
+  background: black;
+  color: white;
+}
+footer p a,
+footer p a:hover {
+  color: #3f3f3f;
+}
+footer .myheight {
+  height: 120px;
+}
+.info-box {
+  background-color: #add8e6;
+}
+.info-box li {
+  list-style: none;
+}
+#accordion {
+  box-shadow: 0px 0px 6px #000;
+  background-color: #add8e6;
+}
+#accordion .listShowTimes {
+  list-style: none;
+  margin-left: -40px;
+}
+#accordion .listShowTimes li:nth-child(odd) {
+  background-color: #FFF;
+}
+#accordion a {
+  color: #000;
+}
+header nav {
+  background: linear-gradient(#ff0000, #000000);
+  box-shadow: 5px 5px 5px 5px;
+}
+.kalendarium {
+  text-align: center;
+  border-bottom: 1px solid black;
+  background: linear-gradient(#ff0000, #000000);
+  color: white;
+  box-shadow: 1px 1px 1px 1px;
+}
+.card ul {
+  list-style: none;
+}
+.dates li:nth-child(even) {
+  background: lightgray;
+}
+.times li:nth-child(even) {
+  background: lightgray;
+}
+.dates,
+.times {
+  padding: 0;
+}
+.bigSal {
+  border-right: 1px dashed white;
+}
+.bigSal h5 {
+  border-bottom: 1px dashed white;
+}
+.smallSal h5 {
+  border-bottom: 1px dashed white;
+}
+.d-block:hover {
+  background-color: #2f4f4f;
+}
+.card:focus {
+  background-color: red;
+}
+.d-block {
+  height: 47px;
+}
+.main-card {
+  border-radius: 10px;
+}
+/*.bigSal{
+	border-right: 2px solid black;
+
+}
+
+.container-box{
+	display: flex;
+
+	ul{
+		list-style: none;
+		padding-left: 10px;
+		left:0;
+	}
+}
+
+.kalend-box{
+	box-shadow: 2px 2px 2px 2px;
+	border-radius: 10px;
+}
+
+.dropdown{
+	float: right;
+	padding-top:10;
+	margin-left: 30px;
+	background-color: lightgray;
+	width:15px;
+	text-align: center;
+}
+
+.movie-dates {
+	display: none;
+}*/
