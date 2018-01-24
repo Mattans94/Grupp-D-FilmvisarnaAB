@@ -20,7 +20,6 @@ class App extends Base {
       this.start();
     });
 
-    this.eventHandlers();
   }
 
   start(){
@@ -41,7 +40,7 @@ class App extends Base {
     this.startPage.render('main');
 
     // Sending movies and shows to Movieclass
-    this.Base = new Base(this);
+    // this.Base = new Base(this);
 
     // Then call renderMovie() to render the movie with the same title.
 

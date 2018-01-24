@@ -25,7 +25,7 @@ class StartPage extends Base {
 
 		return `
 				<div>
-          <a class="d-block" data-toggle="collapse" data-target="#${id}" aria-expanded="false" aria-controls="collapseExample"><strong>${allShows[0].film}</strong><i class="fa fa-arrows-v float-right" aria-hidden="true"></i></a>
+          <a class="d-block movieTitleHeight" data-toggle="collapse" data-target="#${id}" aria-expanded="false" aria-controls="collapseExample"><strong>${allShows[0].film}</strong><i class="fa fa-arrows-v float-right" aria-hidden="true"></i></a>
         </div>
         <div class="collapse" id="${id}">
           <div class="card card-body text-dark">

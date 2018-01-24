@@ -165,14 +165,11 @@ header nav {
 .smallSal h5 {
   border-bottom: 1px dashed white;
 }
-.d-block:hover {
+.movieTitleHeight:hover {
   background-color: #2f4f4f;
 }
 .card:focus {
   background-color: red;
-}
-.d-block {
-  height: 47px;
 }
 .main-card {
   border-radius: 10px;
