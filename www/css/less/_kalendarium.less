@@ -6,20 +6,12 @@
 	box-shadow: 1px 1px 1px 1px;
 }
 
+.kalendariumContainer {
+	background-color: @secondaryColor;
+}
+
 .card ul{
 	list-style: none;
-}
-
-.dates li:nth-child(even){
-	background:lightgray;
-}
-
-.times li:nth-child(even){
-	background:lightgray;
-}
-
-.dates, .times{
-	padding:0;
 }
 
 .bigSal{
@@ -47,35 +39,41 @@
 .main-card{
 	border-radius: 10px;
 }
-/*.bigSal{
-	border-right: 2px solid black;
 
+
+.collapseShowtime {
+  background-color: #ddd;
+	color: #000;
+	border-radius: 20px;
+
+
+  .listShowTimes {
+    list-style: none;
+    margin-left: -40px;
+    li:nth-child(odd) {
+      background-color: @secondaryColor;
+			color: #000;
+    }
+  }
+  a {
+    color: #000;
+		.fa{
+			width: 10px;
+		}
+		.fa {
+			width: 10px;
+		}
+  }
 }
 
-.container-box{
-	display: flex;
-
-	ul{
-		list-style: none;
-		padding-left: 10px;
-		left:0;
-	}
+[data-toggle="collapse"].collapsed i:before{
+    content: "\f0da";
+		color: red;
+		width: 10px;
 }
 
-.kalend-box{
-	box-shadow: 2px 2px 2px 2px;
-	border-radius: 10px;
+[data-toggle="collapse"] i:before{
+    content: "\f0d7";
+		color: green;
+		width: 10px;
 }
-
-.dropdown{
-	float: right;
-	padding-top:10;
-	margin-left: 30px;
-	background-color: lightgray;
-	width:15px;
-	text-align: center;
-}
-
-.movie-dates {
-	display: none;
-}*/

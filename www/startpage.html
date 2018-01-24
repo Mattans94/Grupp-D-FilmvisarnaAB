@@ -44,7 +44,7 @@
 				<section class="col-lg-7 d-flex flex-wrap d-md-block">
 					<h3 class="kalendarium mt-5">Filmer</h3>
 					<div class="row">
-						<div class="card col-12 col-md-6 bg-dark mt-2">
+						<div class="card col-12 col-md-6  mt-2">
 						  <img class="card-img-top" src="/img/posters/three_billboards.jpg" alt="Card image cap">
 						  <div class="card-block">
 						    <h4 class="card-title text-white">Three Billboards Outside Ebbing, Missouri</h4>
@@ -52,7 +52,7 @@
 						  </div>
 						</div>
 
-						<div class="card col-12 col-md-6 bg-dark mt-2">
+						<div class="card col-12 col-md-6  mt-2">
 						  <img class="card-img-top" src="/img/posters/three_billboards.jpg" alt="Card image cap">
 						  <div class="card-block">
 						    <h4 class="card-title text-white">Three Billboards Outside Ebbing, Missouri</h4>
@@ -62,7 +62,7 @@
 					</div>
 
 					<div class="row">
-						<div class="card col-12 col-md-6 bg-dark mt-4">
+						<div class="card col-12 col-md-6  mt-4">
 							  <img class="card-img-top" src="/img/posters/three_billboards.jpg" alt="Card image cap">
 							  <div class="card-block">
 							    <h4 class="card-title text-white">Three Billboards Outside Ebbing, Missouri</h4>
@@ -70,7 +70,7 @@
 							  </div>
 							</div>
 
-							<div class="card col-12 col-md-6 bg-dark mt-4">
+							<div class="card col-12 col-md-6 mt-4">
 							  <img class="card-img-top" src="/img/posters/three_billboards.jpg" alt="Card image cap">
 							  <div class="card-block">
 							    <h4 class="card-title text-white">Three Billboards Outside Ebbing, Missouri</h4>
@@ -78,14 +78,57 @@
 							  </div>
 							</div>
 						</div>
-					
+
 				</section>
-				
+
 				<section class="col-lg-5 mt-5">
 					<h3 class="kalendarium">Kalendarium</h3>
-					<div class="d-flex flex-nowrap bg-dark mt-3 main-card">
-						<div class="bigSal col-6 text-light mt-2">
+					<div class="d-flex flex-nowrap bg-light mt-3 main-card">
+						<div class="bigSal col-6 mt-2">
 							<h5>Stora Salongen</h5>
+							<div class="collapseShowtime mb-2" role="tablist" class="mb-2">
+								<a data-toggle="collapse" href="#collapseTest" role="button" aria-expanded="true" aria-controls="collapseOne">
+									<div class="col-12 m-0">
+										<i class="fa fa-caret-right arrowtoggle" aria-hidden="true"></i><strong class="col-12 p-0"> Three Billboards Outside Ebbing, Missouri</strong>
+									</div>
+								</a>
+
+								<div id="collapseTest" class="collapse pb-2" role="tabpanel" aria-labelledby="headingOne" data-parent="#collapseTest">
+
+										<div class="col-12">
+											<div class="col-6 d-inline-block pl-0"><strong>Datum:</strong></div><div class="col-6 d-inline-block float-right"><strong>Tid:</strong></div>
+											<ul class="listShowTimes">
+												<li><div class="col-6 d-inline">7/3</div> <div class="col-6 d-inline float-right">19.00</div></li>
+												<li><div class="col-6 d-inline">7/3</div> <div class="col-6 d-inline float-right">19.00</div></li>
+												<li><div class="col-6 d-inline">7/3</div> <div class="col-6 d-inline float-right">19.00</div></li>
+
+											</ul>
+										</div>
+									</div>
+							</div>
+
+							<div class="collapseShowtime mb-2" role="tablist" class="mb-2">
+								<a data-toggle="collapse" href="#collapseTest2" role="button" aria-expanded="true" aria-controls="collapseOne">
+									<div class="col-12 m-0">
+										<i class="fa fa-caret-right" aria-hidden="true"> </i><strong class="col-12 p-0"> Tjuren Ferdinand</strong>
+									</div>
+								</a>
+
+								<div id="collapseTest2" class="collapse pb-2" role="tabpanel" aria-labelledby="headingOne" data-parent="#collapseTest2">
+
+										<div class="col-12">
+											<div class="col-6 d-inline-block pl-0"><strong>Datum:</strong></div><div class="col-6 d-inline-block float-right"><strong>Tid:</strong></div>
+											<ul class="listShowTimes">
+												<li><div class="col-6 d-inline">7/3</div> <div class="col-6 d-inline float-right"><h6 class="d-inline">19.00</h6></div></li>
+												<li><div class="col-6 d-inline">7/3</div> <div class="col-6 d-inline float-right"><h6 class="d-inline">19.00</h6></div></li>
+												<li><div class="col-6 d-inline">7/3</div> <div class="col-6 d-inline float-right"><h6 class="d-inline">19.00</h6></div></li>
+
+											</ul>
+										</div>
+									</div>
+							</div>
+
+
 							<div>
 								<a class="d-block" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><strong>Titanic</strong><i class="fa fa-arrows-v float-right" aria-hidden="true"></i></a>
 							</div>
@@ -132,8 +175,8 @@
 							</div>
 
 						</div>
-							
-						<div class="smallSal col-6 text-light mt-2">
+
+						<div class="smallSal col-6 mt-2">
 							<h5>Lilla Salongen</h5>
 							<div>
 								<a class="d-block" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2"><strong>Into the woods</strong><i class="fa fa-arrows-v float-right" aria-hidden="true"></i></a>
@@ -226,7 +269,6 @@
     <script src="/js/libs/popper-1.11.0.js"></script>
     <script src="/js/libs/bootstrap-4-beta.js"></script>
     <!-- Application specific JavaScript -->
-		<script src="/js/classes/footer.class.js"></script>
     <script src="/js/main.js"></script>
 
 

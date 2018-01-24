@@ -10,7 +10,7 @@ html {
   min-height: 100%;
 }
 html body {
-  background-color: #f4ffff;
+  background-color: #3a3a3a;
 }
 body {
   background-color: gray;
@@ -67,7 +67,7 @@ a {
   background: #000;
 }
 footer {
-  background-color: #add8e6;
+  background-color: #3a3a3a;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -78,7 +78,7 @@ footer {
   border-top: 1px solid #e0e0e0;
 }
 footer .color {
-  background-color: #deeff5;
+  background-color: #949494;
   border-radius: 20px 20px;
   padding: 10px 30px;
 }
@@ -113,14 +113,14 @@ footer .myheight {
   height: 120px;
 }
 .info-box {
-  background-color: #add8e6;
+  background-color: #3a3a3a;
 }
 .info-box li {
   list-style: none;
 }
 #accordion {
   box-shadow: 0px 0px 6px #000;
-  background-color: #add8e6;
+  background-color: #3a3a3a;
 }
 #accordion .listShowTimes {
   list-style: none;
@@ -132,9 +132,9 @@ footer .myheight {
 #accordion a {
   color: #000;
 }
-header nav {
+header {
   background: linear-gradient(#ff0000, #000000);
-  box-shadow: 5px 5px 5px 5px;
+  box-shadow: 0px 5px 10px #000;
 }
 .kalendarium {
   text-align: center;
@@ -143,18 +143,11 @@ header nav {
   color: white;
   box-shadow: 1px 1px 1px 1px;
 }
+.kalendariumContainer {
+  background-color: #949494;
+}
 .card ul {
   list-style: none;
-}
-.dates li:nth-child(even) {
-  background: lightgray;
-}
-.times li:nth-child(even) {
-  background: lightgray;
-}
-.dates,
-.times {
-  padding: 0;
 }
 .bigSal {
   border-right: 1px dashed white;
@@ -174,35 +167,35 @@ header nav {
 .main-card {
   border-radius: 10px;
 }
-/*.bigSal{
-	border-right: 2px solid black;
-
+.collapseShowtime {
+  background-color: #ddd;
+  color: #000;
+  border-radius: 20px;
 }
-
-.container-box{
-	display: flex;
-
-	ul{
-		list-style: none;
-		padding-left: 10px;
-		left:0;
-	}
+.collapseShowtime .listShowTimes {
+  list-style: none;
+  margin-left: -40px;
 }
-
-.kalend-box{
-	box-shadow: 2px 2px 2px 2px;
-	border-radius: 10px;
+.collapseShowtime .listShowTimes li:nth-child(odd) {
+  background-color: #949494;
+  color: #000;
 }
-
-.dropdown{
-	float: right;
-	padding-top:10;
-	margin-left: 30px;
-	background-color: lightgray;
-	width:15px;
-	text-align: center;
+.collapseShowtime a {
+  color: #000;
 }
-
-.movie-dates {
-	display: none;
-}*/
+.collapseShowtime a .fa {
+  width: 10px;
+}
+.collapseShowtime a .fa {
+  width: 10px;
+}
+[data-toggle="collapse"].collapsed i:before {
+  content: "\f0da";
+  color: red;
+  width: 10px;
+}
+[data-toggle="collapse"] i:before {
+  content: "\f0d7";
+  color: green;
+  width: 10px;
+}

@@ -14,29 +14,46 @@ class StartPage extends Base {
     </div>`
 	}
 
+
+	// Making dates into XX/XX
+	makeSmallDate(date){
+		let month = date.slice(5, -3);
+		let day = date.slice(-2);
+		date = day + "/" + month;
+
+		for (let i = 0; i < date.length; i++) {
+			date = date.replace("0", "");
+		}
+
+		return date;
+	}
+
 	renderShowTime(movieTitle, id){
 		let allShows = this.getShowObject(movieTitle);
-		console.log(allShows);
 		let myLis = "";
 
 		for (let i = 0; i < 3; i++){
-			myLis += `<li><div class="col-5 d-inline">${allShows[i].date}</div> <div class="col-5 d-inline"><h6 class="d-inline">${allShows[i].time}</h6></li>`
+			myLis += `<li><div class="col-6 d-inline">${this.makeSmallDate(allShows[i].date)}</div> <div class="col-6 d-inline float-right">${allShows[i].time}</div></li>`
 		}
 
 		return `
-				<div>
-          <a class="d-block movieTitleHeight" data-toggle="collapse" data-target="#${id}" aria-expanded="false" aria-controls="collapseExample"><strong>${allShows[0].film}</strong><i class="fa fa-arrows-v float-right" aria-hidden="true"></i></a>
-        </div>
-        <div class="collapse" id="${id}">
-          <div class="card card-body text-dark">
-            <div class="row">
-              <ul class="col-md-12 dates">
-                <li><div class="col-5 d-inline"><h6 class="d-inline">Date</h6></div> <div class="col-5 d-inline"><h6 class="d-inline">Time</h6></li>
+			<div class="collapseShowtime mb-2" role="tablist" class="mb-2">
+				<a data-toggle="collapse" href="#${id}" role="button" aria-expanded="true" aria-controls="collapseOne" class="collapsed">
+					<div class="col-12 m-0">
+						<i class="fa" aria-hidden="true"></i><strong class="col-12 p-0">${allShows[0].film}</strong>
+					</div>
+				</a>
+
+				<div id="${id}" class="collapse pb-2" role="tabpanel" aria-labelledby="headingOne" data-parent="#${id}">
+
+						<div class="col-12">
+							<div class="col-6 d-inline-block pl-0"><strong>Datum:</strong></div><div class="col-6 d-inline-block float-right"><strong>Tid:</strong></div>
+							<ul class="listShowTimes">
 								${myLis}
-              </ul>
-            </div>
-          </div>
-        </div>
+							</ul>
+						</div>
+					</div>
+			</div>
 
 		`
 	}
