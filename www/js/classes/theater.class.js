@@ -16,6 +16,7 @@ class Theater {
 		this.setHeight();
 		this.renderTheater();
 		this.scale();
+
 	}
 
 	getTheaterObject(theaterName) {
@@ -91,6 +92,32 @@ class Theater {
 
 	eventHandler() {
 		$(document).ready();
+		$(document).on('click','book-btn',function(){
+			let booking = {};
+			booking.show = {
+				"date": "2018-03-01",
+		      	"auditorium": "Lilla Salongen",
+		      	"film": "Tjuren Ferdinand",
+		      	"time": "22.40"
+			}
+		});
+
+		booking.userID = 1;
+		booking.seats = [];
+
+		//class seat and booked
+		$('.seat.booked').each(function(){
+			let seat = $(this);
+			let seatID = seat.data('seatid');
+			console.log('seatdid');
+			booking.seats.push('seatid');
+		});
+
+		//Save booked to JSON
+		JSON._save('booking', {booking});
+
+
+
 		$(document).on("mouseenter mouseleave click", '.seat', function() {
 			let seat = $(this);
 			let seatID = seat.data('seatid');
