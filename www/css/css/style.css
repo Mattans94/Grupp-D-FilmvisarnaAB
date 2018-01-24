@@ -1,3 +1,10 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 html {
   position: relative;
   min-height: 100%;
@@ -15,6 +22,10 @@ body {
 }
 .btn-info {
   float: right;
+}
+button,
+a {
+  cursor: pointer;
 }
 footer {
   position: absolute;
@@ -70,34 +81,71 @@ header nav {
   border-bottom: 1px solid black;
   background: linear-gradient(#ff0000, #000000);
   color: white;
-  box-shadow: 2px 2px 2px 2px;
+  box-shadow: 1px 1px 1px 1px;
+}
+.card ul {
+  list-style: none;
+}
+.dates li:nth-child(even) {
+  background: lightgray;
+}
+.times li:nth-child(even) {
+  background: lightgray;
+}
+.dates,
+.times {
+  padding: 0;
 }
 .bigSal {
-  border-right: 2px solid black;
+  border-right: 1px dashed white;
 }
-.container-box {
-  display: flex;
+.bigSal h5 {
+  border-bottom: 1px dashed white;
 }
-.container-box ul {
-  list-style: none;
-  padding-left: 10px;
-  left: 0;
+.smallSal h5 {
+  border-bottom: 1px dashed white;
 }
-.kalend-box {
-  box-shadow: 2px 2px 2px 2px;
+.d-block:hover {
+  background-color: #2f4f4f;
+}
+.card:focus {
+  background-color: red;
+}
+.d-block {
+  height: 47px;
+}
+.main-card {
   border-radius: 10px;
 }
-.dropdown {
-  float: right;
-  padding-top: 10;
-  margin-left: 30px;
-  background-color: lightgray;
-  width: 15px;
-  text-align: center;
+/*.bigSal{
+	border-right: 2px solid black;
+
 }
+
+.container-box{
+	display: flex;
+
+	ul{
+		list-style: none;
+		padding-left: 10px;
+		left:0;
+	}
+}
+
+.kalend-box{
+	box-shadow: 2px 2px 2px 2px;
+	border-radius: 10px;
+}
+
+.dropdown{
+	float: right;
+	padding-top:10;
+	margin-left: 30px;
+	background-color: lightgray;
+	width:15px;
+	text-align: center;
+}
+
 .movie-dates {
-  display: none;
-}
-.times {
-  float: right;
-}
+	display: none;
+}*/
