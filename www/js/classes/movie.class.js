@@ -2,6 +2,7 @@ class Movie extends Base {
   constructor(movieTitle){
     super();
     this.movieObject = this.getMovieObject(movieTitle);
+    this.renderMovie();
   }
 
   getActors(movieObject){
