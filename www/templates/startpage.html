@@ -2,71 +2,154 @@ Object.assign(StartPage.prototype, { template(){ return `
 
   <article class="row">
 
-    <section class="col-lg-8 d-flex flex-wrap d-md-block">
+        <section class="col-lg-7 d-flex flex-wrap d-md-block">
+          <h3 class="kalendarium mt-5">Filmer</h3>
+          <div class="row">
+            <!-- <div class="card col-12 col-md-6 bg-dark mt-2">
+              <img class="card-img-top" src="/img/posters/three_billboards.jpg" alt="Card image cap">
+              <div class="card-block">
+                <h4 class="card-title text-white">Three Billboards Outside Ebbing, Missouri</h4>
+                <button type="button" class="btn align-self-end ml-auto bg-info text-light btn-info">Visa mer!</button>
+              </div>
+            </div> -->
+            ${this.renderMovie("Wind River")}
 
-      <div class="col-6 col-md-12 bg-light mt-5 d-flex pt-2">
-        <div class="m-md-3 m-ml-0 col-md-3">
-          <img src="/img/posters/three_billboards.jpg" class="img-fluid mb-2">
-          <p class="d-md-none">Three Billboards Outside Ebbing, Missouri</p>
-        </div>
-        <div class="mt-2 d-none d-md-flex flex-md-column">
-          <h2>Three Billboards Outside Ebbing, Missouri</h2>
-          <p>Från Oscar®vinnaren Martin McDonagh kommer ett mörkt skruvat drama, THREE BILLBOARDS OUTSIDE EBBING, MISSOURI, där Frances McDormand spelar huvudrollen som den förtvivlade Mildred Hayes...</p>
-          <button type="button" class="btn btn-success align-self-end ml-auto" data-movie="Call Me By Your Name">Boka nu!</button>
-        </div>
-      </div>
+            <!-- <div class="card col-12 col-md-6 bg-dark mt-2">
+              <img class="card-img-top" src="/img/posters/three_billboards.jpg" alt="Card image cap">
+              <div class="card-block">
+                <h4 class="card-title text-white">Three Billboards Outside Ebbing, Missouri</h4>
+                <button type="button" class="btn align-self-end ml-auto bg-info text-light btn-info">Visa mer!</button>
+              </div>
+            </div> -->
+            ${this.renderMovie("Tjuren Ferdinand")}
+          </div>
 
-      <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/zN9PDOoLAfg?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
-      <div class="col-6 col-md-12 bg-light mt-5 d-flex pt-2">
-        <div class="m-md-3 m-ml-0 col-md-3">
-          <img src="/img/posters/three_billboards.jpg" class="img-fluid mb-2">
-          <p class="d-md-none">That other movie</p>
-        </div>
-        <div class="mt-2 d-none d-md-flex flex-md-column">
-          <h2>Three Billboards Outside Ebbing, Missouri</h2>
-          <p>Från Oscar®vinnaren Martin McDonagh kommer ett mörkt skruvat drama, THREE BILLBOARDS OUTSIDE EBBING, MISSOURI, där Frances McDormand spelar huvudrollen som den förtvivlade Mildred Hayes...</p>
-          <button type="button" class="btn btn-success align-self-end ml-auto">Boka nu!</button>
-        </div>
-      </div>
+          <div class="row">
+            <!-- <div class="card col-12 col-md-6 bg-dark mt-4">
+                <img class="card-img-top" src="/img/posters/three_billboards.jpg" alt="Card image cap">
+                <div class="card-block">
+                  <h4 class="card-title text-white">Three Billboards Outside Ebbing, Missouri</h4>
+                  <button type="button" class="btn align-self-end ml-auto bg-info text-light btn-info">Visa mer!</button>
+                </div>
+              </div> -->
+            ${this.renderMovie("Three Billboards Outside Ebbing, Missouri")}
 
-      <div class="col-6 col-md-12 bg-light mt-5 d-flex pt-2">
-        <div class="m-md-3 m-ml-0 col-md-3">
-          <img src="/img/posters/three_billboards.jpg" class="img-fluid mb-2">
-          <p class="d-md-none">Shortname Movie</p>
-        </div>
-        <div class="mt-2 d-none d-md-flex flex-md-column">
-          <h2>Three Billboards Outside Ebbing, Missouri</h2>
-          <p>Från Oscar®vinnaren Martin McDonagh kommer ett mörkt skruvat drama, THREE BILLBOARDS OUTSIDE EBBING, MISSOURI, där Frances McDormand spelar huvudrollen som den förtvivlade Mildred Hayes...</p>
-          <button type="button" class="btn btn-success align-self-end ml-auto">Boka nu!</button>
-        </div>
-      </div>
+              <!-- <div class="card col-12 col-md-6 bg-dark mt-4">
+                <img class="card-img-top" src="/img/posters/three_billboards.jpg" alt="Card image cap">
+                <div class="card-block">
+                  <h4 class="card-title text-white">Three Billboards Outside Ebbing, Missouri</h4>
+                  <button type="button" class="btn align-self-end ml-auto bg-info text-light btn-info">Visa mer!</button>
+                </div>
+              </div> -->
+            ${this.renderMovie("Call Me By Your Name")}
+            </div>
+          
+        </section>
+        
+        <section class="col-lg-5 mt-5">
+          <h3 class="kalendarium">Kalendarium</h3>
+          <div class="d-flex flex-nowrap bg-dark mt-3 main-card">
+            <div class="bigSal col-6 text-light mt-2">
+              <h5>Stora Salongen</h5>
+              
+              <!-- <div>
+                <a class="d-block" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><strong>Titanic</strong><i class="fa fa-arrows-v float-right" aria-hidden="true"></i></a>
+              </div>
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body text-dark">
+                  <div class="row">
+                    <ul class="col-md-6 dates">
+                      <h6>Date</h6>
+                      <li><a>10/12</a></li>
+                      <li><a>11/12</a></li>
+                      <li><a>12/12</a></li>
+                    </ul>
+                    <ul class="col-md-6 times">
+                      <h6>Time</h6>
+                      <li><a>13.00</a></li>
+                      <li><a>13.00</a></li>
+                      <li><a>13.00</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div> -->
 
-      <div class="col-6 col-md-12 bg-light mt-5 d-flex pt-2">
-        <div class="m-md-3 m-ml-0 col-md-3">
-          <img src="/img/posters/three_billboards.jpg" class="img-fluid mb-2">
-          <p class="d-md-none">A Fourth Movie That Probably Sucks</p>
-        </div>
-        <div class="mt-2 d-none d-md-flex flex-md-column">
-          <h2>Three Billboards Outside Ebbing, Missouri</h2>
-          <p>Från Oscar®vinnaren Martin McDonagh kommer ett mörkt skruvat drama, THREE BILLBOARDS OUTSIDE EBBING, MISSOURI, där Frances McDormand spelar huvudrollen som den förtvivlade Mildred Hayes...</p>
-          <button type="button" class="btn btn-success align-self-end ml-auto">Boka nu!</button>
-        </div>
-      </div>
+              <!-- Add new movie -->
+              <div>
+                <a class="d-block" data-toggle="collapse" data-target="#2" aria-expanded="false" aria-controls="collapseExample"><strong class="title">Call me by your name</strong><i class="fa fa-arrows-v float-right" aria-hidden="true"></i></a>
+              </div>
+              <div class="collapse" id="2">
+                <div class="card card-body text-dark">
+                  <div class="row">
+                    <ul class="col-md-6 dates">
+                      <h6>Date</h6>
+                      <li><a>10/12</a></li>
+                      <li><a>11/12</a></li>
+                      <li><a>12/12</a></li>
+                    </ul>
+                    <ul class="col-md-6 times">
+                      <h6>Time</h6>
+                      <li><a>13.00</a></li>
+                      <li><a>13.00</a></li>
+                      <li><a>13.00</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
-    </section>
+            </div>
+              
+            <div class="smallSal col-6 text-light mt-2">
+              <h5>Lilla Salongen</h5>
+              <div>
+                <a class="d-block" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2"><strong>Into the woods</strong><i class="fa fa-arrows-v float-right" aria-hidden="true"></i></a>
+              </div>
+              <div class="collapse" id="collapseExample2">
+                <div class="card card-body text-dark">
+                  <div class="row bord">
+                    <ul class="col-md-6 dates">
+                      <h6>Date</h6>
+                      <li><a>10/2</a></li>
+                      <li><a>11/2</a></li>
+                      <li><a>12/2</a></li>
+                    </ul>
+                    <ul class="col-md-6 times">
+                      <h6>Time</h6>
+                      <li><a>15.00</a></li>
+                      <li><a>15.00</a></li>
+                      <li><a>15.00</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- Add new movie -->
+              <div>
+                <a class="d-block" data-toggle="collapse" data-target="#3" aria-expanded="false" aria-controls="collapseExample2"><strong>Tjuren Ferdinand</strong><i class="fa fa-arrows-v float-right" aria-hidden="true"></i></a>
+              </div>
+              <div class="collapse" id="3">
+                <div class="card card-body text-dark">
+                  <div class="row">
+                    <ul class="col-md-6 dates">
+                      <h6>Date</h6>
+                      <li><a>10/2</a></li>
+                      <li><a>11/2</a></li>
+                      <li><a>12/2</a></li>
+                    </ul>
+                    <ul class="col-md-6 times">
+                      <h6>Time</h6>
+                      <li><a>15.00</a></li>
+                      <li><a>15.00</a></li>
+                      <li><a>15.00</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
-  <section class="col-lg-3">
-    <div class="bg-light mt-5 p-2">
-      <h3>Kalendarium</h3>
-      <ul>
-        <li>Lorem Ipsum</li>
-        <li>Lorem Ipsum</li>
-        <li>Lorem Ipsum</li>
-        <li>Lorem Ipsum</li>
-      </ul>
-    </div>
-  </section>
 
-  </article>
+            </div>
+          </div>
+      </section>
+
+      </article>
 
 `;}});
