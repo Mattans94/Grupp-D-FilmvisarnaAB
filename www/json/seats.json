@@ -1,0 +1,10 @@
+[
+	{
+		"seatnumber":1,
+		"status":"free"
+	},
+	{
+		"seatnumber":2,
+		"status":"booked"
+	},
+]
