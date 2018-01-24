@@ -14,26 +14,25 @@ class StartPage extends Base {
     </div>`
 	}
 
-	renderShowTime(movieTitle){
+	renderShowTime(movieTitle, id){
 		let allShows = this.getShowObject(movieTitle);
 		console.log(allShows);
+		let myLis = "";
+
+		for (let i = 0; i < 3; i++){
+			myLis += `<li><div class="col-5 d-inline">${allShows[i].date}</div> <div class="col-5 d-inline"><h6 class="d-inline">${allShows[i].time}</h6></li>`
+		}
+
 		return `
 				<div>
-          <a class="d-block" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><strong></strong><i class="fa fa-arrows-v float-right" aria-hidden="true"></i></a>
+          <a class="d-block" data-toggle="collapse" data-target="#${id}" aria-expanded="false" aria-controls="collapseExample"><strong>${allShows[0].film}</strong><i class="fa fa-arrows-v float-right" aria-hidden="true"></i></a>
         </div>
-        <div class="collapse" id="collapseExample">
+        <div class="collapse" id="${id}">
           <div class="card card-body text-dark">
             <div class="row">
               <ul class="col-md-12 dates">
-                <h6>Date</h6>
-                <li><a>10/12</a></li>
-                <li><a>11/12</a></li>
-                <li><a>12/12</a></li>
-              
-                <h6>Time</h6>
-                <li><a>13.00</a></li>
-                <li><a>13.00</a></li>
-                <li><a>13.00</a></li>
+                <li><div class="col-5 d-inline"><h6 class="d-inline">Date</h6></div> <div class="col-5 d-inline"><h6 class="d-inline">Time</h6></li>
+								${myLis}
               </ul>
             </div>
           </div>

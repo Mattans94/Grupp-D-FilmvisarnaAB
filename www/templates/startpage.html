@@ -43,107 +43,29 @@ Object.assign(StartPage.prototype, { template(){ return `
               </div> -->
             ${this.renderMovie("Call Me By Your Name")}
             </div>
-          
+
         </section>
-        
+
         <section class="col-lg-5 mt-5">
           <h3 class="kalendarium">Kalendarium</h3>
           <div class="d-flex flex-nowrap bg-dark mt-3 main-card">
             <div class="bigSal col-6 text-light mt-2">
               <h5>Stora Salongen</h5>
-              
-              <!-- <div>
-                <a class="d-block" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><strong>Titanic</strong><i class="fa fa-arrows-v float-right" aria-hidden="true"></i></a>
-              </div>
-              <div class="collapse" id="collapseExample">
-                <div class="card card-body text-dark">
-                  <div class="row">
-                    <ul class="col-md-6 dates">
-                      <h6>Date</h6>
-                      <li><a>10/12</a></li>
-                      <li><a>11/12</a></li>
-                      <li><a>12/12</a></li>
-                    </ul>
-                    <ul class="col-md-6 times">
-                      <h6>Time</h6>
-                      <li><a>13.00</a></li>
-                      <li><a>13.00</a></li>
-                      <li><a>13.00</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div> -->
+
+
+              ${this.renderShowTime('Wind River', 'Wind1')}
+              ${this.renderShowTime('Tjuren Ferdinand', 'Tjuren1')}
+              ${this.renderShowTime('Call Me By Your Name', 'Callme1')}
+              ${this.renderShowTime('Three Billboards Outside Ebbing, Missouri', 'Missouri1')}
 
               <!-- Add new movie -->
-              <div>
-                <a class="d-block" data-toggle="collapse" data-target="#2" aria-expanded="false" aria-controls="collapseExample"><strong class="title">Call me by your name</strong><i class="fa fa-arrows-v float-right" aria-hidden="true"></i></a>
-              </div>
-              <div class="collapse" id="2">
-                <div class="card card-body text-dark">
-                  <div class="row">
-                    <ul class="col-md-6 dates">
-                      <h6>Date</h6>
-                      <li><a>10/12</a></li>
-                      <li><a>11/12</a></li>
-                      <li><a>12/12</a></li>
-                    </ul>
-                    <ul class="col-md-6 times">
-                      <h6>Time</h6>
-                      <li><a>13.00</a></li>
-                      <li><a>13.00</a></li>
-                      <li><a>13.00</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
 
             </div>
-              
+
             <div class="smallSal col-6 text-light mt-2">
               <h5>Lilla Salongen</h5>
-              <div>
-                <a class="d-block" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2"><strong>Into the woods</strong><i class="fa fa-arrows-v float-right" aria-hidden="true"></i></a>
-              </div>
-              <div class="collapse" id="collapseExample2">
-                <div class="card card-body text-dark">
-                  <div class="row bord">
-                    <ul class="col-md-6 dates">
-                      <h6>Date</h6>
-                      <li><a>10/2</a></li>
-                      <li><a>11/2</a></li>
-                      <li><a>12/2</a></li>
-                    </ul>
-                    <ul class="col-md-6 times">
-                      <h6>Time</h6>
-                      <li><a>15.00</a></li>
-                      <li><a>15.00</a></li>
-                      <li><a>15.00</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <!-- Add new movie -->
-              <div>
-                <a class="d-block" data-toggle="collapse" data-target="#3" aria-expanded="false" aria-controls="collapseExample2"><strong>Tjuren Ferdinand</strong><i class="fa fa-arrows-v float-right" aria-hidden="true"></i></a>
-              </div>
-              <div class="collapse" id="3">
-                <div class="card card-body text-dark">
-                  <div class="row">
-                    <ul class="col-md-6 dates">
-                      <h6>Date</h6>
-                      <li><a>10/2</a></li>
-                      <li><a>11/2</a></li>
-                      <li><a>12/2</a></li>
-                    </ul>
-                    <ul class="col-md-6 times">
-                      <h6>Time</h6>
-                      <li><a>15.00</a></li>
-                      <li><a>15.00</a></li>
-                      <li><a>15.00</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+              ${this.renderShowTime('Wind River', 'Wind2')}
+              ${this.renderShowTime('Tjuren Ferdinand', 'Tjuren2')}
 
 
             </div>
