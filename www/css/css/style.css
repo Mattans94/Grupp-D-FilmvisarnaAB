@@ -195,18 +195,16 @@ header {
   color: #000;
 }
 .collapseShowtime a .fa {
-  width: 10px;
+  width: 13px;
 }
 .collapseShowtime a .fa {
-  width: 10px;
+  width: 13px;
 }
 [data-toggle="collapse"].collapsed i:before {
   content: "\f0da";
   color: red;
-  width: 10px;
 }
 [data-toggle="collapse"] i:before {
   content: "\f0d7";
   color: green;
-  width: 10px;
 }
