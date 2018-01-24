@@ -1,0 +1,9 @@
+class Booking{
+
+	constructor(){
+		this. = 
+	}
+	
+	}
+
+}
