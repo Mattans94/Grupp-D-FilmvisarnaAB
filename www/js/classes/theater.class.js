@@ -9,13 +9,14 @@ class Theater {
 	} //end
 
 	start(){
-		this.eventHandler();
+		
 		this.getTheaterObject("Stora Salongen");
 		this.getSeatsPerRow(this.theaterObject);
 		this.setWidth();
 		this.setHeight();
 		this.renderTheater();
 		this.scale();
+		this.eventHandler();
 
 	}
 
@@ -91,19 +92,22 @@ class Theater {
 
 
 	eventHandler() {
+		let booking = {};
 		$(document).ready();
 		$(document).on('click','book-btn',function(){
-			let booking = {};
+			
 			booking.show = {
 				"date": "2018-03-01",
 		      	"auditorium": "Lilla Salongen",
 		      	"film": "Tjuren Ferdinand",
 		      	"time": "22.40"
-			}
+			};
+
+			booking.userID = 1;
+			booking.seats = [];
+
 		});
 
-		booking.userID = 1;
-		booking.seats = [];
 
 		//class seat and booked
 		$('.seat.booked').each(function(){
