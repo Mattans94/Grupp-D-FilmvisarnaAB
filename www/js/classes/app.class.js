@@ -42,7 +42,7 @@ class App extends Base {
 
     // Sending movies and shows to Movieclass
     this.Base = new Base(this);
-    
+
     // Then call renderMovie() to render the movie with the same title.
 
     // Initiate handling of SPA push/pop-state
@@ -52,11 +52,11 @@ class App extends Base {
   eventHandlers(){
     let that = this;
     $(document).on('click', 'button', function(){
-      // Make the clicked button into jquery
       let clicked = $(this);
-      console.log(clicked.data('movie'))
-      that.movieSite.getMovieObject(clicked.data('movie'));
-      that.movieSite.renderMovie();
+      let movieTitle = clicked.data('movie');
+
+      let movie = new Movie(movieTitle);
+      console.log(movieTitle, 'Has been sent')
     })
   }
 
