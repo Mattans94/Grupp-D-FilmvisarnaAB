@@ -1,3 +1,40 @@
-{
-  "booking": {}
-}
+[
+  {
+    "show": {
+      "date": "2018-03-01",
+      "auditorium": "Lilla Salongen",
+      "film": "Tjuren Ferdinand",
+      "time": "22.40",
+      "userID": 1,
+      "seats": [
+        19
+      ]
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-01",
+      "auditorium": "Lilla Salongen",
+      "film": "Tjuren Ferdinand",
+      "time": "22.40",
+      "userID": 1,
+      "seats": [
+        29,
+        30
+      ]
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-01",
+      "auditorium": "Lilla Salongen",
+      "film": "Tjuren Ferdinand",
+      "time": "22.40",
+      "userID": 1,
+      "seats": [
+        29,
+        30
+      ]
+    }
+  }
+]

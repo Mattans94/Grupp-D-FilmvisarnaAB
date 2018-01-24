@@ -90,6 +90,11 @@ class Theater {
 
 
 	eventHandler() {
+		JSON._load('booking').then((seats) => {
+	      // Retrieve the app from JSON
+	      this.bookedSeats = seats;
+	      console.log(this.bookedSeats)
+	    });
 		this.booking = {};
 		let that = this;
 		$(document).on('click','.book-btn',function(){
@@ -101,25 +106,29 @@ class Theater {
 		      	"time": "22.40"
 			};
 
-			that.booking.userID = 1;
-			that.booking.seats = [];
+			that.booking.show.userID = 1;
+			that.booking.show.seats = [];
 
 			console.log(this.booking);
 			$('.seat.booked').each(function(){
 				let seat = $(this);
 				let seatID = seat.data('seatid');
 				console.log(seatID);
-				that.booking.seats.push(seatID);
+				that.booking.show.seats.push(seatID);
+			});
+
+			that.bookedSeats.push(that.booking);
+			//Save booked-info + sittplats to JSON
+			JSON._save('booking', that.bookedSeats);
+			console.log('saving', that.bookedSeats,)
+
 		});
-		});
 
+		// JSON._load('booking',(data){
+		// 	this.bookings = data;
+		// 	this.seatOccupied();
+		// });
 
-
-
-
-
-		//Save booked to JSON
-		/*JSON._save('booking', {booking})*/;
 
 
 
