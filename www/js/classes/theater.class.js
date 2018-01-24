@@ -22,7 +22,6 @@ class Theater {
 
 	getTheaterObject(theaterName) {
 		this.theaterObject = this.theaterObjects.find((x) => theaterName == x.name);
-		console.log(this.theaterObject);
 	}
 
 	getSeatsPerRow(theaterObject) {
@@ -42,7 +41,7 @@ class Theater {
 
 			for (let seat = 0; seat < this.seatsPerRow; seat++) {
 
-				html += `<div class="${status} seat mt-1 ml-1" id="seat" data-rowid="${row}" data-seatid="${row}${seat}">${seatnumber}</div>`;
+				html += `<div class="${status} seat mt-1 ml-1" id="seat" data-rowid="${row}" data-seatid="${seatnumber}">${seatnumber}</div>`;
 
 				seatnumber++;
 			}
@@ -59,7 +58,6 @@ class Theater {
 
 	setHeight(){
 		let fullHeight = this.seatsStoran.length * 55;
-		console.log(fullHeight);
 		$('#theater').css('height', `${fullHeight}`);
 	}
 
@@ -92,33 +90,36 @@ class Theater {
 
 
 	eventHandler() {
-		let booking = {};
-		$(document).ready();
-		$(document).on('click','book-btn',function(){
+		this.booking = {};
+		let that = this;
+		$(document).on('click','.book-btn',function(){
 			
-			booking.show = {
+			that.booking.show = {
 				"date": "2018-03-01",
 		      	"auditorium": "Lilla Salongen",
 		      	"film": "Tjuren Ferdinand",
 		      	"time": "22.40"
 			};
 
-			booking.userID = 1;
-			booking.seats = [];
+			that.booking.userID = 1;
+			that.booking.seats = [];
 
+			console.log(this.booking);
+			$('.seat.booked').each(function(){
+				let seat = $(this);
+				let seatID = seat.data('seatid');
+				console.log(seatID);
+				that.booking.seats.push(seatID);
+		});
 		});
 
 
-		//class seat and booked
-		$('.seat.booked').each(function(){
-			let seat = $(this);
-			let seatID = seat.data('seatid');
-			console.log('seatdid');
-			booking.seats.push('seatid');
-		});
+
+
+
 
 		//Save booked to JSON
-		JSON._save('booking', {booking});
+		/*JSON._save('booking', {booking})*/;
 
 
 
@@ -130,10 +131,8 @@ class Theater {
 			if (seatID == seat.data('seatid') ) {
     		$(seat).toggleClass('booked');
     		$(seat).toggleClass('free');
-    		console.log(seatID);
     	}
-    	else
-    		console.log(this.seatid);
+    	
 		});
 	}
 
