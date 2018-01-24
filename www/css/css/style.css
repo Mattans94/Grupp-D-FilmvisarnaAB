@@ -133,15 +133,15 @@ footer .myheight {
   color: #000;
 }
 header {
-  background: linear-gradient(#ff0000, #000000);
+  background: linear-gradient(#ff3232, #000000);
   box-shadow: 0px 5px 10px #000;
 }
 .kalendarium {
-  text-align: center;
   border-bottom: 1px solid black;
-  background: linear-gradient(#ff0000, #000000);
+  background: #991e1e;
   color: white;
-  box-shadow: 1px 1px 1px 1px;
+  border-radius: 30px 10px;
+  padding: 15px 22px;
 }
 .kalendariumContainer {
   background-color: #949494;
@@ -152,11 +152,9 @@ header {
 .bigSal {
   border-right: 1px dashed white;
 }
-.bigSal h5 {
+.calenderTheaterBorder {
   border-bottom: 1px dashed white;
-}
-.smallSal h5 {
-  border-bottom: 1px dashed white;
+  margin-bottom: 8px;
 }
 .movieTitleHeight:hover {
   background-color: #2f4f4f;

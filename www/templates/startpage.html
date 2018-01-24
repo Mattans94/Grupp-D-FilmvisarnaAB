@@ -2,8 +2,8 @@ Object.assign(StartPage.prototype, { template(){ return `
 
   <article class="row">
 
-        <section class="col-lg-7 d-flex flex-wrap d-md-block">
-          <h3 class="kalendarium mt-5">Filmer</h3>
+        <section class="col-lg-7 d-flex flex-wrap d-md-block mt-5">
+          <h3 class="kalendarium m-0 col-12"><i class="fa fa-film mr-3" aria-hidden="true"></i>Filmer</h3>
           <div class="row">
             ${this.renderMovie("Wind River")}
             ${this.renderMovie("Tjuren Ferdinand")}
@@ -17,10 +17,10 @@ Object.assign(StartPage.prototype, { template(){ return `
         </section>
 
         <section class="col-lg-5 mt-5">
-          <h3 class="kalendarium">Kalendarium</h3>
+          <h3 class="kalendarium m-0"><i class="fa fa-calendar mr-3" aria-hidden="true"></i>Kalendarium</h3>
           <div class="d-flex flex-nowrap mt-3 main-card kalendariumContainer">
             <div class="bigSal col-6 text-light mt-2">
-              <h5>Stora Salongen</h5>
+              <div class="calenderTheaterBorder"><h5><i class="fa fa-film mr-2" aria-hidden="true"></i>Stora Salongen</h5></div>
 
 
               ${this.renderShowTime('Wind River', 'Wind1')}
@@ -33,7 +33,7 @@ Object.assign(StartPage.prototype, { template(){ return `
             </div>
 
             <div class="smallSal col-6 text-light mt-2">
-              <h5>Lilla Salongen</h5>
+              <div class="calenderTheaterBorder"><h5><i class="fa fa-film mr-2" aria-hidden="true"></i>Lilla Salongen</h5></div>
               ${this.renderShowTime('Wind River', 'Wind2')}
               ${this.renderShowTime('Tjuren Ferdinand', 'Tjuren2')}
 
