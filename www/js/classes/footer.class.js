@@ -1,9 +1,4 @@
 class Footer extends Base {
-  constructor() {
-    super();
-    this.fixOnResize();
-  }
-
 
   footerFix(){
     let height = $('footer').height() + 40;

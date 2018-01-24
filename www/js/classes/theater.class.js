@@ -110,3 +110,12 @@ class Theater {
 
 
 } //end class
+
+let theater = new Theater;
+let fixFooter = new Footer;
+theater.scale();
+fixFooter.footerFix();
+$(window).on('resize',function(){
+	theater.scale();
+	fixFooter.fixOnResize();
+});
