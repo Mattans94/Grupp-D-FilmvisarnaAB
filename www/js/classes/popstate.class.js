@@ -15,7 +15,7 @@ class Popstate extends Base{
 
   clickEvents(){
     let that = this;
-    $(document).on('click','button.pop',function(e){
+    $(document).on('click','.pop',function(e){
       //Create a push state preventDefault
       let href = $(this).data('movie');
       href = that.makeUrl(href);
@@ -34,7 +34,10 @@ class Popstate extends Base{
 
     let urls = {
       '/' : 'startpage',
-      '/Tjuren_Ferdinand' : 'movieFerdinand'
+      '/Tjuren_Ferdinand' : 'movieFerdinand',
+      '/Wind_River': 'movieWindRiver',
+      '/Three_Billboards_Outside_Ebbing_Missouri': 'movieThreeBillboards',
+      '/Call_Me_By_Your_Name': 'movieCallMe'
     }
 
     let methodName = urls[url];
@@ -52,7 +55,34 @@ class Popstate extends Base{
   movieFerdinand(){
     $('.leftContainer').empty();
     let moviepage = new Movie('Tjuren Ferdinand');
-    console.log('hello');
+    console.log('Ferdinand');
+  }
+
+  movieWindRiver(){
+    $('.leftContainer').empty();
+    let moviepage = new Movie('Wind River');
+    console.log("WindRiver");
+  }
+
+  movieThreeBillboards(){
+    $('.leftContainer').empty();
+    let moviepage = new Movie('Three Billboards Outside Ebbing, Missouri');
+    console.log("Three_Billboards_Outside_Ebbing_Missouri");
+  }
+
+  movieCallMe(){
+    $('.leftContainer').empty();
+    let moviepage = new Movie('Call Me By Your Name');
+    console.log("Call_Me_By_Your_Name");
   }
 
 }
+
+
+
+
+
+
+
+
+
