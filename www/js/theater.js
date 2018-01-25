@@ -6,7 +6,7 @@ class Theater {
 			this.start();
 		});
 
-	} //end
+	} //end constructor
 
 	start(){
 		this.eventHandler();
@@ -20,7 +20,7 @@ class Theater {
 
 	getTheaterObject(theaterName) {
 		this.theaterObject = this.theaterObjects.find((x) => theaterName == x.name);
-		console.log(this.theaterObject);
+		// console.log(this.theaterObject);
 	}
 
 	getSeatsPerRow(theaterObject) {
@@ -40,7 +40,7 @@ class Theater {
 
 			for (let seat = 0; seat < this.seatsPerRow; seat++) {
 
-				html += `<div class="${status} seat mt-1 ml-1" id="seat" data-rowid="${row}" data-seatid="${row}${seat}">${seatnumber}</div>`;
+				html += `<div class="${status} seat mt-1 ml-1" id="seat" data-rowid="${row}" data-seatid="${row}${seat}" data-status="${status}">${seatnumber}</div>`;
 
 				seatnumber++;
 			}
@@ -91,23 +91,65 @@ class Theater {
 
 	eventHandler() {
 		$(document).ready();
-		$(document).on("mouseenter mouseleave click", '.seat', function() {
-			let seat = $(this);
-			let seatID = seat.data('seatid');
-			let rowID = seat.data('rowid')
+			let seatID;
+			let rowID;
+			let status;
 
-			if (seatID == seat.data('seatid')  ) {
+		$(document).on("mouseenter mouseleave", '.seat', function() {
+			// let seat = $(this);
+			// let seatID = seat.data('seatid');
+			// let rowID = seat.data('rowid');
+			// let status = seat.data('status');
+
+			let seat = $(this);
+			seatID = seat.data('seatid');
+			rowID = seat.data('rowid');
+			status = seat.data('status');
+
+
+			if (seatID == seat.data('seatid') && status == 'free' ) {
     		$(seat).toggleClass('booked');
     		$(seat).toggleClass('free');
-    		console.log(seatID);
-    		console.log(seat);
+    		console.log('1 seatID', seatID);
+    		console.log('2 seat', seat);
     	}
     	else
-    		console.log(this.seatid);
+    		console.log('3 status', status);
+		});
+
+		$(document).on("click", '.seat', function() {
+			// let seat = $(this);
+			// let seatID = seat.data('seatid');
+			// let rowID = seat.data('rowid');
+			// let status = seat.data('status');
+			let seat = $(this);
+			seatID = seat.data('seatid');
+			rowID = seat.data('rowid');
+			status = seat.data('status');
+			console.log('10 status', status)
+
+
+			if (seatID == seat.data('seatid') && status == 'free' ) {
+    		$(seat).addClass('booked');
+    		$(seat).removeClass('free');
+    		$(seat).data('status', 'booked');
+    		status = seat.data('status');
+    		console.log('4 seatID', seatID);
+    		console.log('5 seat',seat); 
+    		// console.log(status);
+
+    	}
+    	else 
+    		if (seatID == seat.data('seatid') && status == 'booked' ) {
+	    		$(seat).addClass('free');
+	    		$(seat).removeClass('booked');
+	    		$(seat).data('status', 'free');
+    			status = seat.data('status');
+	    		console.log('6 seat', seat);
+    	}
+    		console.log('7 status', status);
 		});
 	}
-
-
 
 
 } //end class
