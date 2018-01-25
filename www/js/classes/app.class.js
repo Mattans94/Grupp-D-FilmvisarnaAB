@@ -18,7 +18,7 @@ class App extends Base {
     })
     .then(() => {
       this.start();
-      this.eventHandlers();
+      // this.eventHandlers();
     }));
 
 
@@ -37,9 +37,8 @@ class App extends Base {
     this.footer.footerFix();
 
     // Create a startpage
-    this.startPage = new StartPage();
-    $('main').empty();
-    this.startPage.render('main');
+
+    new Popstate();
 
     // Sending movies and shows to Movieclass
     // this.Base = new Base(this);
@@ -47,16 +46,15 @@ class App extends Base {
     // Then call renderMovie() to render the movie with the same title.
 
     // Initiate handling of SPA push/pop-state
-    // new PopStateHandler(this);
   }
 
-  eventHandlers(){
-    let that = this;
-    $(document).on('click', '.showmorebtn', function(){
-      let clicked = $(this);
-      let movieTitle = clicked.data('movie');
-      that.movie = new Movie(movieTitle);
-    })
-  }
+  // eventHandlers(){
+  //   let that = this;
+  //   $(document).on('click', '.showmorebtn', function(){
+  //     let clicked = $(this);
+  //     let movieTitle = clicked.data('movie');
+  //     that.movie = new Movie(movieTitle);
+  //   })
+  // }
 
 }
