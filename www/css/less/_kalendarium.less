@@ -1,42 +1,49 @@
 .kalendarium {
-	text-align: center;
 	border-bottom:1px solid black;
-	background: linear-gradient(red,black);
+	background: @mainRed;
 	color: white;
-	box-shadow: 1px 1px 1px 1px;
+	border-radius: 30px 10px;
+	padding: 15px 22px;
+	box-shadow: 0px 2px 2px #000;
+}
+
+.kalendariumContainer {
+	background-color: @secondaryColor;
+	box-shadow: 0px 2px 2px #000;
+}
+
+
+.movieContainer {
+	background-color: @secondaryColor;
+	border-radius: 10px;
+	padding: 10px;
+	color: #FFF;
+	box-shadow: 0px 2px 2px #000;
+}
+
+.movieBlock {
+	.showmorebtn {
+		background-color: @mainRed;
+		border: 1px solid @mainColor;
+	}
 }
 
 .card ul{
 	list-style: none;
 }
 
-.dates li:nth-child(even){
-	background:lightgray;
-}
-
-.times li:nth-child(even){
-	background:lightgray;
-}
-
-.dates, .times{
-	padding:0;
-}
-
 .bigSal{
 	border-right:1px dashed white;
 
-	h5{
-		border-bottom: 1px dashed white;
-	}
+
 }
 
-.smallSal{
-	h5{
-		border-bottom: 1px dashed white;
-	}
+.calenderTheaterBorder{
+	border-bottom: 1px dashed white;
+	margin-bottom: 8px;
 }
 
-.d-block:hover{
+.movieTitleHeight:hover{
 	background-color: #2f4f4f;
 }
 
@@ -44,51 +51,42 @@
 	background-color: red;
 }
 
-.d-block{
-	height: 47px;
-}
-
 .main-card{
 	border-radius: 10px;
 }
-/*.bigSal{
-	border-right: 2px solid black;
 
+
+.collapseShowtime {
+  background-color: #ddd;
+	color: #000;
+	border-radius: 20px;
+
+
+  .listShowTimes {
+    list-style: none;
+    margin-left: -40px;
+    li:nth-child(odd) {
+      background-color: @secondaryColor;
+			color: #000;
+    }
+  }
+  a {
+    color: #000;
+		.fa{
+			width: 13px;
+		}
+		.fa {
+			width: 13px;
+		}
+  }
 }
 
-.container-box{
-	display: flex;
-
-	ul{
-		list-style: none;
-		padding-left: 10px;
-		left:0;
-	}
+[data-toggle="collapse"].collapsed i:before{
+    content: "\f0da";
+		color: red;
 }
 
-.kalend-box{
-	box-shadow: 2px 2px 2px 2px;
-	border-radius: 10px;
+[data-toggle="collapse"] i:before{
+    content: "\f0d7";
+		color: green;
 }
-
-.dropdown{
-	float: right;
-	padding-top:10;
-	margin-left: 30px;
-	background-color: lightgray;
-	width:15px;
-	text-align: center;
-}
-
-.movie-dates {
-	display: none;
-}*/
-
-
-
-
-
-
-
-
-

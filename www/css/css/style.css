@@ -10,7 +10,7 @@ html {
   min-height: 100%;
 }
 html body {
-  background-color: #f4ffff;
+  background-color: #3a3a3a;
 }
 body {
   background-color: gray;
@@ -25,6 +25,10 @@ body {
 }
 .btn-info {
   float: right;
+}
+.card-title {
+  text-align: center;
+  margin-top: 5px;
 }
 button,
 a {
@@ -63,7 +67,7 @@ a {
   background: #000;
 }
 footer {
-  background-color: #add8e6;
+  background-color: #949494;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -71,17 +75,17 @@ footer {
   height: auto;
   line-height: 30px;
   /* Vertically center the text there */
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid #717171;
 }
 footer .color {
-  background-color: #deeff5;
+  background-color: #3a3a3a;
   border-radius: 20px 20px;
   padding: 10px 30px;
 }
 footer p {
   line-height: 1.6em;
   margin-bottom: 0;
-  color: #3f3f3f;
+  color: #fff;
 }
 footer p .fa {
   line-height: 30px;
@@ -103,105 +107,121 @@ footer p .fa-phone {
 }
 footer p a,
 footer p a:hover {
-  color: #3f3f3f;
+  color: #fff;
 }
 footer .myheight {
   height: 120px;
 }
 .info-box {
-  background-color: #add8e6;
+  background-color: #949494;
+  color: #FFF;
 }
 .info-box li {
   list-style: none;
 }
 #accordion {
   box-shadow: 0px 0px 6px #000;
-  background-color: #add8e6;
+  background-color: #949494;
+  color: #FFF;
 }
 #accordion .listShowTimes {
+  color: #FFF;
   list-style: none;
   margin-left: -40px;
 }
 #accordion .listShowTimes li:nth-child(odd) {
   background-color: #FFF;
+  color: #000;
 }
 #accordion a {
   color: #000;
 }
-header nav {
-  background: linear-gradient(#ff0000, #000000);
-  box-shadow: 5px 5px 5px 5px;
+.headerOfMoviePage img,
+.headerOfMoviePage div {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.headerOfMoviePage #showtrailer {
+  border-radius: 0px !important;
+  background-color: #991e1e;
+}
+.roundedBottom {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+header {
+  background: linear-gradient(#ff3232, #000000);
+  box-shadow: 0px 5px 10px #000;
 }
 .kalendarium {
-  text-align: center;
   border-bottom: 1px solid black;
-  background: linear-gradient(#ff0000, #000000);
+  background: #991e1e;
   color: white;
-  box-shadow: 1px 1px 1px 1px;
+  border-radius: 30px 10px;
+  padding: 15px 22px;
+  box-shadow: 0px 2px 2px #000;
+}
+.kalendariumContainer {
+  background-color: #949494;
+  box-shadow: 0px 2px 2px #000;
+}
+.movieContainer {
+  background-color: #949494;
+  border-radius: 10px;
+  padding: 10px;
+  color: #FFF;
+  box-shadow: 0px 2px 2px #000;
+}
+.movieBlock .showmorebtn {
+  background-color: #991e1e;
+  border: 1px solid #3a3a3a;
 }
 .card ul {
   list-style: none;
 }
-.dates li:nth-child(even) {
-  background: lightgray;
-}
-.times li:nth-child(even) {
-  background: lightgray;
-}
-.dates,
-.times {
-  padding: 0;
-}
 .bigSal {
   border-right: 1px dashed white;
 }
-.bigSal h5 {
+.calenderTheaterBorder {
   border-bottom: 1px dashed white;
+  margin-bottom: 8px;
 }
-.smallSal h5 {
-  border-bottom: 1px dashed white;
-}
-.d-block:hover {
+.movieTitleHeight:hover {
   background-color: #2f4f4f;
 }
 .card:focus {
   background-color: red;
 }
-.d-block {
-  height: 47px;
-}
 .main-card {
   border-radius: 10px;
 }
-/*.bigSal{
-	border-right: 2px solid black;
-
+.collapseShowtime {
+  background-color: #ddd;
+  color: #000;
+  border-radius: 20px;
 }
-
-.container-box{
-	display: flex;
-
-	ul{
-		list-style: none;
-		padding-left: 10px;
-		left:0;
-	}
+.collapseShowtime .listShowTimes {
+  list-style: none;
+  margin-left: -40px;
 }
-
-.kalend-box{
-	box-shadow: 2px 2px 2px 2px;
-	border-radius: 10px;
+.collapseShowtime .listShowTimes li:nth-child(odd) {
+  background-color: #949494;
+  color: #000;
 }
-
-.dropdown{
-	float: right;
-	padding-top:10;
-	margin-left: 30px;
-	background-color: lightgray;
-	width:15px;
-	text-align: center;
+.collapseShowtime a {
+  color: #000;
 }
-
-.movie-dates {
-	display: none;
-}*/
+.collapseShowtime a .fa {
+  width: 13px;
+}
+.collapseShowtime a .fa {
+  width: 13px;
+}
+[data-toggle="collapse"].collapsed i:before {
+  content: "\f0da";
+  color: red;
+}
+[data-toggle="collapse"] i:before {
+  content: "\f0d7";
+  color: green;
+}

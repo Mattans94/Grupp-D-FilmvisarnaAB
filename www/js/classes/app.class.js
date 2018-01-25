@@ -1,26 +1,27 @@
 class Data {}
 
 class App extends Base {
-
   constructor(){
 
     super()
-    // Tell jsonflex to recreate instances of the class Garment
+        // Tell jsonflex to recreate instances of the class Garment
     // JSON._classes(Garment);
 
     // Load shows, add as a property, then start the app
     JSON._load('shows').then((shows) => {
       // Retrieve the app from JSON
       Data.showObjects = this.showObjects = shows;
-    });
-
-    JSON._load('movies').then((movies) => {
+    })
+    .then(JSON._load('movies').then((movies) => {
       // Retrieve the app from JSON
       Data.movieObjects = this.showObjects = movies;
+    })
+    .then(() => {
       this.start();
-    });
+      // this.eventHandlers();
+    }));
 
-    this.eventHandlers();
+
   }
 
   start(){
@@ -36,28 +37,24 @@ class App extends Base {
     this.footer.footerFix();
 
     // Create a startpage
-    this.startPage = new StartPage();
-    $('main').empty();
-    this.startPage.render('main');
+
+    new Popstate(this);
 
     // Sending movies and shows to Movieclass
-    this.Base = new Base(this);
+    // this.Base = new Base(this);
 
     // Then call renderMovie() to render the movie with the same title.
 
     // Initiate handling of SPA push/pop-state
-    // new PopStateHandler(this);
   }
 
-  eventHandlers(){
-    let that = this;
-    $(document).on('click', 'button', function(){
-      let clicked = $(this);
-      let movieTitle = clicked.data('movie');
-
-      let movie = new Movie(movieTitle);
-      console.log(movieTitle, 'Has been sent')
-    })
-  }
+  // eventHandlers(){
+  //   let that = this;
+  //   $(document).on('click', '.showmorebtn', function(){
+  //     let clicked = $(this);
+  //     let movieTitle = clicked.data('movie');
+  //     that.movie = new Movie(movieTitle);
+  //   })
+  // }
 
 }

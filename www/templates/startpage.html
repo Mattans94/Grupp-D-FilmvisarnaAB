@@ -2,71 +2,47 @@ Object.assign(StartPage.prototype, { template(){ return `
 
   <article class="row">
 
-    <section class="col-lg-8 d-flex flex-wrap d-md-block">
+        <section class="col-lg-7 d-flex flex-wrap d-md-block mt-5 leftContainer">
+          <h3 class="kalendarium m-0 col-12 mb-3"><i class="fa fa-film mr-3" aria-hidden="true"></i>Filmer</h3>
+          <div class="movieContainer">
+            <div class="d-flex align-items-stretch flex-nowrap">
+              ${this.renderMovie("Wind River")}
+              ${this.renderMovie("Tjuren Ferdinand")}
+            </div>
 
-      <div class="col-6 col-md-12 bg-light mt-5 d-flex pt-2">
-        <div class="m-md-3 m-ml-0 col-md-3">
-          <img src="/img/posters/three_billboards.jpg" class="img-fluid mb-2">
-          <p class="d-md-none">Three Billboards Outside Ebbing, Missouri</p>
-        </div>
-        <div class="mt-2 d-none d-md-flex flex-md-column">
-          <h2>Three Billboards Outside Ebbing, Missouri</h2>
-          <p>Från Oscar®vinnaren Martin McDonagh kommer ett mörkt skruvat drama, THREE BILLBOARDS OUTSIDE EBBING, MISSOURI, där Frances McDormand spelar huvudrollen som den förtvivlade Mildred Hayes...</p>
-          <button type="button" class="btn btn-success align-self-end ml-auto" data-movie="Call Me By Your Name">Boka nu!</button>
-        </div>
-      </div>
+            <div class="d-flex align-items-stretch flex-nowrap">
+              ${this.renderMovie("Three Billboards Outside Ebbing, Missouri")}
+              ${this.renderMovie("Call Me By Your Name")}
+            </div>
+          <div class="">
+        </section>
 
-      <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/zN9PDOoLAfg?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
-      <div class="col-6 col-md-12 bg-light mt-5 d-flex pt-2">
-        <div class="m-md-3 m-ml-0 col-md-3">
-          <img src="/img/posters/three_billboards.jpg" class="img-fluid mb-2">
-          <p class="d-md-none">That other movie</p>
-        </div>
-        <div class="mt-2 d-none d-md-flex flex-md-column">
-          <h2>Three Billboards Outside Ebbing, Missouri</h2>
-          <p>Från Oscar®vinnaren Martin McDonagh kommer ett mörkt skruvat drama, THREE BILLBOARDS OUTSIDE EBBING, MISSOURI, där Frances McDormand spelar huvudrollen som den förtvivlade Mildred Hayes...</p>
-          <button type="button" class="btn btn-success align-self-end ml-auto">Boka nu!</button>
-        </div>
-      </div>
+        <section class="col-lg-5 mt-5">
+          <h3 class="kalendarium m-0"><i class="fa fa-calendar mr-3" aria-hidden="true"></i>Kalendarium</h3>
+          <div class="d-flex flex-nowrap mt-3 main-card kalendariumContainer">
+            <div class="bigSal col-6 text-light mt-2">
+              <div class="calenderTheaterBorder"><h5><i class="fa fa-film mr-2" aria-hidden="true"></i>Stora Salongen</h5></div>
 
-      <div class="col-6 col-md-12 bg-light mt-5 d-flex pt-2">
-        <div class="m-md-3 m-ml-0 col-md-3">
-          <img src="/img/posters/three_billboards.jpg" class="img-fluid mb-2">
-          <p class="d-md-none">Shortname Movie</p>
-        </div>
-        <div class="mt-2 d-none d-md-flex flex-md-column">
-          <h2>Three Billboards Outside Ebbing, Missouri</h2>
-          <p>Från Oscar®vinnaren Martin McDonagh kommer ett mörkt skruvat drama, THREE BILLBOARDS OUTSIDE EBBING, MISSOURI, där Frances McDormand spelar huvudrollen som den förtvivlade Mildred Hayes...</p>
-          <button type="button" class="btn btn-success align-self-end ml-auto">Boka nu!</button>
-        </div>
-      </div>
 
-      <div class="col-6 col-md-12 bg-light mt-5 d-flex pt-2">
-        <div class="m-md-3 m-ml-0 col-md-3">
-          <img src="/img/posters/three_billboards.jpg" class="img-fluid mb-2">
-          <p class="d-md-none">A Fourth Movie That Probably Sucks</p>
-        </div>
-        <div class="mt-2 d-none d-md-flex flex-md-column">
-          <h2>Three Billboards Outside Ebbing, Missouri</h2>
-          <p>Från Oscar®vinnaren Martin McDonagh kommer ett mörkt skruvat drama, THREE BILLBOARDS OUTSIDE EBBING, MISSOURI, där Frances McDormand spelar huvudrollen som den förtvivlade Mildred Hayes...</p>
-          <button type="button" class="btn btn-success align-self-end ml-auto">Boka nu!</button>
-        </div>
-      </div>
+              ${this.renderShowTime('Wind River', 'Wind1')}
+              ${this.renderShowTime('Tjuren Ferdinand', 'Tjuren1')}
+              ${this.renderShowTime('Call Me By Your Name', 'Callme1')}
+              ${this.renderShowTime('Three Billboards Outside Ebbing, Missouri', 'Missouri1')}
 
-    </section>
+              <!-- Add new movie -->
 
-  <section class="col-lg-3">
-    <div class="bg-light mt-5 p-2">
-      <h3>Kalendarium</h3>
-      <ul>
-        <li>Lorem Ipsum</li>
-        <li>Lorem Ipsum</li>
-        <li>Lorem Ipsum</li>
-        <li>Lorem Ipsum</li>
-      </ul>
-    </div>
-  </section>
+            </div>
 
-  </article>
+            <div class="smallSal col-6 text-light mt-2">
+              <div class="calenderTheaterBorder"><h5><i class="fa fa-film mr-2" aria-hidden="true"></i>Lilla Salongen</h5></div>
+              ${this.renderShowTime('Wind River', 'Wind2')}
+              ${this.renderShowTime('Tjuren Ferdinand', 'Tjuren2')}
+
+
+            </div>
+          </div>
+      </section>
+
+      </article>
 
 `;}});
