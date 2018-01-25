@@ -26,8 +26,21 @@ class FreeOccupiedSeats{
 
   }
 
-	setSeatsStatus(status, row, seat){
-    this.seats[row][seat] = status;
+	setSeatStatus(status, row, seat){
+    let statusUpdateOk = true;
+
+    if(row >= nbrOfSeatsInRow.length || seat >= nbrOfSeatsInRow[row])
+    {
+      statusUpdateOk = false;
+    }
+    else
+    {
+      this.seats[row][seat] = status;
+
+      this.saveToJSON(this.seats);      
+    }
+
+    return statusUpdateOk;
 	}
 
 
