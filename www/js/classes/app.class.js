@@ -38,7 +38,7 @@ class App extends Base {
 
     // Create a startpage
 
-    new Popstate();
+    new Popstate(this);
 
     // Sending movies and shows to Movieclass
     // this.Base = new Base(this);

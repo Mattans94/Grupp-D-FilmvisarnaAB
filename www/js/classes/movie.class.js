@@ -3,14 +3,17 @@ class Movie extends Base {
     super();
     this.movieObject = this.getMovieObject(movieTitle);
     this.renderMovie();
+    this.eventHandlers();
 
   }
 
   eventHandlers(){
     let that = this;
-    $(document).on('click', '#showtrailer', function(){
+    $(document).on('click', '.showtrailer', function(){
+      console.log('hej');
       $('.slide').toggleClass('d-none');
       $('.trailer').toggleClass('d-none');
+      console.log('hejdå');
       $(this).html(function(i, text){
         return text === `<i class="fa fa-video-camera mr-2" aria-hidden="true"></i>Show slides` ?
         `<i class="fa fa-video-camera mr-2" aria-hidden="true"></i>Show trailer`
@@ -103,9 +106,7 @@ class Movie extends Base {
 
   // Renders movie with template.
   renderMovie() {
-    $('.leftContainer').empty();
     this.render('.leftContainer');
-    this.eventHandlers();
   }
 
 }
