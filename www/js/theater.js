@@ -96,10 +96,11 @@ class Theater {
 			let seatID = seat.data('seatid');
 			let rowID = seat.data('rowid')
 
-			if (seatID == seat.data('seatid') ) {
+			if (seatID == seat.data('seatid')  ) {
     		$(seat).toggleClass('booked');
     		$(seat).toggleClass('free');
     		console.log(seatID);
+    		console.log(seat);
     	}
     	else
     		console.log(this.seatid);
