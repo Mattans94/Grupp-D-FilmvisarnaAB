@@ -4,7 +4,7 @@ Object.assign(Movie.prototype, { template(){ return `
       <div class="headerOfMoviePage">
         ${this.renderCarousel(this.movieObject)}
         ${this.renderTrailer(this.movieObject)}
-        <button id="showtrailer" class="text-left btn btn-danger col-12"><i class="fa fa-video-camera mr-2" aria-hidden="true"></i>Show trailer</button>
+        <button class="text-left btn btn-danger col-12 showtrailer"><i class="fa fa-video-camera mr-2" aria-hidden="true"></i>Show trailer</button>
       </div>
       <div class="bg-light roundedBottom">
 

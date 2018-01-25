@@ -61,28 +61,16 @@ class Popstate extends Base{
   movieWindRiver(){
     $('.leftContainer').empty();
     let moviepage = new Movie('Wind River');
-    console.log("WindRiver");
   }
 
   movieThreeBillboards(){
     $('.leftContainer').empty();
     let moviepage = new Movie('Three Billboards Outside Ebbing, Missouri');
-    console.log("Three_Billboards_Outside_Ebbing_Missouri");
   }
 
   movieCallMe(){
     $('.leftContainer').empty();
     let moviepage = new Movie('Call Me By Your Name');
-    console.log("Call_Me_By_Your_Name");
   }
 
 }
-
-
-
-
-
-
-
-
-
