@@ -54,20 +54,20 @@ class Movie extends Base {
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="/img/slides/cmbyn1.jpg" alt="First slide">
+          <img class="d-block w-100" src="/img/slides/${movieObject.slides[0]}" alt="First slide">
           <div class="carousel-caption d-none d-md-block">
             <h2>${movieObject.title}</h2>
             <button class="showTrailer btn">Trailer</button>
           </div>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="/img/slides/cmbyn2.jpg" alt="Second slide">
+          <img class="d-block w-100" src="/img/slides/${movieObject.slides[1]}" alt="Second slide">
           <div class="carousel-caption d-none d-md-block">
             <h2>${movieObject.title}</h2>
           </div>
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="/img/slides/cmbyn3.jpg" alt="Third slide">
+          <img class="d-block w-100" src="/img/slides/${movieObject.slides[2]}" alt="Third slide">
           <div class="carousel-caption d-none d-md-block">
             <h2>${movieObject.title}</h2>
           </div>

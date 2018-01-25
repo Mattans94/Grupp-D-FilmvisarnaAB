@@ -113,21 +113,25 @@ footer .myheight {
   height: 120px;
 }
 .info-box {
-  background-color: #3a3a3a;
+  background-color: #949494;
+  color: #FFF;
 }
 .info-box li {
   list-style: none;
 }
 #accordion {
   box-shadow: 0px 0px 6px #000;
-  background-color: #3a3a3a;
+  background-color: #949494;
+  color: #FFF;
 }
 #accordion .listShowTimes {
+  color: #FFF;
   list-style: none;
   margin-left: -40px;
 }
 #accordion .listShowTimes li:nth-child(odd) {
   background-color: #FFF;
+  color: #000;
 }
 #accordion a {
   color: #000;

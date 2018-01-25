@@ -1,24 +1,26 @@
 class Data {}
 
 class App extends Base {
-
   constructor(){
 
     super()
-    // Tell jsonflex to recreate instances of the class Garment
+        // Tell jsonflex to recreate instances of the class Garment
     // JSON._classes(Garment);
 
     // Load shows, add as a property, then start the app
     JSON._load('shows').then((shows) => {
       // Retrieve the app from JSON
       Data.showObjects = this.showObjects = shows;
-    });
-
-    JSON._load('movies').then((movies) => {
+    })
+    .then(JSON._load('movies').then((movies) => {
       // Retrieve the app from JSON
       Data.movieObjects = this.showObjects = movies;
+    })
+    .then(() => {
       this.start();
-    });
+      this.eventHandlers();
+    }));
+
 
   }
 
@@ -50,12 +52,10 @@ class App extends Base {
 
   eventHandlers(){
     let that = this;
-    $(document).on('click', 'button', function(){
+    $(document).on('click', '.showmorebtn', function(){
       let clicked = $(this);
       let movieTitle = clicked.data('movie');
-
       let movie = new Movie(movieTitle);
-      console.log(movieTitle, 'Has been sent')
     })
   }
 
