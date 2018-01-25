@@ -55,7 +55,7 @@ class App extends Base {
     $(document).on('click', '.showmorebtn', function(){
       let clicked = $(this);
       let movieTitle = clicked.data('movie');
-      let movie = new Movie(movieTitle);
+      that.movie = new Movie(movieTitle);
     })
   }
 
