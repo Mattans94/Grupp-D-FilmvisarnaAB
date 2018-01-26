@@ -2,8 +2,8 @@ Object.assign(StartPage.prototype, { template(){ return `
 
   <article class="row">
 
-        <section class="col-lg-7 d-flex flex-wrap d-md-block mt-5 leftContainer">
-          <h3 class="kalendarium m-0 col-12 mb-3"><i class="fa fa-film mr-3" aria-hidden="true"></i>Filmer</h3>
+        <section class="col-lg-7 d-flex flex-wrap d-md-block mt-5 leftContainer p-0">
+          <div class="px-2 col-12"><h3 class="kalendarium m-0 col-12 mb-3"><i class="fa fa-film mr-3" aria-hidden="true"></i>Filmer</h3></div>
           <div class="movieContainer">
             <div class="d-flex align-items-stretch flex-nowrap">
               ${this.renderMovie("Wind River")}
