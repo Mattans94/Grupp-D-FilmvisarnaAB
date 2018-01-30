@@ -4,5 +4,17 @@
 		"name": "Helge",
 		"password": "Skog",
 		"id": "1"
+	},
+	{
+		"username": "Kalleanka@hotmail.com",
+		"name": "Kalle",
+		"password": "MittnamnarAnka",
+		"id": "2"
+	},
+	{
+		"username": "Musse@hotmail.com",
+		"name": "Musse",
+		"password": "Ankeborg",
+		"id": "3"
 	}
 ]

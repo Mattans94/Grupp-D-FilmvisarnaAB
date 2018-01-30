@@ -23,7 +23,17 @@ class Login {
 		this.password = $("#password").val();
 		console.log(this.password);
 
-		});	
+		});
+	}
+
+	getLastId(){
+		let highestID = this.userObjects[0].id;
+
+		for(let i = 0; i < this.userObjects.length; i++){
+			if (this.userObjects[i].id > highestID) {
+				highestID = this.userObjects[i].id;
+			}
+		}
 	}
 
 	generateId(){
@@ -33,8 +43,7 @@ class Login {
 
 }
 
-
-
+let x = new Login;
 
 /*
 
@@ -55,6 +64,6 @@ function eventHandlers(){
 	password = $("#password").val();
 	console.log(password);
 
-	});	
+	});
 }
 */
