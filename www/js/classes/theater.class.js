@@ -1,6 +1,15 @@
 class Theater {
 
-	constructor() {
+	constructor(numberOfChildren, numberOfAdults, numberOfPensioners, auditorium) {
+		this.numberOfChildren = numberOfChildren;
+		this.numberOfAdults = numberOfAdults;
+		this.numberOfPensioners = numberOfPensioners;
+		this.auditorium = auditorium;
+
+		this.child=0;
+		this.adult=0;
+		this.pensioner=0;
+
 		JSON._load('theaters').then((theater) => {
 			this.start();
 
@@ -13,6 +22,7 @@ class Theater {
 		this.setWidth();
 		this.setHeight();
 		this.renderTheater();
+		this.renderTicketButtons();
 		this.scale();
 	}
 
@@ -26,7 +36,32 @@ class Theater {
 		this.seatsStoran = rowlength;
 		return rowlength;
 	}
-
+renderTicketButtons() {
+		let html = `<div class="row justify-content-center">
+			  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+				  <div class="btn-group mr-2" role="group" aria-label="child group">
+				    <button type="button" class="btn btn-secondary adddbtn" id="addchild"><strong>+</strong></button>
+				    <input type="text" class="form-control col-2" id="childTickets" placeholder="${this.child}" >
+				    <button type="button" class="btn btn-secondary removebtn" id="removechild"><strong>-</strong></button>
+				  </div>
+				</div>
+			  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+				  <div class="btn-group mr-2" role="group" aria-label="adult group">
+				    <button type="button" class="btn btn-secondary addbtn" id="addadult"><strong>+</strong></button>
+				    <input type="text" class="form-control col-2" id="adultTickets" placeholder="${this.adult}" >
+				    <button type="button" class="btn btn-secondary removebtn" id="removeadult"><strong>-</strong></button>
+				  </div>
+				</div>
+			  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+				  <div class="btn-group mr-2" role="group" aria-label="pensioner group">
+				    <button type="button" class="btn btn-secondary addbtn" id="addpensioner"><strong>+</strong></button>
+				    <input type="text" class="form-control col-2" id="pensionerTickets" placeholder="${this.pensioner}" >
+				    <button type="button" class="btn btn-secondary removebtn" id="removepensioner"><strong>-</strong></button>
+				  </div>
+				</div>
+			</div>`;
+  	$('.navbar').html(html);
+	}
 	renderTheater() {
 		let html = '';
 		let seatnumber=1;
@@ -55,7 +90,7 @@ class Theater {
 
 	setHeight(){
 		let fullHeight = this.seatsStoran.length * 55;
-		console.log(fullHeight);
+		// console.log(fullHeight);
 		$('#theater').css('height', `${fullHeight}`);
 	}
 
@@ -147,9 +182,31 @@ class Theater {
     	}
     		console.log('7 status', status);
 		});
-	}
 
-
+	$(document).on("click", '.addbtn .removebtn', function() {
+		if ($('.addbtn') && $('#addchild')) {
+			this.child = this.child+1;
+		}
+		else if ($('.addbtn') && $('#addadult')) {
+			this.adult = this.adult+1;
+		}
+		else if ($('.addbtn') && $('#addpensioner')) {
+			this.pensioner = this.pensioner+1;
+		}
+		else if ($('.addbtn') && $('#removechild')) {
+			this.child = this.child-1;
+		}
+		else if ($('.addbtn') && $('#removeadult')) {
+			this.adult = this.adult-1;
+		}
+		else if ($('.addbtn') && $('#removepensioner')) {
+			this.pensioner = this.pensioner-1;
+		}
+		else { 
+			console.log('no changes');
+		}
+	});
+	
 } //end class
 			this.theaterObjects = theater;
 		});

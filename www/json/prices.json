@@ -1,7 +1,5 @@
 {
-	"Prices":{
 		"child":65,
 		"adult":85,
 		"pensioner":75
-	}
 }

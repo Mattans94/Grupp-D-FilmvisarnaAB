@@ -66,6 +66,10 @@ a {
   transform-origin: 0 0;
   background: #000;
 }
+.seat:hover {
+  background-color: yellow;
+  color: red;
+}
 footer {
   background-color: #949494;
   position: absolute;
