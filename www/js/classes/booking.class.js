@@ -1,6 +1,9 @@
 class Booking {
 
+	// constructor(userid) {
+		// this.userID = userid;
 	constructor() {
+		this.userID = 1;
 
 	}
 
@@ -22,7 +25,7 @@ class Booking {
 		      	"time": "22.40"
 			};
 
-			that.booking.show.userID = 1;
+			that.booking.show.userID = this.userID;
 			that.booking.show.seats = [];
 
 			console.log(this.booking);
