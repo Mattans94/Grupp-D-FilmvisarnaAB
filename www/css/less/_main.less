@@ -1,4 +1,43 @@
+*,
+*:before,
+*:after {
+ -webkit-box-sizing: border-box;
+ -moz-box-sizing: border-box;
+ box-sizing: border-box;
+}
+
 html {
   position: relative;
   min-height: 100%;
+  body {
+    background-color: @mainColor;
+
+  }
+}
+
+body{
+	background-color: gray;
+}
+
+.card-img-top{
+	margin-top:7px;
+}
+
+.card{
+	border:none;
+	box-shadow: 2px 2px 2px 2px;
+	border-radius: 10px;
+}
+
+.btn-info{
+	float: right;
+}
+
+.card-title{
+	text-align: center;
+	margin-top: 5px;
+}
+
+button, a {
+	cursor: pointer;
 }

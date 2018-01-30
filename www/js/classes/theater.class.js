@@ -2,9 +2,7 @@ class Theater {
 
 	constructor() {
 		JSON._load('theaters').then((theater) => {
-			this.theaterObjects = theater;
 			this.start();
-		});
 
 	} //end constructor
 
@@ -153,3 +151,5 @@ class Theater {
 
 
 } //end class
+			this.theaterObjects = theater;
+		});

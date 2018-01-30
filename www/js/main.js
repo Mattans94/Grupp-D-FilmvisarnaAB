@@ -1,2 +1,1 @@
-let theater = new Theater();
-$(window).resize(theater.scale);
+let myApp = new App;

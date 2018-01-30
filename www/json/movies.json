@@ -1,6 +1,6 @@
 [
   {
-    "title": "THE PARTY",
+    "title": "The Party",
     "productionCountries": [
       "UK"
     ],
@@ -23,15 +23,19 @@
        "call-me-poster1.jpg",
        "call-me-poster2.jpg"
     ],
+    "slides": [
+       "theparty1.jpg",
+       "theparty2.jpg",
+       "theparty3.jpg"
+    ],
     "youtubeTrailers": [
       "FCRLyidKR2k",
-      "Z9AYPxH5NTM",
-      "https://youtu.be/Z9AYPxH5NTM"
-    ], 
+      "Z9AYPxH5NTM"
+    ],
     "reviews": [
       {
         "source": "Sydsvenskan",
-        "quote": "mumma för skådespelare med kammarspelet i blodet",
+        "quote": "Mumma för skådespelare med kammarspelet i blodet",
         "stars": 4,
         "max": 5
       },
@@ -42,83 +46,7 @@
         "max": 5
       }
     ]
-  }
-  {
-    "title": "Nattskuggor",
-    "productionCountries": [
-      "Chile", "Frankrike", "Tyskland", "Grekland", "Colombia"
-    ],
-    "productionYear": 2016,
-    "length": 83,
-    "genre": "Drama",
-    "distributor": "Novemberfilm",
-    "language": "Spanska",
-    "subtitles": "Svenska",
-    "director": "Fernando Guzzoni",
-    "actors": [
-      "Sebastián Ayala",
-      "Nicolás Durán",
-      "Alejandro Goic"
-    ],
-    "description": "<p>Artonårige Jesús bor ensam med sin pappa i Santiago, Chile. Då pappan ofta är bortrest under veckorna för att jobba får Jesús sköta sig själv. Skolan går inget vidare och trots faderns uppmaningar är något extrajobb inte i sikte. Fritiden ägnar han åt att träna in dansnummer till K-pophits med några kompisar och tillsammans ställer de upp i lokala talangtävlingar. Nätterna blir ofta sena med alkohol, droger och tillfälligt sex med både tjejer och killar.</p><p>En natt inträffar en tragisk händelse som blir till ett uppvaknande och tillnyktrande för Jesús samt en moralisk prövning för både far och son. Finns det några gränser för en förälders kärlek till sitt barn?</p>",
-    "images": [
-       "call-me-poster1.jpg",
-       "call-me-poster2.jpg"
-    ],
-    "youtubeTrailers": [
-      "http://player.vimeo.com/video/243131284"
-    ], 
-    "reviews": [
-      {
-        "source": "Sydsvenskan",
-        "quote": "Historien är universell",
-        "stars": 4,
-        "max": 5
-      }
-    ]
-  }
-  {
-    "title": "Let the sunshine in",
-    "productionCountries": [
-      "Frankrike"
-    ],
-    "productionYear": 2017,
-    "length": 94,
-    "genre": "Drama",
-    "distributor": " ",
-    "language": "franska",
-    "subtitles": "svenska",
-    "director": "Claire Denis",
-    "actors": [
-      "Juliette Binoche",
-      "Gérard Depardieu",
-      "Valeria Bruni Tedeschi",
-      "Philippe Katerine"
-    ],
-    "description": "<p>Juliette Binoche är lysande i rollen som Isabelle, en frånskild konstnär i 50-års åldern, som försöker sålla bland alla självcentrerade män i hopp om att åter finna kärleken. En elegant romantisk komedi av kritikerrosade Claire Denis om vad som är viktigt i livet och om vad man vill ha i en mogen relation.</p>",
-    "images": [
-       "call-me-poster1.jpg",
-       "call-me-poster2.jpg"
-    ],
-    "youtubeTrailers": [
-      "http://player.vimeo.com/video/243663986",
-      "https://youtu.be/0w_thDNw8Ww"
-    ], 
-    "reviews": [
-      {
-        "source": "Svenska Dagbladet",
-        "quote": "en av årets mest sorglustiga filmer",
-        "stars": 5,
-        "max": 6
-      },
-      {
-        "source": "DN",
-        "quote": "extra känslig och lysande",
-        "stars": 4,
-        "max": 5
-      }
-    ]
-  }
+  },
   {
     "title": "Wind River",
     "productionCountries": [
@@ -140,12 +68,17 @@
     ],
     "description": "<p>En flicka av uramerikanskt ursprung hittas död av lokale vildmarkspolisen Cory Lambert (Jeremy Renner). För att lösa fallet skickar FBI Jane Banner (Elizabeth Olsen) från Las Vegas-kontoret, som anländer i en vräkig suv. Banner och Lambert utgör ett högst omaka par i jakten på mördaren.</p>",
     "images": [
-       "call-me-poster1.jpg",
+       "Wind_river_.jpg",
        "call-me-poster2.jpg"
     ],
+    "slides": [
+       "windriver1.jpg",
+       "windriver2.jpg",
+       "windriver3.jpg"
+    ],
     "youtubeTrailers": [
-      "https://youtu.be/zN9PDOoLAfg"
-    ], 
+      "zN9PDOoLAfg"
+    ],
     "reviews": [
       {
         "source": "Svenska Dagbladet",
@@ -160,7 +93,7 @@
         "max": 5
       }
     ]
-  }   
+  },
   {
     "title": "Three Billboards Outside Ebbing, Missouri",
     "productionCountries": [
@@ -180,12 +113,17 @@
     ],
     "description": "<p>En flicka av uramerikanskt ursprung hittas död av lokale vildmarkspolisen Cory Lambert (Jeremy Renner). För att lösa fallet skickar FBI Jane Banner (Elizabeth Olsen) från Las Vegas-kontoret, som anländer i en vräkig suv. Banner och Lambert utgör ett högst omaka par i jakten på mördaren.</p>",
     "images": [
-       "call-me-poster1.jpg",
+       "Three_Billboards.jpg",
        "call-me-poster2.jpg"
     ],
+    "slides": [
+       "tboem1.jpg",
+       "tboem2.jpg",
+       "tboem3.jpg"
+    ],
     "youtubeTrailers": [
-      "https://youtu.be/Jit3YhGx5pU"
-    ], 
+      "Jit3YhGx5pU"
+    ],
     "reviews": [
       {
         "source": "Svenska Dagbladet",
@@ -212,7 +150,7 @@
         "max": 5
       }
     ]
-  }
+  },
   {
     "title": "Tjuren Ferdinand",
     "productionCountries": [
@@ -232,12 +170,17 @@
     ],
     "description": "<p>Den klassiska berättelsen om den stora tjuren med ett stort hjärta, som hellre luktar på blommor än stångas med de andra tjurarna. En dag misstas Ferdinand för att vara farlig och blir bortförd för att delta vid tjurfäktningar. Fast besluten att återvända till sin familj samlar han ett udda gäng och ger sig ut på ett fantastiskt äventyr. Du kommer bli förtjurst!</p>",
     "images": [
-       "call-me-poster1.jpg",
+       "Ferdinand.jpg",
        "call-me-poster2.jpg"
     ],
+    "slides": [
+       "ferdinand1.jpg",
+       "ferdinand2.jpg",
+       "ferdinand3.jpg"
+    ],
     "youtubeTrailers": [
-      "https://youtu.be/n7RkOfN8KvE"
-    ], 
+      "n7RkOfN8KvE"
+    ],
     "reviews": [
       {
         "source": "Svenska Dagbladet",
@@ -264,9 +207,9 @@
         "max": 5
       }
     ]
-  }
+  },
   {
-    "title": "Let the sunshine in",
+    "title": "Let The Sunshine In",
     "productionCountries": [
       "Frankrike"
     ],
@@ -288,10 +231,14 @@
        "call-me-poster1.jpg",
        "call-me-poster2.jpg"
     ],
+    "slides": [
+       "ltsi1.jpg",
+       "ltsi2.jpg",
+       "ltsi3.jpg"
+    ],
     "youtubeTrailers": [
-      "http://player.vimeo.com/video/243663986",
-      "https://youtu.be/0w_thDNw8Ww"
-    ], 
+      "0w_thDNw8Ww"
+    ],
     "reviews": [
       {
         "source": "Svenska Dagbladet",
@@ -306,9 +253,9 @@
         "max": 5
       }
     ]
-  }
+  },
   {
-    "title": "Call me by your name",
+    "title": "Call Me By Your Name",
     "productionCountries": [
       "Italien",
       "USA"
@@ -327,12 +274,17 @@
     ],
     "description": "<p>Filmen utspelas i norra Italien sommaren 1983. En ung amerikansk-italienare blir förälskad i en amerikansk student som kommer för att studera och bo hos hans familj.</p><p>Tillsammans upplever de en oförglömlig sommar - full av musik, mat och kärlek - som för evigt kommer att förändra dem.</p>",
     "images": [
-       "call-me-poster1.jpg",
+       "Call_Me.jpg",
        "call-me-poster2.jpg"
+    ],
+    "slides": [
+       "cmbyn1.jpg",
+       "cmbyn2.jpg",
+       "cmbyn3.jpg"
     ],
     "youtubeTrailers": [
       "Z9AYPxH5NTM"
-    ], 
+    ],
     "reviews": [
       {
         "source": "Sydsvenskan",

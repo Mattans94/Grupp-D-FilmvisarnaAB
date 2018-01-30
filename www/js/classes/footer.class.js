@@ -1,9 +1,4 @@
-class Footer {
-  constructor() {
-    this.footerFix();
-    this.fixOnResize();
-  }
-
+class Footer extends Base {
 
   footerFix(){
     let height = $('footer').height() + 40;
@@ -17,5 +12,3 @@ class Footer {
     });
   }
 }
-
-const footerFix = new Footer();
