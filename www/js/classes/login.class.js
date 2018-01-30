@@ -5,6 +5,9 @@ class Login {
 		this.name;
 		this.password;
 		this.eventHandlers();
+		JSON._load('users').then((users) => {
+     	this.userObjects = users;
+   		})
 	}
 
 	eventHandlers(){
@@ -21,6 +24,11 @@ class Login {
 		console.log(this.password);
 
 		});	
+	}
+
+	generateId(){
+
+
 	}
 
 }
