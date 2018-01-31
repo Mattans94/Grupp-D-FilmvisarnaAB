@@ -1,9 +1,6 @@
 class Login {
 
 	constructor(){
-		this.username;
-		this.name;
-		this.password;
 		this.eventHandlers();
 		JSON._load('users').then((users) => {
      	this.userObjects = users;
@@ -14,19 +11,27 @@ class Login {
 
 		$("#loginbtn").on("click", () => {
 
-		this.username = $("#username").val();
-		console.log(this.username);
+			if($("username").val() )
+			let tempObject = {};
 
-		this.name = $("#name").val();
-		console.log(this.name);
+			tempObject.username = $("#username").val();
 
-		this.password = $("#password").val();
-		console.log(this.password);
+			tempObject.name = $("#name").val();
+
+			tempObject.password = $("#password").val();
+
+			tempObject.id = this.generateId();
+			console.log(tempObject);
+
+			this.saveUsers(tempObject);
+
+
 
 		});
 	}
 
 	getLastId(){
+
 		let highestID = this.userObjects[0].id;
 
 		for(let i = 0; i < this.userObjects.length; i++){
@@ -34,11 +39,21 @@ class Login {
 				highestID = this.userObjects[i].id;
 			}
 		}
+		return highestID;
 	}
 
 	generateId(){
 
+		let newId = this.getLastId() / 1;
+		newId += 1;
+		return newId;
+	}
 
+	saveUsers(newUserObject){
+		this.userObjects.push(newUserObject);
+		JSON._save('users.json', this.userObjects).then(function(){
+			console.log('success!');
+		});
 	}
 
 }
