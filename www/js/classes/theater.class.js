@@ -5,6 +5,7 @@ class Theater {
 			this.theaterObjects = theater;
 			this.start();
 		});
+		this.booking = new Booking;
 
 	} //end
 

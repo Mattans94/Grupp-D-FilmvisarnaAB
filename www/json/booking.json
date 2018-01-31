@@ -1,40 +1,60 @@
 [
   {
     "show": {
-      "date": "2018-03-01",
+      "date": "2018-03-04",
       "auditorium": "Lilla Salongen",
-      "film": "Tjuren Ferdinand",
-      "time": "22.40",
-      "userID": 1,
-      "seats": [
-        19
-      ]
+      "film": "Wind River",
+      "time": "21.00",
+      "bookedSeats": [
+        28,
+        38,
+        39,
+        48,
+        49
+      ],
+      "userID": 1
+    }
+  },
+  {
+    "↻": "$[0]"
+  },
+  {
+    "show": {
+      "date": "2018-03-04",
+      "auditorium": "Lilla Salongen",
+      "film": "Wind River",
+      "time": "21.00",
+      "bookedSeats": [
+        18,
+        28
+      ],
+      "userID": 1
     }
   },
   {
     "show": {
-      "date": "2018-03-01",
+      "date": "2018-03-04",
       "auditorium": "Lilla Salongen",
-      "film": "Tjuren Ferdinand",
-      "time": "22.40",
-      "userID": 1,
-      "seats": [
-        29,
-        30
-      ]
+      "film": "Wind River",
+      "time": "21.00",
+      "bookedSeats": [
+        39,
+        49
+      ],
+      "userID": 1
     }
   },
   {
     "show": {
-      "date": "2018-03-01",
+      "date": "2018-03-04",
       "auditorium": "Lilla Salongen",
-      "film": "Tjuren Ferdinand",
-      "time": "22.40",
-      "userID": 1,
-      "seats": [
-        29,
-        30
-      ]
+      "film": "Wind River",
+      "time": "21.00",
+      "bookedSeats": [
+        50,
+        61
+      ],
+      "userID": 1
     }
   }
 ]
