@@ -10,31 +10,7 @@ class Login {
 	eventHandlers(){
 
 		$("#loginbtn").on("click", () => {
-			let conditionExist = false;
-			let conditionPasswordLength = false;
-			let conditionValidEmail = false;
-			let condition = false;
-
-			if (this.checkExistingUser($("#username").val())){
-				conditionExist = true;
-				console.log('Username new');
-			} else {conditionExist = false; console.log('Username already exist')};
-
-			if(this.checkPasswordLength($("#password").val())){
-				conditionPasswordLength = true;
-				console.log('password length ok');
-			} else {conditionPasswordLength = false; console.log('Password too short')};
-
-			if(this.checkValidEmail()){
-				conditionValidEmail = true;
-				console.log('Valid email');
-			} else {conditionValidEmail = false; console.log('Email not valid')};
-
-			if (conditionExist && conditionValidEmail && conditionPasswordLength) {
-			 	condition = true;
-				console.log('everythings true');
-			};
-
+			let condition = this.validateAllChecks();
 
 			if (condition){
 				let tempObject = {};
@@ -54,6 +30,33 @@ class Login {
 
 
 		});
+	}
+
+	validateAllChecks(){
+		let conditionExist = false;
+		let conditionPasswordLength = false;
+		let conditionValidEmail = false;
+
+		if (this.checkExistingUser($("#username").val())){
+			conditionExist = true;
+			console.log('Username new');
+		} else {conditionExist = false; console.log('Username already exist')};
+
+		if(this.checkPasswordLength($("#password").val())){
+			conditionPasswordLength = true;
+			console.log('password length ok');
+		} else {conditionPasswordLength = false; console.log('Password too short')};
+
+		if(this.checkValidEmail()){
+			conditionValidEmail = true;
+			console.log('Valid email');
+		} else {conditionValidEmail = false; console.log('Email not valid')};
+
+		if (conditionExist && conditionValidEmail && conditionPasswordLength) {
+			return true;
+			console.log('everythings true');
+		};
+
 	}
 
 	getLastId(){

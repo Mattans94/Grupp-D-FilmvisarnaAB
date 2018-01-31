@@ -70,5 +70,11 @@
     "name": "Kalle",
     "password": "hejhejhej",
     "id": 12
+  },
+  {
+    "username": "dsa@kalleanka.se",
+    "name": "dsa",
+    "password": "krkrkrkr",
+    "id": 13
   }
 ]
