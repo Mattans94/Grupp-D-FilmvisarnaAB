@@ -55,6 +55,8 @@ class Login {
 		if (conditionExist && conditionValidEmail && conditionPasswordLength) {
 			return true;
 			console.log('everythings true');
+		}else {
+			return false;
 		};
 
 	}
