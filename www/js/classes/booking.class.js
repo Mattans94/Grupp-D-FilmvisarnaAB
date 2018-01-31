@@ -1,25 +1,41 @@
 class Booking {
 
 	constructor() {
-
-	}
-
-	eventHandler() {
+	//Alla beställningar som har gjorts
 		JSON._load('booking').then((seats) => {
 	      // Retrieve the app from JSON
 	      this.bookedSeats = seats;
 	      console.log(this.bookedSeats)
 	    });
 
+	    JSON._load('shows').then((shows) => {
+	      // Retrieve the app from JSON
+	      this.showObjects = shows;
+	      console.log(this.showObjects)
+	    });
+	}
+
+	getshowObject(showName) {
+		console.log(showName);
+		this.showObject = this.showObjects.find((x) => showName == x.name);
+	}
+
+	eventHandler() {
+		// JSON._load('booking').then((seats) => {
+	 //      // Retrieve the app from JSON
+	 //      this.bookedSeats = seats;
+	 //      console.log(this.bookedSeats)
+	 //    });
+
 		this.booking = {};
 		let that = this;
 		$(document).on('click','.book-btn',function(){
 			
 			that.booking.show = {
-				"date": "2018-03-01",
-		      	"auditorium": "Lilla Salongen",
-		      	"film": "Tjuren Ferdinand",
-		      	"time": "22.40"
+				// "date": "2018-03-01",
+		  //     	"auditorium": "Lilla Salongen",
+		  //     	"film": "Tjuren Ferdinand",
+		  //     	"time": "22.40"
 			};
 
 			that.booking.show.userID = 1;
