@@ -46,5 +46,17 @@
     "name": "dd",
     "password": "dd3213",
     "id": 8
+  },
+  {
+    "username": "Musse@hotmail.com",
+    "name": "Kalle",
+    "password": "dadda",
+    "id": 9
+  },
+  {
+    "username": "Musse@hotmail.com",
+    "name": "Musse",
+    "password": "Kalle",
+    "id": 10
   }
 ]

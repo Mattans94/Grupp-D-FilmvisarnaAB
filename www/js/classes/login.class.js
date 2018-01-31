@@ -10,21 +10,31 @@ class Login {
 	eventHandlers(){
 
 		$("#loginbtn").on("click", () => {
-
-			if($("username").val() )
 			let tempObject = {};
 
-			tempObject.username = $("#username").val();
+			let username = $("#username").val();
 
-			tempObject.name = $("#name").val();
+			let condition = true;
 
-			tempObject.password = $("#password").val();
+			for (let i = 0; i < this.userObjects.length; i++) {
+				if (username = this.userObjects[i].username) {
+					condition = false;
+				}
+			}
 
-			tempObject.id = this.generateId();
-			console.log(tempObject);
+			if (condition) {
+				tempObject.username = $("#username").val();
 
-			this.saveUsers(tempObject);
+				tempObject.name = $("#name").val();
 
+				tempObject.password = $("#password").val();
+
+				tempObject.id = this.generateId();
+
+				this.saveUsers(tempObject);
+			} else {
+				console.log('This username already exist');
+			}
 
 
 		});
