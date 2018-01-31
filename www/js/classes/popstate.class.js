@@ -1,8 +1,10 @@
-class Popstate extends Base{
+class Popstate{
 
-  constructor(){
-    super();
+  constructor(app){
+    this.app = app;
+    console.log(1)
     this.clickEvents();
+    console.log("2")
     this.changePage();
     window.addEventListener('popstate', () => this.changePage());
   }
@@ -10,6 +12,7 @@ class Popstate extends Base{
   makeUrl(url){
     url = url.replace(/,/g, "");
     url = url.replace(/ /g, "_");
+    url = url.replace(/%20/g, "_");
     return url;
   }
 
@@ -17,7 +20,8 @@ class Popstate extends Base{
     let that = this;
     $(document).on('click','.pop',function(e){
       //Create a push state preventDefault
-      let href = $(this).data('movie');
+      let href = $(this).attr('href');
+      console.log(href);
       href = that.makeUrl(href);
       history.pushState(null, null, href);
       //Call the change page function
@@ -34,6 +38,7 @@ class Popstate extends Base{
 
     let urls = {
       '/' : 'startpage',
+      '/Theater' : 'theaterPage',
       '/Tjuren_Ferdinand' : 'movieFerdinand',
       '/Wind_River': 'movieWindRiver',
       '/Three_Billboards_Outside_Ebbing_Missouri': 'movieThreeBillboards',
@@ -50,6 +55,12 @@ class Popstate extends Base{
     let startPage = new StartPage();
     startPage.render('main');
     console.log('lalala');
+  }
+
+  theaterPage(){
+    $('main').empty();
+    let theater = new Theater();
+    theater.render('main');
   }
 
   movieFerdinand(){

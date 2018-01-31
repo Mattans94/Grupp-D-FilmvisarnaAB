@@ -29,17 +29,17 @@ class App extends Base {
     this.navbar = new Navbar();
     $('header').empty();
     this.navbar.render('header');
-
+    console.log(1);
     // Create footer, empty footer, render footer and fix auto-height.
     this.footer = new Footer;
     $('footer').empty();
     this.footer.render('footer');
     this.footer.footerFix();
-
+    console.log(2);
     // Create a startpage
 
-    new Popstate(this);
-
+    this.popstate = new Popstate(this);
+    console.log(3);
     // Sending movies and shows to Movieclass
     // this.Base = new Base(this);
 

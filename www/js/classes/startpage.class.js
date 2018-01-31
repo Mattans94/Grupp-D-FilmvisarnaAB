@@ -10,7 +10,7 @@ class StartPage extends Base {
 			<img class="img-fluid" src="/img/posters/${movieObject.images[0]}">
 
 			<h4 class="mt-2 mb-2">${movieObject.title}</h4>
-			<button type="button" class="btn btn-danger align-self-end mt-auto showmorebtn pop" data-movie="${movieObject.title}">Visa mer!</button>
+			<a href="${movieObject.title}" class="pop"><button type="button" class="btn btn-danger align-self-end mt-auto showmorebtn">Visa mer!</button></a>
 
 		</div>`
 	}
