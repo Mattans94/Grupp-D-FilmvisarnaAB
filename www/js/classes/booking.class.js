@@ -7,19 +7,25 @@ class Booking {
 		JSON._load('booking').then((seats) => {
 	      // Retrieve the app from JSON
 	      this.bookedSeats = seats;
-	      console.log(this.bookedSeats)
 	    });
 
 	    JSON._load('shows').then((shows) => {
 	      // Retrieve the app from JSON
 	      this.showObjects = shows;
-	      console.log(this.showObjects)
+	      this.start();
 	    });
+	}
+
+	start(){
+		this.getshowObject('Wind River');
+		
 	}
 
 	getshowObject(showName) {
 		console.log(showName);
-		this.showObject = this.showObjects.find((x) => showName == x.name);
+		console.log(this.showObjects);
+		this.showObject = this.showObjects.object.find((x) => showName == x.film);
+		console.log(this.showObject);
 	}
 
 	eventHandler() {
@@ -43,7 +49,7 @@ class Booking {
 			that.booking.show.userID = this.userID;
 			that.booking.show.seats = [];
 
-			console.log(this.booking);
+			console.log('this.booking', this.booking);
 			$('.seat.booked').each(function(){
 				let seat = $(this);
 				let seatID = seat.data('seatid');
@@ -62,5 +68,5 @@ class Booking {
 		// 	this.bookings = data;
 		// 	this.seatOccupied();
 		// });
-
-};
+	}
+}
