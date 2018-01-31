@@ -12,17 +12,9 @@ class Login {
 		$("#loginbtn").on("click", () => {
 			let tempObject = {};
 
-			let username = $("#username").val();
 
-			let condition = true;
+			if (this.checkExistingUser($("#username").val()) && this.checkPasswordLength($("#password").val())) {
 
-			for (let i = 0; i < this.userObjects.length; i++) {
-				if (username = this.userObjects[i].username) {
-					condition = false;
-				}
-			}
-
-			if (condition) {
 				tempObject.username = $("#username").val();
 
 				tempObject.name = $("#name").val();
@@ -32,7 +24,9 @@ class Login {
 				tempObject.id = this.generateId();
 
 				this.saveUsers(tempObject);
+
 			} else {
+
 				console.log('This username already exist');
 			}
 
@@ -64,6 +58,26 @@ class Login {
 		JSON._save('users.json', this.userObjects).then(function(){
 			console.log('success!');
 		});
+	}
+
+	checkExistingUser(username){
+		for (let i = 0; i < this.userObjects.length; i++) {
+			if (username = this.userObjects[i].username) {
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+	}
+
+	checkPasswordLength(password){
+		if (password.length > 5){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 }
