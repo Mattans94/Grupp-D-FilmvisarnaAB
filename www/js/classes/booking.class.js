@@ -1,8 +1,12 @@
 class Booking {
 
-	// constructor(userid) {
-		// this.userID = userid;
+	// constructor(userid, date, time, auditorium) {
+	// this.userID = userid;
+
 	constructor() {
+		this.date = '2018-03-04';
+		this.time = '21.00';
+		this.auditorium = 'Lilla Salongen';
 	//Alla beställningar som har gjorts
 		JSON._load('booking').then((seats) => {
 	      // Retrieve the app from JSON
@@ -17,14 +21,16 @@ class Booking {
 	}
 
 	start(){
-		this.getshowObject('Wind River');
+		this.getshowObject('Wind River', this.auditorium, this.date, this.time);
 		
 	}
 
-	getshowObject(showName) {
-		console.log(showName);
-		console.log(this.showObjects);
-		this.showObject = this.showObjects.object.find((x) => showName == x.film);
+	getshowObject(showName, auditorium, date, time) {
+		this.showObject = this.showObjects.object.filter((x) => showName == x.film);
+		this.showObject = this.showObject.filter((x) => auditorium == x.auditorium);
+		this.showObject = this.showObject.filter((x) => date == x.date);
+		this.showObject = this.showObject.filter((x) => time == x.time);
+
 		console.log(this.showObject);
 	}
 
@@ -39,13 +45,7 @@ class Booking {
 		let that = this;
 		$(document).on('click','.book-btn',function(){
 			
-			that.booking.show = {
-				// "date": "2018-03-01",
-		  //     	"auditorium": "Lilla Salongen",
-		  //     	"film": "Tjuren Ferdinand",
-		  //     	"time": "22.40"
-			};
-
+			that.booking.show = that.showObject;
 			that.booking.show.userID = this.userID;
 			that.booking.show.seats = [];
 
