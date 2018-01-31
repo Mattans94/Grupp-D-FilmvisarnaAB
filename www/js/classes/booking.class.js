@@ -1,5 +1,7 @@
 class Booking {
 
+	// constructor(userid) {
+		// this.userID = userid;
 	constructor() {
 	//Alla beställningar som har gjorts
 		JSON._load('booking').then((seats) => {
@@ -38,7 +40,7 @@ class Booking {
 		  //     	"time": "22.40"
 			};
 
-			that.booking.show.userID = 1;
+			that.booking.show.userID = this.userID;
 			that.booking.show.seats = [];
 
 			console.log(this.booking);
