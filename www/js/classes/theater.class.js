@@ -1,3 +1,5 @@
+
+
 class Theater {
 
 	constructor(numberOfChildren, numberOfAdults, numberOfPensioners, auditorium) {
@@ -11,7 +13,10 @@ class Theater {
 		this.pensioner=0;
 
 		JSON._load('theaters').then((theater) => {
+			this.theaterObjects = theater;
 			this.start();
+
+		});
 
 	} //end constructor
 
@@ -27,8 +32,10 @@ class Theater {
 	}
 
 	getTheaterObject(theaterName) {
-		this.theaterObject = this.theaterObjects.find((x) => theaterName == x.name);
-		// console.log(this.theaterObject);
+		console.log(theaterName);
+
+		this.theaterObject = this.theaterObjects.find( (x) => theaterName == x.name);
+		console.log(this.theaterObject);
 	}
 
 	getSeatsPerRow(theaterObject) {
@@ -36,7 +43,8 @@ class Theater {
 		this.seatsStoran = rowlength;
 		return rowlength;
 	}
-renderTicketButtons() {
+
+	renderTicketButtons() {
 		let html = `<div class="row justify-content-center">
 			  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 				  <div class="btn-group mr-2" role="group" aria-label="child group">
@@ -62,6 +70,7 @@ renderTicketButtons() {
 			</div>`;
   	$('.navbar').html(html);
 	}
+
 	renderTheater() {
 		let html = '';
 		let seatnumber=1;
@@ -84,8 +93,6 @@ renderTicketButtons() {
 		$('html, body').animate({
         scrollTop: $("#theater").offset().top -20
     }, 500);
-
-
 	}
 
 	setHeight(){
@@ -128,27 +135,27 @@ renderTicketButtons() {
 			let rowID;
 			let status;
 
-		$(document).on("mouseenter mouseleave", '.seat', function() {
-			// let seat = $(this);
-			// let seatID = seat.data('seatid');
-			// let rowID = seat.data('rowid');
-			// let status = seat.data('status');
+		// $(document).on("mouseenter mouseleave", '.seat', function() {
+		// 	// let seat = $(this);
+		// 	// let seatID = seat.data('seatid');
+		// 	// let rowID = seat.data('rowid');
+		// 	// let status = seat.data('status');
 
-			let seat = $(this);
-			seatID = seat.data('seatid');
-			rowID = seat.data('rowid');
-			status = seat.data('status');
+		// 	let seat = $(this);
+		// 	seatID = seat.data('seatid');
+		// 	rowID = seat.data('rowid');
+		// 	status = seat.data('status');
 
 
-			if (seatID == seat.data('seatid') && status == 'free' ) {
-    		$(seat).toggleClass('booked');
-    		$(seat).toggleClass('free');
-    		console.log('1 seatID', seatID);
-    		console.log('2 seat', seat);
-    	}
-    	else
-    		console.log('3 status', status);
-		});
+		// 	if (seatID == seat.data('seatid') && status == 'free' ) {
+  //   		$(seat).toggleClass('booked');
+  //   		$(seat).toggleClass('free');
+  //   		console.log('1 seatID', seatID);
+  //   		console.log('2 seat', seat);
+  //   	}
+  //   	else
+  //   		console.log('3 status', status);
+		// });
 
 		$(document).on("click", '.seat', function() {
 			// let seat = $(this);
@@ -170,7 +177,6 @@ renderTicketButtons() {
     		console.log('4 seatID', seatID);
     		console.log('5 seat',seat); 
     		// console.log(status);
-
     	}
     	else 
     		if (seatID == seat.data('seatid') && status == 'booked' ) {
@@ -206,7 +212,6 @@ renderTicketButtons() {
 			console.log('no changes');
 		}
 	});
-	
+	}
+		
 } //end class
-			this.theaterObjects = theater;
-		});
