@@ -10,10 +10,34 @@ class Login {
 	eventHandlers(){
 
 		$("#loginbtn").on("click", () => {
-			let tempObject = {};
+			let conditionExist = false;
+			let conditionPasswordLength = false;
+			let conditionValidEmail = false;
+			let condition = false;
+
+			if (this.checkExistingUser($("#username").val())){
+				conditionExist = true;
+				console.log('Username new');
+			} else {conditionExist = false; console.log('Username already exist')};
+
+			if(this.checkPasswordLength($("#password").val())){
+				conditionPasswordLength = true;
+				console.log('password length ok');
+			} else {conditionPasswordLength = false; console.log('Password too short')};
+
+			if(this.checkValidEmail()){
+				conditionValidEmail = true;
+				console.log('Valid email');
+			} else {conditionValidEmail = false; console.log('Email not valid')};
+
+			if (conditionExist && conditionValidEmail && conditionPasswordLength) {
+			 	condition = true;
+				console.log('everythings true');
+			};
 
 
-			if (this.checkExistingUser($("#username").val()) && this.checkPasswordLength($("#password").val())) {
+			if (condition){
+				let tempObject = {};
 
 				tempObject.username = $("#username").val();
 
@@ -25,10 +49,8 @@ class Login {
 
 				this.saveUsers(tempObject);
 
-			} else {
-
-				console.log('This username already exist');
-			}
+				console.log('Success!');
+				}
 
 
 		});
@@ -56,19 +78,18 @@ class Login {
 	saveUsers(newUserObject){
 		this.userObjects.push(newUserObject);
 		JSON._save('users.json', this.userObjects).then(function(){
-			console.log('success!');
+			console.log('User saved');
 		});
 	}
 
 	checkExistingUser(username){
+		let condition = true;
 		for (let i = 0; i < this.userObjects.length; i++) {
-			if (username = this.userObjects[i].username) {
-				return false;
-			}
-			else{
-				return true;
+			if (username == this.userObjects[i].username) {
+				condition = false;
 			}
 		}
+		return condition;
 	}
 
 	checkPasswordLength(password){
@@ -80,6 +101,13 @@ class Login {
 		}
 	}
 
+	checkValidEmail(){
+		if ($('#username').is(':valid')) {
+			return true;
+		}	else {
+			return false;
+		}
+	}
 }
 
 let x = new Login;

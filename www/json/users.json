@@ -58,5 +58,17 @@
     "name": "Musse",
     "password": "Kalle",
     "id": 10
+  },
+  {
+    "username": "Andreas@hotmail.com",
+    "name": "Kalle",
+    "password": "hejhejhej",
+    "id": 11
+  },
+  {
+    "username": "FUNKANU@hotmail.com",
+    "name": "Kalle",
+    "password": "hejhejhej",
+    "id": 12
   }
 ]
