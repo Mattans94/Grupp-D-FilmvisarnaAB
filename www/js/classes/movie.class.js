@@ -106,7 +106,7 @@ class Movie extends Base {
 
   // Renders movie with template.
   renderMovie() {
-    this.render('.leftContainer');
+    this.render('main');
   }
 
 }

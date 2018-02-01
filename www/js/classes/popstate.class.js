@@ -48,11 +48,16 @@ class Popstate{
 
   }
 
+  renderKalendarium(){
+    let kalendarium = new Kalendarium;
+    kalendarium.render('article');
+  }
+
   startpage(){
     $('main').empty();
     let startPage = new StartPage();
     startPage.render('main');
-    console.log('startpage');
+    this.renderKalendarium();
   }
 
   theaterPage(){
@@ -65,27 +70,30 @@ class Popstate{
     });
   }
 
+
+  // Movies
   movieFerdinand(){
-    $('.leftContainer').empty();
+    $('main').empty();
     let moviepage = new Movie('Tjuren Ferdinand');
-    console.log('Ferdinand');
+    this.renderKalendarium();
   }
 
   movieWindRiver(){
-    $('.leftContainer').empty();
+    $('main').empty();
     let moviepage = new Movie('Wind River');
+    this.renderKalendarium();
   }
 
   movieThreeBillboards(){
-    $('.leftContainer').empty();
+    $('main').empty();
     let moviepage = new Movie('Three Billboards Outside Ebbing, Missouri');
+    this.renderKalendarium();
   }
 
   movieCallMe(){
-    $('.leftContainer').empty();
+    $('main').empty();
     let moviepage = new Movie('Call Me By Your Name');
+    this.renderKalendarium();
   }
 
 }
-
-
