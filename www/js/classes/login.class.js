@@ -1,6 +1,7 @@
 class Login {
 
 	constructor(){
+		this.loggedInUser = {isLoggedIn: false};
 		this.eventHandlers();
 		JSON._load('users').then((users) => {
      	this.userObjects = users;
@@ -8,135 +9,86 @@ class Login {
 	}
 
 	eventHandlers(){
+		$("#login-btn").on("click", () =>{
+			console.log("jkasdklajs");
+			let username = $("#login-username").val();
+			let password = $("#login-password").val();
+			let condition = this.checkUsername($("#login-username").val());
+			if (condition) {
+				condition =	this.compareUserPass(username, password);
+			}
+			
+			if (condition) {
+				console.log("you're logged in!");
+				let loggedInUserObject = this.getUserObject(username);
+				this.loggedInUser = Object.assign(this.loggedInUser, loggedInUserObject);
+				this.loggedInUser.isLoggedIn = true;
+			}
 
-		$("#loginbtn").on("click", () => {
-			let condition = this.validateAllChecks();
-
-			if (condition){
-				let tempObject = {};
-
-				tempObject.username = $("#username").val();
-
-				tempObject.name = $("#name").val();
-
-				tempObject.password = $("#password").val();
-
-				tempObject.id = this.generateId();
-
-				this.saveUsers(tempObject);
-
-				console.log('Success!');
-				}
-
-
-		});
+		})
 	}
 
-	validateAllChecks(){
-		let conditionExist = false;
-		let conditionPasswordLength = false;
-		let conditionValidEmail = false;
-
-		if (this.checkExistingUser($("#username").val())){
-			conditionExist = true;
-			console.log('Username new');
-		} else {conditionExist = false; console.log('Username already exist')};
-
-		if(this.checkPasswordLength($("#password").val())){
-			conditionPasswordLength = true;
-			console.log('password length ok');
-		} else {conditionPasswordLength = false; console.log('Password too short')};
-
-		if(this.checkValidEmail()){
-			conditionValidEmail = true;
-			console.log('Valid email');
-		} else {conditionValidEmail = false; console.log('Email not valid')};
-
-		if (conditionExist && conditionValidEmail && conditionPasswordLength) {
-			return true;
-			console.log('everythings true');
-		}else {
-			return false;
-		};
-
-	}
-
-	getLastId(){
-
-		let highestID = this.userObjects[0].id;
-
+	checkUsername(username){
 		for(let i = 0; i < this.userObjects.length; i++){
-			if (this.userObjects[i].id > highestID) {
-				highestID = this.userObjects[i].id;
+			if(username == this.userObjects[i].username){
+				console.log("username found");
+				return true;
 			}
 		}
-		return highestID;
 	}
 
-	generateId(){
-
-		let newId = this.getLastId() / 1;
-		newId += 1;
-		return newId;
+	getUserObject(username){
+		return this.userObjects.find((m) => username == m.username);
 	}
 
-	saveUsers(newUserObject){
-		this.userObjects.push(newUserObject);
-		JSON._save('users.json', this.userObjects).then(function(){
-			console.log('User saved');
-		});
-	}
-
-	checkExistingUser(username){
-		let condition = true;
-		for (let i = 0; i < this.userObjects.length; i++) {
-			if (username == this.userObjects[i].username) {
-				condition = false;
-			}
+	compareUserPass(username, password){
+		let userObject = this.getUserObject(username);
+		let usernameCondition = false;
+		let passwordCondition = false;
+		if (username == userObject.username) {
+			console.log("Username True");
+			usernameCondition = true;
+		} else {
+			console.log("Username False");
 		}
-		return condition;
-	}
+		if (password == userObject.password) {
+			console.log("Password True");
+			passwordCondition = true;
+		} else {
+			console.log("Password False");
+		}
 
-	checkPasswordLength(password){
-		if (password.length > 5){
+		if (usernameCondition && passwordCondition) {
+			console.log("Login complete");
 			return true;
-		}
-		else{
+		} else {
+			console.log("Username or password invalid");
 			return false;
 		}
+
 	}
 
-	checkValidEmail(){
-		if ($('#username').is(':valid')) {
+	isLoggedIn(){
+		if (this.loggedInUser.isLoggedIn) {
+			console.log("is logged in");
 			return true;
-		}	else {
-			return false;
 		}
+	}
+
+	logout(){
+		this.loggedInUser = {isLoggedIn: false};
 	}
 
 }
 
-let x = new Login;
+let login = new Login();
+	
 
-/*
 
-let username;
-let name;
-let password;
 
-function eventHandlers(){
 
-	$("#loginbtn").on("click", function(){
 
-	username = $("#username").val();
-	console.log(username);
 
-	name = $("#name").val();
-	console.log(name);
 
-	password = $("#password").val();
-	console.log(password);
 
-	});
-}
-*/
+

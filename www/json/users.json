@@ -100,5 +100,11 @@
     "name": "Hej",
     "password": "Nej123456",
     "id": 17
+  },
+  {
+    "username": "emil@hotmail.com",
+    "name": "Emil",
+    "password": "hejsan1234567",
+    "id": 18
   }
 ]

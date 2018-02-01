@@ -20,10 +20,10 @@ Object.assign(Navbar.prototype, { template(){ return `
           <li class="nav-item">
 
             <div class="inlogg">
-              <a class="btn btn-secondary" data-toggle="collapse" href="#login" role="button" aria-expanded="false" aria-controls="login">
+              <a class="btn btn-secondary" data-toggle="collapse" href="#signup" role="button" aria-expanded="false" aria-controls="signup">
                 Skapa konto
               </a>
-              <div class="collapse" id="login">
+              <div class="collapse" id="signup">
                 <div class="card card-body">
                   <div class="input-group mt-2 input-group mb-3">
                     <div class="input-group-prepend pl-0 col-4">
@@ -50,6 +50,35 @@ Object.assign(Navbar.prototype, { template(){ return `
               </div>
           </div>
           </li>
+
+          <li class="nav-item">
+
+            <div class="inlogg">
+              <a class="btn btn-secondary" data-toggle="collapse" href="#login" role="button" aria-expanded="false" aria-controls="login">
+                Logga in
+              </a>
+              <div class="collapse" id="login">
+                <div class="card card-body">
+                  <div class="input-group mt-2 input-group mb-3">
+                    <div class="input-group-prepend pl-0 col-4">
+                      <span class="input-group-text mr-3" id="inputGroup-sizing-sm">Email:</span>
+                    </div>
+                      <input type="email" id="login-username" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                  </div>
+
+                  <div class="input-group input-group mb-3">
+                    <div class="input-group-prepend pl-0 col-4">
+                      <span class="input-group-text mr-3" id="inputGroup-sizing-sm">Lösenord:</span>
+                    </div>
+                    <input type="password" id="login-password" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                  </div>
+
+                  <button type="button" id="login-btn" class="btn btn-danger">Logga in</button>
+                </div>
+              </div>
+          </div>
+          </li>
+
         </ul>
       </div>
 

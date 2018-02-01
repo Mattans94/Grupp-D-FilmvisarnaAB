@@ -36,6 +36,7 @@ class App extends Base {
     this.footer.render('footer');
     this.footer.footerFix();
 
+    this.login = new Login();
     // Create a startpage
 
     new Popstate(this);
