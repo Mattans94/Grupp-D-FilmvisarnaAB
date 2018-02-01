@@ -225,3 +225,11 @@ header {
   content: "\f0d7";
   color: green;
 }
+.inlogg .collapse {
+  position: absolute;
+  z-index: 1;
+}
+.inlogg .card {
+  position: absolute;
+  width: 300px;
+}

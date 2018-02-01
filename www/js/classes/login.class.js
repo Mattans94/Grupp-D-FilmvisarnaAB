@@ -113,6 +113,7 @@ class Login {
 			return false;
 		}
 	}
+
 }
 
 let x = new Login;
