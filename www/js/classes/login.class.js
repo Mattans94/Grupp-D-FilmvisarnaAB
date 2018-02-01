@@ -9,7 +9,7 @@ class Login {
 	}
 
 	eventHandlers(){
-		$("#login-btn").on("click", () =>{
+		$("#login-btn").on("click", () => {
 			console.log("jkasdklajs");
 			let username = $("#login-username").val();
 			let password = $("#login-password").val();
@@ -17,7 +17,7 @@ class Login {
 			if (condition) {
 				condition =	this.compareUserPass(username, password);
 			}
-			
+
 			if (condition) {
 				console.log("you're logged in!");
 				let loggedInUserObject = this.getUserObject(username);
@@ -25,7 +25,16 @@ class Login {
 				this.loggedInUser.isLoggedIn = true;
 			}
 
-		})
+		});
+
+    $('#togglelogin-btn').on('click', function(){
+			let text = $(this).text();
+			console.log(text);
+			$(this).text(text == "Skapa konto" ? "Logga in" : "Skapa konto");
+			$('.logintoggle').toggleClass('d-none');
+		});
+
+
 	}
 
 	checkUsername(username){
@@ -82,13 +91,3 @@ class Login {
 }
 
 let login = new Login();
-	
-
-
-
-
-
-
-
-
-

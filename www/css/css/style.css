@@ -225,7 +225,16 @@ header {
   content: "\f0d7";
   color: green;
 }
-.inlogg {
-  position: absolute;
-  z-index: 1;
+.myloginform {
+  width: 300px;
+  left: 50% !important;
+  right: auto !important;
+  transform: translate(-50%, 0) !important;
+}
+.myloginform h3 {
+  text-align: center;
+}
+.redbtn {
+  background-color: #991e1e;
+  border: 1px solid #3a3a3a;
 }
