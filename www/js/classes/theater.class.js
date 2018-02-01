@@ -100,7 +100,7 @@ class Theater extends Base{
 			if (seatID == seat.data('seatid') ) {
     		$(seat).toggleClass('booked');
     		$(seat).toggleClass('free');
-    		console.log(seatID);
+    		
     	}
     	else
     		console.log(this.seatid);

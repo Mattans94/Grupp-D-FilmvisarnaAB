@@ -1,7 +1,7 @@
 class Showtime{
 
   constructor(){
-    this.movieNames = ['Let The Sunshine In', 'Wind River', 'Three Billboards Outside Ebbing, Missouri', 'Tjuren Ferdinand', 'Call Me By Your Name'];
+    this.movieNames = ['Let The Sunshine In', 'Wind River', 'Three Billboards Outside Ebbing, Missouri', 'Tjuren Ferdinand', 'Call Me By Your Name', 'The Party'];
     this.theater = ['Stora Salongen', 'Lilla Salongen'];
     this.times = ['18.40', '21.00', '22.40'];
     this.myArrayOfObjects = [];
@@ -10,7 +10,7 @@ class Showtime{
       }
 
   randomMovie() {
-    let rnd = Math.floor(Math.random() * 5);
+    let rnd = Math.floor(Math.random() * 6);
     return this.movieNames[rnd];
   }
 
@@ -47,7 +47,7 @@ class Showtime{
 
   saveToJSON(object){
     JSON._save('shows.json', {
-        object
+      object
     });
   }
 

@@ -19,7 +19,6 @@ class Popstate{
     $(document).on('click','.pop',function(e){
       //Create a push state preventDefault
       let href = $(this).attr('href');
-      console.log(href);
       href = that.makeUrl(href);
       history.pushState(null, null, href);
       //Call the change page function
