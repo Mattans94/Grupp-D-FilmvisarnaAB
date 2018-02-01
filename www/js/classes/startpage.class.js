@@ -15,8 +15,6 @@ class StartPage extends Base {
 		</div>`
 	}
 
-
-	// Making dates into XX/XX
 	makeSmallDate(date){
 		let month = date.slice(5, -3);
 		let day = date.slice(-2);
@@ -58,4 +56,6 @@ class StartPage extends Base {
 
 		`
 	}
+	// Making dates into XX/XX
+	
 }

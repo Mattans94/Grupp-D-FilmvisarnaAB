@@ -114,7 +114,7 @@ class Theater extends Base{
 
 // let theater = new Theater;
 let fixFooter = new Footer;
-// theater.scale();
+
 fixFooter.footerFix();
 $(window).on('resize',function(){
 	// theater.scale();

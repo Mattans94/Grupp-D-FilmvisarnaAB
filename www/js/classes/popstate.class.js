@@ -2,9 +2,7 @@ class Popstate{
 
   constructor(app){
     this.app = app;
-    console.log(1)
     this.clickEvents();
-    console.log("2")
     this.changePage();
     window.addEventListener('popstate', () => this.changePage());
   }
@@ -54,13 +52,17 @@ class Popstate{
     $('main').empty();
     let startPage = new StartPage();
     startPage.render('main');
-    console.log('lalala');
+    console.log('startpage');
   }
 
   theaterPage(){
     $('main').empty();
     let theater = new Theater();
     theater.render('main');
+    theater.scale();
+    $(window).on('resize',function(){
+      theater.scale();
+    });
   }
 
   movieFerdinand(){
@@ -85,3 +87,5 @@ class Popstate{
   }
 
 }
+
+
