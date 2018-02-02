@@ -225,6 +225,12 @@ header {
   content: "\f0d7";
   color: green;
 }
+.lillasalong {
+  margin: auto;
+}
+.storasalong {
+  margin: auto;
+}
 .salonger {
   border-bottom: 1px solid black;
   background: #991e1e;
@@ -244,4 +250,10 @@ header {
   box-shadow: 0px 2px 2px #000;
   text-align: center;
   margin: auto;
+}
+.regler {
+  margin: auto;
+}
+.regler h2 {
+  text-align: center;
 }
