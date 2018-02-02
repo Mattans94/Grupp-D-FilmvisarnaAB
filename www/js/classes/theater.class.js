@@ -1,6 +1,8 @@
-class Theater {
+class Theater extends Base{
 
 	constructor() {
+		super();
+		
 		JSON._load('theaters').then((theater) => {
 			this.theaterObjects = theater;
 			this.start();
@@ -108,6 +110,7 @@ class Theater {
 
 } //end class
 
+let booking = new Booking;
 let theater = new Theater;
 let fixFooter = new Footer;
 theater.scale();
