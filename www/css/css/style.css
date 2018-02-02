@@ -153,6 +153,9 @@ header {
   background: linear-gradient(#ff3232, #000000);
   box-shadow: 0px 5px 10px #000;
 }
+header nav:active {
+  color: white;
+}
 .kalendarium {
   border-bottom: 1px solid black;
   background: #991e1e;
