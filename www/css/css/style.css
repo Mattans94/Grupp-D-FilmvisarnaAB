@@ -233,7 +233,9 @@ header {
   transform: translate(-50%, 0) !important;
 }
 .myloginform h3,
-.myloggedinform h3 {
+.myloggedinform h3,
+.myloginform h5,
+.myloggedinform h5 {
   text-align: center;
 }
 .myloginform input,
