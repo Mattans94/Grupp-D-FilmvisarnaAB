@@ -39,7 +39,9 @@ class Popstate{
       '/Tjuren_Ferdinand' : 'movieFerdinand',
       '/Wind_River': 'movieWindRiver',
       '/Three_Billboards_Outside_Ebbing_Missouri': 'movieThreeBillboards',
-      '/Call_Me_By_Your_Name': 'movieCallMe'
+      '/Call_Me_By_Your_Name': 'movieCallMe',
+      '/Let_The_Sunshine_In': 'movieLetThe',
+      '/The_Party': 'movieTheParty'
     }
 
     let methodName = urls[url];
@@ -94,5 +96,18 @@ class Popstate{
     let moviepage = new Movie('Call Me By Your Name');
     this.renderKalendarium();
   }
+
+  movieLetThe(){
+    $('main').empty();
+    let moviepage = new Movie('Let The Sunshine In');
+    this.renderKalendarium();
+  }
+
+  movieTheParty(){
+    $('main').empty();
+    let moviepage = new Movie('The Party');
+    this.renderKalendarium();
+  }
+
 
 }
