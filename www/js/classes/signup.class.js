@@ -10,6 +10,8 @@ class Signup {
 	eventHandlers(){
 
 		$("#signup-btn").on("click", () => {
+			this.clearAllInputs();
+
 			let condition = this.validateAllChecks();
 
 			if (condition){
@@ -31,6 +33,13 @@ class Signup {
 
 
 		});
+	}
+
+	clearAllInputs() {
+		$('.error-signup-message').text('');
+		$('#signup-password').css({"border": "1px solid green"});
+		$('#signup-username').css({"border": "1px solid green"});
+		$('#signup-name').css({"border": "1px solid green"});
 	}
 
 	validateAllChecks(){
@@ -95,18 +104,20 @@ class Signup {
 				condition = false;
 			}
 		}
+		if (!condition) {
+			$('#signup-password').css({"border": "1px solid red"});
+			$('.error-signup-message').append('<p>- Användaren finns redan</p>');
+		}
 		return condition;
 	}
 
 	checkPasswordLength(password){
 		if (password.length > 5){
-			$('#signup-password').css({"border": "1px solid green"});
-			$('.error-message').text('');
 			return true;
 		}
 		else{
 			$('#signup-password').css({"border": "1px solid red"});
-			$('.error-signup-pass').html('Password needs to be atleast 6 letters/numbers');
+			$('.error-signup-message').append('<p>- Lösenord måste vara minst 6 tecken</p>');
 			return false;
 		}
 	}
@@ -115,6 +126,8 @@ class Signup {
 		if ($('#signup-username').is(':valid')) {
 			return true;
 		}	else {
+			$('#signup-username').css({"border": "1px solid red"});
+			$('.error-signup-message').append('<p>- Användarnamn måste vara en giltig email</p>');
 			return false;
 		}
 	}
@@ -126,13 +139,3 @@ class Signup {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
