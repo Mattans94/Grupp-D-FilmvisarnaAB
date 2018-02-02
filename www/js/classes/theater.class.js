@@ -1,6 +1,7 @@
-class Theater {
+class Theater extends Base{
 
 	constructor() {
+		super();
 		JSON._load('theaters').then((theater) => {
 			this.theaterObjects = theater;
 			this.start();
@@ -99,7 +100,7 @@ class Theater {
 			if (seatID == seat.data('seatid') ) {
     		$(seat).toggleClass('booked');
     		$(seat).toggleClass('free');
-    		console.log(seatID);
+    		
     	}
     	else
     		console.log(this.seatid);
@@ -111,11 +112,11 @@ class Theater {
 
 } //end class
 
-let theater = new Theater;
+// let theater = new Theater;
 let fixFooter = new Footer;
-theater.scale();
+
 fixFooter.footerFix();
 $(window).on('resize',function(){
-	theater.scale();
+	// theater.scale();
 	fixFooter.fixOnResize();
 });

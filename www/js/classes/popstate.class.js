@@ -1,7 +1,7 @@
-class Popstate extends Base{
+class Popstate{
 
-  constructor(){
-    super();
+  constructor(app){
+    this.app = app;
     this.clickEvents();
     this.changePage();
     window.addEventListener('popstate', () => this.changePage());
@@ -10,6 +10,7 @@ class Popstate extends Base{
   makeUrl(url){
     url = url.replace(/,/g, "");
     url = url.replace(/ /g, "_");
+    url = url.replace(/%20/g, "_");
     return url;
   }
 
@@ -17,7 +18,7 @@ class Popstate extends Base{
     let that = this;
     $(document).on('click','.pop',function(e){
       //Create a push state preventDefault
-      let href = $(this).data('movie');
+      let href = $(this).attr('href');
       href = that.makeUrl(href);
       history.pushState(null, null, href);
       //Call the change page function
@@ -34,10 +35,13 @@ class Popstate extends Base{
 
     let urls = {
       '/' : 'startpage',
+      '/Theater' : 'theaterPage',
       '/Tjuren_Ferdinand' : 'movieFerdinand',
       '/Wind_River': 'movieWindRiver',
       '/Three_Billboards_Outside_Ebbing_Missouri': 'movieThreeBillboards',
-      '/Call_Me_By_Your_Name': 'movieCallMe'
+      '/Call_Me_By_Your_Name': 'movieCallMe',
+      '/Let_The_Sunshine_In': 'movieLetThe',
+      '/The_Party': 'movieTheParty'
     }
 
     let methodName = urls[url];
@@ -45,32 +49,65 @@ class Popstate extends Base{
 
   }
 
+  renderKalendarium(){
+    let kalendarium = new Kalendarium;
+    kalendarium.render('article');
+  }
+
   startpage(){
     $('main').empty();
     let startPage = new StartPage();
     startPage.render('main');
-    console.log('lalala');
+    this.renderKalendarium();
   }
 
+  theaterPage(){
+    $('main').empty();
+    let theater = new Theater();
+    theater.render('main');
+    theater.scale();
+    $(window).on('resize',function(){
+      theater.scale();
+    });
+  }
+
+
+  // Movies
   movieFerdinand(){
-    $('.leftContainer').empty();
+    $('main').empty();
     let moviepage = new Movie('Tjuren Ferdinand');
-    console.log('Ferdinand');
+    this.renderKalendarium();
   }
 
   movieWindRiver(){
-    $('.leftContainer').empty();
+    $('main').empty();
     let moviepage = new Movie('Wind River');
+    this.renderKalendarium();
   }
 
   movieThreeBillboards(){
-    $('.leftContainer').empty();
+    $('main').empty();
     let moviepage = new Movie('Three Billboards Outside Ebbing, Missouri');
+    this.renderKalendarium();
   }
 
   movieCallMe(){
-    $('.leftContainer').empty();
+    $('main').empty();
     let moviepage = new Movie('Call Me By Your Name');
+    this.renderKalendarium();
   }
+
+  movieLetThe(){
+    $('main').empty();
+    let moviepage = new Movie('Let The Sunshine In');
+    this.renderKalendarium();
+  }
+
+  movieTheParty(){
+    $('main').empty();
+    let moviepage = new Movie('The Party');
+    this.renderKalendarium();
+  }
+
 
 }
