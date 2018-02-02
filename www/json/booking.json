@@ -28,5 +28,17 @@
       ],
       "userID": 1
     }
+  },
+  {
+    "show": {
+      "date": "2018-03-04",
+      "auditorium": "Lilla Salongen",
+      "film": "Wind River",
+      "time": "21.00",
+      "bookedSeats": [
+        81
+      ],
+      "userID": 1
+    }
   }
 ]
