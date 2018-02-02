@@ -238,3 +238,16 @@ header {
   background-color: #991e1e;
   border: 1px solid #3a3a3a;
 }
+.loginContainer h3,
+.loginContainer #login-btn {
+  color: #32A432;
+}
+.loginContainer #login-btn {
+  background-color: #32A432;
+}
+.loginContainer #togglelogin-btn {
+  background-color: #f8e168;
+}
+.signupContainer h3 {
+  color: #991e1e;
+}
