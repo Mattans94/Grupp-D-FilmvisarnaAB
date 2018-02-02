@@ -131,57 +131,33 @@ class Booking extends Base{
 
 		$(document).on('click', '#addchild', () => {
 			this.child += 1;
+			that.renderTicketButtons();
 		});
 
 		$(document).on('click', '#removechild', () => {
-			this.child += 1;
+			this.child -= 1;
+			that.renderTicketButtons();
 		});		
 
 		$(document).on('click', '#addadult', () => {
 			this.adult += 1;
+			that.renderTicketButtons();
 		});
 
 		$(document).on('click', '#removeadult', () => {
-			this.adult += 1;
+			this.adult -= 1;
+			that.renderTicketButtons();
 		});
 
 		$(document).on('click', '#addpensioner', () => {
 			this.pensioner += 1;
+			that.renderTicketButtons();
 		});
 
 		$(document).on('click', '#removepensioner', () => {
-			this.pensioner += 1;
+			this.pensioner -= 1;
+			that.renderTicketButtons();
 		});
-
-
-
-
-		// $(document).on("click", '.addbtn', function() {
-		
-		// if ($('.addbtn') && $('#addchild')) {
-		// console.log(that.child);
-		// }
-		// else if ($('.addbtn') && $('#addadult')) {
-		// 	that.adult = that.adult+1;
-		// }
-		// else if ($('.addbtn') && $('#addpensioner')) {
-		// 	that.pensioner = that.pensioner+1;
-		// }
-		// else if ($('.removebtn') && $('#removechild')) {
-		// 	that.child = that.child-1;
-		// }
-		// else if ($('.removebtn') && $('#removeadult')) {
-		// 	that.adult = that.adult-1;
-		// }
-		// else if ($('.removebtn') && $('#removepensioner')) {
-		// 	that.pensioner = that.pensioner-1;
-		// }
-		// else { 
-		// 	console.log('no changes');
-		// }
-		this.renderTicketButtons();
-	// });
-	
 		
 	} // end eventhandler
 
