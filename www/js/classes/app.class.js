@@ -35,8 +35,13 @@ class App extends Base {
     $('footer').empty();
     this.footer.render('footer');
     this.footer.footerFix();
+    
+    this.loginform = new Loginform();
 
+    this.login = new Login();
     // Create a startpage
+    this.signup = new Signup();
+
 
     new Popstate(this);
 
