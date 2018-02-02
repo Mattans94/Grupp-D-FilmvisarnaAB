@@ -56,9 +56,9 @@ class Booking extends Base{
 				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 			  		<p class="text-white">Barn (under 12 år)</p>
 				  		<div class="btn-group mr-2" role="group" aria-label="child group">
-				    	<button type="button" class="btn btn-danger addbtn" id="addchild"><strong>+</strong></button>
+				    	<button type="button" class="btn btn-danger addbtn" id="removechild"><strong><i class="fas fa-minus"></i></strong></button>
 				    	<input type="text" class="form-control col-2" id="childTickets" placeholder="${this.child}">
-				    <button type="button" class="btn btn-danger removebtn" id="removechild"><strong>-</strong></button>
+				    <button type="button" class="btn btn-danger removebtn" id="addchild"><strong><i class="fas fa-plus"></i></strong></button>
 				  </div>
 					</div>
 				</span>
@@ -66,9 +66,9 @@ class Booking extends Base{
 				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 					<p class="text-white">Ordinarie</p>
 					  <div class="btn-group mr-2" role="group" aria-label="adult group">
-					    <button type="button" class="btn btn-danger addbtn" id="addadult"><strong>+</strong></button>
+					    <button type="button" class="btn btn-danger addbtn" id="removeadult"><strong><i class="fas fa-minus"></i></strong></button>
 					    <input type="text" class="form-control col-2" id="adultTickets" placeholder="${this.adult}">
-					    <button type="button" class="btn btn-danger removebtn" id="removeadult"><strong>-</strong></button>
+					    <button type="button" class="btn btn-danger removebtn" id="addadult"><strong><i class="fas fa-plus"></i></strong></button>
 					  </div>
 					</div>
 				</span>
@@ -76,9 +76,9 @@ class Booking extends Base{
 				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 					<p class="text-white">Pensionär</p>
 					  <div class="btn-group mr-2" role="group" aria-label="pensioner group">
-					    <button type="button" class="btn btn-danger addbtn" id="addpensioner"><strong>+</strong></button>
+					    <button type="button" class="btn btn-danger addbtn" id="removepensioner"><strong><i class="fas fa-minus"></i></strong></button>
 					    <input type="text" class="form-control col-2" id="pensionerTickets" placeholder="${this.pensioner}" >
-					    <button type="button" class="btn btn-danger removebtn" id="removepensioner"><strong>-</strong></button>
+					    <button type="button" class="btn btn-danger removebtn" id="addpensioner"><strong><i class="fas fa-plus"></i></strong></button>
 					  </div>
 					</div>
 				</div>
