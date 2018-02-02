@@ -1,15 +1,14 @@
 class Booking{
 
-	// constructor(userid, date, time, auditorium, userID) {
-	// this.userID = userid;
+	// constructor(userid, date, time, auditorium) {
+	// 
 
 
 	constructor() {
 		this.date = '2018-03-04';
 		this.time = '21.00';
 		this.auditorium = 'Lilla Salongen';
-		this.userID = '1';
-		this.showObject;
+		this.userID = 1;
 	//Alla beställningar som har gjorts
 		JSON._load('booking').then((seats) => {
 	      // Retrieve the app from JSON
@@ -27,7 +26,6 @@ class Booking{
 	}
 
 	start(){
-		this.eventHandler();
 		this.getshowObject('Wind River', this.auditorium, this.date, this.time);
 	    this.eventHandler();
 		
@@ -44,25 +42,17 @@ class Booking{
 	}
 
 	eventHandler() {
-		$(document).ready();
-		$(document).on('click','.book-btn', function(){
-		// JSON._load('booking').then((seats) => {
-	 //      // Retrieve the app from JSON
-	 //      this.bookedSeats = seats;
-	 //      console.log(this.bookedSeats)
-	 //    });
-	 let seat = $(this);
-	 console.log(seat);
-			let seatID = seat.data('seatid');
-			let rowID = seat.data('rowid')
-
-		// console.log('this.userID', this.userID);	
-		this.booking = {};		
+		JSON._load('booking').then((data) => {
+	      // Retrieve the app from JSON
+	      this.bookedSeats = data;
+	      console.log(this.bookedSeats)
+	    })
+	 
+		this.booking = {};
 		let that = this;
-			this.booking.show = this.showObject;
-			console.log('this.showObject', this.showObject);
-			// this.booking.show.userID = this.userID;
-			this.booking.show.seats = [];
+		$(document).on('click','.book-btn',function(){
+			
+			that.booking.show = that.showObject;
 
 			that.booking.show.userID = that.userID;
 			that.booking.show.bookedSeats = [];
