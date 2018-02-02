@@ -124,5 +124,23 @@
     "name": "Asada",
     "password": "asada123",
     "id": 21
+  },
+  {
+    "username": "Andy@hotmail.com",
+    "name": "Andy",
+    "password": "andyny",
+    "id": 22
+  },
+  {
+    "username": "hejsan@gasd",
+    "name": "hejsan",
+    "password": "asdaksjd",
+    "id": 23
+  },
+  {
+    "username": "hola@hotmail.com",
+    "name": "Hola",
+    "password": "hola12",
+    "id": 24
   }
 ]

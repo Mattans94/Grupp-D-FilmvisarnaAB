@@ -46,6 +46,11 @@ class Signup {
 		let conditionExist = false;
 		let conditionPasswordLength = false;
 		let conditionValidEmail = false;
+		let conditionValidName = false;
+
+		if (this.checkValidName()) {
+			conditionValidName = true;
+		}
 
 		if (this.checkExistingUser($("#signup-username").val())){
 			conditionExist = true;
@@ -62,7 +67,7 @@ class Signup {
 			console.log('Valid email');
 		} else {conditionValidEmail = false; console.log('Email not valid')};
 
-		if (conditionExist && conditionValidEmail && conditionPasswordLength) {
+		if (conditionExist && conditionValidEmail && conditionPasswordLength && conditionValidName) {
 			return true;
 			console.log('everythings true');
 		}else {
@@ -123,11 +128,22 @@ class Signup {
 	}
 
 	checkValidEmail(){
-		if ($('#signup-username').is(':valid')) {
+		if ($('#signup-username').is(':valid') && !($('#signup-username').val() == '')) {
 			return true;
 		}	else {
 			$('#signup-username').css({"border": "1px solid red"});
 			$('.error-signup-message').append('<p>- Användarnamn måste vara en giltig email</p>');
+			return false;
+		}
+	}
+
+	checkValidName(){
+		if ($('#signup-name').val().length > 1) {
+			console.log("valid name");
+			return true;
+		} else {
+			$('#signup-name').css({"border": "1px solid red"});
+			$('.error-signup-message').append('<p>- Ditt namn måste innehålla minst 2 bokstäver</p>');
 			return false;
 		}
 	}
@@ -139,3 +155,21 @@ class Signup {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

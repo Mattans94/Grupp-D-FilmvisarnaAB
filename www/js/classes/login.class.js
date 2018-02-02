@@ -3,29 +3,31 @@ class Login {
 	constructor(){
 		this.loggedInUser = {isLoggedIn: false};
 		this.eventHandlers();
-		JSON._load('users').then((users) => {
-     	this.userObjects = users;
-   		})
+		
 	}
 
 	eventHandlers(){
 		$("#login-btn").on("click", () => {
-			console.log("jkasdklajs");
-			let username = $("#login-username").val();
-			let password = $("#login-password").val();
-			let condition = this.checkUsername($("#login-username").val());
-			if (condition) {
-				condition =	this.compareUserPass(username, password);
-			}
+			JSON._load('users').then((users) => {
+     		this.userObjects = users;
+   		})
+   		.then(() => {
+				console.log("jkasdklajs");
+				let username = $("#login-username").val();
+				let password = $("#login-password").val();
+				let condition = this.checkUsername($("#login-username").val());
+				if (condition) {
+					condition =	this.compareUserPass(username, password);
+				}
 
-			if (condition) {
-				console.log("you're logged in!");
-				let loggedInUserObject = this.getUserObject(username);
-				this.loggedInUser = Object.assign(this.loggedInUser, loggedInUserObject);
-				this.loggedInUser.isLoggedIn = true;
-				this.emptyInputs();
-			}
-
+				if (condition) {
+					console.log("you're logged in!");
+					let loggedInUserObject = this.getUserObject(username);
+					this.loggedInUser = Object.assign(this.loggedInUser, loggedInUserObject);
+					this.loggedInUser.isLoggedIn = true;
+					this.emptyInputs();
+				}
+			})
 		});
 
     $('#togglelogin-btn').on('click', function(){
