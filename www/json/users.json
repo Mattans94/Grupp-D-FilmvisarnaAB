@@ -106,5 +106,23 @@
     "name": "Emil",
     "password": "hejsan1234567",
     "id": 18
+  },
+  {
+    "username": "hjw@hotmail.com",
+    "name": "jejsan",
+    "password": "kadaklshdas",
+    "id": 19
+  },
+  {
+    "username": "hejaaaaa@hotmail.com",
+    "name": "Eiaulsa",
+    "password": "lasdakjsda",
+    "id": 20
+  },
+  {
+    "username": "asada@hotmail.com",
+    "name": "Asada",
+    "password": "asada123",
+    "id": 21
   }
 ]

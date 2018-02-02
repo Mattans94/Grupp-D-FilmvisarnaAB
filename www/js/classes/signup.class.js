@@ -15,17 +15,18 @@ class Signup {
 			if (condition){
 				let tempObject = {};
 
-				tempObject.username = $("#username").val();
+				tempObject.username = $("#signup-username").val();
 
-				tempObject.name = $("#name").val();
+				tempObject.name = $("#signup-name").val();
 
-				tempObject.password = $("#password").val();
+				tempObject.password = $("#signup-password").val();
 
 				tempObject.id = this.generateId();
 
 				this.saveUsers(tempObject);
 
 				console.log('Success!');
+				this.emptyInputs();
 				}
 
 
@@ -37,12 +38,12 @@ class Signup {
 		let conditionPasswordLength = false;
 		let conditionValidEmail = false;
 
-		if (this.checkExistingUser($("#username").val())){
+		if (this.checkExistingUser($("#signup-username").val())){
 			conditionExist = true;
 			console.log('Username new');
 		} else {conditionExist = false; console.log('Username already exist')};
 
-		if(this.checkPasswordLength($("#password").val())){
+		if(this.checkPasswordLength($("#signup-password").val())){
 			conditionPasswordLength = true;
 			console.log('password length ok');
 		} else {conditionPasswordLength = false; console.log('Password too short')};
@@ -107,11 +108,17 @@ class Signup {
 	}
 
 	checkValidEmail(){
-		if ($('#username').is(':valid')) {
+		if ($('#signup-username').is(':valid')) {
 			return true;
 		}	else {
 			return false;
 		}
+	}
+
+	emptyInputs(){
+		$('#signup-username').val('');
+		$('#signup-name').val('');
+		$('#signup-password').val('');
 	}
 
 }

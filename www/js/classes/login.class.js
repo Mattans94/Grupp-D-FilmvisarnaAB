@@ -23,6 +23,7 @@ class Login {
 				let loggedInUserObject = this.getUserObject(username);
 				this.loggedInUser = Object.assign(this.loggedInUser, loggedInUserObject);
 				this.loggedInUser.isLoggedIn = true;
+				this.emptyInputs();
 			}
 
 		});
@@ -31,7 +32,11 @@ class Login {
 			let text = $(this).text();
 			console.log(text);
 			$(this).text(text == "Skapa konto" ? "Logga in" : "Skapa konto");
-			$('.logintoggle').toggleClass('d-none');
+			$('.logintoggle').slideToggle(400);
+		});
+
+		$('.myAccBtn').on('click', function(){
+			$('.myloginform').fadeToggle(150);
 		});
 
 
@@ -84,10 +89,15 @@ class Login {
 		}
 	}
 
+	emptyInputs(){
+		$('#login-username').val('');
+		$('#login-password').val('');
+	}
+
 	logout(){
 		this.loggedInUser = {isLoggedIn: false};
 	}
 
 }
 
-let login = new Login();
+
