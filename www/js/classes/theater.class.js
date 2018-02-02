@@ -91,7 +91,7 @@ class Theater {
 
 	eventHandler() {
 		$(document).ready();
-		$(document).on("mouseenter mouseleave click", '.seat', function() {
+		$(document).on("click", '.seat', function() {
 			let seat = $(this);
 			let seatID = seat.data('seatid');
 			let rowID = seat.data('rowid')
