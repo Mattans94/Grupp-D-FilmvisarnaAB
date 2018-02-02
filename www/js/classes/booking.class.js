@@ -14,6 +14,8 @@ class Booking extends Base{
 		this.child=0;
 		this.adult=0;
 		this.pensioner=0;
+
+		
 	//Alla beställningar som har gjorts
 		JSON._load('booking').then((seats) => {
 	      // Retrieve the app from JSON
@@ -50,34 +52,41 @@ class Booking extends Base{
 
 	renderTicketButtons() {
 		let html = `<div class="row justify-content-center">
-			  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-				  <div class="btn-group mr-2" role="group" aria-label="child group">
-				    <button type="button" class="btn btn-secondary adddbtn" id="addchild"><strong>+</strong></button>
-				    <input type="text" class="form-control col-2" id="childTickets" placeholder="${this.child}">
-				    <button type="button" class="btn btn-secondary removebtn" id="removechild"><strong>-</strong></button>
+			  	<span>
+				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+			  		<p class="text-white">Barn (under 12 år)</p>
+				  		<div class="btn-group mr-2" role="group" aria-label="child group">
+				    	<button type="button" class="btn btn-danger addbtn" id="addchild"><strong>+</strong></button>
+				    	<input type="text" class="form-control col-2" id="childTickets" placeholder="${this.child}">
+				    <button type="button" class="btn btn-danger removebtn" id="removechild"><strong>-</strong></button>
 				  </div>
+					</div>
+				</span>
+				<span>
+				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+					<p class="text-white">Ordinarie</p>
+					  <div class="btn-group mr-2" role="group" aria-label="adult group">
+					    <button type="button" class="btn btn-danger addbtn" id="addadult"><strong>+</strong></button>
+					    <input type="text" class="form-control col-2" id="adultTickets" placeholder="${this.adult}">
+					    <button type="button" class="btn btn-danger removebtn" id="removeadult"><strong>-</strong></button>
+					  </div>
+					</div>
+				</span>
+				<span>
+				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+					<p class="text-white">Pensionär</p>
+					  <div class="btn-group mr-2" role="group" aria-label="pensioner group">
+					    <button type="button" class="btn btn-danger addbtn" id="addpensioner"><strong>+</strong></button>
+					    <input type="text" class="form-control col-2" id="pensionerTickets" placeholder="${this.pensioner}" >
+					    <button type="button" class="btn btn-danger removebtn" id="removepensioner"><strong>-</strong></button>
+					  </div>
+					</div>
 				</div>
-			  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-				  <div class="btn-group mr-2" role="group" aria-label="adult group">
-				    <button type="button" class="btn btn-secondary addbtn" id="addadult"><strong>+</strong></button>
-				    <input type="text" class="form-control col-2" id="adultTickets" placeholder="${this.adult}">
-				    <button type="button" class="btn btn-secondary removebtn" id="removeadult"><strong>-</strong></button>
-				  </div>
-				</div>
-			  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-				  <div class="btn-group mr-2" role="group" aria-label="pensioner group">
-				    <button type="button" class="btn btn-secondary addbtn" id="addpensioner"><strong>+</strong></button>
-				    <input type="text" class="form-control col-2" id="pensionerTickets" placeholder="${this.pensioner}" >
-				    <button type="button" class="btn btn-secondary removebtn" id="removepensioner"><strong>-</strong></button>
-				  </div>
-				</div>
-			</div>
+				</span>
 			
-			<div class="ml-3 mt-5">			
-							<button class="btn btn-danger book-btn">Forstätt</button>
-						<div>
-						</div>
-					</div>`;
+				<div class="ml-3 mt-5">			
+					<button class="btn btn-danger book-btn">Forstätt</button>
+				</div>`;
   	$('.ticketholder').html(html);
 	}
 
@@ -120,30 +129,58 @@ class Booking extends Base{
 		// 	this.seatOccupied();
 		// });
 
-	$(document).on("click", '.addbtn .removebtn', function() {
-		if ($('.addbtn') && $('#addchild')) {
-			this.child = this.child+1;
-		}
-		else if ($('.addbtn') && $('#addadult')) {
-			this.adult = this.adult+1;
-		}
-		else if ($('.addbtn') && $('#addpensioner')) {
-			this.pensioner = this.pensioner+1;
-		}
-		else if ($('.addbtn') && $('#removechild')) {
-			this.child = this.child-1;
-		}
-		else if ($('.addbtn') && $('#removeadult')) {
-			this.adult = this.adult-1;
-		}
-		else if ($('.addbtn') && $('#removepensioner')) {
-			this.pensioner = this.pensioner-1;
-		}
-		else { 
-			console.log('no changes');
-		}
-		// renderTicketButtons();
-	});
+		$(document).on('click', '#addchild', () => {
+			this.child += 1;
+		});
+
+		$(document).on('click', '#removechild', () => {
+			this.child += 1;
+		});		
+
+		$(document).on('click', '#addadult', () => {
+			this.adult += 1;
+		});
+
+		$(document).on('click', '#removeadult', () => {
+			this.adult += 1;
+		});
+
+		$(document).on('click', '#addpensioner', () => {
+			this.pensioner += 1;
+		});
+
+		$(document).on('click', '#removepensioner', () => {
+			this.pensioner += 1;
+		});
+
+
+
+
+		// $(document).on("click", '.addbtn', function() {
+		
+		// if ($('.addbtn') && $('#addchild')) {
+		// console.log(that.child);
+		// }
+		// else if ($('.addbtn') && $('#addadult')) {
+		// 	that.adult = that.adult+1;
+		// }
+		// else if ($('.addbtn') && $('#addpensioner')) {
+		// 	that.pensioner = that.pensioner+1;
+		// }
+		// else if ($('.removebtn') && $('#removechild')) {
+		// 	that.child = that.child-1;
+		// }
+		// else if ($('.removebtn') && $('#removeadult')) {
+		// 	that.adult = that.adult-1;
+		// }
+		// else if ($('.removebtn') && $('#removepensioner')) {
+		// 	that.pensioner = that.pensioner-1;
+		// }
+		// else { 
+		// 	console.log('no changes');
+		// }
+		this.renderTicketButtons();
+	// });
 	
 		
 	} // end eventhandler
