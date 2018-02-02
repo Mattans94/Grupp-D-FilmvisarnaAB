@@ -39,6 +39,7 @@ class App extends Base {
     this.login = new Login();
     // Create a startpage
     this.signup = new Signup();
+    this.loginform = new Loginform();
     new Popstate(this);
 
     // Sending movies and shows to Movieclass

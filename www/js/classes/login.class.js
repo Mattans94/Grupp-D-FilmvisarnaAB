@@ -38,7 +38,7 @@ class Login {
 		});
 
 		$('.myAccBtn').on('click', function(){
-			$('.myloginform').fadeToggle(150);
+			$('.myloginform').fadeToggle(200);
 		});
 
 
