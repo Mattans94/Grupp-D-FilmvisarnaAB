@@ -43,12 +43,18 @@ class Login {
 	}
 
 	checkUsername(username){
+		let condition = false;
 		for(let i = 0; i < this.userObjects.length; i++){
 			if(username == this.userObjects[i].username){
-				console.log("username found");
 				return true;
 			}
 		}
+
+		if (condition == false) {
+			console.log("username not found");
+			$('#login-username').css({"border": "1px solid red"});
+		}
+
 	}
 
 	getUserObject(username){
@@ -74,9 +80,13 @@ class Login {
 
 		if (usernameCondition && passwordCondition) {
 			console.log("Login complete");
+			$('#login-username').css({"border": "1px solid green"});
+			$('#login-password').css({"border": "1px solid green"});
 			return true;
 		} else {
 			console.log("Username or password invalid");
+			$('#login-username').css({"border": "1px solid red"});
+			$('#login-password').css({"border": "1px solid red"});
 			return false;
 		}
 

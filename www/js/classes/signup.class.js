@@ -100,9 +100,13 @@ class Signup {
 
 	checkPasswordLength(password){
 		if (password.length > 5){
+			$('#signup-password').css({"border": "1px solid green"});
+			$('.error-message').text('');
 			return true;
 		}
 		else{
+			$('#signup-password').css({"border": "1px solid red"});
+			$('.error-signup-pass').html('Password needs to be atleast 6 letters/numbers');
 			return false;
 		}
 	}
