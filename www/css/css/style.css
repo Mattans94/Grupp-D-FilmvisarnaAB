@@ -225,16 +225,19 @@ header {
   content: "\f0d7";
   color: green;
 }
-.myloginform {
+.myloginform,
+.myloggedinform {
   width: 300px;
   left: 50% !important;
   right: auto !important;
   transform: translate(-50%, 0) !important;
 }
-.myloginform h3 {
+.myloginform h3,
+.myloggedinform h3 {
   text-align: center;
 }
-.myloginform input {
+.myloginform input,
+.myloggedinform input {
   border: 1px solid green;
 }
 .redbtn {

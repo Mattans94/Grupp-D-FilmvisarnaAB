@@ -1,9 +1,10 @@
-class Login {
+class Login extends Base{
 
 	constructor(){
+		super();
 		this.loggedInUser = {isLoggedIn: false};
 		this.eventHandlers();
-		
+
 	}
 
 	eventHandlers(){
@@ -26,6 +27,9 @@ class Login {
 					this.loggedInUser = Object.assign(this.loggedInUser, loggedInUserObject);
 					this.loggedInUser.isLoggedIn = true;
 					this.emptyInputs();
+					this.loggedInForm = new LoggedInForm();
+					$('.renderForm').empty();
+					this.loggedInForm.render('.renderForm');
 				}
 			})
 		});
@@ -111,5 +115,3 @@ class Login {
 	}
 
 }
-
-
