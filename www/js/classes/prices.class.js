@@ -62,6 +62,7 @@ class Prices {
 	}
 
 	calculateTotalPrice(numberOfChildren, numberOfAdults, numberOfPensioners) {
+		console.log(numberOfChildren, numberOfAdults, numberOfPensioners);
 		let totalAdult=0;
 		let totalChild=0;
 		let totalPensioner=0;

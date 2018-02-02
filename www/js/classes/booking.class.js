@@ -47,5 +47,5 @@ class Booking {
 		// 	this.bookings = data;
 		// 	this.seatOccupied();
 		// });
-
-};
+	}
+}
