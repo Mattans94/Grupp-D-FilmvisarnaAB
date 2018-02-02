@@ -79,5 +79,31 @@ class Booking{
 		// 	this.bookings = data;
 		// 	this.seatOccupied();
 		// });
+
+			$(document).on("click", '.addbtn .removebtn', function() {
+		if ($('.addbtn') && $('#addchild')) {
+			this.child = this.child+1;
+		}
+		else if ($('.addbtn') && $('#addadult')) {
+			this.adult = this.adult+1;
+		}
+		else if ($('.addbtn') && $('#addpensioner')) {
+			this.pensioner = this.pensioner+1;
+		}
+		else if ($('.addbtn') && $('#removechild')) {
+			this.child = this.child-1;
+		}
+		else if ($('.addbtn') && $('#removeadult')) {
+			this.adult = this.adult-1;
+		}
+		else if ($('.addbtn') && $('#removepensioner')) {
+			this.pensioner = this.pensioner-1;
+		}
+		else { 
+			console.log('no changes');
+		}
+	});
 	}
-}
+		
+	} // end eventhandler
+} // end class
