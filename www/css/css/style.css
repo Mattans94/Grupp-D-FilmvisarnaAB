@@ -67,8 +67,8 @@ a {
   background: #000;
 }
 .seat:hover {
-  background-color: yellow;
-  color: red;
+  background-color: blue;
+  color: white;
 }
 footer {
   background-color: #949494;

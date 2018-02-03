@@ -1,5 +1,3 @@
-
-
 class Theater {
 
 	constructor(numberOfChildren, numberOfAdults, numberOfPensioners, auditorium) {
@@ -27,7 +25,8 @@ class Theater {
 		this.setWidth();
 		this.setHeight();
 		this.renderTheater();
-		this.renderTicketButtons();
+		// this.renderTicketButtons();
+		let booking = new Booking;
 		this.scale();
 	}
 
@@ -44,32 +43,32 @@ class Theater {
 		return rowlength;
 	}
 
-	renderTicketButtons() {
-		let html = `<div class="row justify-content-center">
-			  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-				  <div class="btn-group mr-2" role="group" aria-label="child group">
-				    <button type="button" class="btn btn-secondary adddbtn" id="addchild"><strong>+</strong></button>
-				    <input type="text" class="form-control col-2" id="childTickets" placeholder="${this.child}" >
-				    <button type="button" class="btn btn-secondary removebtn" id="removechild"><strong>-</strong></button>
-				  </div>
-				</div>
-			  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-				  <div class="btn-group mr-2" role="group" aria-label="adult group">
-				    <button type="button" class="btn btn-secondary addbtn" id="addadult"><strong>+</strong></button>
-				    <input type="text" class="form-control col-2" id="adultTickets" placeholder="${this.adult}" >
-				    <button type="button" class="btn btn-secondary removebtn" id="removeadult"><strong>-</strong></button>
-				  </div>
-				</div>
-			  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-				  <div class="btn-group mr-2" role="group" aria-label="pensioner group">
-				    <button type="button" class="btn btn-secondary addbtn" id="addpensioner"><strong>+</strong></button>
-				    <input type="text" class="form-control col-2" id="pensionerTickets" placeholder="${this.pensioner}" >
-				    <button type="button" class="btn btn-secondary removebtn" id="removepensioner"><strong>-</strong></button>
-				  </div>
-				</div>
-			</div>`;
-  	$('.navbar').html(html);
-	}
+	// renderTicketButtons() {
+	// 	let html = `<div class="row justify-content-center">
+	// 		  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+	// 			  <div class="btn-group mr-2" role="group" aria-label="child group">
+	// 			    <button type="button" class="btn btn-secondary adddbtn" id="addchild"><strong>+</strong></button>
+	// 			    <input type="text" class="form-control col-2" id="childTickets" placeholder="${this.child}" >
+	// 			    <button type="button" class="btn btn-secondary removebtn" id="removechild"><strong>-</strong></button>
+	// 			  </div>
+	// 			</div>
+	// 		  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+	// 			  <div class="btn-group mr-2" role="group" aria-label="adult group">
+	// 			    <button type="button" class="btn btn-secondary addbtn" id="addadult"><strong>+</strong></button>
+	// 			    <input type="text" class="form-control col-2" id="adultTickets" placeholder="${this.adult}" >
+	// 			    <button type="button" class="btn btn-secondary removebtn" id="removeadult"><strong>-</strong></button>
+	// 			  </div>
+	// 			</div>
+	// 		  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+	// 			  <div class="btn-group mr-2" role="group" aria-label="pensioner group">
+	// 			    <button type="button" class="btn btn-secondary addbtn" id="addpensioner"><strong>+</strong></button>
+	// 			    <input type="text" class="form-control col-2" id="pensionerTickets" placeholder="${this.pensioner}" >
+	// 			    <button type="button" class="btn btn-secondary removebtn" id="removepensioner"><strong>-</strong></button>
+	// 			  </div>
+	// 			</div>
+	// 		</div>`;
+ //  	$('.navbar').html(html);
+	// }
 
 	renderTheater() {
 		let html = '';
@@ -215,3 +214,11 @@ class Theater {
 	}
 		
 } //end class
+
+
+
+let theater = new Theater();
+let booking = new Booking();
+// console.log(prices);
+$(window).resize(theater.scale);
+let prices = new Prices(1,1,1);

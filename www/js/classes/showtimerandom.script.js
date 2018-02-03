@@ -38,6 +38,7 @@ class Showtime{
         tempObject.auditorium = this.randomTheater();
         tempObject.film = this.randomMovie();
         tempObject.time = this.times[i];
+        tempObject.bookedSeats = [];
 
         this.myArrayOfObjects.push(tempObject);
       }
