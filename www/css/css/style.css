@@ -286,3 +286,13 @@ header nav:active {
 .info {
   margin: auto;
 }
+.separator {
+  background-color: #991e1e;
+  margin: auto;
+  width: 85%;
+  height: 20px;
+  box-shadow: 4px 4px 4px black;
+  border-radius: 30px 10px;
+  border-bottom: 14px solid #991e1e;
+  border-top: 14px solid #991e1e;
+}
