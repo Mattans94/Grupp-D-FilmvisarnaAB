@@ -13,8 +13,8 @@ class Booking extends Base{
 		this.title = 'Wind River';
 		this.userID = 1;
 
-		this.child=1;
-		this.adult=0;
+		this.child=0;
+		this.adult=1;
 		this.pensioner=0;
 		this.myNumberOfSeats=1;
 		
@@ -41,6 +41,7 @@ class Booking extends Base{
 		// console.log(this.title, this.auditorium, this.date, this.time);
 	    this.eventHandler();
 	    this.renderTicketButtons(); 	
+	    this.updateTotalPrice();
 	    theater.scale();
 		
 	}
