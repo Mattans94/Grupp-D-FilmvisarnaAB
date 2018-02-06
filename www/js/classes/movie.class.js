@@ -50,7 +50,7 @@ class Movie extends Base {
    let showTimesRendered = '';
    let co = 0;
    for (let showTimeObject of allShowTimes) {
-     showTimesRendered += `<li data-movieTime="${co}"><div class="col-4 d-inline-block"><strong>${showTimeObject.date}</strong></div><div class="col-4 d-inline-block">${showTimeObject.auditorium}</div> <div class="col-3 d-inline-block">${showTimeObject.time}</div></li>`
+     showTimesRendered += `<li data-movieTime="${co}"><div class="col-4 d-inline-block"><strong>${showTimeObject.date}</strong></div><div class="col-4 d-inline-block">${showTimeObject.auditorium}</div> <div class="col-3 d-inline-block pr-0">${showTimeObject.time} <a class="pop" href="/Theater"><div class="book-btn float-right border border-dark bg-light"><strong>Boka</strong></div></a></div></li>`
      co++
    }
    return showTimesRendered;
@@ -106,7 +106,7 @@ class Movie extends Base {
 
   // Renders movie with template.
   renderMovie() {
-    this.render('.leftContainer');
+    this.render('main');
   }
 
 }
