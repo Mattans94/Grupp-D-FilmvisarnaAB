@@ -13,10 +13,11 @@ class Booking extends Base{
 		this.title = 'Wind River';
 		this.userID = 1;
 
-		this.child=0;
+		this.child=1;
 		this.adult=0;
 		this.pensioner=0;
-		// let prices = new Prices();
+		this.myNumberOfSeats=1;
+		
 
 		
 	//Alla beställningar som har gjorts
@@ -54,15 +55,25 @@ class Booking extends Base{
 		// console.log(this.showObject);
 	}
 
+	updateTotalPrice(){
+		// prices.start();
+		let prices= new Prices(this.child, this.adult, this.pensioner);
+		prices.calculateTotalPrice();
+	}
+
+	myNumberOfSeatsCheck() {
+		this.myNumberOfSeats = this.child + this.adult + this.pensioner;
+	}
+
 	renderTicketButtons() {
 		let html = `<div class="row justify-content-center">
 			  	<span>
 				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 			  		<p class="text-white">Barn (under 12 år)</p>
 				  		<div class="btn-group mr-2" role="group" aria-label="child group">
-				    	<button type="button" class="btn btn-danger addbtn" id="removechild"><strong><i class="fas fa-minus"></i></strong></button>
+				    	<button type="button" class="btn btn-danger addbtn" id="removechild"><strong>-</strong></button>
 				    	<input type="text" class="form-control col-2" id="childTickets" placeholder="${this.child}">
-				    <button type="button" class="btn btn-danger removebtn" id="addchild"><strong><i class="fas fa-plus"></i></strong></button>
+				    <button type="button" class="btn btn-danger removebtn" id="addchild"><strong>+</strong></button>
 				  </div>
 					</div>
 				</span>
@@ -70,9 +81,9 @@ class Booking extends Base{
 				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 					<p class="text-white">Ordinarie</p>
 					  <div class="btn-group mr-2" role="group" aria-label="adult group">
-					    <button type="button" class="btn btn-danger addbtn" id="removeadult"><strong><i class="fas fa-minus"></i></strong></button>
+					    <button type="button" class="btn btn-danger addbtn" id="removeadult"><strong>-</strong></button>
 					    <input type="text" class="form-control col-2" id="adultTickets" placeholder="${this.adult}">
-					    <button type="button" class="btn btn-danger removebtn" id="addadult"><strong><i class="fas fa-plus"></i></strong></button>
+					    <button type="button" class="btn btn-danger removebtn" id="addadult"><strong>+</strong></button>
 					  </div>
 					</div>
 				</span>
@@ -80,12 +91,13 @@ class Booking extends Base{
 				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 					<p class="text-white">Pensionär</p>
 					  <div class="btn-group mr-2" role="group" aria-label="pensioner group">
-					    <button type="button" class="btn btn-danger addbtn" id="removepensioner"><strong><i class="fas fa-minus"></i></strong></button>
+					    <button type="button" class="btn btn-danger addbtn" id="removepensioner"><strong>-</i></strong></button>
 					    <input type="text" class="form-control col-2" id="pensionerTickets" placeholder="${this.pensioner}" >
-					    <button type="button" class="btn btn-danger removebtn" id="addpensioner"><strong><i class="fas fa-plus"></i></strong></button>
+					    <button type="button" class="btn btn-danger removebtn" id="addpensioner"><strong>+</strong></button>
 					  </div>
+
 					</div>
-					totalpris
+					
 				</div>
 				</span>
 			
@@ -93,7 +105,13 @@ class Booking extends Base{
 					<button class="btn btn-danger book-btn">Forstätt</button>
 				</div>`;
   	$('.ticketholder').html(html);
+
+		$('html, body').animate({
+        scrollTop: $(".ticketholder").offset().top -20
+    }, 500);
+
 	}
+
 
 	eventHandler() {
 		JSON._load('booking').then((data) => {
@@ -136,34 +154,107 @@ class Booking extends Base{
 
 
 		$(document).on('click', '#addchild', () => {
+			if (this.myNumberOfSeats > 0 && this.myNumberOfSeats < 8) {
 			this.child += 1;
 			that.renderTicketButtons();
+			that.updateTotalPrice();
+			that.myNumberOfSeatsCheck();
+			console.log('myNumberOfSeats', this.myNumberOfSeats);
+			}
+			else {
+				alert ('Går endast att boka 8 platser!');
+			}			
 		});
 
 		$(document).on('click', '#removechild', () => {
+			if (this.myNumberOfSeats > 0 && this.myNumberOfSeats < 8) {
 			this.child -= 1;
 			that.renderTicketButtons();
+			that.updateTotalPrice();
+			that.myNumberOfSeatsCheck();
+			console.log('myNumberOfSeats', this.myNumberOfSeats);
+		}
+		else {
+			alert ('Du måste boka minst 1 plats!');
+		}
 		});		
 
 		$(document).on('click', '#addadult', () => {
+			if (this.myNumberOfSeats > 0 && this.myNumberOfSeats < 8) {
 			this.adult += 1;
 			that.renderTicketButtons();
+			that.updateTotalPrice();
+			that.myNumberOfSeatsCheck();
+			console.log('myNumberOfSeats', this.myNumberOfSeats);
+			}
+			else {
+				alert ('Går endast att boka 8 platser!');
+			}	
 		});
 
 		$(document).on('click', '#removeadult', () => {
+			if (this.myNumberOfSeats > 0 && this.myNumberOfSeats < 8) {
 			this.adult -= 1;
 			that.renderTicketButtons();
+			that.updateTotalPrice();
+			that.myNumberOfSeatsCheck();
+			console.log('myNumberOfSeats', this.myNumberOfSeats);
+			}
+		else {
+			alert ('Du måste boka minst 1 plats!');
+		}
 		});
 
 		$(document).on('click', '#addpensioner', () => {
+			if (this.myNumberOfSeats > 0 && this.myNumberOfSeats < 8) {
 			this.pensioner += 1;
 			that.renderTicketButtons();
+			that.updateTotalPrice();
+			that.myNumberOfSeatsCheck();
+			console.log('myNumberOfSeats', this.myNumberOfSeats);
+			}
+			else {
+				alert ('Går endast att boka 8 platser!');
+			}	
 		});
 
 		$(document).on('click', '#removepensioner', () => {
+			if (this.myNumberOfSeats > 0 && this.myNumberOfSeats < 8) {
 			this.pensioner -= 1;
 			that.renderTicketButtons();
+			that.updateTotalPrice();
+			that.myNumberOfSeatsCheck();
+			console.log('myNumberOfSeats', this.myNumberOfSeats);
+			}
+		else {
+			alert ('Du måste boka minst 1 plats!');
+		}
 		});
+
+		
+			// $(document).on("click", '.addbtn .removebtn', function() {
+	// 	if ($('.addbtn') && $('#addchild')) {
+	// 		this.child = this.child+1;
+	// 	}
+	// 	else if ($('.addbtn') && $('#addadult')) {
+	// 		this.adult = this.adult+1;
+	// 	}
+	// 	else if ($('.addbtn') && $('#addpensioner')) {
+	// 		this.pensioner = this.pensioner+1;
+	// 	}
+	// 	else if ($('.addbtn') && $('#removechild')) {
+	// 		this.child = this.child-1;
+	// 	}
+	// 	else if ($('.addbtn') && $('#removeadult')) {
+	// 		this.adult = this.adult-1;
+	// 	}
+	// 	else if ($('.addbtn') && $('#removepensioner')) {
+	// 		this.pensioner = this.pensioner-1;
+	// 	}
+	// 	else { 
+	// 		console.log('no changes');
+	// 	}
+	// });
 
 		
 	} // end eventhandler

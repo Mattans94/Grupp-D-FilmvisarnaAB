@@ -9,6 +9,16 @@ class Prices {
 			this.start();
 		});
 
+		this.pricePerChild=0;
+		this.pricePerAdult=0;
+		this.pricePerPensioner=0;
+		// console.log('pricePerChild', this.pricePerChild, 'pricePerAdult', this.pricePerAdult, 'pricePerPensioner', this.pricePerPensioner);
+
+		this.totalChild=0;
+		this.totalAdult=0;
+		this.totalPensioner=0;
+		this.GrandTotal=0;
+
 	} //end constructor
 
 	start(){
@@ -20,11 +30,15 @@ class Prices {
 		this.getPricePerAdult(this.priceObject.adult);
 		this.getPricePerPensioner(this.priceObject.pensioner);
 		this.calculateTotalPrice(this.numberOfChildren, this.numberOfAdults, this.numberOfPensioners);
-
+		this.renderGrandTotal();
 		// that = this;
 		this.ticketType;
 	}
 
+	renderGrandTotal() {
+		let html=`Totalt: ${this.GrandTotal} kr`;
+		$('#totalprice').html(html);
+	}
 
 // behåll utifall att vi vill kunna lägga till fler prisobjekt tex standardpris eller långfilmpris
 	// getPriceObject(priceType) {
@@ -38,7 +52,7 @@ class Prices {
 		// console.log('c priceObject', priceObject);
 		let childPrice = priceObject;
 		this.pricePerChild = childPrice;
-		console.log('this.pricePerChild', this.pricePerChild);
+		// console.log('this.pricePerChild', this.pricePerChild);
 		return childPrice;
 	}
 
@@ -47,7 +61,7 @@ class Prices {
 
 		let adultPrice = priceObject;
 		this.pricePerAdult = adultPrice;
-		console.log(this.pricePerAdult);		
+		// console.log(this.pricePerAdult);		
 		return adultPrice;
 	}
 
@@ -56,26 +70,27 @@ class Prices {
 
 		let pensionerPrice = priceObject;
 		this.pricePerPensioner = pensionerPrice;
-		console.log('this.pricePerPensioner', this.pricePerPensioner);		
+		// console.log('this.pricePerPensioner', this.pricePerPensioner);		
 
 		return pensionerPrice;
 	}
 
-	calculateTotalPrice(numberOfChildren, numberOfAdults, numberOfPensioners) {
-		console.log(numberOfChildren, numberOfAdults, numberOfPensioners);
-		let totalAdult=0;
-		let totalChild=0;
-		let totalPensioner=0;
-		let GrandTotal=0;
+	calculateTotalPrice() {
+		// console.log('numberOfChildren', numberOfChildren, 'numberOfAdults', numberOfAdults, 'numberOfPensioners', numberOfPensioners);
+		
 
-		totalAdult = this.pricePerAdult * numberOfAdults;
-		totalChild = this.pricePerChild * numberOfChildren;
-		totalPensioner = this.pricePerPensioner * numberOfPensioners;
-		GrandTotal = totalAdult + totalChild + totalPensioner;
-		console.log('totalAdult',totalAdult);
-		console.log('totalChild',totalChild);
-		console.log('totalPensioner',totalPensioner);
+		this.totalChild = this.pricePerChild * this.numberOfChildren;
+		// console.log('totalChild', this.totalChild, 'pricePerChild', this.pricePerChild, 'numberOfChildren', this.numberOfChildren);
+		this.totalAdult = this.pricePerAdult * this.numberOfAdults;
+		this.totalPensioner = this.pricePerPensioner * this.numberOfPensioners;
+		this.GrandTotal = this.totalChild + this.totalAdult + this.totalPensioner;
 
-		console.log('GrandTotal',GrandTotal);
+		this.renderGrandTotal;
+
+		// console.log('totalChild',this.totalChild);
+		// console.log('totalAdult',this.totalAdult);
+		// console.log('totalPensioner',this.totalPensioner);
+
+		// console.log('GrandTotal', this.GrandTotal);
 	}
 } // end class
