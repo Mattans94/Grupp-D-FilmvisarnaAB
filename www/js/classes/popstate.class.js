@@ -10,7 +10,6 @@ class Popstate{
   makeUrl(url){
     url = url.replace(/,/g, "");
     url = url.replace(/ /g, "_");
-    url = url.replace(/%20/g, "_");
     return url;
   }
 
