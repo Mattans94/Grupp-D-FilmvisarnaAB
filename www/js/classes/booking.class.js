@@ -27,6 +27,7 @@ class Booking extends Base{
 	      //console.log(this)
 	      this.showObjects = shows;
 	      this.start();
+
 	    });
 
 
@@ -37,7 +38,7 @@ class Booking extends Base{
 	    this.eventHandler();
 	    this.renderTicketButtons();
 	    theater.scale();
-		
+			
 	}
 
 	getshowObject(showName, auditorium, date, time) {
@@ -51,44 +52,59 @@ class Booking extends Base{
 	}
 
 	renderTicketButtons() {
-		let html = `<div class="row justify-content-center">
-			  	<span>
+		let html =
+			`<div class="row justify-content-center">
+				<span>
+				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+						<p class="text-white">Ordinarie</p>
+					  <div class="btn-group mr-2" role="group" aria-label="adult group">
+						  <button type="button" class="btn btn-danger removebtn" id="removeadult"><strong>-</strong></button>
+						  <input type="text" class="form-control col-2" id="adultTickets" placeholder="${this.adult}">
+						  <button type="button" class="btn btn-danger addbtn" id="addadult"><strong>+</strong></button>
+					 	</div>
+					</div>
+				</span>
+			  <span>
 				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 			  		<p class="text-white">Barn (under 12 år)</p>
-				  		<div class="btn-group mr-2" role="group" aria-label="child group">
-				    	<button type="button" class="btn btn-danger addbtn" id="removechild"><strong><i class="fas fa-minus"></i></strong></button>
-				    	<input type="text" class="form-control col-2" id="childTickets" placeholder="${this.child}">
-				    <button type="button" class="btn btn-danger removebtn" id="addchild"><strong><i class="fas fa-plus"></i></strong></button>
-				  </div>
+				  	<div class="btn-group mr-2" role="group" aria-label="child group">
+					    <button type="button" class="btn btn-danger removebtn" id="removechild"><strong>-</strong></button>
+					    <input type="text" class="form-control col-2" id="childTickets" placeholder="${this.child}">
+					    <button type="button" class="btn btn-danger addbtn" id="addchild"><strong>+</strong></button>
+				  	</div>
 					</div>
 				</span>
 				<span>
 				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-					<p class="text-white">Ordinarie</p>
-					  <div class="btn-group mr-2" role="group" aria-label="adult group">
-					    <button type="button" class="btn btn-danger addbtn" id="removeadult"><strong><i class="fas fa-minus"></i></strong></button>
-					    <input type="text" class="form-control col-2" id="adultTickets" placeholder="${this.adult}">
-					    <button type="button" class="btn btn-danger removebtn" id="addadult"><strong><i class="fas fa-plus"></i></strong></button>
-					  </div>
-					</div>
-				</span>
-				<span>
-				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-					<p class="text-white">Pensionär</p>
-					  <div class="btn-group mr-2" role="group" aria-label="pensioner group">
-					    <button type="button" class="btn btn-danger addbtn" id="removepensioner"><strong><i class="fas fa-minus"></i></strong></button>
+						<p class="text-white">Pensionär</p>
+				  	<div class="btn-group mr-2" role="group" aria-label="pensioner group">
+					    <button type="button" class="btn btn-danger removebtn" id="removepensioner"><strong>-</strong></button>
 					    <input type="text" class="form-control col-2" id="pensionerTickets" placeholder="${this.pensioner}" >
-					    <button type="button" class="btn btn-danger removebtn" id="addpensioner"><strong><i class="fas fa-plus"></i></strong></button>
-					  </div>
+					    <button type="button" class="btn btn-danger addbtn" id="addpensioner"><strong>+</strong></button>
+				  	</div>
 					</div>
-				</div>
 				</span>
-			
-				<div class="ml-3 mt-5">			
-					<button class="btn btn-danger book-btn">Forstätt</button>
-				</div>`;
+			</div>
+			<div class="ml-3 mt-5">			
+				<button class="btn btn-danger book-btn">Forstätt</button>
+			</div>`;
   	$('.ticketholder').html(html);
 	}
+
+	disableRemoveButton(ticketType){
+		let val = this[ticketType];
+		if (val <= 0){
+			$('#remove' + ticketType).prop('disabled', true);
+		} 
+	};
+
+	disableAddButton(ticketType){
+		let val = this[ticketType];
+		if (val == 8){
+			$('#add' + ticketType).prop('disabled', true);
+		}
+	}
+
 
 	eventHandler() {
 		JSON._load('booking').then((data) => {
@@ -129,34 +145,47 @@ class Booking extends Base{
 		// 	this.seatOccupied();
 		// });
 
+		// $(document).on('click', '.btn-danger', function() {
+		// 	let clickedbutton = $(this);
+		// 	clickedbutton
+		// });
+
+
 		$(document).on('click', '#addchild', () => {
 			this.child += 1;
 			that.renderTicketButtons();
+			that.disableAddButton('child');
+
 		});
 
 		$(document).on('click', '#removechild', () => {
 			this.child -= 1;
 			that.renderTicketButtons();
+			that.disableRemoveButton('child');
 		});		
 
 		$(document).on('click', '#addadult', () => {
 			this.adult += 1;
 			that.renderTicketButtons();
+			that.disableAddButton('adult');
 		});
 
 		$(document).on('click', '#removeadult', () => {
 			this.adult -= 1;
 			that.renderTicketButtons();
+			that.disableRemoveButton('adult');
 		});
 
 		$(document).on('click', '#addpensioner', () => {
 			this.pensioner += 1;
 			that.renderTicketButtons();
+			that.disableAddButton('pensioner');
 		});
 
 		$(document).on('click', '#removepensioner', () => {
 			this.pensioner -= 1;
 			that.renderTicketButtons();
+			that.disableRemoveButton('pensioner');
 		});
 		
 	} // end eventhandler
