@@ -10,6 +10,7 @@ class Booking extends Base{
 		this.time = '21.00';
 		this.auditorium = 'Lilla Salongen';
 		this.userID = 1;
+		this.orderID = [];
 
 		this.child=0;
 		this.adult=0;
@@ -89,7 +90,7 @@ class Booking extends Base{
 				<button class="btn btn-danger book-btn">Forstätt</button>
 			</div>`;
   	$('.ticketholder').html(html);
-	}
+	 }
 
 	disableRemoveButton(ticketType){
 		let val = this[ticketType];
@@ -118,8 +119,8 @@ class Booking extends Base{
 		$(document).on('click','.book-btn',function(){
 			
 			that.booking.show = that.showObject;
-
 			that.booking.show.userID = that.userID;
+			that.booking.show.orderID = [];
 			that.booking.show.bookedSeats = [];
 
 			console.log(that.booking);
