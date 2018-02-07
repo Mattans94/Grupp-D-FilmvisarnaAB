@@ -9,6 +9,7 @@ class Booking extends Base{
 		this.date = '2018-03-04';
 		this.time = '21.00';
 		this.auditorium = 'Lilla Salongen';
+		this.title = 'Wind River';
 		this.userID = 1;
 		this.orderID = [];
 
@@ -36,7 +37,7 @@ class Booking extends Base{
 	}
 
 	start(){
-		this.getshowObject('Wind River', this.auditorium, this.date, this.time);
+		this.getshowObject(this.title, this.auditorium, this.date, this.time);
 	    this.eventHandler();
 	    this.renderTicketButtons();
 	    myApp.theater.scale();
@@ -50,7 +51,17 @@ class Booking extends Base{
 		this.showObject = this.showObject.filter((x) => date == x.date);
 		this.showObject = this.showObject.find((x) => time == x.time);
 		// this.showObject = this.showObject[0]
-		console.log(this.showObject);
+		//console.log(this.showObject);
+	}
+
+	updateTotalPrice(){
+		// prices.start();
+		let prices= new Prices(this.child, this.adult, this.pensioner);
+		prices.calculateTotalPrice();
+	}
+
+	myNumberOfSeatsCheck() {
+		this.myNumberOfSeats = this.child + this.adult + this.pensioner;
 	}
 
 	renderTicketButtons() {
