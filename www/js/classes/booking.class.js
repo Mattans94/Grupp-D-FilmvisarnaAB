@@ -15,6 +15,7 @@ class Booking extends Base{
 		this.child=0;
 		this.adult=0;
 		this.pensioner=0;
+		this.myNumberOfSeats=0;
 
 		
 	//Alla beställningar som har gjorts
@@ -154,6 +155,7 @@ class Booking extends Base{
 
 		$(document).on('click', '#addchild', () => {
 			this.child += 1;
+			this.myNumberOfSeats+=1;
 			that.renderTicketButtons();
 			that.disableAddButton('child');
 
@@ -161,30 +163,35 @@ class Booking extends Base{
 
 		$(document).on('click', '#removechild', () => {
 			this.child -= 1;
+			this.myNumberOfSeats-=1;
 			that.renderTicketButtons();
 			that.disableRemoveButton('child');
 		});		
 
 		$(document).on('click', '#addadult', () => {
 			this.adult += 1;
+			this.myNumberOfSeats+=1;
 			that.renderTicketButtons();
 			that.disableAddButton('adult');
 		});
 
 		$(document).on('click', '#removeadult', () => {
 			this.adult -= 1;
+			this.myNumberOfSeats-=1;
 			that.renderTicketButtons();
 			that.disableRemoveButton('adult');
 		});
 
 		$(document).on('click', '#addpensioner', () => {
 			this.pensioner += 1;
+			this.myNumberOfSeats+=1;
 			that.renderTicketButtons();
 			that.disableAddButton('pensioner');
 		});
 
 		$(document).on('click', '#removepensioner', () => {
 			this.pensioner -= 1;
+			this.myNumberOfSeats-=1;
 			that.renderTicketButtons();
 			that.disableRemoveButton('pensioner');
 		});
