@@ -110,8 +110,8 @@ class Theater extends Base{
 
 } //end class
 
-let booking = new Booking;
-let theater = new Theater;
+// let booking = new Booking;
+// let theater = new Theater;
 let fixFooter = new Footer;
 
 fixFooter.footerFix();

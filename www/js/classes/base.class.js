@@ -77,7 +77,7 @@ class Base {
   }
 
   getShowObject(movieTitle) {
-    return Data.showObjects.filter((m) => movieTitle == m.film);
+    return Data.showObjects.object.filter((m) => movieTitle == m.film);
   }
 
 }
