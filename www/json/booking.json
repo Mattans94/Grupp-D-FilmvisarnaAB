@@ -1,0 +1,111 @@
+[
+  {
+    "show": {
+      "date": "2018-03-04",
+      "auditorium": "Lilla Salongen",
+      "film": "Wind River",
+      "time": "21.00",
+      "bookedSeats": [
+        2,
+        3,
+        4
+      ],
+      "userID": 1
+    }
+  },
+  {
+    "↻": "$[0]"
+  },
+  {
+    "show": {
+      "date": "2018-03-04",
+      "auditorium": "Lilla Salongen",
+      "film": "Wind River",
+      "time": "21.00",
+      "bookedSeats": [
+        18,
+        19
+      ],
+      "userID": 1
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-04",
+      "auditorium": "Lilla Salongen",
+      "film": "Wind River",
+      "time": "21.00",
+      "bookedSeats": [
+        81
+      ],
+      "userID": 1
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-04",
+      "auditorium": "Lilla Salongen",
+      "film": "Wind River",
+      "time": "21.00",
+      "bookedSeats": [
+        1
+      ],
+      "userID": 1
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-04",
+      "auditorium": "Lilla Salongen",
+      "film": "Wind River",
+      "time": "21.00",
+      "bookedSeats": [
+        1
+      ],
+      "userID": 1
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-04",
+      "auditorium": "Lilla Salongen",
+      "film": "Wind River",
+      "time": "21.00",
+      "bookedSeats": [],
+      "userID": 1
+    }
+  },
+  {
+    "↻": "$[6]"
+  },
+  {
+    "↻": "$[6]"
+  },
+  {
+    "show": {
+      "date": "2018-03-04",
+      "auditorium": "Lilla Salongen",
+      "film": "Wind River",
+      "time": "21.00",
+      "bookedSeats": [
+        1
+      ],
+      "userID": 1,
+      "orderID": []
+    }
+  },
+  {
+    "↻": "$[9]"
+  },
+  {
+    "show": {
+      "date": "2018-03-04",
+      "auditorium": "Lilla Salongen",
+      "film": "Wind River",
+      "time": "21.00",
+      "bookedSeats": [],
+      "userID": 1,
+      "orderID": []
+    }
+  }
+]

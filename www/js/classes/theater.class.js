@@ -2,26 +2,29 @@ class Theater extends Base{
 
 	constructor() {
 		super();
+		
 		JSON._load('theaters').then((theater) => {
 			this.theaterObjects = theater;
 			this.start();
 		});
+		this.booking = new Booking;
 
 	} //end
 
 	start(){
-		this.eventHandler();
+		
 		this.getTheaterObject("Stora Salongen");
 		this.getSeatsPerRow(this.theaterObject);
 		this.setWidth();
 		this.setHeight();
 		this.renderTheater();
 		this.scale();
+		this.eventHandler();
+
 	}
 
 	getTheaterObject(theaterName) {
 		this.theaterObject = this.theaterObjects.find((x) => theaterName == x.name);
-		console.log(this.theaterObject);
 	}
 
 	getSeatsPerRow(theaterObject) {
@@ -41,7 +44,7 @@ class Theater extends Base{
 
 			for (let seat = 0; seat < this.seatsPerRow; seat++) {
 
-				html += `<div class="${status} seat mt-1 ml-1" id="seat" data-rowid="${row}" data-seatid="${row}${seat}">${seatnumber}</div>`;
+				html += `<div class="${status} seat mt-1 ml-1" id="seat" data-rowid="${row}" data-seatid="${seatnumber}">${seatnumber}</div>`;
 
 				seatnumber++;
 			}
@@ -58,7 +61,6 @@ class Theater extends Base{
 
 	setHeight(){
 		let fullHeight = this.seatsStoran.length * 55;
-		console.log(fullHeight);
 		$('#theater').css('height', `${fullHeight}`);
 	}
 
@@ -92,7 +94,7 @@ class Theater extends Base{
 
 	eventHandler() {
 		$(document).ready();
-		$(document).on("mouseenter mouseleave click", '.seat', function() {
+		$(document).on("click", '.seat', function() {
 			let seat = $(this);
 			let seatID = seat.data('seatid');
 			let rowID = seat.data('rowid')
@@ -100,18 +102,15 @@ class Theater extends Base{
 			if (seatID == seat.data('seatid') ) {
     		$(seat).toggleClass('booked');
     		$(seat).toggleClass('free');
-    		
     	}
-    	else
-    		console.log(this.seatid);
+    	
 		});
 	}
 
 
-
-
 } //end class
 
+// let booking = new Booking;
 // let theater = new Theater;
 let fixFooter = new Footer;
 
@@ -119,4 +118,7 @@ fixFooter.footerFix();
 $(window).on('resize',function(){
 	// theater.scale();
 	fixFooter.fixOnResize();
-});
+}); 
+
+
+

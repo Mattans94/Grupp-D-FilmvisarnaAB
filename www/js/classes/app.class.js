@@ -40,6 +40,7 @@ class App extends Base {
     this.login = new Login();
     // Create a startpage
     this.signup = new Signup();
+    this.theater = new Theater();
 
     this.popstate = new Popstate(this);
 
