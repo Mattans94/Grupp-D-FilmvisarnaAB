@@ -1,18 +1,22 @@
 class Theater extends Base{
 
+	// constructorn bör få in ett show-object här. Som sedans används hela vägen till booking.
+
 	constructor() {
 		super();
-		
+
 		JSON._load('theaters').then((theater) => {
 			this.theaterObjects = theater;
 			this.start();
 		});
+		// Booking kallas här och i slutet av denna fil. Varför? Snyggt att kalla på den här!
+		// Behöver booking känna till theater? Isåfall -> this.booking = new Booking(this);
 		this.booking = new Booking;
 
 	} //end
 
 	start(){
-		
+
 		this.getTheaterObject("Stora Salongen");
 		this.getSeatsPerRow(this.theaterObject);
 		this.setWidth();
@@ -23,10 +27,12 @@ class Theater extends Base{
 
 	}
 
+	// Snyggt! Kommer kunna användas med det show-objektet som kommer in till constructorn
 	getTheaterObject(theaterName) {
 		this.theaterObject = this.theaterObjects.find((x) => theaterName == x.name);
 	}
 
+	// Vad betyder seatsStoran? Finns det bättre namn?
 	getSeatsPerRow(theaterObject) {
 		let rowlength = theaterObject.seatsPerRow;
 		this.seatsStoran = rowlength;
@@ -103,13 +109,15 @@ class Theater extends Base{
     		$(seat).toggleClass('booked');
     		$(seat).toggleClass('free');
     	}
-    	
+
 		});
 	}
 
 
 } //end class
 
+// Behövs footerfix här? Kan man binda ihop booking & theater så båda initieras på samma gång?
+// Behöver booking någonsin köras utan theater?
 let booking = new Booking;
 let theater = new Theater;
 let fixFooter = new Footer;
@@ -118,7 +126,4 @@ fixFooter.footerFix();
 $(window).on('resize',function(){
 	theater.scale();
 	fixFooter.fixOnResize();
-}); 
-
-
-
+});
