@@ -1,12 +1,22 @@
-class FreeOccupiedSeats{
+class FreeOccupiedSeats extends Bse{
 
   constructor(){
+
+    super();
     this.seats = [];
     //Load theater data from JSON.
-    this.nbrOfSeatsInRow =  [8, 9, 10, 10, 10, 10, 12, 12];
+
+
+
     this.createFreeSeats( this.nbrOfSeatsInRow);
     this.saveToJSON(this.seats);
   }
+
+    JSON._load('theaters').then((theaters) =>{ 
+    this.theaterObjects = theater; 
+    // this.start(); 
+    }); 
+    this.nbrOfSeatsInRow =  [8, 9, 10, 10, 10, 10, 12, 12];
 
 
 
