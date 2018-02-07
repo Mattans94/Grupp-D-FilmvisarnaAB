@@ -14,9 +14,9 @@ class Booking extends Base{
 		this.userID = 1;
 
 		this.child=0;
-		this.adult=1;
+		this.adult=0;
 		this.pensioner=0;
-		this.myNumberOfSeats=1;
+		this.myNumberOfSeats=0;
 		
 
 		
@@ -161,9 +161,7 @@ class Booking extends Base{
 			that.updateTotalPrice();
 			that.myNumberOfSeatsCheck();
 			console.log('myNumberOfSeats', this.myNumberOfSeats);
-			}
-			else {
-				alert ('Går endast att boka 8 platser!');
+			
 			}			
 		});
 
@@ -174,9 +172,7 @@ class Booking extends Base{
 			that.updateTotalPrice();
 			that.myNumberOfSeatsCheck();
 			console.log('myNumberOfSeats', this.myNumberOfSeats);
-		}
-		else {
-			alert ('Du måste boka minst 1 plats!');
+		
 		}
 		});		
 
@@ -188,9 +184,7 @@ class Booking extends Base{
 			that.myNumberOfSeatsCheck();
 			console.log('myNumberOfSeats', this.myNumberOfSeats);
 			}
-			else {
-				alert ('Går endast att boka 8 platser!');
-			}	
+			
 		});
 
 		$(document).on('click', '#removeadult', () => {
@@ -201,9 +195,7 @@ class Booking extends Base{
 			that.myNumberOfSeatsCheck();
 			console.log('myNumberOfSeats', this.myNumberOfSeats);
 			}
-		else {
-			alert ('Du måste boka minst 1 plats!');
-		}
+		
 		});
 
 		$(document).on('click', '#addpensioner', () => {
@@ -214,9 +206,7 @@ class Booking extends Base{
 			that.myNumberOfSeatsCheck();
 			console.log('myNumberOfSeats', this.myNumberOfSeats);
 			}
-			else {
-				alert ('Går endast att boka 8 platser!');
-			}	
+				
 		});
 
 		$(document).on('click', '#removepensioner', () => {
@@ -227,9 +217,7 @@ class Booking extends Base{
 			that.myNumberOfSeatsCheck();
 			console.log('myNumberOfSeats', this.myNumberOfSeats);
 			}
-		else {
-			alert ('Du måste boka minst 1 plats!');
-		}
+		
 		});
 
 		

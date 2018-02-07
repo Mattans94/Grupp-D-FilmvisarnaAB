@@ -100,7 +100,36 @@ class Theater extends Base {
 		$('#theater-holder').height(orgH * scaling);
 	}
 
+	checkFreeSeats(){
+		if($(this).hasClass('booked')){return;}
+		  let amount = booking.myNumberOfSeats;
+		  let $allNext = $(this).nextAll();
+		  let $elementsToSelect = [$(this)];
+		  console.log($elementsToSelect);
 
+		  let foundNextStop = false;
+		  let found = 1;
+		  $allNext.each(function() {
+		     if (foundNextStop || found == amount) {
+		     	return;
+		     }
+		     if ($(this).hasClass('booked')) {
+		       foundNextStop = true;
+		     }
+		     else {
+		       found++;
+		       $elementsToSelect.push($(this));
+		     }
+		  });
+
+		  if(found<amount) {
+		  	return;
+		  }
+		  console.log($elementsToSelect);
+		  $elementsToSelect.forEach(function($element) {   
+		    $element.addClass('select');
+		  });
+	}
 
 	eventHandler() {
 		$(document).ready();
@@ -108,32 +137,57 @@ class Theater extends Base {
 			let rowID;
 			let status;
 
+		// $(document).on('click','.seat', this.checkFreeSeats());
+
 		$(document).on("mouseenter", '.seat', function() {	
 			let myNumberOfSeats=0;
 			myNumberOfSeats = booking.myNumberOfSeats;
-			let seat = $(this);
-			seatID = seat.data('seatid');
-			rowID = seat.data('rowid');
+			let $seat = $(this);
+			seatID = $seat.data('seatid');
+			rowID = $seat.data('rowid');
 
-			if (seatID == seat.data('seatid') && status == 'booked' ) {
-	    		console.log('this seat is booked', seat);
+			if (seatID == $seat.data('seatid') && status == 'booked' ) {
+	    		console.log('this seat is booked', $seat);
 	    }
-	    else if (seatID == seat.data('seatid') && status == 'free' ) {
+	    else if (seatID == $seat.data('seatid') && status == 'free' ) {
 	    	for(let i = 0; i < myNumberOfSeats; i++) {
-	    		// $(seat).each(function(seatID, seat) {
 
-	    			$('seatID').addClass('reserving');
-		    		$('seatID').removeClass('free');
-		    		$('seatID').data('status', 'reserving');
-		    		status = seat.data('status');
+	    			$seat.addClass('reserving');
+		    		$seat.removeClass('free');
+		    		$seat.data('status', 'reserving');
+		    		status = $seat.data('status');
 
-		    		if ( $( this ).is(seatID+myNumberOfSeats) ) {
-				      return false;
 				    }
-
     		}
-    	}
-	  });
+    	})
+
+	
+///////////////////////////////////////////////////////////////////////////////  
+// 	  $(document).on('click','.seat',check);
+
+// function check(){
+//   if($(this).hasClass('booked')){return;}
+//   let amount = booking.myNumberOfSeats;
+//   let $allNext = $(this).nextAll();
+//   let $elementsToSelect = [$(this)];
+//   let foundNextStop = false;
+//   let found = 1;
+//   $allNext.each(function(){
+//      if(foundNextStop || found == amount){return;}
+//      if($(this).hasClass('booked')){
+//        foundNextStop = true;
+//      }else{
+//        found++;
+//        $elementsToSelect.push($(this));
+//      }
+//   });
+//   if(found<amount){return;}
+//   console.log($elementssToSelect);
+//   $elementsToSelect.forEach(function($element){   
+//     $element.addClass('select');
+//   });
+// }
+///////////////////////////////////////////////////////////////////////////////  
 
 // 	  <script>
 // $( "button" ).click(function() {
