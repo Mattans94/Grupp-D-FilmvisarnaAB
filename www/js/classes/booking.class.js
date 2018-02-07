@@ -15,7 +15,7 @@ class Booking extends Base{
 		this.child=0;
 		this.adult=0;
 		this.pensioner=0;
-
+		this.noOfBookedSeats=0;
 		
 	//Alla beställningar som har gjorts
 		JSON._load('booking').then((seats) => {
@@ -38,6 +38,7 @@ class Booking extends Base{
 		this.getshowObject('Wind River', this.auditorium, this.date, this.time);
 	    this.eventHandler();
 	    this.renderTicketButtons();
+		this.checkForDisable();	
 	    theater.scale();
 			
 	}
@@ -84,6 +85,10 @@ class Booking extends Base{
 					    <button type="button" class="btn btn-danger addbtn" id="addpensioner"><strong>+</strong></button>
 				  	</div>
 					</div>
+				<div>
+					<small class="text-danger"> Du kan välja max 8 biljetter
+					</small>
+				</div>
 				</span>
 			</div>
 			<div class="ml-3 mt-5">			
@@ -92,19 +97,37 @@ class Booking extends Base{
   	$('.ticketholder').html(html);
 	 }
 
+	
+	checkForDisable(){
+		this.disableRemoveButton('child');
+		this.disableRemoveButton('adult');
+		this.disableRemoveButton('pensioner');
+		this.disableAddButton('child');
+		this.disableAddButton('adult');
+		this.disableAddButton('pensioner');
+
+	}
+
+
 	disableRemoveButton(ticketType){
 		let val = this[ticketType];
 		if (val <= 0){
 			$('#remove' + ticketType).prop('disabled', true);
-		} 
-	};
+		} else {
+			$('#remove' + ticketType).prop('disabled', false);
+		}
+	}
 
 	disableAddButton(ticketType){
 		let val = this[ticketType];
-		if (val == 8){
+		if (val >= 8  || this.noOfBookedSeats == 8){
 			$('#add' + ticketType).prop('disabled', true);
+		}else {
+			$('#add' + ticketType).prop('disabled', false);
 		}
 	}
+
+
 
 
 	eventHandler() {
@@ -154,43 +177,53 @@ class Booking extends Base{
 
 		$(document).on('click', '#addchild', () => {
 			this.child += 1;
-			that.renderTicketButtons();
-			that.disableAddButton('child');
-
-		});
+			this.noOfBookedSeats +=1;
+			$('#childTickets').attr("placeholder", this.child);
+			})
 
 		$(document).on('click', '#removechild', () => {
 			this.child -= 1;
-			that.renderTicketButtons();
-			that.disableRemoveButton('child');
-		});		
+			this.noOfBookedSeats -=1;			
+			$('#childTickets').attr("placeholder", this.child)
+			// that.renderTicketButtons();
+		})		
 
 		$(document).on('click', '#addadult', () => {
 			this.adult += 1;
-			that.renderTicketButtons();
-			that.disableAddButton('adult');
-		});
+			this.noOfBookedSeats +=1;			
+			// that.renderTicketButtons();
+			$('#adultTickets').attr("placeholder", this.adult)
+		})
 
 		$(document).on('click', '#removeadult', () => {
 			this.adult -= 1;
-			that.renderTicketButtons();
-			that.disableRemoveButton('adult');
-		});
+			this.noOfBookedSeats -=1;			
+			// that.renderTicketButtons();
+			$('#adultTickets').attr("placeholder", this.adult)
+		})
 
 		$(document).on('click', '#addpensioner', () => {
 			this.pensioner += 1;
-			that.renderTicketButtons();
-			that.disableAddButton('pensioner');
-		});
+			this.noOfBookedSeats +=1;			
+			// that.renderTicketButtons();
+			$('#pensionerTickets').attr("placeholder", this.pensioner)
+		})
 
 		$(document).on('click', '#removepensioner', () => {
 			this.pensioner -= 1;
-			that.renderTicketButtons();
-			that.disableRemoveButton('pensioner');
-		});
+			this.noOfBookedSeats -=1;
+			// that.renderTicketButtons();
+			$('#pensionerTickets').attr("placeholder", this.pensioner)
+		})
+
+		$(document).on('click','.addbtn', () =>{
+			this.checkForDisable();
+		})
+
+		$(document).on('click','.removebtn', () =>{
+			this.checkForDisable();
+		})
 		
 	} // end eventhandler
-
-
 
 } // end class
