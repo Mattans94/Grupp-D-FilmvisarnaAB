@@ -39,7 +39,7 @@ class Booking extends Base{
 		this.getshowObject('Wind River', this.auditorium, this.date, this.time);
 	    this.eventHandler();
 	    this.renderTicketButtons();
-	    theater.scale();
+	    myApp.theater.scale();
 			
 	}
 
