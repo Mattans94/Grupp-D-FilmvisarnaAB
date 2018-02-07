@@ -1,9 +1,10 @@
 class Booking extends Base{
 
 	// constructor(userid, date, time, auditorium) {
-	// 
+	//
 
-
+	// Bör ta emot ett showObject från klassen theater som också initierar denna klass?
+	// Behöver booking någonsin kallas om inte theater-kallas?
 	constructor() {
 		super();
 		this.date = '2018-03-04';
@@ -16,7 +17,9 @@ class Booking extends Base{
 		this.adult=0;
 		this.pensioner=0;
 		this.noOfBookedSeats=0;
-		
+
+		// Detta finns redan globalt i en data-klass. Är nog inte fel att ladda om när man väl bokar.
+		// Men bör göras till Data-klassen istället för endast i denna klassen
 	//Alla beställningar som har gjorts
 		JSON._load('booking').then((seats) => {
 	      // Retrieve the app from JSON
@@ -34,15 +37,18 @@ class Booking extends Base{
 
 	}
 
+	// Behövs theater.scale() här? Den körs redan on-resize i popstate.
 	start(){
 		this.getshowObject('Wind River', this.auditorium, this.date, this.time);
 	    this.eventHandler();
 	    this.renderTicketButtons();
-		this.checkForDisable();	
+		this.checkForDisable();
 	    theater.scale();
-			
+
 	}
 
+	// Detta finns som en global metod i klassen Base. Där skickar man in tid & datum
+	// Behövs denna om man skickar med ett show-object direkt från theater-klassen?
 	getshowObject(showName, auditorium, date, time) {
 		console.log(this.showObjects);
 		this.showObject = this.showObjects.object.filter((x) => showName == x.film);
@@ -91,13 +97,13 @@ class Booking extends Base{
 				</div>
 				</span>
 			</div>
-			<div class="ml-3 mt-5">			
+			<div class="ml-3 mt-5">
 				<button class="btn btn-danger book-btn">Forstätt</button>
 			</div>`;
   	$('.ticketholder').html(html);
 	 }
 
-	
+	// Kan man göra om denna på något sätt för att optimera?
 	checkForDisable(){
 		this.disableRemoveButton('child');
 		this.disableRemoveButton('adult');
@@ -108,7 +114,8 @@ class Booking extends Base{
 
 	}
 
-
+	// Bra metoder, men vad händer om man går in i console och "fakear klick"?
+	// Utöka till att sätta till placeholder till 0 utifall man skulle ändra på det sättet?
 	disableRemoveButton(ticketType){
 		let val = this[ticketType];
 		if (val <= 0){
@@ -129,18 +136,20 @@ class Booking extends Base{
 
 
 
-
+	// Lång eventHandler - kanske behövs.
+	// Varför laddas json in i eventHandler och inte constructorn?
+	// Behöver man ladda json varje gång man trycker någonstans? Isåfall lägg inladdning på ett klick
 	eventHandler() {
 		JSON._load('booking').then((data) => {
 	      // Retrieve the app from JSON
 	      this.bookedSeats = data;
 	      console.log(this.bookedSeats)
 	    })
-	 
+
 		this.booking = {};
 		let that = this;
 		$(document).on('click','.book-btn',function(){
-			
+
 			that.booking.show = that.showObject;
 			that.booking.show.userID = that.userID;
 			that.booking.show.orderID = [];
@@ -174,7 +183,7 @@ class Booking extends Base{
 		// 	clickedbutton
 		// });
 
-
+		// Kan man göra dessa annorlunda? Kolla tillsammans
 		$(document).on('click', '#addchild', () => {
 			this.child += 1;
 			this.noOfBookedSeats +=1;
@@ -183,28 +192,28 @@ class Booking extends Base{
 
 		$(document).on('click', '#removechild', () => {
 			this.child -= 1;
-			this.noOfBookedSeats -=1;			
+			this.noOfBookedSeats -=1;
 			$('#childTickets').attr("placeholder", this.child)
 			// that.renderTicketButtons();
-		})		
+		})
 
 		$(document).on('click', '#addadult', () => {
 			this.adult += 1;
-			this.noOfBookedSeats +=1;			
+			this.noOfBookedSeats +=1;
 			// that.renderTicketButtons();
 			$('#adultTickets').attr("placeholder", this.adult)
 		})
 
 		$(document).on('click', '#removeadult', () => {
 			this.adult -= 1;
-			this.noOfBookedSeats -=1;			
+			this.noOfBookedSeats -=1;
 			// that.renderTicketButtons();
 			$('#adultTickets').attr("placeholder", this.adult)
 		})
 
 		$(document).on('click', '#addpensioner', () => {
 			this.pensioner += 1;
-			this.noOfBookedSeats +=1;			
+			this.noOfBookedSeats +=1;
 			// that.renderTicketButtons();
 			$('#pensionerTickets').attr("placeholder", this.pensioner)
 		})
@@ -223,7 +232,7 @@ class Booking extends Base{
 		$(document).on('click','.removebtn', () =>{
 			this.checkForDisable();
 		})
-		
+
 	} // end eventhandler
 
 } // end class
