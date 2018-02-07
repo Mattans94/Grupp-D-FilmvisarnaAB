@@ -1,6 +1,7 @@
-class Popstate{
+class Popstate extends Base {
 
   constructor(app){
+    super();
     this.app = app;
     this.clickEvents();
     this.changePage();
@@ -35,7 +36,6 @@ class Popstate{
 
     let urls = {
       '/' : 'startpage',
-      '/Theater' : 'theaterPage',
       '/Tjuren_Ferdinand' : 'movieFerdinand',
       '/Wind_River': 'movieWindRiver',
       '/Three_Billboards_Outside_Ebbing_Missouri': 'movieThreeBillboards',
@@ -45,8 +45,13 @@ class Popstate{
     }
 
     let methodName = urls[url];
-    this[methodName]();
+    if (url == "/Theater") {
+      console.log('Theater is intilized in movie.class.js instead of popstate. Need to fix alot of buggs.');
 
+    } else {
+      console.log('Not theater');
+    this[methodName]();
+    }
   }
 
   renderKalendarium(){
@@ -61,7 +66,8 @@ class Popstate{
     this.renderKalendarium();
   }
 
-  theaterPage(){
+  theaterPage(bookingShowObject){
+    // booking-showobject is the object that is being clicked when intilize theater
     $('main').empty();
     let theater = new Theater();
     theater.render('main');

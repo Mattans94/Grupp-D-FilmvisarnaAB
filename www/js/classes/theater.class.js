@@ -2,7 +2,7 @@ class Theater extends Base{
 
 	constructor() {
 		super();
-		
+
 		JSON._load('theaters').then((theater) => {
 			this.theaterObjects = theater;
 			this.start();
@@ -12,7 +12,7 @@ class Theater extends Base{
 	} //end
 
 	start(){
-		
+
 		this.getTheaterObject("Stora Salongen");
 		this.getSeatsPerRow(this.theaterObject);
 		this.setWidth();
@@ -103,7 +103,7 @@ class Theater extends Base{
     		$(seat).toggleClass('booked');
     		$(seat).toggleClass('free');
     	}
-    	
+
 		});
 	}
 
@@ -118,7 +118,4 @@ fixFooter.footerFix();
 $(window).on('resize',function(){
 	// theater.scale();
 	fixFooter.fixOnResize();
-}); 
-
-
-
+});
