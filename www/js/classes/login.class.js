@@ -8,7 +8,8 @@ class Login extends Base{
 	}
 
 	eventHandlers(){
-		$("#login-btn").on("click", () => {
+		$(document).on('click', '#login-btn', () => {
+
 			JSON._load('users').then((users) => {
      		this.userObjects = users;
    		})
@@ -34,15 +35,22 @@ class Login extends Base{
 			})
 		});
 
-    $('#togglelogin-btn').on('click', function(){
+		$(document).on('click', '#togglelogin-btn', () => {
 			let text = $(this).text();
 			console.log(text);
 			$(this).text(text == "Skapa konto" ? "Logga in" : "Skapa konto");
 			$('.logintoggle').slideToggle(400);
 		});
 
+
 		$('.myAccBtn').on('click', function(){
 			$('.myloginform').fadeToggle(200);
+		});
+
+
+		$(document).on("click", "#logout-btn", () => {
+			this.logout();
+			console.log("Logged out...");
 		});
 
 
@@ -112,6 +120,8 @@ class Login extends Base{
 
 	logout(){
 		this.loggedInUser = {isLoggedIn: false};
+		$('.renderForm').empty();
+		myApp.loginform.render('.renderForm');
 	}
 
 }
