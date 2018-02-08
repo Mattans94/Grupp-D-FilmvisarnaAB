@@ -188,5 +188,128 @@
       "userID": 1,
       "orderID": []
     }
+  },
+  {
+    "show": {
+      "date": "2018-03-03",
+      "auditorium": "Stora Salongen",
+      "film": "Call Me By Your Name",
+      "time": "22.40",
+      "bookedSeats": [
+        78,
+        79
+      ],
+      "userID": 1,
+      "orderID": []
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-03",
+      "auditorium": "Stora Salongen",
+      "film": "Call Me By Your Name",
+      "time": "22.40",
+      "bookedSeats": [
+        78,
+        79
+      ],
+      "userID": 1,
+      "orderID": []
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-07",
+      "auditorium": "Lilla Salongen",
+      "film": "Tjuren Ferdinand",
+      "time": "21.00",
+      "bookedSeats": [
+        28,
+        29,
+        30
+      ],
+      "userID": {
+        "id": 4
+      },
+      "orderID": []
+    }
+  },
+  {
+    "show": {
+      "↻": "$[16].show"
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-07",
+      "auditorium": "Lilla Salongen",
+      "film": "Tjuren Ferdinand",
+      "time": "21.00",
+      "bookedSeats": [
+        28,
+        29,
+        30
+      ],
+      "userID": {
+        "id": 4
+      },
+      "orderID": []
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-07",
+      "auditorium": "Lilla Salongen",
+      "film": "Tjuren Ferdinand",
+      "time": "21.00",
+      "bookedSeats": [
+        28,
+        29
+      ],
+      "userID": {
+        "id": 4
+      },
+      "orderID": []
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-07",
+      "auditorium": "Lilla Salongen",
+      "film": "Tjuren Ferdinand",
+      "time": "21.00",
+      "bookedSeats": [
+        28,
+        29,
+        30
+      ],
+      "userID": {
+        "id": 4
+      },
+      "orderID": []
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-07",
+      "auditorium": "Lilla Salongen",
+      "film": "Tjuren Ferdinand",
+      "time": "21.00",
+      "bookedSeats": [
+        28,
+        29,
+        30,
+        38,
+        39,
+        40,
+        49,
+        50,
+        51
+      ],
+      "userID": {
+        "id": 4
+      },
+      "orderID": []
+    }
   }
 ]

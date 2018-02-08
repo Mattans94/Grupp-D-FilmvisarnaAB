@@ -40,7 +40,7 @@ class Theater extends Base{
 		let date = this.showObject.date;
 		let movie = this.showObject.film;
 		let html = `
-		<h3>
+		<h3 class="text-light">
 			Film: ${movie}
 			Salong: ${this.auditorium}
 			Datum & tid: ${date} ${time}
