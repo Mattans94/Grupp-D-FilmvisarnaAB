@@ -83,7 +83,7 @@ class Base {
   getBookingObject(date, time) {
     let dateFilter = Data.showObjects.object.filter((m) => date == m.date);
     let rightShowTime = dateFilter.find((m) => time == m.time)
-    console.log(rightShowTime);
+    return rightShowTime;
   }
 
 }

@@ -206,5 +206,44 @@
       "userID": 1,
       "orderID": []
     }
+  },
+  {
+    "show": {
+      "date": "2018-03-04",
+      "auditorium": "Lilla Salongen",
+      "film": "Wind River",
+      "time": "21.00",
+      "bookedSeats": [],
+      "userID": 1,
+      "orderID": []
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-16",
+      "auditorium": "Stora Salongen",
+      "film": "Call Me By Your Name",
+      "time": "18.40",
+      "bookedSeats": [
+        "42 data-status=",
+        "43 data-status="
+      ],
+      "userID": 1,
+      "orderID": []
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-22",
+      "auditorium": "Lilla Salongen",
+      "film": "Call Me By Your Name",
+      "time": "22.40",
+      "bookedSeats": [
+        19,
+        20
+      ],
+      "userID": 1,
+      "orderID": []
+    }
   }
 ]

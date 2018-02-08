@@ -1,12 +1,14 @@
 class Theater extends Base{
 
-	constructor(Booking, numberOfChildren, numberOfAdults, numberOfPensioners, auditorium) {
+	constructor(showObject) {
 		super();
-		this.booking = Booking;
-		this.numberOfChildren = numberOfChildren;
-		this.numberOfAdults = numberOfAdults;
-		this.numberOfPensioners = numberOfPensioners;
-		this.auditorium = auditorium;
+		// this.booking = Booking;
+		// this.numberOfChildren = numberOfChildren;
+		// this.numberOfAdults = numberOfAdults;
+		// this.numberOfPensioners = numberOfPensioners;
+		// this.auditorium = auditorium;
+		this.showObject = showObject;
+		this.auditorium = showObject.auditorium;
 
 		JSON._load('theaters').then((theater) => {
 			this.theaterObjects = theater;
@@ -18,14 +20,33 @@ class Theater extends Base{
 
 	start(){
 
-		this.getTheaterObject("Stora Salongen");
+		this.getTheaterObject(this.auditorium);
 		this.getSeatsPerRow(this.theaterObject);
 		this.setWidth();
 		this.setHeight();
 		this.renderTheater();
+		this.booking = new Booking(this.showObject);
+		this.booking.renderTicketButtons();
+		this.renderMovieInfo()
 
 		this.scale();
 		this.eventHandler();
+
+	}
+
+	// This is Andreas try
+	renderMovieInfo(){
+		let time = this.showObject.time;
+		let date = this.showObject.date;
+		let movie = this.showObject.film;
+		let html = `
+		<h3>
+			Film: ${movie}
+			Salong: ${this.auditorium}
+			Datum & tid: ${date} ${time}
+		</h3>
+		`;
+		$('#movierepresentation').html(html);
 
 	}
 
@@ -41,6 +62,8 @@ class Theater extends Base{
 		return rowlength;
 	}
 
+
+
 	renderTheater() {
 		let html = '';
 		let seatnumber=1;
@@ -52,7 +75,7 @@ class Theater extends Base{
 
 			for (let seat = 0; seat < this.seatsPerRow; seat++) {
 
-				html += `<div class="${seatStatus} seat mt-1 ml-1" id="seat" data-rowid="${row}" data-seatid="${seatnumber} data-status="${seatStatus}">${seatnumber}</div>`;
+				html += `<div class="${seatStatus} seat mt-1 ml-1" id="seat" data-rowid="${row}" data-seatid="${seatnumber}" data-status="${seatStatus}">${seatnumber}</div>`;
 
 				seatnumber++;
 			}
@@ -63,9 +86,9 @@ class Theater extends Base{
 		// $('html, body').animate({
     //     scrollTop: $("#theater").offset().top -20
     // }, 500);
-
-
 	}
+
+
 
 	setHeight(){
 		let fullHeight = this.seatsStoran.length * 55;
@@ -96,6 +119,14 @@ class Theater extends Base{
 		$('#theater').css('transform', `scale(${scaling})`);
 		$('#theater-holder').width(orgW * scaling);
 		$('#theater-holder').height(orgH * scaling);
+	}
+
+	scaleToCenter(){
+		 let holderWidth = $('#theater-holder').width();
+		 let theaterWidth = $('#theater').width();
+		 let marginLeft = holderWidth - theaterWidth;
+
+		 $('#theater').css("margin-left",marginLeft);
 	}
 
 // checkFreeSeats(){
@@ -130,7 +161,7 @@ class Theater extends Base{
 // 	}
 
 	eventHandler() {
-		$(document).ready();
+		let that = this;
 
 		let seat = $(this);
 			let seatID; // = seat.data('seatid');
@@ -139,7 +170,7 @@ class Theater extends Base{
 
 		$(document).on("click", '.seat', function() {
 			let myNumberOfSeats=0;
-			myNumberOfSeats = booking.myNumberOfSeats;
+			myNumberOfSeats = that.booking.myNumberOfSeats;
 			let $seat = $(this);
 			seat = $(this);
 			console.log('Seat', seat);
@@ -206,11 +237,3 @@ $(document).on("mouseleave", '.seat', function() {
 	}// end eventhandler
 
 } //end class
-let theater = new Theater;
-let fixFooter = new Footer;
-
-fixFooter.footerFix();
-$(window).on('resize',function(){
-	// theater.scale();
-	fixFooter.fixOnResize();
-});

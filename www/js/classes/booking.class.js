@@ -5,12 +5,18 @@ class Booking extends Base{
 
 	// Bör ta emot ett showObject från klassen theater som också initierar denna klass?
 	// Behöver booking någonsin kallas om inte theater-kallas?
-	constructor() {
+	constructor(showObject) {
 		super();
-		this.date = '2018-03-04';
-		this.time = '21.00';
-		this.auditorium = 'Lilla Salongen';
-		this.title = 'Wind River';
+
+		// This is from the right showObject
+		this.date = showObject.date;
+		this.time = showObject.time;
+		this.auditorium = showObject.auditorium;
+		this.title = showObject.film;
+		this.showObject = showObject;
+		//
+
+
 		this.userID = 1;
 		this.orderID = [];
 
@@ -25,14 +31,7 @@ class Booking extends Base{
 		JSON._load('booking').then((seats) => {
 	      // Retrieve the app from JSON
 	      this.bookedSeats = seats;
-	    });
-
-	    JSON._load('shows').then((shows) => {
-	      // Retrieve the app from JSON
-	      //console.log(this)
-	      this.showObjects = shows;
-	      this.start();
-
+				this.start();
 	    });
 
 
@@ -40,25 +39,14 @@ class Booking extends Base{
 
 	// Behövs theater.scale() här? Den körs redan on-resize i popstate.
 	start(){
-		this.getshowObject(this.title, this.auditorium, this.date, this.time);
+
 	    this.eventHandler();
 	    this.renderTicketButtons();
 		this.checkForDisable();
-	    theater.scale();
 
 	}
 
-	// Detta finns som en global metod i klassen Base. Där skickar man in tid & datum
-	// Behövs denna om man skickar med ett show-object direkt från theater-klassen?
-	getshowObject(showName, auditorium, date, time) {
 
-		this.showObject = this.showObjects.object.filter((x) => showName == x.film);
-		this.showObject = this.showObject.filter((x) => auditorium == x.auditorium);
-		this.showObject = this.showObject.filter((x) => date == x.date);
-		this.showObject = this.showObject.find((x) => time == x.time);
-		// this.showObject = this.showObject[0]
-
-	}
 
 	updateTotalPrice(){
 		// prices.start();
@@ -72,8 +60,7 @@ class Booking extends Base{
 
 	renderTicketButtons() {
 		let html =
-			`<div class="row justify-content-center">
-				<span>
+			`<div class="row">
 				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 						<p class="text-white">Ordinarie</p>
 					  <div class="btn-group mr-2" role="group" aria-label="adult group">
@@ -82,8 +69,7 @@ class Booking extends Base{
 						  <button type="button" class="btn btn-danger addbtn" id="addadult"><strong>+</strong></button>
 					 	</div>
 					</div>
-				</span>
-			  <span>
+
 				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 			  		<p class="text-white">Barn (under 12 år)</p>
 				  	<div class="btn-group mr-2" role="group" aria-label="child group">
@@ -92,8 +78,7 @@ class Booking extends Base{
 					    <button type="button" class="btn btn-danger addbtn" id="addchild"><strong>+</strong></button>
 				  	</div>
 					</div>
-				</span>
-				<span>
+
 				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 						<p class="text-white">Pensionär</p>
 				  	<div class="btn-group mr-2" role="group" aria-label="pensioner group">
@@ -102,14 +87,11 @@ class Booking extends Base{
 					    <button type="button" class="btn btn-danger addbtn" id="addpensioner"><strong>+</strong></button>
 				  	</div>
 					</div>
-				<div>
-					<small class="text-danger"> Du kan välja max 8 biljetter
-					</small>
-				</div>
-				</span>
-			</div>
-			<div class="ml-3 mt-5">
-				<button class="btn btn-danger book-btn">Forstätt</button>
+					<div>
+						<small class="text-danger"> Du kan välja max 8 biljetter
+						</small>
+					</div>
+
 			</div>`;
   	$('.ticketholder').html(html);
 	 }

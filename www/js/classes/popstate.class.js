@@ -69,7 +69,7 @@ class Popstate extends Base {
   theaterPage(bookingShowObject){
     // booking-showobject is the object that is being clicked when intilize theater
     $('main').empty();
-    let theater = new Theater();
+    let theater = new Theater(bookingShowObject);
     theater.render('main');
     theater.scale();
     $(window).on('resize',function(){
