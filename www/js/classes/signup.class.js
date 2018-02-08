@@ -110,7 +110,7 @@ class Signup {
 			}
 		}
 		if (!condition) {
-			$('#signup-password').css({"border": "1px solid red"});
+			$('#signup-username').css({"border": "1px solid red"});
 			$('.error-signup-message').append('<p>- Användaren finns redan</p>');
 		}
 		return condition;
