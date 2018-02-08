@@ -28,6 +28,7 @@ class Signup {
 				this.saveUsers(tempObject);
 
 				console.log('Success!');
+				$(".user-created").show();
 				this.emptyInputs();
 				}
 
@@ -37,6 +38,8 @@ class Signup {
 
 	clearAllInputs() {
 		$('.error-signup-message').text('');
+		$('.error-signup-message2').text('');
+		$('.error-signup-message3').text('');
 		$('#signup-password').css({"border": "1px solid green"});
 		$('#signup-username').css({"border": "1px solid green"});
 		$('#signup-name').css({"border": "1px solid green"});
@@ -110,7 +113,7 @@ class Signup {
 			}
 		}
 		if (!condition) {
-			$('#signup-password').css({"border": "1px solid red"});
+			$('#signup-username').css({"border": "1px solid red"});
 			$('.error-signup-message').append('<p>- Användaren finns redan</p>');
 		}
 		return condition;
@@ -122,7 +125,7 @@ class Signup {
 		}
 		else{
 			$('#signup-password').css({"border": "1px solid red"});
-			$('.error-signup-message').append('<p>- Lösenord måste vara minst 6 tecken</p>');
+			$('.error-signup-message3').append('<p>- Lösenord måste vara minst 6 tecken</p>');
 			return false;
 		}
 	}
@@ -132,7 +135,7 @@ class Signup {
 			return true;
 		}	else {
 			$('#signup-username').css({"border": "1px solid red"});
-			$('.error-signup-message').append('<p>- Användarnamn måste vara en giltig email</p>');
+			$('.error-signup-message2').append('<p>- Användarnamn måste vara en giltig email</p>');
 			return false;
 		}
 	}

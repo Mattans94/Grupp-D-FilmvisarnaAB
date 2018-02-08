@@ -6,49 +6,15 @@ Object.assign(LoggedInForm.prototype, { template(){ return `
         Mitt konto
       </button>
 
-      <form class="dropdown-menu p-4 myloggedinform show">
+      <form class="dropdown-menu p-4 myloggedinform">
         <div class="loggedin">
           <form class="dropdown-menu p-4 myloginform">
         <div class="logintoggle loginContainer">
           <h3>Inloggad som:</h3>
           <h5>${myApp.login.loggedInUser.name}</h5>
-          <div class="form-group">
-            <label for="exampleDropdownFormEmail2">Email</label>
-            <input type="email" class="form-control" id="login-username" placeholder="Din email">
-          </div>
-          <div class="form-group">
-            <label for="exampleDropdownFormPassword2">Password</label>
-            <input type="password" class="form-control" id="login-password" placeholder="Password">
-          </div>
-          <a class="btn btn-success text-light col-12" id="login-btn">Logga in</a>
           <div class="dropdown-divider"></div>
+          <a class="btn btn-danger redbtn text-light col-12" id="logout-btn">Logga ut</a>
         </div>
-
-
-
-        <div class="logintoggle signupContainer" style="display: none">
-          <h3>Skapa konto</h3>
-          <div class="form-group">
-            <label for="exampleDropdownFormPassword2">Namn</label>
-            <input type="text" class="form-control" id="signup-name" placeholder="Ditt namn">
-          </div>
-          <div class="form-group">
-            <label for="exampleDropdownFormEmail2">Email</label>
-            <input type="email" class="form-control" id="signup-username" placeholder="Din email">
-          </div>
-          <div class="form-group">
-            <label for="exampleDropdownFormPassword2">Password</label>
-            <input type="password" class="form-control" id="signup-password" placeholder="Password">
-            <div class="error-signup-message error-message mt-2"></div>
-          </div>
-
-
-          <a class="btn btn-danger redbtn text-light col-12" id="signup-btn">Skapa konto</a>
-          <div class="dropdown-divider"></div>
-        </div>
-          <a class="btn btn-warning text-dark col-12" id="togglelogin-btn">Skapa konto</a>
-
-      </form>
       </form>
     </div>
   </li>

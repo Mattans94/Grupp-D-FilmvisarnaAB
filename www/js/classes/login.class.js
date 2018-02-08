@@ -1,14 +1,16 @@
 class Login extends Base{
 
-	constructor(){
+	constructor(app){
 		super();
+		this.app = app;
 		this.loggedInUser = {isLoggedIn: false};
 		this.eventHandlers();
-
+		this.readSession();
 	}
 
 	eventHandlers(){
-		$("#login-btn").on("click", () => {
+		$(document).on('click', '#login-btn', () => {
+
 			JSON._load('users').then((users) => {
      		this.userObjects = users;
    		})
@@ -22,31 +24,67 @@ class Login extends Base{
 				}
 
 				if (condition) {
+
 					console.log("you're logged in!");
 					let loggedInUserObject = this.getUserObject(username);
 					this.loggedInUser = Object.assign(this.loggedInUser, loggedInUserObject);
-					this.loggedInUser.isLoggedIn = true;
 					this.emptyInputs();
-					this.loggedInForm = new LoggedInForm();
-					$('.renderForm').empty();
-					this.loggedInForm.render('.renderForm');
+					this.loggedInUser.isLoggedIn = true;
+					this.renderNavLoggedIn();
+					this.createSession();
 				}
 			})
 		});
 
-    $('#togglelogin-btn').on('click', function(){
+		$("#togglelogin-btn").on('click', function() {
 			let text = $(this).text();
 			console.log(text);
 			$(this).text(text == "Skapa konto" ? "Logga in" : "Skapa konto");
 			$('.logintoggle').slideToggle(400);
 		});
 
+
 		$('.myAccBtn').on('click', function(){
 			$('.myloginform').fadeToggle(200);
 		});
 
 
+		$(document).on("click", "#logout-btn", () => {
+			this.logout();
+			console.log("Logged out...");
+		});
+
+
 	}
+
+	async createSession(){
+    let sessObj = {id:this.loggedInUser.id};
+    await JSON._save('session', sessObj);
+    this.session = sessObj;
+  }
+
+  async readSession(){
+    let sessObj = await JSON._load('session');
+    await this.userIdLogin(sessObj);
+  }
+
+  async userIdLogin(sessObj){
+  	this.userObjects = await JSON._load('users');
+  	for(let user of this.userObjects){
+  		if (sessObj.id == user.id) {
+  			this.loggedInUser = user;
+  			this.session = sessObj;
+  			this.loggedInUser.isLoggedIn = true;
+  			this.renderNavLoggedIn();
+  			return;
+  		}
+  	}
+  }
+
+  async destroySession(){
+    this.session = await JSON._save('session',{id:null});
+   	this.loggedInUser = {isLoggedIn: false}; 
+  }
 
 	checkUsername(username){
 		let condition = false;
@@ -110,8 +148,18 @@ class Login extends Base{
 		$('#login-password').val('');
 	}
 
+	renderNavLoggedIn(){
+    if (this.loggedInUser.isLoggedIn) {
+      $('.renderForm').empty();
+      this.app.loggedInForm.render('.renderForm');
+    }
+  }
+
 	logout(){
+		this.destroySession();
 		this.loggedInUser = {isLoggedIn: false};
+		$('.renderForm').empty();
+		myApp.loginform.render('.renderForm');
 	}
 
 }

@@ -36,8 +36,11 @@ class App extends Base {
     this.footer.footerFix();
 
     this.loginform = new Loginform();
+    this.loginform.render('.renderForm');
 
-    this.login = new Login();
+    this.loggedInForm = new LoggedInForm();
+
+    this.login = new Login(this);
     // Create a startpage
     this.signup = new Signup();
 

@@ -251,6 +251,11 @@ header {
   color: red;
   font-size: 0.7em;
 }
+.user-created {
+  display: none;
+  text-align: center;
+  color: green;
+}
 .loginContainer h3,
 .loginContainer #login-btn {
   color: #32A432;

@@ -3,19 +3,19 @@
     "username": "hejhej97@hotmail.com",
     "name": "Helge",
     "password": "Skog",
-    "id": "1"
+    "id": 1
   },
   {
     "username": "Kalleanka@hotmail.com",
     "name": "Kalle",
     "password": "MittnamnarAnka",
-    "id": "2"
+    "id": 2
   },
   {
     "username": "Musse@hotmail.com",
     "name": "Musse",
     "password": "Ankeborg",
-    "id": "3"
+    "id": 3
   },
   {
     "username": "aaa",
@@ -142,5 +142,53 @@
     "name": "Hola",
     "password": "hola12",
     "id": 24
+  },
+  {
+    "username": "musse@hotmail.com",
+    "name": "hasjkeaksea",
+    "password": "heskajk",
+    "id": 25
+  },
+  {
+    "username": "hejasa@hotmail.com",
+    "name": "aa",
+    "password": "451231",
+    "id": 26
+  },
+  {
+    "username": "hasdas@hotmail.com",
+    "name": "aaaaa",
+    "password": "kleaasda",
+    "id": 27
+  },
+  {
+    "username": "heasa@hotmail.com",
+    "name": "asddda",
+    "password": "123456789",
+    "id": 28
+  },
+  {
+    "username": "asasda@asdasda",
+    "name": "aaaaaaaa",
+    "password": "asdasdasdasda",
+    "id": 29
+  },
+  {
+    "username": "asda@asdasda",
+    "name": "sssssss",
+    "password": "asdasdasdasda",
+    "id": 30
+  },
+  {
+    "username": "asda@asda",
+    "name": "afds",
+    "password": "asfadaf",
+    "id": 31
+  },
+  {
+    "username": "asda@asdasaa",
+    "name": "aaasdddds",
+    "password": "asdfgh",
+    "id": 32
   }
 ]

@@ -1,4 +1,4 @@
-class Popstate extends Base {
+class Popstate extends Base{
 
   constructor(app){
     super();
@@ -11,7 +11,6 @@ class Popstate extends Base {
   makeUrl(url){
     url = url.replace(/,/g, "");
     url = url.replace(/ /g, "_");
-    url = url.replace(/%20/g, "_");
     return url;
   }
 
@@ -51,7 +50,7 @@ class Popstate extends Base {
     } else {
       console.log('Not theater');
     this[methodName]();
-    }
+    this.app.login.readSession();
   }
 
   renderKalendarium(){
