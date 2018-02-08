@@ -153,7 +153,6 @@ class Login extends Base{
       $('.renderForm').empty();
       this.app.loggedInForm.render('.renderForm');
     }
-     console.log("heaskjla");
   }
 
 	logout(){
