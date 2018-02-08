@@ -3,19 +3,19 @@
     "username": "hejhej97@hotmail.com",
     "name": "Helge",
     "password": "Skog",
-    "id": "1"
+    "id": 1
   },
   {
     "username": "Kalleanka@hotmail.com",
     "name": "Kalle",
     "password": "MittnamnarAnka",
-    "id": "2"
+    "id": 2
   },
   {
     "username": "Musse@hotmail.com",
     "name": "Musse",
     "password": "Ankeborg",
-    "id": "3"
+    "id": 3
   },
   {
     "username": "aaa",

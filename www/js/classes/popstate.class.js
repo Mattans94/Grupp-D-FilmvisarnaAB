@@ -1,6 +1,7 @@
-class Popstate{
+class Popstate extends Base{
 
   constructor(app){
+    super();
     this.app = app;
     this.clickEvents();
     this.changePage();
@@ -45,7 +46,7 @@ class Popstate{
 
     let methodName = urls[url];
     this[methodName]();
-
+    this.app.login.readSession();
   }
 
   renderKalendarium(){
