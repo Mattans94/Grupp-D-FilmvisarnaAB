@@ -166,72 +166,80 @@ class Theater extends Base{
 
 	eventHandler() {
 		let that = this;
-
-		let seat = $(this);
-			let seatID; // = seat.data('seatid');
-			let rowID; // = seat.data('rowid');
-			let status; // = seat.data('status');
-
-		$(document).on("click", '.seat', function() {
-			let myNumberOfSeats = that.booking.myNumberOfSeats;
-			let $seat = $(this);
-			seat = $(this);
-			seatID = seat.data('seatid');
-			rowID = seat.data('rowid');
-
-			if (seatID == seat.data('seatid') ) {
-    		$(seat).toggleClass('booked');
-    		$(seat).toggleClass('free');
-    	}
-
-		});
-
-$(document).on("mouseleave", '.seat', function() {
-			// seat = $(this);
-			// seatID = seat.data('seatid');
-			// rowID = seat.data('rowid');
-			// status = seat.data('status');
-			// console.log('11 status', status)
-
-    	if (seatID == seat.data('seatid') && status == 'reserving' ) {
-    		$(seat).removeClass('reserving');
-    		$(seat).addClass('free');
-    		$(seat).data('status', 'free');
-    		status = seat.data('status');
-    		// console.log('12 seatID', seatID);
-    		// console.log('13 seat',seat);
-    	}
-		});
-
+		console.log(seat);
+		let seatID; // = seat.data('seatid');
+		let rowID; // = seat.data('rowid');
+		let status; // = seat.data('status');
 
 		$(document).on("click", '.seat', function() {
-
-			// seat = $(this);
-			// seatID = seat.data('seatid');
-			// rowID = seat.data('rowid');
-			// status = seat.data('status');
-			console.log('10 status', status)
-
-
-			if (seatID == seat.data('seatid') && status == 'reserving' ) {
-    		$(seat).addClass('booked');
-    		$(seat).removeClass('reserving');
-    		$(seat).data('status', 'booked');
-    		// status = seat.data('status');
-    		// console.log('4 seatID', seatID);
-    		// console.log('5 seat',seat);
-    		// console.log(status);
-    	}
-    	else
-    		if (seatID == seat.data('seatid') && status == 'booked' ) {
-	    		$(seat).addClass('free');
-	    		$(seat).removeClass('booked');
-	    		$(seat).data('status', 'free');
-    			status = seat.data('status');
-	    		console.log('6 seat', seat);
-    	}
-    		// console.log('7 status', status);
+			let seat = $(this);
+			seat.toggleClass('booked');
+			seat.toggleClass('free');
 		});
+
+
+		// $(document).on("mouseenter", '.seat', function() {
+		// 	let seat = $(this);
+		// 	seat.addClass('reserving');
+		// });
+		// $(document).on("mouseleave", '.seat', function() {
+		// 	let seat = $(this);
+		// 	seat.removeClass('reserving');
+		// 	seat.addClass('free');
+		// });
+
+
+
+		// Vad är detta?
+
+		// $(document).on("click", '.seat', function() {
+		// 	let seat = $(this);
+		// 	seatID = seat.data('seatid');
+		// 	rowID = seat.data('rowid');
+    //
+		// 	if (seatID == seat.data('seatid') ) {
+    // 		$(seat).toggleClass('booked');
+    // 		$(seat).toggleClass('free');
+    // 	}
+    //
+    //
+		// 	if (seatID == seat.data('seatid') && status == 'reserving' ) {
+    // 		$(seat).addClass('booked');
+    // 		$(seat).removeClass('reserving');
+    // 		$(seat).data('status', 'booked');
+    // 		// status = seat.data('status');
+    // 		// console.log('4 seatID', seatID);
+    // 		// console.log('5 seat',seat);
+    // 		// console.log(status);
+    // 	}
+    // 	else
+    // 		if (seatID == seat.data('seatid') && status == 'booked' ) {
+	  //   		$(seat).addClass('free');
+	  //   		$(seat).removeClass('booked');
+	  //   		$(seat).data('status', 'free');
+    // 			status = seat.data('status');
+	  //   		console.log('6 seat', seat);
+    // 	}
+    // 		// console.log('7 status', status);
+		// });
+    //
+		// $(document).on("mouseleave", '.seat', function() {
+		// 	// seat = $(this);
+		// 	// seatID = seat.data('seatid');
+		// 	// rowID = seat.data('rowid');
+		// 	// status = seat.data('status');
+		// 	// console.log('11 status', status)
+		// 	let seat = $(this);
+    //
+    // 	if (seatID == seat.data('seatid') && status == 'reserving' ) {
+    // 		$(seat).removeClass('reserving');
+    // 		$(seat).addClass('free');
+    // 		$(seat).data('status', 'free');
+    // 		status = seat.data('status');
+    // 		// console.log('12 seatID', seatID);
+    // 		// console.log('13 seat',seat);
+    // 	}
+		// });
 
 
 	}// end eventhandler

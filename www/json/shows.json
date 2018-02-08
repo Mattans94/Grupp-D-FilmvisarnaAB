@@ -347,7 +347,11 @@
     "auditorium": "Stora Salongen",
     "film": "Call Me By Your Name",
     "time": "18.40",
-    "bookedSeats": []
+    "bookedSeats": [
+      70,
+      71,
+      72
+    ]
   },
   {
     "date": "2018-03-16",
@@ -424,7 +428,11 @@
     "auditorium": "Stora Salongen",
     "film": "Call Me By Your Name",
     "time": "22.40",
-    "bookedSeats": []
+    "bookedSeats": [
+      29,
+      30,
+      31
+    ]
   },
   {
     "date": "2018-03-20",
