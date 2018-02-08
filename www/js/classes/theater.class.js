@@ -12,8 +12,12 @@ class Theater extends Base{
 
 		JSON._load('theaters').then((theater) => {
 			this.theaterObjects = theater;
+
+		})
+		.then(JSON._load('shows').then((shows) => {
+			Data.showObjects = shows;
 			this.start();
-		});
+		 }));
 
 
 	} //end
