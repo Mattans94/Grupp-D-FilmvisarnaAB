@@ -1,592 +1,593 @@
-{
-  "object": [
-    {
-      "date": "2018-03-01",
-      "auditorium": "Lilla Salongen",
-      "film": "Let The Sunshine In",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-01",
-      "auditorium": "Stora Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-01",
-      "auditorium": "Stora Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-02",
-      "auditorium": "Lilla Salongen",
-      "film": "Wind River",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-02",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-02",
-      "auditorium": "Lilla Salongen",
-      "film": "Tjuren Ferdinand",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-03",
-      "auditorium": "Lilla Salongen",
-      "film": "Wind River",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-03",
-      "auditorium": "Stora Salongen",
-      "film": "Let The Sunshine In",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-03",
-      "auditorium": "Stora Salongen",
-      "film": "Call Me By Your Name",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-04",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-04",
-      "auditorium": "Lilla Salongen",
-      "film": "Wind River",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-04",
-      "auditorium": "Lilla Salongen",
-      "film": "Wind River",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-05",
-      "auditorium": "Lilla Salongen",
-      "film": "Tjuren Ferdinand",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-05",
-      "auditorium": "Lilla Salongen",
-      "film": "Wind River",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-05",
-      "auditorium": "Stora Salongen",
-      "film": "Let The Sunshine In",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-06",
-      "auditorium": "Lilla Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-06",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-06",
-      "auditorium": "Lilla Salongen",
-      "film": "Call Me By Your Name",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-07",
-      "auditorium": "Stora Salongen",
-      "film": "Call Me By Your Name",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-07",
-      "auditorium": "Lilla Salongen",
-      "film": "Tjuren Ferdinand",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-07",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-08",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-08",
-      "auditorium": "Lilla Salongen",
-      "film": "Let The Sunshine In",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-08",
-      "auditorium": "Lilla Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-09",
-      "auditorium": "Lilla Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-09",
-      "auditorium": "Stora Salongen",
-      "film": "Let The Sunshine In",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-09",
-      "auditorium": "Lilla Salongen",
-      "film": "Tjuren Ferdinand",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-10",
-      "auditorium": "Lilla Salongen",
-      "film": "Let The Sunshine In",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-10",
-      "auditorium": "Lilla Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-10",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-11",
-      "auditorium": "Stora Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-11",
-      "auditorium": "Stora Salongen",
-      "film": "Tjuren Ferdinand",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-11",
-      "auditorium": "Lilla Salongen",
-      "film": "Tjuren Ferdinand",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-12",
-      "auditorium": "Stora Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-12",
-      "auditorium": "Lilla Salongen",
-      "film": "Call Me By Your Name",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-12",
-      "auditorium": "Lilla Salongen",
-      "film": "Call Me By Your Name",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-13",
-      "auditorium": "Lilla Salongen",
-      "film": "Wind River",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-13",
-      "auditorium": "Stora Salongen",
-      "film": "Let The Sunshine In",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-13",
-      "auditorium": "Stora Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-14",
-      "auditorium": "Lilla Salongen",
-      "film": "Wind River",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-14",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-14",
-      "auditorium": "Lilla Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-15",
-      "auditorium": "Stora Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-15",
-      "auditorium": "Lilla Salongen",
-      "film": "Tjuren Ferdinand",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-15",
-      "auditorium": "Stora Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-16",
-      "auditorium": "Stora Salongen",
-      "film": "Call Me By Your Name",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-16",
-      "auditorium": "Lilla Salongen",
-      "film": "Tjuren Ferdinand",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-16",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-17",
-      "auditorium": "Stora Salongen",
-      "film": "Call Me By Your Name",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-17",
-      "auditorium": "Stora Salongen",
-      "film": "Let The Sunshine In",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-17",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-18",
-      "auditorium": "Lilla Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-18",
-      "auditorium": "Lilla Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-18",
-      "auditorium": "Stora Salongen",
-      "film": "Call Me By Your Name",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-19",
-      "auditorium": "Stora Salongen",
-      "film": "Let The Sunshine In",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-19",
-      "auditorium": "Stora Salongen",
-      "film": "Tjuren Ferdinand",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-19",
-      "auditorium": "Stora Salongen",
-      "film": "Call Me By Your Name",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-20",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-20",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-20",
-      "auditorium": "Lilla Salongen",
-      "film": "Call Me By Your Name",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-21",
-      "auditorium": "Lilla Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-21",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-21",
-      "auditorium": "Stora Salongen",
-      "film": "Call Me By Your Name",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-22",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-22",
-      "auditorium": "Lilla Salongen",
-      "film": "Tjuren Ferdinand",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-22",
-      "auditorium": "Lilla Salongen",
-      "film": "Call Me By Your Name",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-23",
-      "auditorium": "Lilla Salongen",
-      "film": "Wind River",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-23",
-      "auditorium": "Stora Salongen",
-      "film": "Tjuren Ferdinand",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-23",
-      "auditorium": "Lilla Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-24",
-      "auditorium": "Stora Salongen",
-      "film": "Let The Sunshine In",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-24",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-24",
-      "auditorium": "Lilla Salongen",
-      "film": "Call Me By Your Name",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-25",
-      "auditorium": "Stora Salongen",
-      "film": "Call Me By Your Name",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-25",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-25",
-      "auditorium": "Lilla Salongen",
-      "film": "Call Me By Your Name",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-26",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-26",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-26",
-      "auditorium": "Lilla Salongen",
-      "film": "Wind River",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-27",
-      "auditorium": "Lilla Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-27",
-      "auditorium": "Stora Salongen",
-      "film": "Let The Sunshine In",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-27",
-      "auditorium": "Stora Salongen",
-      "film": "Wind River",
-      "time": "22.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-28",
-      "auditorium": "Lilla Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "18.40",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-28",
-      "auditorium": "Lilla Salongen",
-      "film": "Let The Sunshine In",
-      "time": "21.00",
-      "bookedSeats": []
-    },
-    {
-      "date": "2018-03-28",
-      "auditorium": "Lilla Salongen",
-      "film": "Let The Sunshine In",
-      "time": "22.40",
-      "bookedSeats": []
-    }
-  ]
-}
+[
+  {
+    "date": "2018-03-01",
+    "auditorium": "Lilla Salongen",
+    "film": "Let The Sunshine In",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-01",
+    "auditorium": "Stora Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-01",
+    "auditorium": "Stora Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-02",
+    "auditorium": "Lilla Salongen",
+    "film": "Wind River",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-02",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-02",
+    "auditorium": "Lilla Salongen",
+    "film": "Tjuren Ferdinand",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-03",
+    "auditorium": "Lilla Salongen",
+    "film": "Wind River",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-03",
+    "auditorium": "Stora Salongen",
+    "film": "Let The Sunshine In",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-03",
+    "auditorium": "Stora Salongen",
+    "film": "Call Me By Your Name",
+    "time": "22.40",
+    "bookedSeats": [
+      33,
+      34
+    ]
+  },
+  {
+    "date": "2018-03-04",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-04",
+    "auditorium": "Lilla Salongen",
+    "film": "Wind River",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-04",
+    "auditorium": "Lilla Salongen",
+    "film": "Wind River",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-05",
+    "auditorium": "Lilla Salongen",
+    "film": "Tjuren Ferdinand",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-05",
+    "auditorium": "Lilla Salongen",
+    "film": "Wind River",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-05",
+    "auditorium": "Stora Salongen",
+    "film": "Let The Sunshine In",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-06",
+    "auditorium": "Lilla Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-06",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-06",
+    "auditorium": "Lilla Salongen",
+    "film": "Call Me By Your Name",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-07",
+    "auditorium": "Stora Salongen",
+    "film": "Call Me By Your Name",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-07",
+    "auditorium": "Lilla Salongen",
+    "film": "Tjuren Ferdinand",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-07",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-08",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-08",
+    "auditorium": "Lilla Salongen",
+    "film": "Let The Sunshine In",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-08",
+    "auditorium": "Lilla Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-09",
+    "auditorium": "Lilla Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-09",
+    "auditorium": "Stora Salongen",
+    "film": "Let The Sunshine In",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-09",
+    "auditorium": "Lilla Salongen",
+    "film": "Tjuren Ferdinand",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-10",
+    "auditorium": "Lilla Salongen",
+    "film": "Let The Sunshine In",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-10",
+    "auditorium": "Lilla Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-10",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-11",
+    "auditorium": "Stora Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-11",
+    "auditorium": "Stora Salongen",
+    "film": "Tjuren Ferdinand",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-11",
+    "auditorium": "Lilla Salongen",
+    "film": "Tjuren Ferdinand",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-12",
+    "auditorium": "Stora Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-12",
+    "auditorium": "Lilla Salongen",
+    "film": "Call Me By Your Name",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-12",
+    "auditorium": "Lilla Salongen",
+    "film": "Call Me By Your Name",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-13",
+    "auditorium": "Lilla Salongen",
+    "film": "Wind River",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-13",
+    "auditorium": "Stora Salongen",
+    "film": "Let The Sunshine In",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-13",
+    "auditorium": "Stora Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-14",
+    "auditorium": "Lilla Salongen",
+    "film": "Wind River",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-14",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-14",
+    "auditorium": "Lilla Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-15",
+    "auditorium": "Stora Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-15",
+    "auditorium": "Lilla Salongen",
+    "film": "Tjuren Ferdinand",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-15",
+    "auditorium": "Stora Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-16",
+    "auditorium": "Stora Salongen",
+    "film": "Call Me By Your Name",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-16",
+    "auditorium": "Lilla Salongen",
+    "film": "Tjuren Ferdinand",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-16",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-17",
+    "auditorium": "Stora Salongen",
+    "film": "Call Me By Your Name",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-17",
+    "auditorium": "Stora Salongen",
+    "film": "Let The Sunshine In",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-17",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-18",
+    "auditorium": "Lilla Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-18",
+    "auditorium": "Lilla Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-18",
+    "auditorium": "Stora Salongen",
+    "film": "Call Me By Your Name",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-19",
+    "auditorium": "Stora Salongen",
+    "film": "Let The Sunshine In",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-19",
+    "auditorium": "Stora Salongen",
+    "film": "Tjuren Ferdinand",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-19",
+    "auditorium": "Stora Salongen",
+    "film": "Call Me By Your Name",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-20",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-20",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-20",
+    "auditorium": "Lilla Salongen",
+    "film": "Call Me By Your Name",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-21",
+    "auditorium": "Lilla Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-21",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-21",
+    "auditorium": "Stora Salongen",
+    "film": "Call Me By Your Name",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-22",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-22",
+    "auditorium": "Lilla Salongen",
+    "film": "Tjuren Ferdinand",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-22",
+    "auditorium": "Lilla Salongen",
+    "film": "Call Me By Your Name",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-23",
+    "auditorium": "Lilla Salongen",
+    "film": "Wind River",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-23",
+    "auditorium": "Stora Salongen",
+    "film": "Tjuren Ferdinand",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-23",
+    "auditorium": "Lilla Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-24",
+    "auditorium": "Stora Salongen",
+    "film": "Let The Sunshine In",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-24",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-24",
+    "auditorium": "Lilla Salongen",
+    "film": "Call Me By Your Name",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-25",
+    "auditorium": "Stora Salongen",
+    "film": "Call Me By Your Name",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-25",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-25",
+    "auditorium": "Lilla Salongen",
+    "film": "Call Me By Your Name",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-26",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-26",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-26",
+    "auditorium": "Lilla Salongen",
+    "film": "Wind River",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-27",
+    "auditorium": "Lilla Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-27",
+    "auditorium": "Stora Salongen",
+    "film": "Let The Sunshine In",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-27",
+    "auditorium": "Stora Salongen",
+    "film": "Wind River",
+    "time": "22.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-28",
+    "auditorium": "Lilla Salongen",
+    "film": "Three Billboards Outside Ebbing, Missouri",
+    "time": "18.40",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-28",
+    "auditorium": "Lilla Salongen",
+    "film": "Let The Sunshine In",
+    "time": "21.00",
+    "bookedSeats": []
+  },
+  {
+    "date": "2018-03-28",
+    "auditorium": "Lilla Salongen",
+    "film": "Let The Sunshine In",
+    "time": "22.40",
+    "bookedSeats": []
+  }
+]

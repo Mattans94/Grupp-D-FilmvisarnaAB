@@ -127,43 +127,56 @@ class Booking extends Base{
 		}
 	}
 
-
+	getShowIndex(){
+		return Data.showObjects.findIndex((o) => {return o.date == this.showObject.date && o.time == this.showObject.time});
+	}
 
 	// Lång eventHandler - kanske behövs.
 	// Varför laddas json in i eventHandler och inte constructorn?
 	// Behöver man ladda json varje gång man trycker någonstans? Isåfall lägg inladdning på ett klick
 	eventHandler() {
-		JSON._load('booking').then((data) => {
-	      // Retrieve the app from JSON
-	      this.bookedSeats = data;
-	    })
 
-		this.booking = {};
 		let that = this;
 		$(document).on('click','.book-btn',function(){
+			// Temporärt objekt varje gång man klickar
+			let tempBookingObject = {};
+			// Laddar in all json som behövs
+			JSON._load('booking').then((data) => {
+					// Retrieve the app from JSON
+				that.bookedSeats = data;
+			})
+			.then(JSON._load('shows').then((shows) => {
+      	Data.showObjects = shows;
+	    })
+			.then(() => {
 
-			that.booking.show = that.showObject;
-			that.booking.show.userID = that.userID;
-			that.booking.show.orderID = [];
-			that.booking.show.bookedSeats = [];
 
-			// console.log(that.booking);
-			$('.seat.booked').each(function(){
-				let seat = $(this);
-				let seatID = seat.data('seatid');
-				// console.log(seatID);
-				that.booking.show.bookedSeats.push(seatID);
-			});
-			 that.bookedSeats.push(that.booking);
+				tempBookingObject.show = that.showObject;
+				tempBookingObject.show.userID = that.userID;
+				tempBookingObject.show.orderID = [];
+				tempBookingObject.show.bookedSeats = [];
+
+				$('.seat.booked').each(function(){
+					let seat = $(this);
+					let seatID = seat.data('seatid');
+					// console.log(seatID);
+					that.showObject.bookedSeats.push(seatID);
+					let showObjectIndex = that.getShowIndex();
+					Data.showObjects[showObjectIndex].bookedSeats.push(seatID);
+					// tempBookingObject.show.bookedSeats.push(seatID);
+				});
+			 	that.bookedSeats.push(tempBookingObject);
 			//that.bookedSeats.push(that.bookedSeats);
 			// console.log(that.bookedSeats)
 			//console.log(that.booking.show)
 			//Object.assign(that.booking.show, {bookedSeats: that.booking})
 			//Save booked-info + sittplats to JSON
 			JSON._save('booking', that.bookedSeats);
+			JSON._save('shows', Data.showObjects);
 			// console.log('saving', that.bookedSeats)
 
-		});
+
+		}))});
 
 		// JSON._load('booking',(data){
 		// 	this.bookings = data;
