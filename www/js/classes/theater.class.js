@@ -29,10 +29,12 @@ class Theater extends Base{
 
 	}
 
+	// Snyggt! Kommer kunna användas med det show-objektet som kommer in till constructorn
 	getTheaterObject(theaterName) {
 		this.theaterObject = this.theaterObjects.find((x) => theaterName == x.name);
 	}
 
+	// Vad betyder seatsStoran? Finns det bättre namn?
 	getSeatsPerRow(theaterObject) {
 		let rowlength = theaterObject.seatsPerRow;
 		this.seatsStoran = rowlength;
@@ -205,6 +207,8 @@ $(document).on("mouseleave", '.seat', function() {
 
 } //end class
 
+let booking = new Booking;
+let theater = new Theater;
 let fixFooter = new Footer;
 
 fixFooter.footerFix();

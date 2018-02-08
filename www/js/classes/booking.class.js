@@ -3,7 +3,8 @@ class Booking extends Base{
 	// constructor(userid, date, time, auditorium) {
 	//
 
-
+	// Bör ta emot ett showObject från klassen theater som också initierar denna klass?
+	// Behöver booking någonsin kallas om inte theater-kallas?
 	constructor() {
 		super();
 		this.date = '2018-03-04';
@@ -16,9 +17,10 @@ class Booking extends Base{
 		this.child=0;
 		this.adult=0;
 		this.pensioner=0;
-		this.myNumberOfSeats=0;
+		this.noOfBookedSeats=0;
 
-
+		// Detta finns redan globalt i en data-klass. Är nog inte fel att ladda om när man väl bokar.
+		// Men bör göras till Data-klassen istället för endast i denna klassen
 	//Alla beställningar som har gjorts
 		JSON._load('booking').then((seats) => {
 	      // Retrieve the app from JSON
@@ -36,13 +38,18 @@ class Booking extends Base{
 
 	}
 
+	// Behövs theater.scale() här? Den körs redan on-resize i popstate.
 	start(){
 		this.getshowObject(this.title, this.auditorium, this.date, this.time);
 	    this.eventHandler();
 	    this.renderTicketButtons();
+		this.checkForDisable();
+	    theater.scale();
 
 	}
 
+	// Detta finns som en global metod i klassen Base. Där skickar man in tid & datum
+	// Behövs denna om man skickar med ett show-object direkt från theater-klassen?
 	getshowObject(showName, auditorium, date, time) {
 
 		this.showObject = this.showObjects.object.filter((x) => showName == x.film);
@@ -95,6 +102,10 @@ class Booking extends Base{
 					    <button type="button" class="btn btn-danger addbtn" id="addpensioner"><strong>+</strong></button>
 				  	</div>
 					</div>
+				<div>
+					<small class="text-danger"> Du kan välja max 8 biljetter
+					</small>
+				</div>
 				</span>
 			</div>
 			<div class="ml-3 mt-5">
@@ -103,21 +114,42 @@ class Booking extends Base{
   	$('.ticketholder').html(html);
 	 }
 
+	// Kan man göra om denna på något sätt för att optimera?
+	checkForDisable(){
+		this.disableRemoveButton('child');
+		this.disableRemoveButton('adult');
+		this.disableRemoveButton('pensioner');
+		this.disableAddButton('child');
+		this.disableAddButton('adult');
+		this.disableAddButton('pensioner');
+
+	}
+
+	// Bra metoder, men vad händer om man går in i console och "fakear klick"?
+	// Utöka till att sätta till placeholder till 0 utifall man skulle ändra på det sättet?
 	disableRemoveButton(ticketType){
 		let val = this[ticketType];
 		if (val <= 0){
 			$('#remove' + ticketType).prop('disabled', true);
+		} else {
+			$('#remove' + ticketType).prop('disabled', false);
+	}
 		}
-	};
 
 	disableAddButton(ticketType){
 		let val = this[ticketType];
-		if (val == 8){
+		if (val >= 8  || this.noOfBookedSeats == 8){
 			$('#add' + ticketType).prop('disabled', true);
+		}else {
+			$('#add' + ticketType).prop('disabled', false);
 		}
 	}
 
 
+
+	// Lång eventHandler - kanske behövs.
+	// Varför laddas json in i eventHandler och inte constructorn?
+	// Behöver man ladda json varje gång man trycker någonstans? Isåfall lägg inladdning på ett klick
 	eventHandler() {
 		JSON._load('booking').then((data) => {
 	      // Retrieve the app from JSON
@@ -161,52 +193,56 @@ class Booking extends Base{
 		// 	clickedbutton
 		// });
 
-
+		// Kan man göra dessa annorlunda? Kolla tillsammans
 		$(document).on('click', '#addchild', () => {
 			this.child += 1;
-			this.myNumberOfSeats+=1;
-			that.renderTicketButtons();
-			that.disableAddButton('child');
-
-		});
+			this.noOfBookedSeats +=1;
+			$('#childTickets').attr("placeholder", this.child);
+			})
 
 		$(document).on('click', '#removechild', () => {
 			this.child -= 1;
-			this.myNumberOfSeats-=1;
-			that.renderTicketButtons();
-			that.disableRemoveButton('child');
-		});
+			this.noOfBookedSeats -=1;
+			$('#childTickets').attr("placeholder", this.child)
+			// that.renderTicketButtons();
+		})
 
 		$(document).on('click', '#addadult', () => {
 			this.adult += 1;
-			this.myNumberOfSeats+=1;
-			that.renderTicketButtons();
-			that.disableAddButton('adult');
-		});
+			this.noOfBookedSeats +=1;
+			// that.renderTicketButtons();
+			$('#adultTickets').attr("placeholder", this.adult)
+		})
 
 		$(document).on('click', '#removeadult', () => {
 			this.adult -= 1;
-			this.myNumberOfSeats-=1;
-			that.renderTicketButtons();
-			that.disableRemoveButton('adult');
-		});
+			this.noOfBookedSeats -=1;
+			// that.renderTicketButtons();
+			$('#adultTickets').attr("placeholder", this.adult)
+		})
 
 		$(document).on('click', '#addpensioner', () => {
 			this.pensioner += 1;
-			this.myNumberOfSeats+=1;
-			that.renderTicketButtons();
-			that.disableAddButton('pensioner');
-		});
+			this.noOfBookedSeats +=1;
+			// that.renderTicketButtons();
+			$('#pensionerTickets').attr("placeholder", this.pensioner)
+		})
 
 		$(document).on('click', '#removepensioner', () => {
 			this.pensioner -= 1;
-			this.myNumberOfSeats-=1;
-			that.renderTicketButtons();
-			that.disableRemoveButton('pensioner');
-		});
+			this.noOfBookedSeats -=1;
+			// that.renderTicketButtons();
+			$('#pensionerTickets').attr("placeholder", this.pensioner)
+		})
+
+		$(document).on('click','.addbtn', () =>{
+			this.checkForDisable();
+		})
+
+		$(document).on('click','.removebtn', () =>{
+			this.checkForDisable();
+		})
 
 	} // end eventhandler
-
-
 
 } // end class
