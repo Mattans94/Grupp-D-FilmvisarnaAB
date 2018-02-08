@@ -36,7 +36,7 @@ class Login extends Base{
 			})
 		});
 
-		$(document).on('click', '#togglelogin-btn', () => {
+		$("#togglelogin-btn").on('click', function() {
 			let text = $(this).text();
 			console.log(text);
 			$(this).text(text == "Skapa konto" ? "Logga in" : "Skapa konto");
