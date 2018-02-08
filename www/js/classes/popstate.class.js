@@ -51,6 +51,7 @@ class Popstate extends Base{
       console.log('Not theater');
     this[methodName]();
     this.app.login.readSession();
+    }
   }
 
   renderKalendarium(){

@@ -17,7 +17,6 @@ class Booking extends Base{
 		//
 
 
-		this.userID = 1;
 		this.orderID = [];
 
 		this.child=0;
@@ -131,6 +130,10 @@ class Booking extends Base{
 		return Data.showObjects.findIndex((o) => {return o.date == this.showObject.date && o.time == this.showObject.time});
 	}
 
+	minMetod(){
+		console.log(this.loggedInUser);
+	}
+
 	// Lång eventHandler - kanske behövs.
 	// Varför laddas json in i eventHandler och inte constructorn?
 	// Behöver man ladda json varje gång man trycker någonstans? Isåfall lägg inladdning på ett klick
@@ -148,11 +151,14 @@ class Booking extends Base{
 			.then(JSON._load('shows').then((shows) => {
       	Data.showObjects = shows;
 	    })
+			.then(JSON._load('session').then((userid) => {
+				that.loggedInUser = userid;
+			})
 			.then(() => {
 
-
+				that.minMetod()
 				tempBookingObject.show = that.showObject;
-				tempBookingObject.show.userID = that.userID;
+				tempBookingObject.show.userID = that.loggedInUser;
 				tempBookingObject.show.orderID = [];
 				tempBookingObject.show.bookedSeats = [];
 
@@ -176,7 +182,7 @@ class Booking extends Base{
 			// console.log('saving', that.bookedSeats)
 
 
-		}))});
+		})))});
 
 		// JSON._load('booking',(data){
 		// 	this.bookings = data;
