@@ -12,7 +12,7 @@ class Theater extends Base{
 			this.theaterObjects = theater;
 			this.start();
 		});
-		
+
 
 	} //end
 
@@ -23,7 +23,7 @@ class Theater extends Base{
 		this.setWidth();
 		this.setHeight();
 		this.renderTheater();
-		
+
 		this.scale();
 		this.eventHandler();
 
@@ -60,9 +60,9 @@ class Theater extends Base{
 		}
 		$('#theater').html(html);
 
-		$('html, body').animate({
-        scrollTop: $("#theater").offset().top -20
-    }, 500);
+		// $('html, body').animate({
+    //     scrollTop: $("#theater").offset().top -20
+    // }, 500);
 
 
 	}
@@ -124,7 +124,7 @@ class Theater extends Base{
 // 		  	return;
 // 		  }
 // 		  console.log($elementsToSelect);
-// 		  $elementsToSelect.forEach(function($element) {   
+// 		  $elementsToSelect.forEach(function($element) {
 // 		    $element.addClass('select');
 // 		  });
 // 	}
@@ -154,27 +154,27 @@ class Theater extends Base{
     	}
 
 		});
-	
-$(document).on("mouseleave", '.seat', function() {			
+
+$(document).on("mouseleave", '.seat', function() {
 			// seat = $(this);
 			// seatID = seat.data('seatid');
 			// rowID = seat.data('rowid');
 			// status = seat.data('status');
 			// console.log('11 status', status)
-    	
+
     	if (seatID == seat.data('seatid') && status == 'reserving' ) {
     		$(seat).removeClass('reserving');
     		$(seat).addClass('free');
     		$(seat).data('status', 'free');
     		status = seat.data('status');
     		// console.log('12 seatID', seatID);
-    		// console.log('13 seat',seat); 
+    		// console.log('13 seat',seat);
     	}
 		});
-		
+
 
 		$(document).on("click", '.seat', function() {
-			
+
 			// seat = $(this);
 			// seatID = seat.data('seatid');
 			// rowID = seat.data('rowid');
@@ -188,10 +188,10 @@ $(document).on("mouseleave", '.seat', function() {
     		$(seat).data('status', 'booked');
     		// status = seat.data('status');
     		// console.log('4 seatID', seatID);
-    		// console.log('5 seat',seat); 
+    		// console.log('5 seat',seat);
     		// console.log(status);
     	}
-    	else 
+    	else
     		if (seatID == seat.data('seatid') && status == 'booked' ) {
 	    		$(seat).addClass('free');
 	    		$(seat).removeClass('booked');
@@ -206,8 +206,6 @@ $(document).on("mouseleave", '.seat', function() {
 	}// end eventhandler
 
 } //end class
-
-let booking = new Booking;
 let theater = new Theater;
 let fixFooter = new Footer;
 
