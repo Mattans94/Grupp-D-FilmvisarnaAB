@@ -54,7 +54,7 @@ class Booking extends Base{
 	}
 
 	myNumberOfSeatsCheck() {
-		this.myNumberOfSeats = this.child + this.adult + this.pensioner;
+		this.seatsTotal = this.child + this.adult + this.pensioner;
 	}
 
 	renderTicketButtons() {
@@ -119,7 +119,7 @@ class Booking extends Base{
 
 	disableAddButton(ticketType){
 		let val = this[ticketType];
-		if (val >= 8  || this.noOfBookedSeats == 8){
+		if (val >= 8  || this.seatsTotal == 8){
 			$('#add' + ticketType).prop('disabled', true);
 		}else {
 			$('#add' + ticketType).prop('disabled', false);
@@ -197,50 +197,46 @@ class Booking extends Base{
 		// Kan man göra dessa annorlunda? Kolla tillsammans
 		$(document).on('click', '#addchild', () => {
 			this.child += 1;
-			this.noOfBookedSeats +=1;
 			$('#childTickets').attr("placeholder", this.child);
 			})
 
 		$(document).on('click', '#removechild', () => {
 			this.child -= 1;
-			this.noOfBookedSeats -=1;
 			$('#childTickets').attr("placeholder", this.child)
 			// that.renderTicketButtons();
 		})
 
 		$(document).on('click', '#addadult', () => {
 			this.adult += 1;
-			this.noOfBookedSeats +=1;
 			// that.renderTicketButtons();
 			$('#adultTickets').attr("placeholder", this.adult)
 		})
 
 		$(document).on('click', '#removeadult', () => {
 			this.adult -= 1;
-			this.noOfBookedSeats -=1;
 			// that.renderTicketButtons();
 			$('#adultTickets').attr("placeholder", this.adult)
 		})
 
 		$(document).on('click', '#addpensioner', () => {
 			this.pensioner += 1;
-			this.noOfBookedSeats +=1;
 			// that.renderTicketButtons();
 			$('#pensionerTickets').attr("placeholder", this.pensioner)
 		})
 
 		$(document).on('click', '#removepensioner', () => {
 			this.pensioner -= 1;
-			this.noOfBookedSeats -=1;
 			// that.renderTicketButtons();
 			$('#pensionerTickets').attr("placeholder", this.pensioner)
 		})
 
 		$(document).on('click','.addbtn', () =>{
+			this.myNumberOfSeatsCheck();
 			this.checkForDisable();
 		})
 
 		$(document).on('click','.removebtn', () =>{
+			this.myNumberOfSeatsCheck();
 			this.checkForDisable();
 		})
 

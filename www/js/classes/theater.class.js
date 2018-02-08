@@ -173,15 +173,11 @@ class Theater extends Base{
 			let status; // = seat.data('status');
 
 		$(document).on("click", '.seat', function() {
-			let myNumberOfSeats=0;
-			myNumberOfSeats = that.booking.myNumberOfSeats;
+			let myNumberOfSeats = that.booking.myNumberOfSeats;
 			let $seat = $(this);
 			seat = $(this);
-			console.log('Seat', seat);
 			seatID = seat.data('seatid');
-			console.log('seatID', seatID);
 			rowID = seat.data('rowid');
-			console.log('rowID', rowID);
 
 			if (seatID == seat.data('seatid') ) {
     		$(seat).toggleClass('booked');
