@@ -252,6 +252,8 @@ header {
 }
 .user-created {
   display: none;
+  text-align: center;
+  color: green;
 }
 .loginContainer h3,
 .loginContainer #login-btn {
