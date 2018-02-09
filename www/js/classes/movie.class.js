@@ -20,7 +20,16 @@ class Movie extends Base {
         :
         `<i class="fa fa-video-camera mr-2" aria-hidden="true"></i>Show slides`;
       })
-    })};
+    })
+    $(document).on('click', '.bookingTimeDate', function(){
+      let date = $(this).data('date');
+      let time = $(this).data('time');
+      let bookingShowObject = that.getBookingObject(date, time);
+      console.log(bookingShowObject);
+      myApp.popstate.theaterPage(bookingShowObject);
+    })
+
+  };
 
   getActors(movieObject){
   	let actors = "";
@@ -50,7 +59,7 @@ class Movie extends Base {
    let showTimesRendered = '';
    let co = 0;
    for (let showTimeObject of allShowTimes) {
-     showTimesRendered += `<li data-movieTime="${co}"><div class="col-4 d-inline-block"><strong>${showTimeObject.date}</strong></div><div class="col-4 d-inline-block">${showTimeObject.auditorium}</div> <div class="col-3 d-inline-block pr-0">${showTimeObject.time} <a class="pop" href="/Theater"><div class="book-btn float-right border border-dark bg-light"><strong>Boka</strong></div></a></div></li>`
+     showTimesRendered += `<li data-movieTime="${co}"><div class="col-4 d-inline-block"><strong>${showTimeObject.date}</strong></div><div class="col-4 d-inline-block">${showTimeObject.auditorium}</div> <div class="col-3 d-inline-block pr-0">${showTimeObject.time} <a class="pop bookingTimeDate" href="/Theater" data-date="${showTimeObject.date}" data-time="${showTimeObject.time}"><div class="book-btn float-right border border-dark bg-light"><strong>Boka</strong></div></a></div></li>`
      co++
    }
    return showTimesRendered;

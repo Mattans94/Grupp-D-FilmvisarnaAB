@@ -1,6 +1,7 @@
-class Popstate{
+class Popstate extends Base{
 
   constructor(app){
+    super();
     this.app = app;
     this.clickEvents();
     this.changePage();
@@ -10,7 +11,6 @@ class Popstate{
   makeUrl(url){
     url = url.replace(/,/g, "");
     url = url.replace(/ /g, "_");
-    url = url.replace(/%20/g, "_");
     return url;
   }
 
@@ -35,18 +35,30 @@ class Popstate{
 
     let urls = {
       '/' : 'startpage',
-      '/Theater' : 'theaterPage',
       '/Tjuren_Ferdinand' : 'movieFerdinand',
       '/Wind_River': 'movieWindRiver',
       '/Three_Billboards_Outside_Ebbing_Missouri': 'movieThreeBillboards',
       '/Call_Me_By_Your_Name': 'movieCallMe',
       '/Let_The_Sunshine_In': 'movieLetThe',
-      '/The_Party': 'movieTheParty'
+      '/The_Party': 'movieTheParty',
+      '/our_theaters': 'renderOurTheaters'
     }
 
     let methodName = urls[url];
-    this[methodName]();
+    if (url == "/Theater") {
+      console.log('Theater is intilized in movie.class.js instead of popstate. Need to fix alot of buggs.');
 
+    } else {
+      console.log('Not theater');
+    this[methodName]();
+    this.app.login.readSession();
+    }
+    if(url == '/our_theaters') {
+    $('main').removeClass('container').addClass('container-fluid');
+    }
+    else{
+      $('main').removeClass('container-fluid').addClass('container');
+    }
   }
 
   renderKalendarium(){
@@ -61,9 +73,10 @@ class Popstate{
     this.renderKalendarium();
   }
 
-  theaterPage(){
+  theaterPage(bookingShowObject){
+    // booking-showobject is the object that is being clicked when intilize theater
     $('main').empty();
-    let theater = new Theater();
+    let theater = new Theater(bookingShowObject);
     theater.render('main');
     theater.scale();
     $(window).on('resize',function(){
@@ -109,5 +122,13 @@ class Popstate{
     this.renderKalendarium();
   }
 
+
+  renderOurTheaters(){
+    $('main').empty();
+    let ourtheaterspage = new OurTheaters();
+    //$('main').removeClass('container').addClass('container-fluid');
+    ourtheaterspage.render('main');
+
+  }
 
 }

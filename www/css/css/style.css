@@ -59,6 +59,7 @@ a {
   height: 15%;
 }
 #theater-holder {
+  justify-content: center;
   overflow: hidden;
   /* set width and height from js*/
 }
@@ -250,6 +251,11 @@ header {
   color: red;
   font-size: 0.7em;
 }
+.user-created {
+  display: none;
+  text-align: center;
+  color: green;
+}
 .loginContainer h3,
 .loginContainer #login-btn {
   color: #32A432;
@@ -263,44 +269,92 @@ header {
 .signupContainer h3 {
   color: #991e1e;
 }
-
-.free {
-  width: 50px;
-  height: 50px;
-  border: 1px solid white;
-  background-color: green;
-  border-radius: 15px;
-  text-align: center;
+.lillasalong {
+  margin: auto;
+}
+.storasalong {
+  margin: auto;
+}
+.salonger {
+  border-bottom: 1px solid black;
+  background: #991e1e;
   color: white;
-  /*font-weight: bold;*/
-}
-
-.free:hover {
-  background-color: blue;
-  color: yellow;
-}
-
-.booked {
-  width: 50px;
-  height: 50px;
-  border: 1px solid white;
-  background-color: red;
-  border-radius: 15px;
+  border-radius: 30px 10px;
+  padding: 15px 22px;
+  box-shadow: 0px 2px 2px #000;
   text-align: center;
+  margin: auto;
+}
+.titeltext {
+  border-bottom: 1px solid black;
+  background: #991e1e;
   color: white;
-  /*font-weight: bold;*/}
-
-.curtain {
-  width: 65%;
-  height: 15%;
+  border-radius: 30px 10px;
+  padding: 15px 22px;
+  box-shadow: 2px 2px 2px #000;
+  text-align: center;
+  margin: auto;
 }
-
-#theater-holder {
-  overflow: hidden;
-  /* set width and height from js*/
+.regler {
+  margin: auto;
 }
-
-#theater {
-  transform-origin: 0 0;
-  background: #000;
+.regler h2 {
+  text-align: center;
+}
+.imgsalong {
+  background: #991e1e;
+  border-bottom: 14px solid #991e1e;
+  border-top: 14px solid #991e1e;
+  box-shadow: 2px 2px 2px #000;
+  border-radius: 30px 10px;
+  margin: auto;
+  width: auto;
+}
+.imgsalong img {
+  border-radius: 30px 10px;
+}
+.imgsalong2 {
+  background: #991e1e;
+  border-bottom: 14px solid #991e1e;
+  border-top: 14px solid #991e1e;
+  box-shadow: 2px 2px 2px #000;
+  border-radius: 30px 10px;
+  margin: auto;
+  width: auto;
+  max-height: 400px;
+  max-width: 500px;
+}
+.imgsalong2 img {
+  border-radius: 30px 10px;
+  max-height: 350px;
+}
+.imgbild {
+  background: #991e1e;
+  border-bottom: 14px solid #991e1e;
+  border-top: 14px solid #991e1e;
+  box-shadow: 2px 2px 2px #000;
+  border-radius: 30px 10px;
+  margin: auto;
+}
+.imgbild img {
+  border-radius: 30px 10px;
+}
+.info {
+  margin: auto;
+}
+.separator {
+  background-color: #991e1e;
+  margin: auto;
+  width: 85%;
+  height: 20px;
+  box-shadow: 4px 4px 4px black;
+  border-radius: 30px 10px;
+  border-bottom: 14px solid #991e1e;
+  border-top: 14px solid #991e1e;
+}
+.infoombio {
+  width: auto;
+}
+.infoombio .card {
+  min-height: 460px;
 }

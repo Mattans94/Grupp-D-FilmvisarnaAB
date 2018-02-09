@@ -1,62 +1,65 @@
 class Booking extends Base{
 
 	// constructor(userid, date, time, auditorium) {
-	// 
+	//
 
-
-	constructor() {
+	// Bör ta emot ett showObject från klassen theater som också initierar denna klass?
+	// Behöver booking någonsin kallas om inte theater-kallas?
+	constructor(showObject) {
 		super();
-		this.date = '2018-03-04';
-		this.time = '21.00';
-		this.auditorium = 'Lilla Salongen';
-		this.userID = 1;
+
+		// This is from the right showObject
+		this.date = showObject.date;
+		this.time = showObject.time;
+		this.auditorium = showObject.auditorium;
+		this.title = showObject.film;
+		this.showObject = showObject;
+		//
+
+
 		this.orderID = [];
 
 		this.child=0;
 		this.adult=0;
 		this.pensioner=0;
-		this.myNumberOfSeats=0;
+		this.noOfBookedSeats=0;
 
-		
+		// Detta finns redan globalt i en data-klass. Är nog inte fel att ladda om när man väl bokar.
+		// Men bör göras till Data-klassen istället för endast i denna klassen
 	//Alla beställningar som har gjorts
 		JSON._load('booking').then((seats) => {
 	      // Retrieve the app from JSON
 	      this.bookedSeats = seats;
-	    });
-
-	    JSON._load('shows').then((shows) => {
-	      // Retrieve the app from JSON
-	      //console.log(this)
-	      this.showObjects = shows;
-	      this.start();
-
+				this.start();
 	    });
 
 
 	}
 
+	// Behövs theater.scale() här? Den körs redan on-resize i popstate.
 	start(){
-		this.getshowObject('Wind River', this.auditorium, this.date, this.time);
+
 	    this.eventHandler();
 	    this.renderTicketButtons();
-	    myApp.theater.scale();
-			
+		this.checkForDisable();
+
 	}
 
-	getshowObject(showName, auditorium, date, time) {
-		console.log(this.showObjects);
-		this.showObject = this.showObjects.object.filter((x) => showName == x.film);
-		this.showObject = this.showObject.filter((x) => auditorium == x.auditorium);
-		this.showObject = this.showObject.filter((x) => date == x.date);
-		this.showObject = this.showObject.find((x) => time == x.time);
-		// this.showObject = this.showObject[0]
-		console.log(this.showObject);
+
+
+	updateTotalPrice(){
+		// prices.start();
+		let prices= new Prices(this.child, this.adult, this.pensioner);
+		prices.calculateTotalPrice();
+	}
+
+	myNumberOfSeatsCheck() {
+		this.myNumberOfSeats = this.child + this.adult + this.pensioner;
 	}
 
 	renderTicketButtons() {
 		let html =
-			`<div class="row justify-content-center">
-				<span>
+			`<div class="row">
 				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 						<p class="text-white">Ordinarie</p>
 					  <div class="btn-group mr-2" role="group" aria-label="adult group">
@@ -65,8 +68,7 @@ class Booking extends Base{
 						  <button type="button" class="btn btn-danger addbtn" id="addadult"><strong>+</strong></button>
 					 	</div>
 					</div>
-				</span>
-			  <span>
+
 				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 			  		<p class="text-white">Barn (under 12 år)</p>
 				  	<div class="btn-group mr-2" role="group" aria-label="child group">
@@ -75,8 +77,7 @@ class Booking extends Base{
 					    <button type="button" class="btn btn-danger addbtn" id="addchild"><strong>+</strong></button>
 				  	</div>
 					</div>
-				</span>
-				<span>
+
 				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 						<p class="text-white">Pensionär</p>
 				  	<div class="btn-group mr-2" role="group" aria-label="pensioner group">
@@ -85,62 +86,103 @@ class Booking extends Base{
 					    <button type="button" class="btn btn-danger addbtn" id="addpensioner"><strong>+</strong></button>
 				  	</div>
 					</div>
-				</span>
-			</div>
-			<div class="ml-3 mt-5">			
-				<button class="btn btn-danger book-btn">Forstätt</button>
+					<div>
+						<small class="text-danger"> Du kan välja max 8 biljetter
+						</small>
+					</div>
+
 			</div>`;
   	$('.ticketholder').html(html);
 	 }
 
+	// Kan man göra om denna på något sätt för att optimera?
+	checkForDisable(){
+		this.disableRemoveButton('child');
+		this.disableRemoveButton('adult');
+		this.disableRemoveButton('pensioner');
+		this.disableAddButton('child');
+		this.disableAddButton('adult');
+		this.disableAddButton('pensioner');
+
+	}
+
+	// Bra metoder, men vad händer om man går in i console och "fakear klick"?
+	// Utöka till att sätta till placeholder till 0 utifall man skulle ändra på det sättet?
 	disableRemoveButton(ticketType){
 		let val = this[ticketType];
 		if (val <= 0){
 			$('#remove' + ticketType).prop('disabled', true);
-		} 
-	};
+		} else {
+			$('#remove' + ticketType).prop('disabled', false);
+	}
+		}
 
 	disableAddButton(ticketType){
 		let val = this[ticketType];
-		if (val == 8){
+		if (val >= 8  || this.noOfBookedSeats == 8){
 			$('#add' + ticketType).prop('disabled', true);
+		}else {
+			$('#add' + ticketType).prop('disabled', false);
 		}
 	}
 
+	getShowIndex(){
+		return Data.showObjects.findIndex((o) => {return o.date == this.showObject.date && o.time == this.showObject.time});
+	}
 
+	minMetod(){
+		console.log(this.loggedInUser);
+	}
+
+	// Lång eventHandler - kanske behövs.
+	// Varför laddas json in i eventHandler och inte constructorn?
+	// Behöver man ladda json varje gång man trycker någonstans? Isåfall lägg inladdning på ett klick
 	eventHandler() {
-		JSON._load('booking').then((data) => {
-	      // Retrieve the app from JSON
-	      this.bookedSeats = data;
-	      console.log(this.bookedSeats)
-	    })
-	 
-		this.booking = {};
+
 		let that = this;
 		$(document).on('click','.book-btn',function(){
-			
-			that.booking.show = that.showObject;
-			that.booking.show.userID = that.userID;
-			that.booking.show.orderID = [];
-			that.booking.show.bookedSeats = [];
+			// Temporärt objekt varje gång man klickar
+			let tempBookingObject = {};
+			// Laddar in all json som behövs
+			JSON._load('booking').then((data) => {
+					// Retrieve the app from JSON
+				that.bookedSeats = data;
+			})
+			.then(JSON._load('shows').then((shows) => {
+      	Data.showObjects = shows;
+	    })
+			.then(JSON._load('session').then((userid) => {
+				that.loggedInUser = userid;
+			})
+			.then(() => {
 
-			console.log(that.booking);
-			$('.seat.booked').each(function(){
-				let seat = $(this);
-				let seatID = seat.data('seatid');
-				console.log(seatID);
-				that.booking.show.bookedSeats.push(seatID);
-			});
-			 that.bookedSeats.push(that.booking);
+				that.minMetod()
+				tempBookingObject.show = that.showObject;
+				tempBookingObject.show.userID = that.loggedInUser;
+				tempBookingObject.show.orderID = [];
+				tempBookingObject.show.bookedSeats = [];
+
+				$('.seat.booked').each(function(){
+					let seat = $(this);
+					let seatID = seat.data('seatid');
+					// console.log(seatID);
+					that.showObject.bookedSeats.push(seatID);
+					let showObjectIndex = that.getShowIndex();
+					Data.showObjects[showObjectIndex].bookedSeats.push(seatID);
+					// tempBookingObject.show.bookedSeats.push(seatID);
+				});
+			 	that.bookedSeats.push(tempBookingObject);
 			//that.bookedSeats.push(that.bookedSeats);
-			console.log(that.bookedSeats)
+			// console.log(that.bookedSeats)
 			//console.log(that.booking.show)
 			//Object.assign(that.booking.show, {bookedSeats: that.booking})
 			//Save booked-info + sittplats to JSON
 			JSON._save('booking', that.bookedSeats);
-			console.log('saving', that.bookedSeats)
+			JSON._save('shows', Data.showObjects);
+			// console.log('saving', that.bookedSeats)
 
-		});
+
+		})))});
 
 		// JSON._load('booking',(data){
 		// 	this.bookings = data;
@@ -152,52 +194,56 @@ class Booking extends Base{
 		// 	clickedbutton
 		// });
 
-
+		// Kan man göra dessa annorlunda? Kolla tillsammans
 		$(document).on('click', '#addchild', () => {
 			this.child += 1;
-			this.myNumberOfSeats+=1;
-			that.renderTicketButtons();
-			that.disableAddButton('child');
-
-		});
+			this.noOfBookedSeats +=1;
+			$('#childTickets').attr("placeholder", this.child);
+			})
 
 		$(document).on('click', '#removechild', () => {
 			this.child -= 1;
-			this.myNumberOfSeats-=1;
-			that.renderTicketButtons();
-			that.disableRemoveButton('child');
-		});		
+			this.noOfBookedSeats -=1;
+			$('#childTickets').attr("placeholder", this.child)
+			// that.renderTicketButtons();
+		})
 
 		$(document).on('click', '#addadult', () => {
 			this.adult += 1;
-			this.myNumberOfSeats+=1;
-			that.renderTicketButtons();
-			that.disableAddButton('adult');
-		});
+			this.noOfBookedSeats +=1;
+			// that.renderTicketButtons();
+			$('#adultTickets').attr("placeholder", this.adult)
+		})
 
 		$(document).on('click', '#removeadult', () => {
 			this.adult -= 1;
-			this.myNumberOfSeats-=1;
-			that.renderTicketButtons();
-			that.disableRemoveButton('adult');
-		});
+			this.noOfBookedSeats -=1;
+			// that.renderTicketButtons();
+			$('#adultTickets').attr("placeholder", this.adult)
+		})
 
 		$(document).on('click', '#addpensioner', () => {
 			this.pensioner += 1;
-			this.myNumberOfSeats+=1;
-			that.renderTicketButtons();
-			that.disableAddButton('pensioner');
-		});
+			this.noOfBookedSeats +=1;
+			// that.renderTicketButtons();
+			$('#pensionerTickets').attr("placeholder", this.pensioner)
+		})
 
 		$(document).on('click', '#removepensioner', () => {
 			this.pensioner -= 1;
-			this.myNumberOfSeats-=1;
-			that.renderTicketButtons();
-			that.disableRemoveButton('pensioner');
-		});
-		
+			this.noOfBookedSeats -=1;
+			// that.renderTicketButtons();
+			$('#pensionerTickets').attr("placeholder", this.pensioner)
+		})
+
+		$(document).on('click','.addbtn', () =>{
+			this.checkForDisable();
+		})
+
+		$(document).on('click','.removebtn', () =>{
+			this.checkForDisable();
+		})
+
 	} // end eventhandler
-
-
 
 } // end class

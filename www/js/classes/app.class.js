@@ -34,17 +34,19 @@ class App extends Base {
     $('footer').empty();
     this.footer.render('footer');
     this.footer.footerFix();
-    
-    this.loginform = new Loginform();
 
-    this.login = new Login();
+    this.loginform = new Loginform();
+    this.loginform.render('.renderForm');
+
+    this.loggedInForm = new LoggedInForm();
+
+    this.login = new Login(this);
     // Create a startpage
     this.signup = new Signup();
-    this.theater = new Theater();
 
     this.popstate = new Popstate(this);
 
-    
+
     // Sending movies and shows to Movieclass
     // this.Base = new Base(this);
 
