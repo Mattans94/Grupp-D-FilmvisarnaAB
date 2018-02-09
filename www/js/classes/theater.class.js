@@ -166,15 +166,30 @@ class Theater extends Base{
 
 	eventHandler() {
 		let that = this;
-		let seatID; // = seat.data('seatid');
-		let rowID; // = seat.data('rowid');
-		let status; // = seat.data('status');
+		// let seatID; = seat.data('seatid');
+		// let rowID;  = seat.data('rowid');
+		// let status;  = seat.data('status');
 
 		$(document).on("click", '.seat', function() {
 			let seat = $(this);
-			seat.toggleClass('booked');
-			seat.toggleClass('free');
+
+			if (that.booking.seatsTotal >= 1 && !(that.booking.reservedSeats == that.booking.seatsTotal)) {
+				if (seat.hasClass('free')){
+					seat.removeClass('free');
+					seat.addClass('reserved');
+					that.booking.reservedSeats++;
+				}
+				else if (seat.hasClass('reserved')){
+					seat.removeClass('reserved');
+					seat.addClass('free');
+					that.booking.reservedSeats--;
+				}
+			}
+
+
 		});
+
+
 
 
 

@@ -36,7 +36,9 @@ a {
 }
 .booked {
   background-color: red !important;
-  /*font-weight: bold;*/
+}
+.reserved {
+  background-color: orange !important;
 }
 #seat {
   width: 50px;

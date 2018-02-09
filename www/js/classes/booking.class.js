@@ -22,7 +22,7 @@ class Booking extends Base{
 		this.child=0;
 		this.adult=0;
 		this.pensioner=0;
-		this.noOfBookedSeats=0;
+		this.reservedSeats = 0;
 
 		// Detta finns redan globalt i en data-klass. Är nog inte fel att ladda om när man väl bokar.
 		// Men bör göras till Data-klassen istället för endast i denna klassen
@@ -42,6 +42,7 @@ class Booking extends Base{
 		this.renderTicketButtons();
 		this.checkForDisable();
 		this.updateTotalPrice();
+		this.myNumberOfSeatsCheck();
 	}
 
 
@@ -54,7 +55,7 @@ class Booking extends Base{
 	}
 
 	myNumberOfSeatsCheck() {
-		this.seatsTotal = this.child + this.adult + this.pensioner;
+		this.seatsTotal = (this.child + this.adult + this.pensioner);
 	}
 
 	renderTicketButtons() {
@@ -230,13 +231,13 @@ class Booking extends Base{
 			$('#pensionerTickets').attr("placeholder", this.pensioner)
 		})
 
-		$(document).on('click','.addbtn', () =>{
+		$(document).on('click','.addbtn', () => {
 			this.myNumberOfSeatsCheck();
 			this.checkForDisable();
 			this.updateTotalPrice();
 		})
 
-		$(document).on('click','.removebtn', () =>{
+		$(document).on('click','.removebtn', () => {
 			this.myNumberOfSeatsCheck();
 			this.checkForDisable();
 			this.updateTotalPrice();
