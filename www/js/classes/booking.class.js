@@ -131,6 +131,12 @@ class Booking extends Base{
 		return Data.showObjects.findIndex((o) => {return o.date == this.showObject.date && o.time == this.showObject.time});
 	}
 
+	resetBookingButtons(){
+		if (this.seatsTotal < this.reservedSeats) {
+			$('.seat').addClass('free').removeClass('reserved');
+		}
+	}
+
 	// Lång eventHandler - kanske behövs.
 	// Varför laddas json in i eventHandler och inte constructorn?
 	// Behöver man ladda json varje gång man trycker någonstans? Isåfall lägg inladdning på ett klick
@@ -229,12 +235,14 @@ class Booking extends Base{
 			this.myNumberOfSeatsCheck();
 			this.checkForDisable();
 			this.updateTotalPrice();
+			this.resetBookingButtons();
 		})
 
 		$(document).on('click','.removebtn', () => {
 			this.myNumberOfSeatsCheck();
 			this.checkForDisable();
 			this.updateTotalPrice();
+			this.resetBookingButtons();
 		})
 
 	} // end eventhandler
