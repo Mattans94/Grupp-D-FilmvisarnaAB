@@ -40,8 +40,7 @@ class Popstate extends Base{
       '/Three_Billboards_Outside_Ebbing_Missouri': 'movieThreeBillboards',
       '/Call_Me_By_Your_Name': 'movieCallMe',
       '/Let_The_Sunshine_In': 'movieLetThe',
-      '/The_Party': 'movieTheParty'
-      '/Call_Me_By_Your_Name': 'movieCallMe',
+      '/The_Party': 'movieTheParty',
       '/our_theaters': 'renderOurTheaters'
     }
 
@@ -53,6 +52,12 @@ class Popstate extends Base{
       console.log('Not theater');
     this[methodName]();
     this.app.login.readSession();
+    }
+    if(url == '/our_theaters') {
+    $('main').removeClass('container').addClass('container-fluid');
+    }
+    else{
+      $('main').removeClass('container-fluid').addClass('container');
     }
   }
 
@@ -121,7 +126,9 @@ class Popstate extends Base{
   renderOurTheaters(){
     $('main').empty();
     let ourtheaterspage = new OurTheaters();
+    //$('main').removeClass('container').addClass('container-fluid');
     ourtheaterspage.render('main');
+
   }
 
 }
