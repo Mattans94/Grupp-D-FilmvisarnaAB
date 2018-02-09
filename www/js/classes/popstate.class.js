@@ -37,7 +37,8 @@ class Popstate extends Base{
       '/Tjuren_Ferdinand' : 'movieFerdinand',
       '/Wind_River': 'movieWindRiver',
       '/Three_Billboards_Outside_Ebbing_Missouri': 'movieThreeBillboards',
-      '/Call_Me_By_Your_Name': 'movieCallMe'
+      '/Call_Me_By_Your_Name': 'movieCallMe',
+      '/our_theaters': 'renderOurTheaters'
     }
 
     let methodName = urls[url];
@@ -71,6 +72,12 @@ class Popstate extends Base{
   movieCallMe(){
     $('.leftContainer').empty();
     let moviepage = new Movie('Call Me By Your Name');
+  }
+
+  renderOurTheaters(){
+    $('main').empty();
+    let ourtheaterspage = new OurTheaters();
+    ourtheaterspage.render('main');
   }
 
 }
