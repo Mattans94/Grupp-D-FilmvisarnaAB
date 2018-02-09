@@ -10,6 +10,8 @@ class Theater extends Base{
 		this.showObject = showObject;
 		this.auditorium = showObject.auditorium;
 
+		console.log('showObject', this.showObject);
+
 		JSON._load('theaters').then((theater) => {
 			this.theaterObjects = theater;
 
@@ -37,6 +39,33 @@ class Theater extends Base{
 		this.eventHandler();
 
 	}
+
+	async getRichShow(theShow){
+	  let bookings = await JSON._load('booking');
+
+	  //let count = 0;
+		for(let booking of bookings){
+		  //console.log('film', booking.show.film);
+		  // for(let show of shows){
+		  // 	// if(theShow && show != theShow){continue;}
+		  //   //count++;
+		    if(booking.show.date == theShow.date && booking.show.auditorium == theShow.auditorium && booking.show.time == theShow.time){
+		      //console.log('found it!', show, booking);
+		      if(!theShow.bookedSeats){
+		        theShow.bookedSeats = [];
+		      }
+		      theShow.bookedSeats = [...theShow.bookedSeats, ...booking.show.bookedSeats]; // concat (merge) two arrays
+		      //console.log(show);
+		      theShow.bookedSeats = new Set(theShow.bookedSeats);
+		      theShow.bookedSeats = Array.from(theShow.bookedSeats);
+		    }
+
+
+		}
+    
+    return theShow;
+	}
+
 
 	// This is Andreas try
 	renderMovieInfo(){
@@ -68,18 +97,25 @@ class Theater extends Base{
 
 
 
-	renderTheater() {
+	async renderTheater() {
 		let html = '';
 		let seatnumber=1;
 		let seatStatus = 'free';
+
+		let show = await this.getRichShow(this.showObject);
+		console.log('show', show);
 
 		for (let row = 0; row < this.seatsStoran.length; row++) {
 			this.seatsPerRow = this.seatsStoran[row];
 			html += `<div class="col-12 row d-flex flex-row-reverse justify-content-center flex-nowrap seat-row m-0">`;
 
 			for (let seat = 0; seat < this.seatsPerRow; seat++) {
+         let taken = '';
+				if(show.bookedSeats.indexOf(seatnumber) >- 1){
+					taken = ' booked';
+				}
 
-				html += `<div class="${seatStatus} seat mt-1 ml-1" id="seat" data-rowid="${row}" data-seatid="${seatnumber}" data-status="${seatStatus}">${seatnumber}</div>`;
+				html += `<div class="${seatStatus + taken} seat mt-1 ml-1" id="seat" data-rowid="${row}" data-seatid="${seatnumber}" data-status="${seatStatus}">${seatnumber}</div>`;
 
 				seatnumber++;
 			}
