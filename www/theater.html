@@ -7,9 +7,11 @@
 	    <!-- Bootstrap CSS -->
 	    <link rel="stylesheet" href="/css/libs/bootstrap-4-beta.css">
 			<!-- Font awesome CSS -->
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	    <!-- Application specific CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--     	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+ -->	    <!-- Application specific CSS -->
 	    <link rel="stylesheet" href="/css/css/style.css">
+
 		<title></title>
 	</head>
 	<body>
@@ -35,17 +37,20 @@
 			</nav>
 	  </header>
 
-	  <main class="container-fluid">
+	  	<main class="container-fluid">
 
+		  		<div class="row">
+						<div class="col-md-9">	  			
+							<section class="bg-dark mt-4 " id="theater-holder">
+								<div class="bg-dark m-0 p-0" id="theater">
+								</div>
+							</section>
+						</div>
 
-				<section class="bg-dark mx-auto mt-4 " id="theater-holder">
-					<div class="bg-dark m-0 p-0"id="theater">
-
-
-					</div>
-				</section>
-
-		</main>
+						<div class="col-md-3 mt-5 ticketholder">
+							
+					</div>			
+			</main>
 
 
 
@@ -89,7 +94,11 @@
 		<script src="/js/classes/showtimerandom.script.js"></script>
     <script src="/js/classes/movie.class.js"></script>
 		<script src="/js/classes/footer.class.js"></script>
+    <script src="/js/classes/booking.class.js"></script>
+    <script src="/js/classes/prices.class.js"></script>
     <script src="/js/classes/theater.class.js"></script>
+
+
 		<!-- Templates -->
 		<script src="/templates/navbar.html"></script>
 		<script src="/templates/footer.html"></script>

@@ -1,7 +1,8 @@
 class Popstate extends Base{
 
-  constructor(){
+  constructor(app){
     super();
+    this.app = app;
     this.clickEvents();
     this.changePage();
     window.addEventListener('popstate', () => this.changePage());
@@ -17,7 +18,7 @@ class Popstate extends Base{
     let that = this;
     $(document).on('click','.pop',function(e){
       //Create a push state preventDefault
-      let href = $(this).data('movie');
+      let href = $(this).attr('href');
       href = that.makeUrl(href);
       history.pushState(null, null, href);
       //Call the change page function
@@ -38,41 +39,84 @@ class Popstate extends Base{
       '/Wind_River': 'movieWindRiver',
       '/Three_Billboards_Outside_Ebbing_Missouri': 'movieThreeBillboards',
       '/Call_Me_By_Your_Name': 'movieCallMe',
+      '/Let_The_Sunshine_In': 'movieLetThe',
+      '/The_Party': 'movieTheParty'
+      '/Call_Me_By_Your_Name': 'movieCallMe',
       '/our_theaters': 'renderOurTheaters'
     }
 
     let methodName = urls[url];
-    this[methodName]();
+    if (url == "/Theater") {
+      console.log('Theater is intilized in movie.class.js instead of popstate. Need to fix alot of buggs.');
 
+    } else {
+      console.log('Not theater');
+    this[methodName]();
+    this.app.login.readSession();
+    }
+  }
+
+  renderKalendarium(){
+    let kalendarium = new Kalendarium;
+    kalendarium.render('article');
   }
 
   startpage(){
     $('main').empty();
     let startPage = new StartPage();
     startPage.render('main');
-    console.log('lalala');
+    this.renderKalendarium();
   }
 
+  theaterPage(bookingShowObject){
+    // booking-showobject is the object that is being clicked when intilize theater
+    $('main').empty();
+    let theater = new Theater(bookingShowObject);
+    theater.render('main');
+    theater.scale();
+    $(window).on('resize',function(){
+      theater.scale();
+    });
+  }
+
+
+  // Movies
   movieFerdinand(){
-    $('.leftContainer').empty();
+    $('main').empty();
     let moviepage = new Movie('Tjuren Ferdinand');
-    console.log('Ferdinand');
+    this.renderKalendarium();
   }
 
   movieWindRiver(){
-    $('.leftContainer').empty();
+    $('main').empty();
     let moviepage = new Movie('Wind River');
+    this.renderKalendarium();
   }
 
   movieThreeBillboards(){
-    $('.leftContainer').empty();
+    $('main').empty();
     let moviepage = new Movie('Three Billboards Outside Ebbing, Missouri');
+    this.renderKalendarium();
   }
 
   movieCallMe(){
-    $('.leftContainer').empty();
+    $('main').empty();
     let moviepage = new Movie('Call Me By Your Name');
+    this.renderKalendarium();
   }
+
+  movieLetThe(){
+    $('main').empty();
+    let moviepage = new Movie('Let The Sunshine In');
+    this.renderKalendarium();
+  }
+
+  movieTheParty(){
+    $('main').empty();
+    let moviepage = new Movie('The Party');
+    this.renderKalendarium();
+  }
+
 
   renderOurTheaters(){
     $('main').empty();

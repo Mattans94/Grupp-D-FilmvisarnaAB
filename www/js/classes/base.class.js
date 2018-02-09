@@ -80,4 +80,10 @@ class Base {
     return Data.showObjects.filter((m) => movieTitle == m.film);
   }
 
+  getBookingObject(date, time) {
+    let dateFilter = Data.showObjects.filter((m) => date == m.date);
+    let rightShowTime = dateFilter.find((m) => time == m.time)
+    return rightShowTime;
+  }
+
 }

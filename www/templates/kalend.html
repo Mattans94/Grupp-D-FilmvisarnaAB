@@ -1,0 +1,30 @@
+Object.assign(Kalendarium.prototype, { template(){ return `
+
+  <section class="col-lg-5 mt-5">
+    <h3 class="kalendarium m-0"><i class="fa fa-calendar mr-3" aria-hidden="true"></i>Kalendarium</h3>
+    <div class="d-flex flex-nowrap mt-3 main-card kalendariumContainer">
+      <div class="bigSal col-6 text-light mt-2">
+        <div class="calenderTheaterBorder"><h5><i class="fa fa-film mr-2" aria-hidden="true"></i>Stora Salongen</h5></div>
+
+
+        ${this.renderShowTime('Wind River', 'Stora Salongen', 'Wind1')}
+        ${this.renderShowTime('Tjuren Ferdinand', 'Stora Salongen', 'Tjuren1')}
+        ${this.renderShowTime('Call Me By Your Name', 'Stora Salongen', 'Callme1')}
+        ${this.renderShowTime('Three Billboards Outside Ebbing, Missouri', 'Stora Salongen', 'Missouri1')}
+
+        <!-- Add new movie -->
+
+      </div>
+
+      <div class="smallSal col-6 text-light mt-2">
+        <div class="calenderTheaterBorder"><h5><i class="fa fa-film mr-2" aria-hidden="true"></i>Lilla Salongen</h5></div>
+        ${this.renderShowTime('Wind River', 'Lilla Salongen', 'Wind2')}
+        ${this.renderShowTime('Tjuren Ferdinand', 'Lilla Salongen', 'Tjuren2')}
+
+
+      </div>
+    </div>
+  </section>
+
+
+`;}});

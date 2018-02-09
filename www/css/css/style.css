@@ -59,6 +59,7 @@ a {
   height: 15%;
 }
 #theater-holder {
+  justify-content: center;
   overflow: hidden;
   /* set width and height from js*/
 }
@@ -224,6 +225,49 @@ header {
 [data-toggle="collapse"] i:before {
   content: "\f0d7";
   color: green;
+}
+.myloginform,
+.myloggedinform {
+  width: 300px;
+  left: 50% !important;
+  right: auto !important;
+  transform: translate(-50%, 0) !important;
+}
+.myloginform h3,
+.myloggedinform h3,
+.myloginform h5,
+.myloggedinform h5 {
+  text-align: center;
+}
+.myloginform input,
+.myloggedinform input {
+  border: 1px solid green;
+}
+.redbtn {
+  background-color: #991e1e;
+  border: 1px solid #3a3a3a;
+}
+.error-message {
+  color: red;
+  font-size: 0.7em;
+}
+.user-created {
+  display: none;
+  text-align: center;
+  color: green;
+}
+.loginContainer h3,
+.loginContainer #login-btn {
+  color: #32A432;
+}
+.loginContainer #login-btn {
+  background-color: #32A432;
+}
+.loginContainer #togglelogin-btn {
+  background-color: #f8e168;
+}
+.signupContainer h3 {
+  color: #991e1e;
 }
 .lillasalong {
   margin: auto;
