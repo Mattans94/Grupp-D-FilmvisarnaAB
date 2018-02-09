@@ -38,19 +38,19 @@ class Booking extends Base{
 
 	// Behövs theater.scale() här? Den körs redan on-resize i popstate.
 	start(){
-
-	    this.eventHandler();
-	    this.renderTicketButtons();
+		this.eventHandler();
+		this.renderTicketButtons();
 		this.checkForDisable();
-
+		this.updateTotalPrice();
 	}
 
 
 
 	updateTotalPrice(){
 		// prices.start();
-		let prices= new Prices(this.child, this.adult, this.pensioner);
+		let prices = new Prices(this.child, this.adult, this.pensioner);
 		prices.calculateTotalPrice();
+		prices.renderGrandTotal();
 	}
 
 	myNumberOfSeatsCheck() {
@@ -233,11 +233,13 @@ class Booking extends Base{
 		$(document).on('click','.addbtn', () =>{
 			this.myNumberOfSeatsCheck();
 			this.checkForDisable();
+			this.updateTotalPrice();
 		})
 
 		$(document).on('click','.removebtn', () =>{
 			this.myNumberOfSeatsCheck();
 			this.checkForDisable();
+			this.updateTotalPrice();
 		})
 
 	} // end eventhandler
