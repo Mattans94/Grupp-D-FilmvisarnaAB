@@ -81,7 +81,6 @@ a {
   height: 15%;
 }
 #theater-holder {
-  justify-content: center;
   overflow: hidden;
   /* set width and height from js*/
 }

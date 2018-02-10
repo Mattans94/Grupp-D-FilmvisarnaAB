@@ -93,7 +93,7 @@ class Theater extends Base{
 
 		for (let row = 0; row < this.seatsStoran.length; row++) {
 			this.seatsPerRow = this.seatsStoran[row];
-			html += `<div class="col-12 row d-flex flex-row-reverse justify-content-center flex-nowrap seat-row m-0">`;
+			html += `<div class="d-flex flex-row-reverse justify-content-center flex-nowrap seat-row m-0">`;
 
 			for (let seat = 0; seat < this.seatsPerRow; seat++) {
 
@@ -113,8 +113,10 @@ class Theater extends Base{
 
 
 	setHeight(){
+
 		let fullHeight = this.seatsStoran.length * 55;
 		$('#theater').css('height', `${fullHeight}`);
+		console.log('setting height', fullHeight);
 	}
 
 	setWidth(){
@@ -126,17 +128,25 @@ class Theater extends Base{
 		}
 		let fullWidth = longestRow * 55;
 		$('#theater').css('width', `${fullWidth}`);
+
+		console.log('setting width', fullWidth);
+
 	}
+
 
 	scale() {
 		let orgW = $('#theater').width(), orgH = $('#theater').height();
-		let w = $(window).width()
+		console.log('width in scale = ', orgW, 'height in scale = ', orgH);
+		let w = $('#theaterBackground').width();
 		let h = $(window).height();
-		w -= 20 * 2;
-		h -= 20 * 2;
+		console.log('width-window in scale = ', w, 'height-window in scale = ', h);
 		const wScale = w / orgW;
 		const hScale = h / orgH;
+		console.log('widthscale = ', wScale, 'heigttscale = ', hScale);
 		let scaling = Math.min(wScale, hScale);
+
+		console.log('scaling', scaling)
+		scaling = scaling * 0.8;
 
 		$('#theater').css('transform', `scale(${scaling})`);
 		$('#theater-holder').width(orgW * scaling);
