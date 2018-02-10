@@ -52,7 +52,7 @@ class Booking extends Base{
 		// prices.start();
 		let prices = new Prices(this.child, this.adult, this.pensioner);
 		prices.calculateTotalPrice();
-		prices.renderGrandTotal();
+		prices.renderTotalAmount();
 	}
 
 	myNumberOfSeatsCheck() {
@@ -64,7 +64,7 @@ class Booking extends Base{
 			`<div class="d-flex flex-nowrap flex-column flex-md-row justify-content-around">
 
 					<div>
-						<p class="text-white mb-0">Vuxen </p>
+						<p class="text-white mb-0">Ordinarie</p>
 					  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 						  <div class="btn-group mr-2" role="group" aria-label="adult group">
 							  <button type="button" class="btn btn-danger removebtn" id="removeadult"><strong>-</strong></button>

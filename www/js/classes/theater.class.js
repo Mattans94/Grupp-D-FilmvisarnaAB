@@ -64,16 +64,12 @@ class Theater extends Base{
 
 
 		<h2 class="m-3 col-8 mx-auto">Kostnad</h2>
-			<div class="col-8 mx-auto p-3 pl-4 bg-dark text-light">
-				<p><span class="pl-0 col-7 d-inline-block mr-3">2 st vuxna á 95kr</span>190 kr</p>
-				<hr>
-				<p><span class="pl-0 col-7 d-inline-block mr-3">1st barn á 65kr</span>65 kr</p>
-				<hr>
-				<p><span class="pl-0 col-7 d-inline-block mr-3">Totalt:</span>255 kr</p>
-			</div>
-		<div class="d-flex justify-content-end">
-				<button class="btn btn-danger book-btn">Forstätt</button>
+		<div id="totalprice" class="col-8 mx-auto p-3 pl-4 bg-dark text-light">
+
+
+
 		</div>
+
 		`
 
 		$('.orderCompilation').html(html);
