@@ -30,7 +30,6 @@ class Theater extends Base{
 		this.setHeight();
 		this.renderTheater();
 		this.booking = new Booking(this.showObject);
-		this.booking.renderTicketButtons();
 		this.renderMovieInfo()
 
 		this.scale();
@@ -38,19 +37,38 @@ class Theater extends Base{
 
 	}
 
+	// Finns redan i movie.class.js
+	convertMinutesToHours(movieObject){
+		let totalMinutes = movieObject.length;
+		let hours = Math.floor(totalMinutes / 60);
+		let minutes = totalMinutes % 60;
+		return hours + ' tim ' + minutes + ' min';
+	}
+
+
 	// This is Andreas try
 	renderMovieInfo(){
 		let time = this.showObject.time;
 		let date = this.showObject.date;
 		let movie = this.showObject.film;
+
+		let movieObject = this.getMovieObject(this.showObject.film);
 		let html = `
-		<h3 class="text-light">
-			Film: ${movie}
-			Salong: ${this.auditorium}
-			Datum & tid: ${date} ${time}
-		</h3>
+		<div class="d-flex flex-nowrap flex-column flex-md-row m-0 p-2" id="theaterBackground" style="background-image: url(/img/slides/${movieObject.slides[0]}); ">
+			<div class="col-5 col-md-3 col-lg-2">
+				<img class="img-fluid" src="/img/posters/${movieObject.images[0]}">
+			</div>
+			<div class="col-12 col-md-9 text-light">
+				<h3>${this.showObject.film}</h3>
+				<p> ${movieObject.genre}, ${this.convertMinutesToHours(movieObject)}, tal: ${movieObject.language}, text: ${movieObject.subtitles}</p>
+				<h5><span class="pl-0 col-2 col-md-1 d-inline-block mr-3">Plats:</span> ${this.showObject.auditorium}</h5>
+				<h5><span class="pl-0 col-2 col-md-1 d-inline-block mr-3">Datum:</span> ${this.showObject.date}</h5>
+				<h5><span class="pl-0 col-2 col-md-1 d-inline-block mr-3">Tid:</span> ${this.showObject.time}</h5>
+			</div>
+		</div>
+
 		`;
-		$('#movierepresentation').html(html);
+		$('#movierepresentation').append(html);
 
 	}
 

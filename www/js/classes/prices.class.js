@@ -9,7 +9,7 @@ class Prices extends Base {
 		this.pricePerChild = Data.priceObject.Prices.child;
 		this.pricePerAdult = Data.priceObject.Prices.adult;
 		this.pricePerPensioner = Data.priceObject.Prices.pensioner;
-		
+
 	} //end constructor
 
 	start(){
@@ -18,7 +18,7 @@ class Prices extends Base {
 
 	renderGrandTotal() {
 		let html=`<h4 class="text-light">Totalt: ${this.GrandTotal} kr</h4>`;
-		$('#totalprice').html(html);
+		$('#totalprice').append(html);
 	}
 
 	calculateTotalPrice() {

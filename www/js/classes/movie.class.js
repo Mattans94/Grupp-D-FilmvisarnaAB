@@ -45,7 +45,7 @@ class Movie extends Base {
     let totalMinutes = movieObject.length;
     let hours = Math.floor(totalMinutes / 60);
     let minutes = totalMinutes % 60;
-    return hours + 'h ' + minutes + 'm';
+    return hours + 'tim ' + minutes + 'min';
   }
 
   getAllReviews(movieObject){
