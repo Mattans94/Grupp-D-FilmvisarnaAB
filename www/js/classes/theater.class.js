@@ -30,8 +30,8 @@ class Theater extends Base{
 		this.setHeight();
 		this.renderTheater();
 		this.booking = new Booking(this.showObject);
-		this.renderMovieInfo()
-
+		this.renderMovieHeadingInTheater()
+		this.renderMovieBookingCompilition();
 		this.scale();
 		this.eventHandler();
 
@@ -45,9 +45,41 @@ class Theater extends Base{
 		return hours + ' tim ' + minutes + ' min';
 	}
 
+	renderMovieBookingCompilition(){
+		let movieObject = this.getMovieObject(this.showObject.film);
+		let html = `
+		<h2 class="m-3 pt-3 col-8 mx-auto">Sammanställning</h2>
+		<div class="col-8 mx-auto p-3 orderCompilation d-flex justify-content-between flex-column flex-md-row mt-3 bg-dark">
+			<div class="d-none d-md-block col-md-4 col-lg-3">
+				<img class="img-fluid" src="/img/posters/${movieObject.images[0]}">
+			</div>
+			<div class="col-12 col-md-9 text-light">
+				<h4>${this.showObject.film}</h4>
+				<p> ${movieObject.genre}, ${this.convertMinutesToHours(movieObject)}, tal: ${movieObject.language}, text: ${movieObject.subtitles}</p>
+				<p><span class="pl-0 col-2 col-md-2 d-inline-block mr-3">Plats:</span> ${this.showObject.auditorium}</p>
+				<p><span class="pl-0 col-2 col-md-2 d-inline-block mr-3">Datum:</span> ${this.showObject.date}</p>
+				<p><span class="pl-0 col-2 col-md-2 d-inline-block mr-3">Tid:</span> ${this.showObject.time}</p>
+			</div>
+		</div>
 
+
+		<h2 class="m-3 col-8 mx-auto">Kostnad</h2>
+			<div class="col-8 mx-auto p-3 pl-4 bg-dark text-light">
+				<p><span class="pl-0 col-7 d-inline-block mr-3">2 st vuxna á 95kr</span>190 kr</p>
+				<hr>
+				<p><span class="pl-0 col-7 d-inline-block mr-3">1st barn á 65kr</span>65 kr</p>
+				<hr>
+				<p><span class="pl-0 col-7 d-inline-block mr-3">Totalt:</span>255 kr</p>
+			</div>
+		<div class="d-flex justify-content-end">
+				<button class="btn btn-danger book-btn">Forstätt</button>
+		</div>
+		`
+
+		$('.orderCompilation').html(html);
+	}
 	// This is Andreas try
-	renderMovieInfo(){
+	renderMovieHeadingInTheater(){
 		let time = this.showObject.time;
 		let date = this.showObject.date;
 		let movie = this.showObject.film;
