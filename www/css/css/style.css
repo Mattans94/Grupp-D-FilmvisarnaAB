@@ -11,9 +11,22 @@ html {
 }
 html body {
   background-color: #3a3a3a;
+  font-family: 'Roboto', sans-serif;
 }
-body {
-  background-color: gray;
+html body h1,
+html body h2,
+html body h3,
+html body h4 {
+  font-family: 'Amaranth', sans-serif;
+}
+html body .redHeader {
+  border-bottom: 1px solid black;
+  background: #991e1e;
+  color: white;
+  border-radius: 30px 10px;
+  padding: 15px 22px;
+  box-shadow: 0px 2px 2px #000;
+  min-height: 30px;
 }
 .card-img-top {
   margin-top: 7px;
@@ -34,7 +47,13 @@ button,
 a {
   cursor: pointer;
 }
-.free {
+.booked {
+  background-color: red !important;
+}
+.reserved {
+  background-color: orange !important;
+}
+#seat {
   width: 50px;
   height: 50px;
   border: 1px solid white;
@@ -43,29 +62,69 @@ a {
   text-align: center;
   color: white;
   /*font-weight: bold;*/
+  z-index: 5;
 }
-.booked {
-  width: 50px;
-  height: 50px;
-  border: 1px solid white;
-  background-color: red;
-  border-radius: 15px;
+#seat:hover {
+  background-color: yellow;
+}
+#theaterBackground {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+#theaterBackground:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));
+}
+#pensionerTickets,
+#adultTickets,
+#childTickets,
+.removebtn,
+.addbtn {
+  width: 40px;
   text-align: center;
-  color: white;
-  /*font-weight: bold;*/
+  border: 0;
+}
+.ticketrepresentation,
+.orderCompilation {
+  background-color: #949494;
+}
+#screenSeatPick {
+  height: 30px;
+}
+#screenSeatPickRight {
+  transform: skewX(130deg);
+  margin-left: -20px;
+}
+#screenSeatPickLeft {
+  transform: skewX(40deg);
+  margin-right: -20px;
+}
+#screenTransparenting {
+  width: 911;
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  /* top of #tobecovered */
+  left: -40px;
+  /* left of #tobecovered */
+  z-index: 4;
 }
 .curtain {
   width: 65%;
   height: 15%;
 }
 #theater-holder {
-  justify-content: center;
-  overflow: hidden;
   /* set width and height from js*/
+  position: relative;
 }
 #theater {
   transform-origin: 0 0;
-  background: #000;
 }
 footer {
   background-color: #949494;
@@ -153,14 +212,6 @@ footer .myheight {
 header {
   background: linear-gradient(#ff3232, #000000);
   box-shadow: 0px 5px 10px #000;
-}
-.kalendarium {
-  border-bottom: 1px solid black;
-  background: #991e1e;
-  color: white;
-  border-radius: 30px 10px;
-  padding: 15px 22px;
-  box-shadow: 0px 2px 2px #000;
 }
 .kalendariumContainer {
   background-color: #949494;

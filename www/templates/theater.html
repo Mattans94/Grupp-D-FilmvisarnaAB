@@ -1,17 +1,30 @@
 Object.assign(Theater.prototype, { template(){ return `
 
 	<div id="movierepresentation">
-	</div>
-
-	<div class="mt-5 ticketholder">
 
 	</div>
-		<section class="bg-dark mt-4 col-12 mx-auto" id="theater-holder">
-			<div class="bg-dark m-0 p-0" id="theater">
-			</div>
-		</section>
-	<div>
-		<button class="btn btn-danger book-btn">Forstätt</button>
+	<div class="ticketrepresentation">
+
+		<div class="ticketholder bg-dark p-4 pb-2"></div>
+	</div>
+
+	<div class="redHeader m-0 col-12 mb-0 mt-3 pb-0 pt-0">
+		<div id="screenSeatPick" class="col-12 col-xl-10 d-flex flex-nowrap mx-auto pr-0 pl-5">
+			<div id="screenSeatPickLeft" class="bg-light col-6 d-inline-block p-0"></div>
+			<div id="screenSeatPickRight" class="bg-light col-6 d-inline-block p-0"></div>
+		</div>
+	</div>
+	<section class="m-0 col-12 mx-auto" id="theater-holder">
+
+		<div class="m-0 p-0" id="theater">
+			<img src="/img/test.png" id="screenTransparenting">
+		</div>
+	</section>
+
+	<div class="redHeader m-0 col-12 mb-0 mt-3 pb-0 pt-0"></div>
+
+	<div class="orderCompilation pb-3">
+
 	</div>
 
 

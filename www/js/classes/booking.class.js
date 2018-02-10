@@ -22,7 +22,7 @@ class Booking extends Base{
 		this.child=0;
 		this.adult=0;
 		this.pensioner=0;
-		this.noOfBookedSeats=0;
+		this.reservedSeats = 0;
 
 		// Detta finns redan globalt i en data-klass. Är nog inte fel att ladda om när man väl bokar.
 		// Men bör göras till Data-klassen istället för endast i denna klassen
@@ -38,61 +38,72 @@ class Booking extends Base{
 
 	// Behövs theater.scale() här? Den körs redan on-resize i popstate.
 	start(){
-
-	    this.eventHandler();
-	    this.renderTicketButtons();
+		this.eventHandler();
+		this.renderTicketButtons();
 		this.checkForDisable();
-
+		this.updateTotalPrice();
+		this.myNumberOfSeatsCheck();
+		console.log('twice?');
 	}
 
 
 
 	updateTotalPrice(){
 		// prices.start();
-		let prices= new Prices(this.child, this.adult, this.pensioner);
+		let prices = new Prices(this.child, this.adult, this.pensioner);
 		prices.calculateTotalPrice();
+		prices.renderTotalAmount();
 	}
 
 	myNumberOfSeatsCheck() {
-		this.myNumberOfSeats = this.child + this.adult + this.pensioner;
+		this.seatsTotal = (this.child + this.adult + this.pensioner);
 	}
 
 	renderTicketButtons() {
 		let html =
-			`<div class="row">
-				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-						<p class="text-white">Ordinarie</p>
-					  <div class="btn-group mr-2" role="group" aria-label="adult group">
-						  <button type="button" class="btn btn-danger removebtn" id="removeadult"><strong>-</strong></button>
-						  <input type="text" class="form-control col-2" id="adultTickets" placeholder="${this.adult}">
-						  <button type="button" class="btn btn-danger addbtn" id="addadult"><strong>+</strong></button>
-					 	</div>
+			`<div class="d-flex flex-nowrap flex-column flex-md-row justify-content-around">
+
+					<div>
+						<p class="text-white mb-0">Ordinarie</p>
+					  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+						  <div class="btn-group mr-2" role="group" aria-label="adult group">
+							  <button type="button" class="btn btn-danger removebtn" id="removeadult"><strong>-</strong></button>
+							  <input type="text" class="form-control" id="adultTickets" placeholder="${this.adult}">
+							  <button type="button" class="btn btn-danger addbtn" id="addadult"><strong>+</strong></button>
+						 	</div>
+						</div>
 					</div>
 
-				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-			  		<p class="text-white">Barn (under 12 år)</p>
-				  	<div class="btn-group mr-2" role="group" aria-label="child group">
-					    <button type="button" class="btn btn-danger removebtn" id="removechild"><strong>-</strong></button>
-					    <input type="text" class="form-control col-2" id="childTickets" placeholder="${this.child}">
-					    <button type="button" class="btn btn-danger addbtn" id="addchild"><strong>+</strong></button>
-				  	</div>
-					</div>
-
-				  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-						<p class="text-white">Pensionär</p>
-				  	<div class="btn-group mr-2" role="group" aria-label="pensioner group">
-					    <button type="button" class="btn btn-danger removebtn" id="removepensioner"><strong>-</strong></button>
-					    <input type="text" class="form-control col-2" id="pensionerTickets" placeholder="${this.pensioner}" >
-					    <button type="button" class="btn btn-danger addbtn" id="addpensioner"><strong>+</strong></button>
-				  	</div>
+					<div>
+						<p class="text-white mb-0">Barn (under 12 år)</p>
+					  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+					  	<div class="btn-group mr-2" role="group" aria-label="child group">
+						    <button type="button" class="btn btn-danger removebtn" id="removechild"><strong>-</strong></button>
+						    <input type="text" class="form-control" id="childTickets" placeholder="${this.child}">
+						    <button type="button" class="btn btn-danger addbtn" id="addchild"><strong>+</strong></button>
+					  	</div>
+						</div>
 					</div>
 					<div>
-						<small class="text-danger"> Du kan välja max 8 biljetter
-						</small>
-					</div>
+						<p class="text-white mb-0">Pensionär</p>
+						<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 
-			</div>`;
-  	$('.ticketholder').html(html);
+							<div class="btn-group mr-2" role="group" aria-label="pensioner group">
+								<button type="button" class="btn btn-danger removebtn" id="removepensioner"><strong>-</strong></button>
+								<input type="text" class="form-control" id="pensionerTickets" placeholder="${this.pensioner}" >
+								<button type="button" class="btn btn-danger addbtn" id="addpensioner"><strong>+</strong></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<small class="text-danger"> Max 8 biljetter per bokning
+					</small>
+				</div>
+
+			`;
+  	$('.ticketholder').append(html);
 	 }
 
 	// Kan man göra om denna på något sätt för att optimera?
@@ -119,7 +130,7 @@ class Booking extends Base{
 
 	disableAddButton(ticketType){
 		let val = this[ticketType];
-		if (val >= 8  || this.noOfBookedSeats == 8){
+		if (val >= 8  || this.seatsTotal == 8){
 			$('#add' + ticketType).prop('disabled', true);
 		}else {
 			$('#add' + ticketType).prop('disabled', false);
@@ -130,8 +141,10 @@ class Booking extends Base{
 		return Data.showObjects.findIndex((o) => {return o.date == this.showObject.date && o.time == this.showObject.time});
 	}
 
-	minMetod(){
-		console.log(this.loggedInUser);
+	resetBookingButtons(){
+		if (this.seatsTotal < this.reservedSeats) {
+			$('.seat').addClass('free').removeClass('reserved');
+		}
 	}
 
 	// Lång eventHandler - kanske behövs.
@@ -155,14 +168,12 @@ class Booking extends Base{
 				that.loggedInUser = userid;
 			})
 			.then(() => {
-
-				that.minMetod()
 				tempBookingObject.show = that.showObject;
 				tempBookingObject.show.userID = that.loggedInUser;
 				tempBookingObject.show.orderID = [];
 				tempBookingObject.show.bookedSeats = [];
 
-				$('.seat.booked').each(function(){
+				$('.seat.reserved').each(function(){
 					let seat = $(this);
 					let seatID = seat.data('seatid');
 					// console.log(seatID);
@@ -197,51 +208,46 @@ class Booking extends Base{
 		// Kan man göra dessa annorlunda? Kolla tillsammans
 		$(document).on('click', '#addchild', () => {
 			this.child += 1;
-			this.noOfBookedSeats +=1;
 			$('#childTickets').attr("placeholder", this.child);
 			})
 
 		$(document).on('click', '#removechild', () => {
 			this.child -= 1;
-			this.noOfBookedSeats -=1;
 			$('#childTickets').attr("placeholder", this.child)
-			// that.renderTicketButtons();
 		})
 
 		$(document).on('click', '#addadult', () => {
 			this.adult += 1;
-			this.noOfBookedSeats +=1;
-			// that.renderTicketButtons();
 			$('#adultTickets').attr("placeholder", this.adult)
 		})
 
 		$(document).on('click', '#removeadult', () => {
 			this.adult -= 1;
-			this.noOfBookedSeats -=1;
-			// that.renderTicketButtons();
 			$('#adultTickets').attr("placeholder", this.adult)
 		})
 
 		$(document).on('click', '#addpensioner', () => {
 			this.pensioner += 1;
-			this.noOfBookedSeats +=1;
-			// that.renderTicketButtons();
 			$('#pensionerTickets').attr("placeholder", this.pensioner)
 		})
 
 		$(document).on('click', '#removepensioner', () => {
 			this.pensioner -= 1;
-			this.noOfBookedSeats -=1;
-			// that.renderTicketButtons();
 			$('#pensionerTickets').attr("placeholder", this.pensioner)
 		})
 
-		$(document).on('click','.addbtn', () =>{
+		$(document).on('click','.addbtn', () => {
+			this.myNumberOfSeatsCheck();
 			this.checkForDisable();
+			this.updateTotalPrice();
+			this.resetBookingButtons();
 		})
 
-		$(document).on('click','.removebtn', () =>{
+		$(document).on('click','.removebtn', () => {
+			this.myNumberOfSeatsCheck();
 			this.checkForDisable();
+			this.updateTotalPrice();
+			this.resetBookingButtons();
 		})
 
 	} // end eventhandler
