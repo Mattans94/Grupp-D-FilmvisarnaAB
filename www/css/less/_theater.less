@@ -42,7 +42,31 @@
 	border: 0;
 }
 
+.ticketrepresentation {
+	background-color: @secondaryColor;
+}
 
+#screenSeatPick{
+	height: 30px;
+}
+
+#screenSeatPickRight {
+ 	transform: skewX(130deg);
+	margin-left: -20px;
+}
+#screenSeatPickLeft {
+	transform: skewX(40deg);
+	margin-right: -20px;
+}
+
+#screenTransparenting {
+	width: 911;
+	opacity: 0.3;
+	position: absolute;
+	top: 0; /* top of #tobecovered */
+	left: -40px; /* left of #tobecovered */
+	z-index: 300;
+}
 
 .curtain {
 	width: 65%;
@@ -50,11 +74,12 @@
 }
 
 #theater-holder {
-	overflow: hidden;
   /* set width and height from js*/
+	position: relative;
 }
 
+
 #theater {
+
   transform-origin: 0 0;
-	background: #000;
 }

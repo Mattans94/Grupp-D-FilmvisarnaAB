@@ -54,7 +54,7 @@ class Theater extends Base{
 
 		let movieObject = this.getMovieObject(this.showObject.film);
 		let html = `
-		<div class="d-flex flex-nowrap flex-column flex-md-row m-0 p-2" id="theaterBackground" style="background-image: url(/img/slides/${movieObject.slides[0]}); ">
+		<div class="d-flex flex-nowrap flex-column flex-md-row m-0 mt-5 p-4" id="theaterBackground" style="background-image: url(/img/slides/${movieObject.slides[0]}); ">
 			<div class="col-5 col-md-3 col-lg-2">
 				<img class="img-fluid" src="/img/posters/${movieObject.images[0]}">
 			</div>
@@ -103,7 +103,7 @@ class Theater extends Base{
 			}
 			html += '</div>';
 		}
-		$('#theater').html(html);
+		$('#theater').append(html);
 
 		// $('html, body').animate({
     //     scrollTop: $("#theater").offset().top -20
@@ -136,7 +136,6 @@ class Theater extends Base{
 
 	scale() {
 		let orgW = $('#theater').width(), orgH = $('#theater').height();
-		console.log('width in scale = ', orgW, 'height in scale = ', orgH);
 		let w = $('#theaterBackground').width();
 		let h = $(window).height();
 		console.log('width-window in scale = ', w, 'height-window in scale = ', h);
@@ -148,18 +147,20 @@ class Theater extends Base{
 		console.log('scaling', scaling)
 		scaling = scaling * 0.8;
 
+		$('#screenTransparenting').width(orgW + 80).height(orgH);
+
 		$('#theater').css('transform', `scale(${scaling})`);
 		$('#theater-holder').width(orgW * scaling);
 		$('#theater-holder').height(orgH * scaling);
+
+		this.scaleLightFromScreen();
+	}
+	scaleLightFromScreen(){
+
+
+
 	}
 
-	scaleToCenter(){
-		 let holderWidth = $('#theater-holder').width();
-		 let theaterWidth = $('#theater').width();
-		 let marginLeft = holderWidth - theaterWidth;
-
-		 $('#theater').css("margin-left",marginLeft);
-	}
 
 // checkFreeSeats(){
 // 		if($(this).hasClass('booked')){return;}
