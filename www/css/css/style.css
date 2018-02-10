@@ -11,9 +11,14 @@ html {
 }
 html body {
   background-color: #3a3a3a;
+  font-family: 'Roboto', sans-serif;
 }
-body {
-  background-color: gray;
+html body h1,
+html body h2,
+html body h3,
+html body h4,
+html body h5 {
+  font-family: 'Amaranth', sans-serif;
 }
 .card-img-top {
   margin-top: 7px;
