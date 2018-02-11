@@ -9,6 +9,14 @@ class Login extends Base{
 	}
 
 	eventHandlers(){
+		$(document).on('click', '#myBookings-btn', () => {
+			if (!(this.session.id === null)){
+				this.getRightUserInfo();
+			}
+
+		});
+
+
 		$(document).on('click', '#login-btn', () => {
 
 			JSON._load('users').then((users) => {
@@ -166,9 +174,10 @@ class Login extends Base{
 	// Userpage no history yet
 	async getRightUserInfo(){
 		this.bookingObjects = await JSON._load('booking');
-
 		let loggedInId = this.session.id;
 		this.bookedUserShows = this.bookingObjects.filter((m) => loggedInId == m.show.userID);
+		
+		this.renderLoginTemplate();
 	}
 
 	getBookedSeats(bookedSeats){
