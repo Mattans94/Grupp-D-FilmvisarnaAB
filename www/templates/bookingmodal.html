@@ -1,30 +1,30 @@
 Object.assign(BookingModal.prototype, { template(){ return `
-
-  <button type="button" id="modalToggler" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="display: none;">
+  <!-- Modal 1 - Godkännande -->
+  <button type="button" id="bookingConfirmationModalToggler" class="btn btn-primary" data-toggle="modal" data-target="#bookingConfirmationModal" style="display: none;">
   </button>
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal fade" id="bookingConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="bookingConfirmationModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bg-dark">
-          <h5 class="modal-title text-light" id="exampleModalLongTitle">Godkännande av bokning</h5>
+          <h5 class="modal-title text-light" id="bookingConfirmationModalTitle">Godkännande av bokning</h5>
           <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body bg-dark">
           <div class="col-12 mx-auto p-0 orderCompilation d-flex justify-content-between flex-column flex-md-row mt-3 bg-dark">
-            <div class="d-none d-md-block col-md-4 col-lg-3 p-0 pt-1">
+            <div class="d-none d-md-block col-md-4 col-lg-3 p-0 align-self-center">
               <img class="img-fluid" src="/img/posters/${this.movieObject.images[0]}">
             </div>
             <div class="col-12 col-md-7 col-lg-10 text-light">
               <h4>${this.movie}</h4>
-              <p><span class="pl-0 col-5 d-inline-block mr-3">Plats:</span> ${this.auditorium}</p>
+              <p><span class="pl-0 col-5 d-inline-block mr-3">Salong:</span> ${this.auditorium}</p>
               <p><span class="pl-0 col-5 d-inline-block mr-3">Datum:</span> ${this.date}</p>
               <p><span class="pl-0 col-5 d-inline-block mr-3">Tid:</span> ${this.time}</p>
-              <p><span class="pl-0 col-5 d-inline-block mr-3">Pris:</span> ${this.totalPrice}</p>
-              <p><span class="pl-0 col-5 d-inline-block mr-3">Bokade säten:</span> ${this.getAllSeats()}</p>
+              <p><span class="pl-0 col-5 d-inline-block mr-3">Pris:</span> ${this.totalPrice} kr</p>
+              <p><span class="pl-0 col-5 d-inline-block mr-3">Plats(er):</span> ${this.getAllSeats()}</p>
             </div>
           </div>
         </div>
@@ -34,6 +34,43 @@ Object.assign(BookingModal.prototype, { template(){ return `
           <button type="button" class="btn btn-danger mr-4" data-dismiss="modal">Tillbaka</button>
           <button type="button" class="btn btn-success book-btn">Godkänn bokning</button>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2 - Tack för bokningen -->
+  <button type="button" id="bookingConfirmedModalToggler" class="btn btn-primary" data-toggle="modal" data-target="#bookingConfirmedModal" style="display: none;">
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="bookingConfirmedModal" tabindex="-1" role="dialog" aria-labelledby="bookingConfirmedModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-dark">
+          <h5 class="modal-title text-light" id="bookingConfirmedModalTitle">Tack för din bokning</h5>
+          <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body bg-dark">
+          <div class="col-12 mx-auto p-0 orderCompilation d-flex justify-content-between flex-column flex-md-row mt-3 bg-dark">
+            <div class="d-none d-md-block col-md-4 col-lg-3 p-0 align-self-center">
+              <img class="img-fluid" src="/img/posters/${this.movieObject.images[0]}">
+            </div>
+            <div class="col-12 col-md-7 col-lg-10 text-light">
+              <h4>${this.movie}</h4>
+              <p class="mb-1"><span class="pl-0 col-5 d-inline-block mr-3">Salong:</span> ${this.auditorium}</p>
+              <p class="mb-1"><span class="pl-0 col-5 d-inline-block mr-3">Datum:</span> ${this.date}</p>
+              <p class="mb-1"><span class="pl-0 col-5 d-inline-block mr-3">Tid:</span> ${this.time}</p>
+              <p class="mb-1"><span class="pl-0 col-5 d-inline-block mr-3">Pris:</span> ${this.totalPrice} kr</p>
+              <p class="mb-1"><span class="pl-0 col-5 d-inline-block mr-3">Plats(er):</span> ${this.getAllSeats()}</p>
+              <p class="pl-0 d-inline-block mr-3">Du hittar alltid dina bokningar under Mina bokningar</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer bg-dark">
+          <a href="/"><button type="button" class="btn btn-success">Till startsidan</button></a>
         </div>
       </div>
     </div>
