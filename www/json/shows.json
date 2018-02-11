@@ -112,7 +112,11 @@
     "auditorium": "Stora Salongen",
     "film": "Let The Sunshine In",
     "time": "22.40",
-    "bookedSeats": []
+    "bookedSeats": [
+      2,
+      9,
+      10
+    ]
   },
   {
     "date": "2018-03-06",
@@ -199,7 +203,18 @@
     "auditorium": "Lilla Salongen",
     "film": "Let The Sunshine In",
     "time": "21.00",
-    "bookedSeats": []
+    "bookedSeats": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2
+    ]
   },
   {
     "date": "2018-03-08",
@@ -401,7 +416,10 @@
     "auditorium": "Stora Salongen",
     "film": "Let The Sunshine In",
     "time": "21.00",
-    "bookedSeats": []
+    "bookedSeats": [
+      1,
+      2
+    ]
   },
   {
     "date": "2018-03-17",

@@ -105,6 +105,10 @@ a {
 .orderCompilation {
   background-color: #949494;
 }
+#notLoggedIn {
+  color: #ff3232;
+  font-size: 0.9em;
+}
 #screenSeatPick {
   height: 30px;
 }

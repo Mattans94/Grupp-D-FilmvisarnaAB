@@ -1,35 +1,26 @@
 [
   {
     "show": {
-      "date": "2018-03-06",
-      "auditorium": "Lilla Salongen",
-      "film": "Call Me By Your Name",
-      "time": "22.40",
-      "bookedSeats": [
-        1,
-        2,
-        3
-      ],
-      "userID": {
-        "id": null
-      },
-      "orderID": "Gk9IZ1vz2"
+      "id": null,
+      "orderID": "5jjyHXll8",
+      "bookedSeats": []
     }
   },
   {
     "show": {
-      "date": "2018-03-01",
-      "auditorium": "Lilla Salongen",
-      "film": "Let The Sunshine In",
-      "time": "18.40",
+      "id": 4,
+      "orderID": "Lz86G7zjO",
+      "bookedSeats": []
+    }
+  },
+  {
+    "show": {
+      "id": 4,
+      "orderID": "r2zz0bgNT",
       "bookedSeats": [
-        1,
-        2
-      ],
-      "userID": {
-        "id": null
-      },
-      "orderID": "MrGp4tkHy"
+        9,
+        10
+      ]
     }
   }
 ]

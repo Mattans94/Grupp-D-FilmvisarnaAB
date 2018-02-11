@@ -29,8 +29,11 @@ Object.assign(BookingModal.prototype, { template(){ return `
           </div>
         </div>
         <div class="modal-footer bg-dark">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Tillbaka</button>
+          <div class="col-12 d-flex flex-wrap justify-content-end">
+          <p id="notLoggedIn" class="col-12 text-right"></p>
+          <button type="button" class="btn btn-danger mr-4" data-dismiss="modal">Tillbaka</button>
           <button type="button" class="btn btn-success book-btn">Godkänn bokning</button>
+          </div>
         </div>
       </div>
     </div>

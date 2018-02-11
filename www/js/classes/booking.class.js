@@ -77,6 +77,9 @@ class Booking extends Base{
 		}
 	}
 
+	throwErrorMessageIfNotLoggedIn(){
+		return 'Du måste logga in för att boka platser';
+	}
 
 
 	// Kan man göra om denna på något sätt för att optimera?
@@ -144,39 +147,48 @@ class Booking extends Base{
 
 		let that = this;
 		$(document).on('click','.book-btn',function(){
-			// Temporärt objekt varje gång man klickar
-			let tempBookingObject = {};
-			// Laddar in all json som behövs
-			JSON._load('booking').then((data) => {
-					// Retrieve the app from JSON
-				that.bookedSeats = data;
-			})
-			.then(JSON._load('shows').then((shows) => {
-      	Data.showObjects = shows;
-	    })
-			.then(JSON._load('session').then((userid) => {
-				that.loggedInUser = userid;
-			})
-			.then(() => {
-				tempBookingObject.show = that.showObject;
-				tempBookingObject.show.userID = that.loggedInUser;
-				tempBookingObject.show.orderID = that.returnGeneratedId();
-				tempBookingObject.show.bookedSeats = [];
 
-				$('.seat.reserved').each(function(){
-					let seat = $(this);
-					let seatID = seat.data('seatid');
-					// console.log(seatID);
-					that.showObject.bookedSeats.push(seatID);
-					let showObjectIndex = that.getShowIndex();
-					Data.showObjects[showObjectIndex].bookedSeats.push(seatID);
-					// tempBookingObject.show.bookedSeats.push(seatID);
-				});
-				that.bookedSeats.push(tempBookingObject);
-				//Save booked-info + sittplats to JSON
-				JSON._save('booking', that.bookedSeats);
-				JSON._save('shows', Data.showObjects);
-			})))});
+				// Temporärt objekt varje gång man klickar
+				let tempBookingObject = {};
+				// Laddar in all json som behövs
+				JSON._load('booking').then((data) => {
+						// Retrieve the app from JSON
+					that.bookedSeats = data;
+				})
+				.then(JSON._load('shows').then((shows) => {
+	      	Data.showObjects = shows;
+		    })
+				.then(JSON._load('session').then((userid) => {
+					that.loggedInUser = userid;
+				})
+
+
+				// Kör bokning
+				.then(() => {
+					// Kollar ifall man är inloggad.
+					if (that.loggedInUser.id === null) {
+						$('#notLoggedIn').html(that.throwErrorMessageIfNotLoggedIn());
+					} else {
+					tempBookingObject.show = that.showObject;
+					tempBookingObject.show = that.loggedInUser;
+					tempBookingObject.show.orderID = that.returnGeneratedId();
+					tempBookingObject.show.bookedSeats = [];
+
+					$('.seat.reserved').each(function(){
+						let seat = $(this);
+						let seatID = seat.data('seatid');
+						// console.log(seatID);
+						that.showObject.bookedSeats.push(seatID);
+						let showObjectIndex = that.getShowIndex();
+						Data.showObjects[showObjectIndex].bookedSeats.push(seatID);
+						tempBookingObject.show.bookedSeats.push(seatID);
+					});
+					that.bookedSeats.push(tempBookingObject);
+					//Save booked-info + sittplats to JSON
+					JSON._save('booking', that.bookedSeats);
+					JSON._save('shows', Data.showObjects);
+				}})))});
+
 
 
 		// Kan man göra dessa annorlunda? Kolla tillsammans
