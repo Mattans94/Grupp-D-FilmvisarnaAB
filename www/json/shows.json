@@ -4,7 +4,10 @@
     "auditorium": "Lilla Salongen",
     "film": "Let The Sunshine In",
     "time": "18.40",
-    "bookedSeats": []
+    "bookedSeats": [
+      1,
+      2
+    ]
   },
   {
     "date": "2018-03-01",
@@ -133,7 +136,10 @@
     "bookedSeats": [
       44,
       45,
-      46
+      46,
+      1,
+      2,
+      3
     ]
   },
   {

@@ -1,10 +1,4 @@
 class Booking extends Base{
-
-	// constructor(userid, date, time, auditorium) {
-	//
-
-	// Bör ta emot ett showObject från klassen theater som också initierar denna klass?
-	// Behöver booking någonsin kallas om inte theater-kallas?
 	constructor(showObject) {
 		super();
 
@@ -15,7 +9,7 @@ class Booking extends Base{
 		this.title = showObject.film;
 		this.showObject = showObject;
 		//
-		this.orderID = [];
+
 
 		this.child=0;
 		this.adult=0;
@@ -28,6 +22,7 @@ class Booking extends Base{
 		JSON._load('booking').then((seats) => {
 	      // Retrieve the app from JSON
 	      this.bookedSeats = seats;
+				this.allBookings = seats;
 				this.start();
 	    });
 
@@ -51,6 +46,38 @@ class Booking extends Base{
 	myNumberOfSeatsCheck() {
 		this.seatsTotal = (this.child + this.adult + this.pensioner);
 	}
+
+
+	returnGeneratedId(){
+		let generatedID;
+		do {
+			generatedID = this.generateOrderId();
+		}	while (this.checkExistingId(generatedID));
+
+		return generatedID;
+	}
+
+	generateOrderId(){
+		let generatedID = '';
+		let allCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+		for (let i = 0; i < 9; i++) {
+			generatedID += allCharacters.charAt(Math.floor(Math.random() * allCharacters.length));
+		}
+
+		return generatedID;
+	}
+
+	checkExistingId(generatedID){
+		for (let i = 0; i < this.allBookings.length; i++){
+			if (generatedID == this.allBookings[i].show.orderID){
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
+
+
 
 	// Kan man göra om denna på något sätt för att optimera?
 	checkForDisable(){
@@ -133,7 +160,7 @@ class Booking extends Base{
 			.then(() => {
 				tempBookingObject.show = that.showObject;
 				tempBookingObject.show.userID = that.loggedInUser;
-				tempBookingObject.show.orderID = [];
+				tempBookingObject.show.orderID = that.returnGeneratedId();
 				tempBookingObject.show.bookedSeats = [];
 
 				$('.seat.reserved').each(function(){
@@ -183,19 +210,19 @@ class Booking extends Base{
 			$('#pensionerTickets').attr("placeholder", this.pensioner)
 		})
 
-		$(document).on('click','.addbtn', () => {
+		$(document).on('click','.addbtn, .removebtn', () => {
 			this.myNumberOfSeatsCheck();
 			this.checkForDisable();
 			this.updateTotalPrice();
 			this.resetBookingButtons();
 		})
 
-		$(document).on('click','.removebtn', () => {
-			this.myNumberOfSeatsCheck();
-			this.checkForDisable();
-			this.updateTotalPrice();
-			this.resetBookingButtons();
-		})
+		// $(document).on('click','.removebtn', () => {
+		// 	this.myNumberOfSeatsCheck();
+		// 	this.checkForDisable();
+		// 	this.updateTotalPrice();
+		// 	this.resetBookingButtons();
+		// })
 
 	} // end eventhandler
 
