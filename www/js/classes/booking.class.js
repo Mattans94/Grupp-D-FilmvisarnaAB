@@ -61,9 +61,9 @@ class Booking extends Base{
 
 	renderTicketButtons() {
 		let html =
-			`<div class="d-flex flex-nowrap flex-column flex-md-row justify-content-around">
+			`<div class="d-flex flex-nowrap flex-column flex-md-row justify-content-md-around align-items-center">
 
-					<div>
+					<div class="text-center text-md-left">
 						<p class="text-white mb-0">Ordinarie</p>
 					  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 						  <div class="btn-group mr-2" role="group" aria-label="adult group">
@@ -74,7 +74,7 @@ class Booking extends Base{
 						</div>
 					</div>
 
-					<div>
+					<div class="text-center text-md-left">
 						<p class="text-white mb-0">Barn (under 12 år)</p>
 					  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 					  	<div class="btn-group mr-2" role="group" aria-label="child group">
@@ -84,7 +84,7 @@ class Booking extends Base{
 					  	</div>
 						</div>
 					</div>
-					<div>
+					<div class="text-center text-md-left">
 						<p class="text-white mb-0">Pensionär</p>
 						<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 
@@ -97,13 +97,13 @@ class Booking extends Base{
 					</div>
 				</div>
 
-				<div>
+				<div class="text-center text-md-left">
 					<small class="text-danger"> Max 8 biljetter per bokning
 					</small>
 				</div>
 
 			`;
-  	$('.ticketholder').append(html);
+  	$('.ticketholder').html(html);
 	 }
 
 	// Kan man göra om denna på något sätt för att optimera?

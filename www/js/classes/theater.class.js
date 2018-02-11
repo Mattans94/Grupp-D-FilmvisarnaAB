@@ -96,7 +96,7 @@ class Theater extends Base{
 		</div>
 
 		`;
-		$('#movierepresentation').append(html);
+		$('#movierepresentation').html(html);
 
 	}
 
@@ -115,7 +115,7 @@ class Theater extends Base{
 
 
 	renderTheater() {
-		let html = '';
+		let html = `<img src="/img/test.png" id="screenTransparenting">`;
 		let seatnumber=1;
 		let seatStatus = 'free';
 
@@ -131,7 +131,7 @@ class Theater extends Base{
 			}
 			html += '</div>';
 		}
-		$('#theater').append(html);
+		$('#theater').html(html);
 
 		// $('html, body').animate({
     //     scrollTop: $("#theater").offset().top -20
