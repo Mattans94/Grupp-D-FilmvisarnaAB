@@ -49,9 +49,14 @@ a {
 }
 .booked {
   background-color: red !important;
+  cursor: not-allowed !important;
 }
 .reserved {
   background-color: orange !important;
+  cursor: pointer;
+}
+.free {
+  cursor: pointer;
 }
 #seat {
   width: 50px;
@@ -277,12 +282,19 @@ header {
   content: "\f0d7";
   color: green;
 }
+@media (min-width: 992px) {
+  .myloginform,
+  .myloggedinform {
+    width: 300px;
+    left: 50% !important;
+    right: auto !important;
+    transform: translate(-50%, 0) !important;
+  }
+}
 .myloginform,
 .myloggedinform {
-  width: 300px;
-  left: 50% !important;
-  right: auto !important;
-  transform: translate(-50%, 0) !important;
+  max-width: 500px;
+  margin: 0 auto;
 }
 .myloginform h3,
 .myloggedinform h3,

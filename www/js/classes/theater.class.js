@@ -10,6 +10,8 @@ class Theater extends Base{
 		this.showObject = showObject;
 		this.auditorium = showObject.auditorium;
 
+		console.log('showObject', this.showObject);
+
 		JSON._load('theaters').then((theater) => {
 			this.theaterObjects = theater;
 
@@ -74,6 +76,33 @@ class Theater extends Base{
 
 		$('.orderCompilation').html(html);
 	}
+	async getRichShow(theShow){
+	  let bookings = await JSON._load('booking');
+
+	  //let count = 0;
+		for(let booking of bookings){
+		  //console.log('film', booking.show.film);
+		  // for(let show of shows){
+		  // 	// if(theShow && show != theShow){continue;}
+		  //   //count++;
+		    if(booking.show.date == theShow.date && booking.show.auditorium == theShow.auditorium && booking.show.time == theShow.time){
+		      //console.log('found it!', show, booking);
+		      if(!theShow.bookedSeats){
+		        theShow.bookedSeats = [];
+		      }
+		      theShow.bookedSeats = [...theShow.bookedSeats, ...booking.show.bookedSeats]; // concat (merge) two arrays
+		      //console.log(show);
+		      theShow.bookedSeats = new Set(theShow.bookedSeats);
+		      theShow.bookedSeats = Array.from(theShow.bookedSeats);
+		    }
+
+
+		}
+
+    return theShow;
+	}
+
+
 	// This is Andreas try
 	renderMovieHeadingInTheater(){
 		let time = this.showObject.time;
@@ -96,7 +125,7 @@ class Theater extends Base{
 		</div>
 
 		`;
-		$('#movierepresentation').append(html);
+		$('#movierepresentation').html(html);
 
 	}
 
@@ -114,28 +143,38 @@ class Theater extends Base{
 
 
 
-	renderTheater() {
-		let html = '';
+	async renderTheater() {
+		let html = `<img src="/img/test.png" id="screenTransparenting">`;
 		let seatnumber=1;
 		let seatStatus = 'free';
+
+		let show = await this.getRichShow(this.showObject);
+		console.log('show', show);
 
 		for (let row = 0; row < this.seatsStoran.length; row++) {
 			this.seatsPerRow = this.seatsStoran[row];
 			html += `<div class="d-flex flex-row-reverse justify-content-center flex-nowrap seat-row m-0">`;
 
 			for (let seat = 0; seat < this.seatsPerRow; seat++) {
+         let taken = '';
+				if(show.bookedSeats.indexOf(seatnumber) >- 1){
+					taken = ' booked';
+				}
 
-				html += `<div class="${seatStatus} seat mt-1 ml-1" id="seat" data-rowid="${row}" data-seatid="${seatnumber}" data-status="${seatStatus}">${seatnumber}</div>`;
+				html += `<div class="${seatStatus + taken} seat mt-1 ml-1" id="seat" data-rowid="${row}" data-seatid="${seatnumber}" data-status="${seatStatus}">${seatnumber}</div>`;
 
 				seatnumber++;
 			}
 			html += '</div>';
 		}
-		$('#theater').append(html);
+		$('#theater').html(html);
+		this.removeClassFreeFromBookedSeats();
+	}
 
-		// $('html, body').animate({
-    //     scrollTop: $("#theater").offset().top -20
-    // }, 500);
+	removeClassFreeFromBookedSeats(){
+		if($('.seat').hasClass('booked')) {
+			$('.booked').removeClass('free');
+		}
 	}
 
 
@@ -144,7 +183,6 @@ class Theater extends Base{
 
 		let fullHeight = this.seatsStoran.length * 55;
 		$('#theater').css('height', `${fullHeight}`);
-		console.log('setting height', fullHeight);
 	}
 
 	setWidth(){
@@ -157,7 +195,6 @@ class Theater extends Base{
 		let fullWidth = longestRow * 55;
 		$('#theater').css('width', `${fullWidth}`);
 
-		console.log('setting width', fullWidth);
 
 	}
 
@@ -166,13 +203,10 @@ class Theater extends Base{
 		let orgW = $('#theater').width(), orgH = $('#theater').height();
 		let w = $('#theaterBackground').width();
 		let h = $(window).height();
-		console.log('width-window in scale = ', w, 'height-window in scale = ', h);
 		const wScale = w / orgW;
 		const hScale = h / orgH;
-		console.log('widthscale = ', wScale, 'heigttscale = ', hScale);
 		let scaling = Math.min(wScale, hScale);
 
-		console.log('scaling', scaling)
 		scaling = scaling * 0.8;
 
 		$('#screenTransparenting').width(orgW + 80).height(orgH);
@@ -226,17 +260,16 @@ class Theater extends Base{
 		// let seatID; = seat.data('seatid');
 		// let rowID;  = seat.data('rowid');
 		// let status;  = seat.data('status');
-
-		$(document).on("click", '.seat', function() {
+			$(document).on("click", '.seat', function() {
 			let seat = $(this);
 
-			if (that.booking.seatsTotal >= 1 && !(that.booking.reservedSeats == that.booking.seatsTotal)) {
-				if (seat.hasClass('free')){
+
+			if (that.booking.seatsTotal >= 1) {
+				if (seat.hasClass('free') && !(that.booking.reservedSeats == that.booking.seatsTotal)){
 					seat.removeClass('free');
 					seat.addClass('reserved');
 					that.booking.reservedSeats++;
-				}
-				else if (seat.hasClass('reserved')){
+				} else if (seat.hasClass('reserved')){
 					seat.removeClass('reserved');
 					seat.addClass('free');
 					that.booking.reservedSeats--;
