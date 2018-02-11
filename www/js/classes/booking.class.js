@@ -162,6 +162,7 @@ class Booking extends Base{
 		    })
 				.then(JSON._load('session').then((userid) => {
 					that.loggedInUser = userid;
+
 				})
 
 
@@ -172,7 +173,7 @@ class Booking extends Base{
 						$('#notLoggedIn').html(that.throwErrorMessageIfNotLoggedIn());
 					} else {
 					tempBookingObject.show = that.showObject;
-					tempBookingObject.show = that.loggedInUser;
+					tempBookingObject.show.userID = that.loggedInUser.id;
 					tempBookingObject.show.orderID = that.returnGeneratedId();
 					tempBookingObject.show.bookedSeats = [];
 
@@ -183,7 +184,6 @@ class Booking extends Base{
 						that.showObject.bookedSeats.push(seatID);
 						let showObjectIndex = that.getShowIndex();
 						Data.showObjects[showObjectIndex].bookedSeats.push(seatID);
-						tempBookingObject.show.bookedSeats.push(seatID);
 					});
 					that.bookedSeats.push(tempBookingObject);
 					//Save booked-info + sittplats to JSON

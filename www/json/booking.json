@@ -1,92 +1,60 @@
 [
   {
     "show": {
-      "id": null,
-      "orderID": "5jjyHXll8",
-      "bookedSeats": []
-    }
-  },
-  {
-    "show": {
-      "id": 4,
-      "orderID": "Lz86G7zjO",
-      "bookedSeats": []
-    }
-  },
-  {
-    "show": {
-      "id": 4,
-      "orderID": "r2zz0bgNT",
-      "bookedSeats": [
-        9,
-        10
-      ]
-    }
-  },
-  {
-    "show": {
-      "id": 4,
-      "orderID": "6Q5Neglvc",
+      "date": "2018-03-03",
+      "auditorium": "Stora Salongen",
+      "film": "Call Me By Your Name",
+      "time": "22.40",
       "bookedSeats": [
         4,
+        4,
+        5,
         5
-      ]
+      ],
+      "userID": 4,
+      "orderID": "qf2aTZ7Da"
     }
   },
   {
     "show": {
-      "id": 4,
-      "orderID": "BybKaMIQo",
-      "bookedSeats": []
+      "date": "2018-03-16",
+      "auditorium": "Stora Salongen",
+      "film": "Call Me By Your Name",
+      "time": "18.40",
+      "bookedSeats": [
+        1,
+        1
+      ],
+      "userID": 4,
+      "orderID": "2DFduIBHA"
     }
   },
   {
     "show": {
-      "id": 4,
-      "orderID": "qONjPoGj5",
-      "bookedSeats": []
+      "date": "2018-03-03",
+      "auditorium": "Stora Salongen",
+      "film": "Call Me By Your Name",
+      "time": "22.40",
+      "bookedSeats": [
+        6,
+        7
+      ],
+      "userID": 4,
+      "orderID": "TMUDqzO4N"
     }
   },
   {
     "show": {
-      "id": 4,
-      "orderID": "sfr5ujoth",
-      "bookedSeats": []
-    }
-  },
-  {
-    "show": {
-      "id": 4,
-      "orderID": "ZqzfJKNcE",
-      "bookedSeats": []
-    }
-  },
-  {
-    "show": {
-      "id": 4,
-      "orderID": "liQxt4yip",
-      "bookedSeats": []
-    }
-  },
-  {
-    "show": {
-      "id": 4,
-      "orderID": "k2zaqnMzF",
-      "bookedSeats": []
-    }
-  },
-  {
-    "show": {
-      "id": 4,
-      "orderID": "1hDf48A31",
-      "bookedSeats": []
-    }
-  },
-  {
-    "show": {
-      "id": 4,
-      "orderID": "vizENQmJX",
-      "bookedSeats": []
+      "date": "2018-03-12",
+      "auditorium": "Lilla Salongen",
+      "film": "Call Me By Your Name",
+      "time": "21.00",
+      "bookedSeats": [
+        15,
+        16
+      ],
+      "userID": 4,
+      "orderID": "R7JrExSEe"
     }
   }
 ]

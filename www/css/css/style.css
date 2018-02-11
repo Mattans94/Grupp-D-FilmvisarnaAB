@@ -341,6 +341,9 @@ header {
 .signupContainer h3 {
   color: #991e1e;
 }
+.bookingContainer {
+  border-radius: 10px;
+}
 .lillasalong {
   margin: auto;
 }
