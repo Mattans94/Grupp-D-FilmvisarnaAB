@@ -147,6 +147,9 @@ class Booking extends Base{
 		}
 	}
 
+
+	
+
 	// Lång eventHandler - kanske behövs.
 	// Varför laddas json in i eventHandler och inte constructorn?
 	// Behöver man ladda json varje gång man trycker någonstans? Isåfall lägg inladdning på ett klick

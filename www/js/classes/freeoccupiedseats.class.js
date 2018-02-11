@@ -1,30 +1,33 @@
-class FreeOccupiedSeats{
+class FreeOccupiedSeats extends Base{
 
   constructor(){
+
+    super();
+
     this.seats = [];
+
     //Load theater data from JSON.
-    this.nbrOfSeatsInRow =  [8, 9, 10, 10, 10, 10, 12, 12];
+    JSON._load('theaters').then((theaters) =>{ 
+    this.theaterObjects = theater; 
+    }); 
+
+    this.nbrOfSeatsInRow = new theaterObjects;
+    
     this.createFreeSeats( this.nbrOfSeatsInRow);
     this.saveToJSON(this.seats);
   }
 
 
-
-	createFreeSeats(nbrOfSeatsInRow){
+	async createFreeSeats(nbrOfSeatsInRow){
    
    for (let row = 0; row < nbrOfSeatsInRow.length; row++) {
    	for (let seat = 0; seat < nbrOfSeatsInRow[row]; seat++) {
-   		this.seats[row][seat] = true; // True = free
-
+   	this.seats[row][seat] = true; // True = free
    	}
+
+    await JSON._save('freeseats');
   }
 
-    saveToJSON(object){
-    JSON._save('freeseats.json', {
-        Seats: object
-    });
-
-  }
 
 	setSeatStatus(status, row, seat){
     let statusUpdateOk = true;

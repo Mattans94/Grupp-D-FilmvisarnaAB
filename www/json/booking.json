@@ -314,47 +314,13 @@
   },
   {
     "show": {
-      "date": "2018-03-16",
-      "auditorium": "Stora Salongen",
-      "film": "Call Me By Your Name",
-      "time": "18.40",
-      "bookedSeats": [
-        70,
-        71,
-        72
-      ],
-      "userID": {
-        "id": 4
-      },
-      "orderID": []
-    }
-  },
-  {
-    "show": {
-      "date": "2018-03-19",
+      "date": "2018-03-03",
       "auditorium": "Stora Salongen",
       "film": "Call Me By Your Name",
       "time": "22.40",
-      "bookedSeats": [
-        29,
-        30,
-        31
-      ],
-      "userID": {
-        "id": 4
-      },
-      "orderID": []
-    }
-  },
-  {
-    "show": {
-      "date": "2018-03-01",
-      "auditorium": "Stora Salongen",
-      "film": "Three Billboards Outside Ebbing, Missouri",
-      "time": "21.00",
       "bookedSeats": [],
       "userID": {
-        "id": 4
+        "id": null
       },
       "orderID": []
     }
@@ -374,22 +340,9 @@
   },
   {
     "show": {
-      "date": "2018-03-12",
+      "date": "2018-03-06",
       "auditorium": "Lilla Salongen",
       "film": "Call Me By Your Name",
-      "time": "21.00",
-      "bookedSeats": [],
-      "userID": {
-        "id": null
-      },
-      "orderID": []
-    }
-  },
-  {
-    "show": {
-      "date": "2018-03-02",
-      "auditorium": "Lilla Salongen",
-      "film": "Tjuren Ferdinand",
       "time": "22.40",
       "bookedSeats": [],
       "userID": {
@@ -400,36 +353,10 @@
   },
   {
     "show": {
-      "date": "2018-03-02",
+      "date": "2018-03-06",
       "auditorium": "Lilla Salongen",
-      "film": "Tjuren Ferdinand",
+      "film": "Call Me By Your Name",
       "time": "22.40",
-      "bookedSeats": [],
-      "userID": {
-        "id": null
-      },
-      "orderID": []
-    }
-  },
-  {
-    "show": {
-      "date": "2018-03-16",
-      "auditorium": "Stora Salongen",
-      "film": "Call Me By Your Name",
-      "time": "18.40",
-      "bookedSeats": [],
-      "userID": {
-        "id": null
-      },
-      "orderID": []
-    }
-  },
-  {
-    "show": {
-      "date": "2018-03-16",
-      "auditorium": "Stora Salongen",
-      "film": "Call Me By Your Name",
-      "time": "18.40",
       "bookedSeats": [],
       "userID": {
         "id": null
