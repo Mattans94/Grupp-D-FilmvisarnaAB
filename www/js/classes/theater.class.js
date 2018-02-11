@@ -40,23 +40,67 @@ class Theater extends Base{
 		// let seatID; = seat.data('seatid');
 		// let rowID;  = seat.data('rowid');
 		// let status;  = seat.data('status');
-			$(document).on("click", '.seat', function() {
-			let seat = $(this);
 
-			console.log(that.booking.reservedSeats);
-			if (that.booking.seatsTotal >= 1) {
-				if (seat.hasClass('free') && !(that.booking.reservedSeats == that.booking.seatsTotal)){
-					seat.removeClass('free');
-					seat.addClass('reserved');
-
-					that.booking.reservedSeats++;
-				} else if (seat.hasClass('reserved')){
-					seat.removeClass('reserved');
-					seat.addClass('free');
-					that.booking.reservedSeats--;
-				}
-			}
+		$(document).on("mouseenter", '.seat', function() {
+			$(this).addClass('hoverSeat');
 		});
+		$(document).on("mouseleave", '.seat', function() {
+			$(this).removeClass('hoverSeat');
+		});
+
+		$(document).on("click", '.seat', function() {
+			let $seat = $(this);
+
+			if (that.booking.seatsTotal >= 1) {
+
+				if($seat.hasClass('booked')){return};
+				if ($seat.hasClass('free') && !(that.booking.reservedSeats >= that.booking.seatsTotal)){
+				let amount = that.booking.seatsTotal;
+				let $allNext = $seat.prevAll();
+			  let $seatsToSelect = [$seat];
+			  let foundFirstBooked = false;
+			  let found = 1;
+
+				$allNext.each(function(){
+			     if(foundFirstBooked || found == amount){return;}
+			     if($seat.hasClass('booked')){
+			       foundFirstBooked = true;
+			     }else{
+			       found++;
+						 that.booking.reservedSeats++;
+						 console.log(that.booking.reservedSeats++)
+			       $seatsToSelect.push($(this));
+			     }
+			  });
+
+				if(found<amount){return;}
+				console.log($seatsToSelect);
+				$seatsToSelect.forEach(function($el){
+					$el.addClass('reserved');
+				});
+			}}
+});
+
+
+
+
+
+
+
+		// 	console.log(that.booking.reservedSeats);
+		// 	if (that.booking.seatsTotal >= 1) {
+		// 		if (seat.hasClass('free') && !(that.booking.reservedSeats >= that.booking.seatsTotal)){
+		// 			seat.removeClass('free');
+		// 			seat.addClass('reserved');
+    //
+		// 			that.booking.reservedSeats++;
+		// 		} else if (seat.hasClass('reserved')){
+		// 			seat.removeClass('reserved');
+		// 			seat.addClass('free');
+		// 			that.booking.reservedSeats--;
+		// 		}
+		// 	}
+		// });
 	}// end eventhandler
 
 

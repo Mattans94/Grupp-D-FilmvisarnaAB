@@ -69,8 +69,8 @@ a {
   /*font-weight: bold;*/
   z-index: 5;
 }
-#seat:hover {
-  background-color: yellow;
+.hoverSeat {
+  background-color: yellow !important;
 }
 #theaterBackground {
   position: relative;
