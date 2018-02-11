@@ -4,7 +4,10 @@
     "auditorium": "Lilla Salongen",
     "film": "Let The Sunshine In",
     "time": "18.40",
-    "bookedSeats": []
+    "bookedSeats": [
+      1,
+      2
+    ]
   },
   {
     "date": "2018-03-01",
@@ -66,7 +69,14 @@
       78,
       79,
       78,
-      79
+      79,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
     ]
   },
   {
@@ -109,7 +119,11 @@
     "auditorium": "Stora Salongen",
     "film": "Let The Sunshine In",
     "time": "22.40",
-    "bookedSeats": []
+    "bookedSeats": [
+      2,
+      9,
+      10
+    ]
   },
   {
     "date": "2018-03-06",
@@ -130,14 +144,26 @@
     "auditorium": "Lilla Salongen",
     "film": "Call Me By Your Name",
     "time": "22.40",
-    "bookedSeats": []
+    "bookedSeats": [
+      44,
+      45,
+      46,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
   },
   {
     "date": "2018-03-07",
     "auditorium": "Stora Salongen",
     "film": "Call Me By Your Name",
     "time": "18.40",
-    "bookedSeats": []
+    "bookedSeats": [
+      1,
+      2
+    ]
   },
   {
     "date": "2018-03-07",
@@ -186,7 +212,18 @@
     "auditorium": "Lilla Salongen",
     "film": "Let The Sunshine In",
     "time": "21.00",
-    "bookedSeats": []
+    "bookedSeats": [
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2,
+      1,
+      2
+    ]
   },
   {
     "date": "2018-03-08",
@@ -270,7 +307,18 @@
     "auditorium": "Lilla Salongen",
     "film": "Call Me By Your Name",
     "time": "21.00",
-    "bookedSeats": []
+    "bookedSeats": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      15,
+      16
+    ]
   },
   {
     "date": "2018-03-12",
@@ -350,7 +398,8 @@
     "bookedSeats": [
       70,
       71,
-      72
+      72,
+      1
     ]
   },
   {
@@ -379,7 +428,10 @@
     "auditorium": "Stora Salongen",
     "film": "Let The Sunshine In",
     "time": "21.00",
-    "bookedSeats": []
+    "bookedSeats": [
+      1,
+      2
+    ]
   },
   {
     "date": "2018-03-17",

@@ -30,7 +30,7 @@ class Prices extends Base {
 		}
 	}
 
-		renderTotalAmount() {
+	renderTotalAmount() {
 		let html = "";
 		if (this.numberOfAdults > 0) {
 			html += `${this.renderUnitPrice(this.adultObject, this.numberOfAdults)}`
@@ -46,7 +46,7 @@ class Prices extends Base {
 
 		html += `
 			<div class="d-flex justify-content-end">
-					<button class="btn btn-danger book-btn">Boka nu!</button>
+				<button class="btn btn-danger bookingConfirmation">Boka nu!</button>
 			</div>`
 
 		$('#totalprice').html(html);

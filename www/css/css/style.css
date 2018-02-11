@@ -86,18 +86,28 @@ a {
   left: 0;
   background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));
 }
-#pensionerTickets,
-#adultTickets,
-#childTickets,
 .removebtn,
 .addbtn {
   width: 40px;
   text-align: center;
   border: 0;
 }
+#pensionerTickets,
+#adultTickets,
+#childTickets {
+  width: 40px;
+  background-color: white;
+  text-align: center;
+  border: 0;
+  cursor: default;
+}
 .ticketrepresentation,
 .orderCompilation {
   background-color: #949494;
+}
+#notLoggedIn {
+  color: #ff3232;
+  font-size: 0.9em;
 }
 #screenSeatPick {
   height: 30px;
@@ -111,7 +121,6 @@ a {
   margin-right: -20px;
 }
 #screenTransparenting {
-  width: 911;
   opacity: 0.3;
   position: absolute;
   top: 0;
@@ -332,6 +341,9 @@ header {
 .signupContainer h3 {
   color: #991e1e;
 }
+.bookingContainer {
+  border-radius: 10px;
+}
 .lillasalong {
   margin: auto;
 }
@@ -420,4 +432,15 @@ header {
 }
 .infoombio .card {
   min-height: 460px;
+}
+.errorContainer {
+  background-color: #949494;
+  box-shadow: 0px 2px 2px #000;
+  border-radius: 10px;
+}
+.goBackBtn {
+  background-color: #991e1e;
+  border: 1px solid #3a3a3a;
+  min-height: 40px;
+  border-radius: 5px;
 }

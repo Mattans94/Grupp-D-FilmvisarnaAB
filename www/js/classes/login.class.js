@@ -9,6 +9,14 @@ class Login extends Base{
 	}
 
 	eventHandlers(){
+		$(document).on('click', '#myBookings-btn', () => {
+			if (!(this.session.id === null)){
+				this.getRightUserInfo();
+			}
+
+		});
+
+
 		$(document).on('click', '#login-btn', () => {
 
 			JSON._load('users').then((users) => {
@@ -83,7 +91,7 @@ class Login extends Base{
 
   async destroySession(){
     this.session = await JSON._save('session',{id:null});
-   	this.loggedInUser = {isLoggedIn: false}; 
+   	this.loggedInUser = {isLoggedIn: false};
   }
 
 	checkUsername(username){
@@ -161,5 +169,76 @@ class Login extends Base{
 		$('.renderForm').empty();
 		myApp.loginform.render('.renderForm');
 	}
+
+
+	// Userpage no history yet
+	async getRightUserInfo(){
+		this.bookingObjects = await JSON._load('booking');
+		let loggedInId = this.session.id;
+		this.bookedUserShows = this.bookingObjects.filter((m) => loggedInId == m.show.userID);
+		
+		this.renderLoginTemplate();
+	}
+
+	getBookedSeats(bookedSeats){
+		let allSeats = '';
+		for (let seat of bookedSeats){
+			allSeats += seat + ', ';
+		}
+		return allSeats
+	}
+
+	renderEachShow(){
+		let html = '';
+		for (let i = 0; i < this.bookedUserShows.length; i++){
+			let movieObject = this.getMovieObject(this.bookedUserShows[i].show.film);
+
+			html += `
+			<div class="d-flex flex-nowrap mt-3 mb-3 bookingContainer bg-dark text-white p-3">
+				<div class="col-3 align-self-center p-0">
+					<img class="img-fluid" src="/img/posters/${movieObject.images[0]}">
+				</div>
+				<div class="col-9">
+					<h3 class="mb-3">${this.bookedUserShows[i].show.film}</h3>
+					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Plats:</span> ${this.bookedUserShows[i].show.auditorium}</p>
+					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Datum:</span> ${this.bookedUserShows[i].show.date}</p>
+					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Tid:</span> ${this.bookedUserShows[i].show.time}</p>
+					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Platser:</span> ${this.getBookedSeats(this.bookedUserShows[i].show.bookedSeats)}</p>
+					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Order:</span> ${this.bookedUserShows[i].show.orderID}</p>
+				</div>
+			</div>
+
+		`
+		}
+		return html;
+	}
+
+	renderLoginTemplate(){
+		$('main').empty();
+		let html = `
+		<article class="row">
+			<div class="col-12 col-lg-6 mt-5 pl-2">
+				<h3 class="redHeader m-0 col-12 mb-3 text-center">Aktuella bokningar</h3>
+				<div class="errorContainer d-flex justify-content-between flex-wrap flex-lg-nowrap">
+					<div class="col-12">
+						${this.renderEachShow()}
+					</div>
+
+				</div>
+			</div>
+			<div class="col-12 col-lg-6 mt-5 pl-2">
+				<h3 class="redHeader m-0 col-12 mb-3 text-center">Historik</h3>
+				<div class="errorContainer d-flex justify-content-between flex-wrap flex-lg-nowrap">
+					<div class="col-12">
+						${this.renderEachShow()}
+					</div>
+				</div>
+			</div>
+
+		</article>`
+		$('main').html(html);
+	}
+
+
 
 }

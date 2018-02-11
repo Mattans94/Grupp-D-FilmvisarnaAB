@@ -28,7 +28,7 @@ class Popstate extends Base{
     })};
 
 
-  changePage(){
+  changePage(bookingShowObject){
     //React on page changed, replace parts of DOM
     // get the current url
     let url = location.pathname;
@@ -41,15 +41,15 @@ class Popstate extends Base{
       '/Call_Me_By_Your_Name': 'movieCallMe',
       '/Let_The_Sunshine_In': 'movieLetThe',
       '/The_Party': 'movieTheParty',
-      '/our_theaters': 'renderOurTheaters'
+      '/our_theaters': 'renderOurTheaters',
     }
 
     let methodName = urls[url];
-    if (url == "/Theater") {
-      console.log('Theater is intilized in movie.class.js instead of popstate. Need to fix alot of buggs.');
 
+    // Checking if there is any movie coming into theater
+    if (url == "/Theater") {
+      this.theaterPage(bookingShowObject);
     } else {
-      console.log('Not theater');
     this[methodName]();
     this.app.login.readSession();
     }
@@ -74,16 +74,21 @@ class Popstate extends Base{
   }
 
   theaterPage(bookingShowObject){
-    // booking-showobject is the object that is being clicked when intilize theater
     $('main').empty();
+    // if no show is sent with the rendering show error msg in first if statement
+    if (!bookingShowObject){
+      let error = new Error();
+      error.render('main');
+    }else {
+    // booking-showobject is the object that is being clicked when intilize theater
+
     let theater = new Theater(bookingShowObject);
     theater.render('main');
-    theater.scale();
     $(window).on('resize',function(){
       theater.scale();
     });
+    }
   }
-
 
   // Movies
   movieFerdinand(){

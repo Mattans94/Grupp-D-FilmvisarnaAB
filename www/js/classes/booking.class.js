@@ -1,10 +1,4 @@
 class Booking extends Base{
-
-	// constructor(userid, date, time, auditorium) {
-	//
-
-	// Bör ta emot ett showObject från klassen theater som också initierar denna klass?
-	// Behöver booking någonsin kallas om inte theater-kallas?
 	constructor(showObject) {
 		super();
 
@@ -17,8 +11,6 @@ class Booking extends Base{
 		//
 
 
-		this.orderID = [];
-
 		this.child=0;
 		this.adult=0;
 		this.pensioner=0;
@@ -30,6 +22,7 @@ class Booking extends Base{
 		JSON._load('booking').then((seats) => {
 	      // Retrieve the app from JSON
 	      this.bookedSeats = seats;
+				this.allBookings = seats;
 				this.start();
 	    });
 
@@ -39,72 +32,55 @@ class Booking extends Base{
 	// Behövs theater.scale() här? Den körs redan on-resize i popstate.
 	start(){
 		this.eventHandler();
-		this.renderTicketButtons();
 		this.checkForDisable();
 		this.updateTotalPrice();
 		this.myNumberOfSeatsCheck();
-		console.log('twice?');
 	}
 
-
-
 	updateTotalPrice(){
-		// prices.start();
-		let prices = new Prices(this.child, this.adult, this.pensioner);
-		prices.calculateTotalPrice();
-		prices.renderTotalAmount();
+		this.prices = new Prices(this.child, this.adult, this.pensioner);
+		this.prices.calculateTotalPrice();
+		this.prices.renderTotalAmount();
 	}
 
 	myNumberOfSeatsCheck() {
 		this.seatsTotal = (this.child + this.adult + this.pensioner);
 	}
 
-	renderTicketButtons() {
-		let html =
-			`<div class="d-flex flex-nowrap flex-column flex-md-row justify-content-md-around align-items-center">
 
-					<div class="text-center text-md-left">
-						<p class="text-white mb-0">Ordinarie</p>
-					  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-						  <div class="btn-group mr-2" role="group" aria-label="adult group">
-							  <button type="button" class="btn btn-danger removebtn" id="removeadult"><strong>-</strong></button>
-							  <input type="text" class="form-control" id="adultTickets" placeholder="${this.adult}">
-							  <button type="button" class="btn btn-danger addbtn" id="addadult"><strong>+</strong></button>
-						 	</div>
-						</div>
-					</div>
+	returnGeneratedId(){
+		let generatedID;
+		do {
+			generatedID = this.generateOrderId();
+		}	while (this.checkExistingId(generatedID));
 
-					<div class="text-center text-md-left">
-						<p class="text-white mb-0">Barn (under 12 år)</p>
-					  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-					  	<div class="btn-group mr-2" role="group" aria-label="child group">
-						    <button type="button" class="btn btn-danger removebtn" id="removechild"><strong>-</strong></button>
-						    <input type="text" class="form-control" id="childTickets" placeholder="${this.child}">
-						    <button type="button" class="btn btn-danger addbtn" id="addchild"><strong>+</strong></button>
-					  	</div>
-						</div>
-					</div>
-					<div class="text-center text-md-left">
-						<p class="text-white mb-0">Pensionär</p>
-						<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+		return generatedID;
+	}
 
-							<div class="btn-group mr-2" role="group" aria-label="pensioner group">
-								<button type="button" class="btn btn-danger removebtn" id="removepensioner"><strong>-</strong></button>
-								<input type="text" class="form-control" id="pensionerTickets" placeholder="${this.pensioner}" >
-								<button type="button" class="btn btn-danger addbtn" id="addpensioner"><strong>+</strong></button>
-							</div>
-						</div>
-					</div>
-				</div>
+	generateOrderId(){
+		let generatedID = '';
+		let allCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+		for (let i = 0; i < 9; i++) {
+			generatedID += allCharacters.charAt(Math.floor(Math.random() * allCharacters.length));
+		}
 
-				<div class="text-center text-md-left">
-					<small class="text-danger"> Max 8 biljetter per bokning
-					</small>
-				</div>
+		return generatedID;
+	}
 
-			`;
-  	$('.ticketholder').html(html);
-	 }
+	checkExistingId(generatedID){
+		for (let i = 0; i < this.allBookings.length; i++){
+			if (generatedID == this.allBookings[i].show.orderID){
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
+
+	throwErrorMessageIfNotLoggedIn(){
+		return 'Du måste logga in för att boka platser';
+	}
+
 
 	// Kan man göra om denna på något sätt för att optimera?
 	checkForDisable(){
@@ -144,69 +120,78 @@ class Booking extends Base{
 	resetBookingButtons(){
 		if (this.seatsTotal < this.reservedSeats) {
 			$('.seat').addClass('free').removeClass('reserved');
+			this.reservedSeats = 0;
 		}
+
 	}
 
-
-	
-
+	bookingModal(){
+		// Hämta bokade säten
+		let bookedSeats = [];
+		$('.seat.reserved').each(function(){
+			let seat = $(this);
+			let seatID = seat.data('seatid');
+			console.log(seatID);
+			bookedSeats.push(seatID);
+		});
+		// Skicka in allt modalen behöver veta
+    let bookingModal = new BookingModal(this.showObject, this.prices.totalPrice, bookedSeats);
+    $('main').append(bookingModal.template());
+		$('#modalToggler').click();
+  }
 	// Lång eventHandler - kanske behövs.
 	// Varför laddas json in i eventHandler och inte constructorn?
 	// Behöver man ladda json varje gång man trycker någonstans? Isåfall lägg inladdning på ett klick
 	eventHandler() {
+		$(document).on('click','.bookingConfirmation', () => {
+			this.bookingModal();
+		});
 
 		let that = this;
 		$(document).on('click','.book-btn',function(){
-			// Temporärt objekt varje gång man klickar
-			let tempBookingObject = {};
-			// Laddar in all json som behövs
-			JSON._load('booking').then((data) => {
-					// Retrieve the app from JSON
-				that.bookedSeats = data;
-			})
-			.then(JSON._load('shows').then((shows) => {
-      	Data.showObjects = shows;
-	    })
-			.then(JSON._load('session').then((userid) => {
-				that.loggedInUser = userid;
-			})
-			.then(() => {
-				tempBookingObject.show = that.showObject;
-				tempBookingObject.show.userID = that.loggedInUser;
-				tempBookingObject.show.orderID = [];
-				tempBookingObject.show.bookedSeats = [];
 
-				$('.seat.reserved').each(function(){
-					let seat = $(this);
-					let seatID = seat.data('seatid');
-					// console.log(seatID);
-					that.showObject.bookedSeats.push(seatID);
-					let showObjectIndex = that.getShowIndex();
-					Data.showObjects[showObjectIndex].bookedSeats.push(seatID);
-					// tempBookingObject.show.bookedSeats.push(seatID);
-				});
-			 	that.bookedSeats.push(tempBookingObject);
-			//that.bookedSeats.push(that.bookedSeats);
-			// console.log(that.bookedSeats)
-			//console.log(that.booking.show)
-			//Object.assign(that.booking.show, {bookedSeats: that.booking})
-			//Save booked-info + sittplats to JSON
-			JSON._save('booking', that.bookedSeats);
-			JSON._save('shows', Data.showObjects);
-			// console.log('saving', that.bookedSeats)
+				// Temporärt objekt varje gång man klickar
+				let tempBookingObject = {};
+				// Laddar in all json som behövs
+				JSON._load('booking').then((data) => {
+						// Retrieve the app from JSON
+					that.bookedSeats = data;
+				})
+				.then(JSON._load('shows').then((shows) => {
+	      	Data.showObjects = shows;
+		    })
+				.then(JSON._load('session').then((userid) => {
+					that.loggedInUser = userid;
+
+				})
 
 
-		})))});
+				// Kör bokning
+				.then(() => {
+					// Kollar ifall man är inloggad.
+					if (that.loggedInUser.id === null) {
+						$('#notLoggedIn').html(that.throwErrorMessageIfNotLoggedIn());
+					} else {
+					tempBookingObject.show = that.showObject;
+					tempBookingObject.show.userID = that.loggedInUser.id;
+					tempBookingObject.show.orderID = that.returnGeneratedId();
+					tempBookingObject.show.bookedSeats = [];
 
-		// JSON._load('booking',(data){
-		// 	this.bookings = data;
-		// 	this.seatOccupied();
-		// });
+					$('.seat.reserved').each(function(){
+						let seat = $(this);
+						let seatID = seat.data('seatid');
+						// console.log(seatID);
+						that.showObject.bookedSeats.push(seatID);
+						let showObjectIndex = that.getShowIndex();
+						Data.showObjects[showObjectIndex].bookedSeats.push(seatID);
+					});
+					that.bookedSeats.push(tempBookingObject);
+					//Save booked-info + sittplats to JSON
+					JSON._save('booking', that.bookedSeats);
+					JSON._save('shows', Data.showObjects);
+				}})))});
 
-		// $(document).on('click', '.btn-danger', function() {
-		// 	let clickedbutton = $(this);
-		// 	clickedbutton
-		// });
+
 
 		// Kan man göra dessa annorlunda? Kolla tillsammans
 		$(document).on('click', '#addchild', () => {
@@ -239,19 +224,19 @@ class Booking extends Base{
 			$('#pensionerTickets').attr("placeholder", this.pensioner)
 		})
 
-		$(document).on('click','.addbtn', () => {
+		$(document).on('click','.addbtn, .removebtn', () => {
 			this.myNumberOfSeatsCheck();
 			this.checkForDisable();
 			this.updateTotalPrice();
 			this.resetBookingButtons();
 		})
 
-		$(document).on('click','.removebtn', () => {
-			this.myNumberOfSeatsCheck();
-			this.checkForDisable();
-			this.updateTotalPrice();
-			this.resetBookingButtons();
-		})
+		// $(document).on('click','.removebtn', () => {
+		// 	this.myNumberOfSeatsCheck();
+		// 	this.checkForDisable();
+		// 	this.updateTotalPrice();
+		// 	this.resetBookingButtons();
+		// })
 
 	} // end eventhandler
 

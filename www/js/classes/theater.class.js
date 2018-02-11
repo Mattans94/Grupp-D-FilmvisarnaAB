@@ -9,8 +9,8 @@ class Theater extends Base{
 		// this.auditorium = auditorium;
 		this.showObject = showObject;
 		this.auditorium = showObject.auditorium;
-
-		console.log('showObject', this.showObject);
+		this.movieObject = this.getMovieObject(this.showObject.film);
+		this.booking = new Booking(this.showObject);
 
 		JSON._load('theaters').then((theater) => {
 			this.theaterObjects = theater;
@@ -25,19 +25,40 @@ class Theater extends Base{
 	} //end
 
 	start(){
-
 		this.getTheaterObject(this.auditorium);
 		this.getSeatsPerRow(this.theaterObject);
 		this.setWidth();
 		this.setHeight();
 		this.renderTheater();
-		this.booking = new Booking(this.showObject);
-		this.renderMovieHeadingInTheater()
-		this.renderMovieBookingCompilition();
-		this.scale();
 		this.eventHandler();
-
 	}
+
+	// Eventhandlers
+
+	eventHandler() {
+		let that = this;
+		// let seatID; = seat.data('seatid');
+		// let rowID;  = seat.data('rowid');
+		// let status;  = seat.data('status');
+			$(document).on("click", '.seat', function() {
+			let seat = $(this);
+
+			console.log(that.booking.reservedSeats);
+			if (that.booking.seatsTotal >= 1) {
+				if (seat.hasClass('free') && !(that.booking.reservedSeats == that.booking.seatsTotal)){
+					seat.removeClass('free');
+					seat.addClass('reserved');
+
+					that.booking.reservedSeats++;
+				} else if (seat.hasClass('reserved')){
+					seat.removeClass('reserved');
+					seat.addClass('free');
+					that.booking.reservedSeats--;
+				}
+			}
+		});
+	}// end eventhandler
+
 
 	// Finns redan i movie.class.js
 	convertMinutesToHours(movieObject){
@@ -47,35 +68,6 @@ class Theater extends Base{
 		return hours + ' tim ' + minutes + ' min';
 	}
 
-	renderMovieBookingCompilition(){
-		let movieObject = this.getMovieObject(this.showObject.film);
-		let html = `
-		<h2 class="m-3 pt-3 col-8 mx-auto">Sammanställning</h2>
-		<div class="col-8 mx-auto p-3 orderCompilation d-flex justify-content-between flex-column flex-md-row mt-3 bg-dark">
-			<div class="d-none d-md-block col-md-4 col-lg-3">
-				<img class="img-fluid" src="/img/posters/${movieObject.images[0]}">
-			</div>
-			<div class="col-12 col-md-9 text-light">
-				<h4>${this.showObject.film}</h4>
-				<p> ${movieObject.genre}, ${this.convertMinutesToHours(movieObject)}, tal: ${movieObject.language}, text: ${movieObject.subtitles}</p>
-				<p><span class="pl-0 col-2 col-md-2 d-inline-block mr-3">Plats:</span> ${this.showObject.auditorium}</p>
-				<p><span class="pl-0 col-2 col-md-2 d-inline-block mr-3">Datum:</span> ${this.showObject.date}</p>
-				<p><span class="pl-0 col-2 col-md-2 d-inline-block mr-3">Tid:</span> ${this.showObject.time}</p>
-			</div>
-		</div>
-
-
-		<h2 class="m-3 col-8 mx-auto">Kostnad</h2>
-		<div id="totalprice" class="col-8 mx-auto p-3 pl-4 bg-dark text-light">
-
-
-
-		</div>
-
-		`
-
-		$('.orderCompilation').html(html);
-	}
 	async getRichShow(theShow){
 	  let bookings = await JSON._load('booking');
 
@@ -95,39 +87,11 @@ class Theater extends Base{
 		      theShow.bookedSeats = new Set(theShow.bookedSeats);
 		      theShow.bookedSeats = Array.from(theShow.bookedSeats);
 		    }
-
-
 		}
-
     return theShow;
 	}
 
 
-	// This is Andreas try
-	renderMovieHeadingInTheater(){
-		let time = this.showObject.time;
-		let date = this.showObject.date;
-		let movie = this.showObject.film;
-
-		let movieObject = this.getMovieObject(this.showObject.film);
-		let html = `
-		<div class="d-flex flex-nowrap flex-column flex-md-row m-0 mt-5 p-4" id="theaterBackground" style="background-image: url(/img/slides/${movieObject.slides[0]}); ">
-			<div class="col-5 col-md-3 col-lg-2">
-				<img class="img-fluid" src="/img/posters/${movieObject.images[0]}">
-			</div>
-			<div class="col-12 col-md-9 text-light">
-				<h3>${this.showObject.film}</h3>
-				<p> ${movieObject.genre}, ${this.convertMinutesToHours(movieObject)}, tal: ${movieObject.language}, text: ${movieObject.subtitles}</p>
-				<h5><span class="pl-0 col-2 col-md-1 d-inline-block mr-3">Plats:</span> ${this.showObject.auditorium}</h5>
-				<h5><span class="pl-0 col-2 col-md-1 d-inline-block mr-3">Datum:</span> ${this.showObject.date}</h5>
-				<h5><span class="pl-0 col-2 col-md-1 d-inline-block mr-3">Tid:</span> ${this.showObject.time}</h5>
-			</div>
-		</div>
-
-		`;
-		$('#movierepresentation').html(html);
-
-	}
 
 	// Snyggt! Kommer kunna användas med det show-objektet som kommer in till constructorn
 	getTheaterObject(theaterName) {
@@ -141,8 +105,47 @@ class Theater extends Base{
 		return rowlength;
 	}
 
+	removeClassFreeFromBookedSeats(){
+		if($('.seat').hasClass('booked')) {
+			$('.booked').removeClass('free');
+		}
+	}
+
+	// Scaling
+	setHeight(){
+		let fullHeight = this.seatsStoran.length * 55;
+		$('#theater').css('height', `${fullHeight}`);
+	}
+
+	setWidth(){
+		let longestRow = 0;
+		for (let rowLength of this.seatsStoran){
+			if (longestRow < rowLength) {
+				longestRow = rowLength;
+			}
+		}
+		let fullWidth = longestRow * 55;
+		$('#theater').css('width', `${fullWidth}`);
+	}
+
+	scale() {
+		let orgW = $('#theater').width(), orgH = $('#theater').height();
+		let w = $('#theaterBackground').width();
+		let h = $(window).height();
+		const wScale = w / orgW;
+		const hScale = h / orgH;
+		let scaling = Math.min(wScale, hScale);
+
+		scaling = scaling * 0.8;
+
+		$('#theater').css('transform', `scale(${scaling})`);
+		$('#screenTransparenting').width(orgW + 80).height(orgH);
+		$('#theater-holder').width(orgW * scaling);
+		$('#theater-holder').height(orgH * scaling);
+	}
 
 
+	// Renders
 	async renderTheater() {
 		let html = `<img src="/img/test.png" id="screenTransparenting">`;
 		let seatnumber=1;
@@ -169,122 +172,7 @@ class Theater extends Base{
 		}
 		$('#theater').html(html);
 		this.removeClassFreeFromBookedSeats();
+		this.scale();
 	}
-
-	removeClassFreeFromBookedSeats(){
-		if($('.seat').hasClass('booked')) {
-			$('.booked').removeClass('free');
-		}
-	}
-
-
-
-	setHeight(){
-
-		let fullHeight = this.seatsStoran.length * 55;
-		$('#theater').css('height', `${fullHeight}`);
-	}
-
-	setWidth(){
-		let longestRow = 0;
-		for (let rowLength of this.seatsStoran){
-			if (longestRow < rowLength) {
-				longestRow = rowLength;
-			}
-		}
-		let fullWidth = longestRow * 55;
-		$('#theater').css('width', `${fullWidth}`);
-
-
-	}
-
-
-	scale() {
-		let orgW = $('#theater').width(), orgH = $('#theater').height();
-		let w = $('#theaterBackground').width();
-		let h = $(window).height();
-		const wScale = w / orgW;
-		const hScale = h / orgH;
-		let scaling = Math.min(wScale, hScale);
-
-		scaling = scaling * 0.8;
-
-		$('#screenTransparenting').width(orgW + 80).height(orgH);
-
-		$('#theater').css('transform', `scale(${scaling})`);
-		$('#theater-holder').width(orgW * scaling);
-		$('#theater-holder').height(orgH * scaling);
-
-		this.scaleLightFromScreen();
-	}
-	scaleLightFromScreen(){
-
-
-
-	}
-
-
-// checkFreeSeats(){
-// 		if($(this).hasClass('booked')){return;}
-// 		  let amount = booking.myNumberOfSeats;
-// 		  let $allNext = $(this).nextAll();
-// 		  let $elementsToSelect = [$(this)];
-// 		  console.log($elementsToSelect);
-
-// 		  let foundNextStop = false;
-// 		  let found = 1;
-// 		  $allNext.each(function() {
-// 		     if (foundNextStop || found == amount) {
-// 		     	return;
-// 		     }
-// 		     if ($(this).hasClass('booked')) {
-// 		       foundNextStop = true;
-// 		     }
-// 		     else {
-// 		       found++;
-// 		       $elementsToSelect.push($(this));
-// 		     }
-// 		  });
-
-// 		  if(found<amount) {
-// 		  	return;
-// 		  }
-// 		  console.log($elementsToSelect);
-// 		  $elementsToSelect.forEach(function($element) {
-// 		    $element.addClass('select');
-// 		  });
-// 	}
-
-	eventHandler() {
-		let that = this;
-		// let seatID; = seat.data('seatid');
-		// let rowID;  = seat.data('rowid');
-		// let status;  = seat.data('status');
-			$(document).on("click", '.seat', function() {
-			let seat = $(this);
-
-
-			if (that.booking.seatsTotal >= 1) {
-				if (seat.hasClass('free') && !(that.booking.reservedSeats == that.booking.seatsTotal)){
-					seat.removeClass('free');
-					seat.addClass('reserved');
-					that.booking.reservedSeats++;
-				} else if (seat.hasClass('reserved')){
-					seat.removeClass('reserved');
-					seat.addClass('free');
-					that.booking.reservedSeats--;
-				}
-			}
-
-
-		});
-
-
-
-
-
-
-
-	}// end eventhandler
 
 } //end class

@@ -45,14 +45,27 @@
   }
 }
 
-#pensionerTickets, #adultTickets, #childTickets, .removebtn, .addbtn {
+.removebtn, .addbtn {
 	width: 40px;
 	text-align: center;
 	border: 0;
 }
 
+#pensionerTickets, #adultTickets, #childTickets {
+	width: 40px;
+	background-color: white;
+	text-align: center;
+	border: 0;
+	cursor: default;
+}
+
 .ticketrepresentation, .orderCompilation {
 	background-color: @secondaryColor;
+}
+
+#notLoggedIn {
+	color: @secondaryRed;
+	font-size: 0.9em;
 }
 
 // Scaling/Theater/Screen here
@@ -70,7 +83,6 @@
 }
 
 #screenTransparenting {
-	width: 911;
 	opacity: 0.3;
 	position: absolute;
 	top: 0; /* top of #tobecovered */
