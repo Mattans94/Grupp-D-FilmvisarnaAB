@@ -1,0 +1,21 @@
+Object.assign(Error.prototype, { template(){ return `
+
+  <article class="row">
+
+      <div class="col-12 mt-5 pl-2"><h3 class="redHeader m-0 col-12 mb-3 text-center"><i class="fa fa-exclamation-triangle float-left" aria-hidden="true"></i>Någonting gick fel :(..<i class="fa fa-exclamation-triangle float-right" aria-hidden="true"></i></h3>
+        <div class="errorContainer col-12">
+          <h3 class="pt-3 text-light text-center">Ooops..! Någonting gick fruktansvärt fel, men vi hjälper dig gärna tillbaka!</h3>
+
+          <form>
+            <input class="btn-danger goBackBtn col-12 mb-2 mt-5" type="button" value="Tillbaka till föregående sida" onclick="history.back()">
+            <a href="/"><button type="button" class="btn-danger goBackBtn col-12 mb-2">Tillbaka till startsidan</button></a>
+          </form>
+        </div>
+      </div>
+
+
+
+
+  </article>
+
+`;}});

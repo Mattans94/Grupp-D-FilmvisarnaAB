@@ -10,10 +10,8 @@ class Movie extends Base {
   eventHandlers(){
     let that = this;
     $('.showtrailer').on('click', function(){
-      console.log('hej');
       $('.slide').toggleClass('d-none');
       $('.trailer').toggleClass('d-none');
-      console.log('hejdå');
       $(this).html(function(i, text){
         return text === `<i class="fa fa-video-camera mr-2" aria-hidden="true"></i>Show slides` ?
         `<i class="fa fa-video-camera mr-2" aria-hidden="true"></i>Show trailer`
@@ -28,7 +26,7 @@ class Movie extends Base {
       let time = $(this).data('time');
       let bookingShowObject = that.getBookingObject(date, time);
       console.log(bookingShowObject);
-      myApp.popstate.theaterPage(bookingShowObject);
+      myApp.popstate.changePage(bookingShowObject);
     })
 
   };
