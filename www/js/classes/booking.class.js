@@ -137,7 +137,7 @@ class Booking extends Base{
 		// Skicka in allt modalen behöver veta
     let bookingModal = new BookingModal(this.showObject, this.prices.totalPrice, bookedSeats);
     $('main').append(bookingModal.template());
-		$('#modalToggler').click();
+		$('#bookingConfirmationModalToggler').trigger('click');
   }
 	// Lång eventHandler - kanske behövs.
 	// Varför laddas json in i eventHandler och inte constructorn?
@@ -189,7 +189,14 @@ class Booking extends Base{
 					//Save booked-info + sittplats to JSON
 					JSON._save('booking', that.bookedSeats);
 					JSON._save('shows', Data.showObjects);
-				}})))});
+					$('#bookingConfirmationModalToggler').trigger('click');
+					$('#bookingConfirmedModalToggler').trigger('click');
+				}})))
+
+
+
+
+			});
 
 
 

@@ -15,6 +15,7 @@ class BookingModal extends Base {
     for (let i = 0; i < this.bookedSeats.length; i++){
       this.bookedSeatsString += this.bookedSeats[i] + ', ';
     }
+    this.bookedSeatsString = this.bookedSeatsString.slice(0, -2);
     return this.bookedSeatsString;
   }
 }
