@@ -39,7 +39,12 @@
     "auditorium": "Lilla Salongen",
     "film": "Tjuren Ferdinand",
     "time": "22.40",
-    "bookedSeats": []
+    "bookedSeats": [
+      15,
+      16,
+      17,
+      18
+    ]
   },
   {
     "date": "2018-03-03",
@@ -242,7 +247,14 @@
     "auditorium": "Lilla Salongen",
     "film": "Call Me By Your Name",
     "time": "21.00",
-    "bookedSeats": []
+    "bookedSeats": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ]
   },
   {
     "date": "2018-03-12",

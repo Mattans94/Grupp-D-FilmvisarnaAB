@@ -48,29 +48,32 @@ a {
   cursor: pointer;
 }
 .booked {
-  background-color: red !important;
-  cursor: not-allowed !important;
+  background-color: #991e1e !important;
 }
 .reserved {
-  background-color: orange !important;
+  background-color: #2d9725 !important;
   cursor: pointer;
 }
 .free {
   cursor: pointer;
 }
+.hoverSeat {
+  background-color: #55bf4d !important;
+}
+.errorHoverSeat {
+  background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #991e1e 10px, #991e1e 20px);
+}
 #seat {
+  font-size: 0.65em;
+  text-align: center;
   width: 50px;
   height: 50px;
   border: 1px solid white;
-  background-color: green;
+  background-color: #949494;
   border-radius: 15px;
-  text-align: center;
   color: white;
   /*font-weight: bold;*/
   z-index: 5;
-}
-.hoverSeat {
-  background-color: yellow !important;
 }
 #theaterBackground {
   position: relative;

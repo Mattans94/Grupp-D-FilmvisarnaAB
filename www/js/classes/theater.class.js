@@ -42,13 +42,54 @@ class Theater extends Base{
 		// let status;  = seat.data('status');
 
 		$(document).on("mouseenter", '.seat', function() {
-			$(this).addClass('hoverSeat');
-		});
+			let $seat = $(this);
+			if (that.booking.seatsTotal >= 1) {
+
+				if($seat.hasClass('booked')){return};
+				if ($seat.hasClass('free')){
+					let amount = that.booking.seatsTotal;
+					let $allNext = $seat.prevAll();
+					let $seatsToSelect = [$seat];
+					let $errorSeats = [$seat];
+					let found = 1;
+
+					$allNext.each(function(){
+						 if(found == amount){return;}
+						 if($(this).hasClass('booked')){
+							 $errorSeats.push($(this));
+						 }else{
+							 found++;
+							 $seatsToSelect.push($(this));
+							 $errorSeats.push($(this));
+						 }
+					});
+
+					if($errorSeats.length > $seatsToSelect.length) {
+						$errorSeats.splice(amount);
+						$errorSeats = $errorSeats.reverse();
+						let errorAmount = $errorSeats.length - $seatsToSelect.length;
+						$errorSeats.splice(errorAmount);
+						$errorSeats.forEach(function($el){
+							$el.addClass('errorHoverSeat');
+						})
+						$seatsToSelect.forEach(function($el){
+							$el.addClass('hoverSeat');
+						})
+					}
+
+					else {
+						$seatsToSelect.forEach(function($el){
+							$el.addClass('hoverSeat');
+					})}
+				}}});
+
 		$(document).on("mouseleave", '.seat', function() {
-			$(this).removeClass('hoverSeat');
+			$(this).prevAll().addBack().removeClass('hoverSeat');
+			$(this).prevAll().addBack().removeClass('errorHoverSeat');
 		});
 
 		$(document).on("click", '.seat', function() {
+			that.booking.resetBookingButtons();
 			let $seat = $(this);
 
 			if (that.booking.seatsTotal >= 1) {
@@ -63,12 +104,11 @@ class Theater extends Base{
 
 				$allNext.each(function(){
 			     if(foundFirstBooked || found == amount){return;}
-			     if($seat.hasClass('booked')){
+			     if($(this).hasClass('booked')){
 			       foundFirstBooked = true;
 			     }else{
 			       found++;
 						 that.booking.reservedSeats++;
-						 console.log(that.booking.reservedSeats++)
 			       $seatsToSelect.push($(this));
 			     }
 			  });
