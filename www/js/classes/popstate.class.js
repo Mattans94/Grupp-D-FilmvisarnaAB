@@ -41,7 +41,7 @@ class Popstate extends Base{
       '/Call_Me_By_Your_Name': 'movieCallMe',
       '/Let_The_Sunshine_In': 'movieLetThe',
       '/The_Party': 'movieTheParty',
-      '/our_theaters': 'renderOurTheaters'
+      '/our_theaters': 'renderOurTheaters',
     }
 
     let methodName = urls[url];
@@ -90,7 +90,6 @@ class Popstate extends Base{
     });
     }
   }
-
 
   // Movies
   movieFerdinand(){

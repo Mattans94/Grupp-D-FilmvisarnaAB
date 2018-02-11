@@ -363,5 +363,43 @@
       },
       "orderID": []
     }
+  },
+  {
+    "show": {
+      "date": "2018-03-07",
+      "auditorium": "Stora Salongen",
+      "film": "Call Me By Your Name",
+      "time": "18.40",
+      "bookedSeats": [
+        1,
+        2
+      ],
+      "userID": {
+        "id": null
+      },
+      "orderID": []
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-12",
+      "auditorium": "Lilla Salongen",
+      "film": "Call Me By Your Name",
+      "time": "21.00",
+      "bookedSeats": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "userID": {
+        "id": null
+      },
+      "orderID": []
+    }
   }
 ]

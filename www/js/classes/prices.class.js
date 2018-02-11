@@ -46,7 +46,7 @@ class Prices extends Base {
 
 		html += `
 			<div class="d-flex justify-content-end">
-					<button class="btn btn-danger book-btn">Boka nu!</button>
+				<button class="btn btn-danger bookingConfirmation">Boka nu!</button>
 			</div>`
 
 		$('#totalprice').html(html);

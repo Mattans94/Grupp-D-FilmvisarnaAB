@@ -50,9 +50,9 @@ class Booking extends Base{
 
 	updateTotalPrice(){
 		// prices.start();
-		let prices = new Prices(this.child, this.adult, this.pensioner);
-		prices.calculateTotalPrice();
-		prices.renderTotalAmount();
+		this.prices = new Prices(this.child, this.adult, this.pensioner);
+		this.prices.calculateTotalPrice();
+		this.prices.renderTotalAmount();
 	}
 
 	myNumberOfSeatsCheck() {
@@ -147,13 +147,29 @@ class Booking extends Base{
 		}
 	}
 
+	bookingModal(){
+		// Hämta bokade säten
+		let bookedSeats = [];
+		$('.seat.reserved').each(function(){
+			let seat = $(this);
+			let seatID = seat.data('seatid');
+			console.log(seatID);
+			bookedSeats.push(seatID);
+		});
+		// Skicka in allt modalen behöver veta
+    let bookingModal = new BookingModal(this.showObject, this.prices.totalPrice, bookedSeats);
+    $('main').append(bookingModal.template());
+		$('#modalToggler').click();
 
-	
-
+  }
 	// Lång eventHandler - kanske behövs.
 	// Varför laddas json in i eventHandler och inte constructorn?
 	// Behöver man ladda json varje gång man trycker någonstans? Isåfall lägg inladdning på ett klick
 	eventHandler() {
+
+		$(document).on('click','.bookingConfirmation', () => {
+			this.bookingModal();
+		});
 
 		let that = this;
 		$(document).on('click','.book-btn',function(){
