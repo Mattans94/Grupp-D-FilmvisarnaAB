@@ -98,7 +98,7 @@ class Theater extends Base{
 
 
 		}
-    
+
     return theShow;
 	}
 
@@ -168,10 +168,13 @@ class Theater extends Base{
 			html += '</div>';
 		}
 		$('#theater').html(html);
+		this.removeClassFreeFromBookedSeats();
+	}
 
-		// $('html, body').animate({
-    //     scrollTop: $("#theater").offset().top -20
-    // }, 500);
+	removeClassFreeFromBookedSeats(){
+		if($('.seat').hasClass('booked')) {
+			$('.booked').removeClass('free');
+		}
 	}
 
 
@@ -180,7 +183,6 @@ class Theater extends Base{
 
 		let fullHeight = this.seatsStoran.length * 55;
 		$('#theater').css('height', `${fullHeight}`);
-		console.log('setting height', fullHeight);
 	}
 
 	setWidth(){
@@ -193,7 +195,6 @@ class Theater extends Base{
 		let fullWidth = longestRow * 55;
 		$('#theater').css('width', `${fullWidth}`);
 
-		console.log('setting width', fullWidth);
 
 	}
 
@@ -202,13 +203,10 @@ class Theater extends Base{
 		let orgW = $('#theater').width(), orgH = $('#theater').height();
 		let w = $('#theaterBackground').width();
 		let h = $(window).height();
-		console.log('width-window in scale = ', w, 'height-window in scale = ', h);
 		const wScale = w / orgW;
 		const hScale = h / orgH;
-		console.log('widthscale = ', wScale, 'heigttscale = ', hScale);
 		let scaling = Math.min(wScale, hScale);
 
-		console.log('scaling', scaling)
 		scaling = scaling * 0.8;
 
 		$('#screenTransparenting').width(orgW + 80).height(orgH);
@@ -262,17 +260,16 @@ class Theater extends Base{
 		// let seatID; = seat.data('seatid');
 		// let rowID;  = seat.data('rowid');
 		// let status;  = seat.data('status');
-
-		$(document).on("click", '.seat', function() {
+			$(document).on("click", '.seat', function() {
 			let seat = $(this);
 
-			if (that.booking.seatsTotal >= 1 && !(that.booking.reservedSeats == that.booking.seatsTotal)) {
-				if (seat.hasClass('free')){
+
+			if (that.booking.seatsTotal >= 1) {
+				if (seat.hasClass('free') && !(that.booking.reservedSeats == that.booking.seatsTotal)){
 					seat.removeClass('free');
 					seat.addClass('reserved');
 					that.booking.reservedSeats++;
-				}
-				else if (seat.hasClass('reserved')){
+				} else if (seat.hasClass('reserved')){
 					seat.removeClass('reserved');
 					seat.addClass('free');
 					that.booking.reservedSeats--;
