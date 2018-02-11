@@ -15,8 +15,6 @@ class Booking extends Base{
 		this.title = showObject.film;
 		this.showObject = showObject;
 		//
-
-
 		this.orderID = [];
 
 		this.child=0;
@@ -39,17 +37,12 @@ class Booking extends Base{
 	// Behövs theater.scale() här? Den körs redan on-resize i popstate.
 	start(){
 		this.eventHandler();
-		this.renderTicketButtons();
 		this.checkForDisable();
 		this.updateTotalPrice();
 		this.myNumberOfSeatsCheck();
-		console.log('twice?');
 	}
 
-
-
 	updateTotalPrice(){
-		// prices.start();
 		this.prices = new Prices(this.child, this.adult, this.pensioner);
 		this.prices.calculateTotalPrice();
 		this.prices.renderTotalAmount();
@@ -58,53 +51,6 @@ class Booking extends Base{
 	myNumberOfSeatsCheck() {
 		this.seatsTotal = (this.child + this.adult + this.pensioner);
 	}
-
-	renderTicketButtons() {
-		let html =
-			`<div class="d-flex flex-nowrap flex-column flex-md-row justify-content-md-around align-items-center">
-
-					<div class="text-center text-md-left">
-						<p class="text-white mb-0">Ordinarie</p>
-					  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-						  <div class="btn-group mr-2" role="group" aria-label="adult group">
-							  <button type="button" class="btn btn-danger removebtn" id="removeadult"><strong>-</strong></button>
-							  <input type="text" class="form-control" id="adultTickets" placeholder="${this.adult}">
-							  <button type="button" class="btn btn-danger addbtn" id="addadult"><strong>+</strong></button>
-						 	</div>
-						</div>
-					</div>
-
-					<div class="text-center text-md-left">
-						<p class="text-white mb-0">Barn (under 12 år)</p>
-					  <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-					  	<div class="btn-group mr-2" role="group" aria-label="child group">
-						    <button type="button" class="btn btn-danger removebtn" id="removechild"><strong>-</strong></button>
-						    <input type="text" class="form-control" id="childTickets" placeholder="${this.child}">
-						    <button type="button" class="btn btn-danger addbtn" id="addchild"><strong>+</strong></button>
-					  	</div>
-						</div>
-					</div>
-					<div class="text-center text-md-left">
-						<p class="text-white mb-0">Pensionär</p>
-						<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-
-							<div class="btn-group mr-2" role="group" aria-label="pensioner group">
-								<button type="button" class="btn btn-danger removebtn" id="removepensioner"><strong>-</strong></button>
-								<input type="text" class="form-control" id="pensionerTickets" placeholder="${this.pensioner}" >
-								<button type="button" class="btn btn-danger addbtn" id="addpensioner"><strong>+</strong></button>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="text-center text-md-left">
-					<small class="text-danger"> Max 8 biljetter per bokning
-					</small>
-				</div>
-
-			`;
-  	$('.ticketholder').html(html);
-	 }
 
 	// Kan man göra om denna på något sätt för att optimera?
 	checkForDisable(){
@@ -160,13 +106,11 @@ class Booking extends Base{
     let bookingModal = new BookingModal(this.showObject, this.prices.totalPrice, bookedSeats);
     $('main').append(bookingModal.template());
 		$('#modalToggler').click();
-
   }
 	// Lång eventHandler - kanske behövs.
 	// Varför laddas json in i eventHandler och inte constructorn?
 	// Behöver man ladda json varje gång man trycker någonstans? Isåfall lägg inladdning på ett klick
 	eventHandler() {
-
 		$(document).on('click','.bookingConfirmation', () => {
 			this.bookingModal();
 		});
@@ -201,28 +145,12 @@ class Booking extends Base{
 					Data.showObjects[showObjectIndex].bookedSeats.push(seatID);
 					// tempBookingObject.show.bookedSeats.push(seatID);
 				});
-			 	that.bookedSeats.push(tempBookingObject);
-			//that.bookedSeats.push(that.bookedSeats);
-			// console.log(that.bookedSeats)
-			//console.log(that.booking.show)
-			//Object.assign(that.booking.show, {bookedSeats: that.booking})
-			//Save booked-info + sittplats to JSON
-			JSON._save('booking', that.bookedSeats);
-			JSON._save('shows', Data.showObjects);
-			// console.log('saving', that.bookedSeats)
+				that.bookedSeats.push(tempBookingObject);
+				//Save booked-info + sittplats to JSON
+				JSON._save('booking', that.bookedSeats);
+				JSON._save('shows', Data.showObjects);
+			})))});
 
-
-		})))});
-
-		// JSON._load('booking',(data){
-		// 	this.bookings = data;
-		// 	this.seatOccupied();
-		// });
-
-		// $(document).on('click', '.btn-danger', function() {
-		// 	let clickedbutton = $(this);
-		// 	clickedbutton
-		// });
 
 		// Kan man göra dessa annorlunda? Kolla tillsammans
 		$(document).on('click', '#addchild', () => {

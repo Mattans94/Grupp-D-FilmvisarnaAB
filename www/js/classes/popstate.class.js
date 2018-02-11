@@ -84,7 +84,6 @@ class Popstate extends Base{
 
     let theater = new Theater(bookingShowObject);
     theater.render('main');
-    theater.scale();
     $(window).on('resize',function(){
       theater.scale();
     });

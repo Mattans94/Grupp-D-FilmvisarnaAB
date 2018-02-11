@@ -130,7 +130,11 @@
     "auditorium": "Lilla Salongen",
     "film": "Call Me By Your Name",
     "time": "22.40",
-    "bookedSeats": []
+    "bookedSeats": [
+      44,
+      45,
+      46
+    ]
   },
   {
     "date": "2018-03-07",

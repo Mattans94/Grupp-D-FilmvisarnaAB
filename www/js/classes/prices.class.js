@@ -30,7 +30,7 @@ class Prices extends Base {
 		}
 	}
 
-		renderTotalAmount() {
+	renderTotalAmount() {
 		let html = "";
 		if (this.numberOfAdults > 0) {
 			html += `${this.renderUnitPrice(this.adultObject, this.numberOfAdults)}`
