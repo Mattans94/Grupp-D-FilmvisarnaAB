@@ -176,8 +176,35 @@ class Login extends Base{
 		this.bookingObjects = await JSON._load('booking');
 		let loggedInId = this.session.id;
 		this.bookedUserShows = this.bookingObjects.filter((m) => loggedInId == m.show.userID);
-		
-		this.renderLoginTemplate();
+
+		this.checkIfBookingPassed();
+	}
+
+	getCurrentDate(){
+		let dd = new Date();
+		let yy = dd.getYear();
+		let mm = dd.getMonth() + 1;
+		dd = dd.getDate();
+		if (yy < 2000) { yy += 1900; }
+		if (mm < 10) { mm = "0" + mm; }
+		if (dd < 10) { dd = "0" + dd; }
+		let currentDate = yy + "-" + mm + "-" + dd;
+		return currentDate;
+	}
+
+	checkIfBookingPassed(){
+		let that = this;
+		let oldBookings = [];
+		let newBookings = [];
+		this.bookedUserShows.forEach(function(bookedShow){
+			if (that.getCurrentDate() < bookedShow.show.date) {
+				newBookings.push(bookedShow);
+			} else {
+				oldBookings.push(bookedShow);
+			}
+		});
+
+		this.renderLoginTemplate(newBookings, oldBookings)
 	}
 
 	getBookedSeats(bookedSeats){
@@ -188,10 +215,10 @@ class Login extends Base{
 		return allSeats
 	}
 
-	renderEachShow(){
+	renderEachShow(bookingArray){
 		let html = '';
-		for (let i = 0; i < this.bookedUserShows.length; i++){
-			let movieObject = this.getMovieObject(this.bookedUserShows[i].show.film);
+		for (let i = 0; i < bookingArray.length; i++){
+			let movieObject = this.getMovieObject(bookingArray[i].show.film);
 
 			html += `
 			<div class="d-flex flex-nowrap mt-3 mb-3 bookingContainer bg-dark text-white p-3">
@@ -199,12 +226,12 @@ class Login extends Base{
 					<img class="img-fluid" src="/img/posters/${movieObject.images[0]}">
 				</div>
 				<div class="col-9">
-					<h3 class="mb-3">${this.bookedUserShows[i].show.film}</h3>
-					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Plats:</span> ${this.bookedUserShows[i].show.auditorium}</p>
-					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Datum:</span> ${this.bookedUserShows[i].show.date}</p>
-					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Tid:</span> ${this.bookedUserShows[i].show.time}</p>
-					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Platser:</span> ${this.getBookedSeats(this.bookedUserShows[i].show.bookedSeats)}</p>
-					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Order:</span> ${this.bookedUserShows[i].show.orderID}</p>
+					<h3 class="mb-3">${bookingArray[i].show.film}</h3>
+					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Plats:</span> ${bookingArray[i].show.auditorium}</p>
+					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Datum:</span> ${bookingArray[i].show.date}</p>
+					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Tid:</span> ${bookingArray[i].show.time}</p>
+					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Platser:</span> ${this.getBookedSeats(bookingArray[i].show.bookedSeats)}</p>
+					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Order:</span> ${bookingArray[i].show.orderID}</p>
 				</div>
 			</div>
 
@@ -213,7 +240,7 @@ class Login extends Base{
 		return html;
 	}
 
-	renderLoginTemplate(){
+	renderLoginTemplate(newBookings, oldBookings){
 		$('main').empty();
 		let html = `
 		<article class="row">
@@ -221,7 +248,7 @@ class Login extends Base{
 				<h3 class="redHeader m-0 col-12 mb-3 text-center">Aktuella bokningar</h3>
 				<div class="errorContainer d-flex justify-content-between flex-wrap flex-lg-nowrap">
 					<div class="col-12">
-						${this.renderEachShow()}
+						${this.renderEachShow(newBookings)}
 					</div>
 
 				</div>
@@ -230,7 +257,7 @@ class Login extends Base{
 				<h3 class="redHeader m-0 col-12 mb-3 text-center">Historik</h3>
 				<div class="errorContainer d-flex justify-content-between flex-wrap flex-lg-nowrap">
 					<div class="col-12">
-						${this.renderEachShow()}
+						${this.renderEachShow(oldBookings)}
 					</div>
 				</div>
 			</div>

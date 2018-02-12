@@ -1,3 +1,77 @@
 [
-  
+  {
+    "show": {
+      "date": "2018-02-02",
+      "auditorium": "Lilla Salongen",
+      "film": "Tjuren Ferdinand",
+      "time": "18.40",
+      "bookedSeats": [
+        1,
+        2,
+        3
+      ],
+      "userID": 4,
+      "orderID": "i4dKvsLKp"
+    }
+  },
+  {
+    "show": {
+      "date": "2018-02-08",
+      "auditorium": "Stora Salongen",
+      "film": "The Party",
+      "time": "22.40",
+      "bookedSeats": [
+        1,
+        2,
+        3
+      ],
+      "userID": 4,
+      "orderID": "40k32hndM"
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-03",
+      "auditorium": "Lilla Salongen",
+      "film": "Call Me By Your Name",
+      "time": "18.40",
+      "bookedSeats": [
+        1,
+        2,
+        3
+      ],
+      "userID": 4,
+      "orderID": "i4HKvuLKM"
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-03",
+      "auditorium": "Lilla Salongen",
+      "film": "Call Me By Your Name",
+      "time": "18.40",
+      "bookedSeats": [
+        20,
+        21,
+        22
+      ],
+      "userID": 4,
+      "orderID": "hFaNWjIkG"
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-14",
+      "auditorium": "Lilla Salongen",
+      "film": "Call Me By Your Name",
+      "time": "22.40",
+      "bookedSeats": [
+        1,
+        2,
+        3
+      ],
+      "userID": 4,
+      "orderID": "aTd0UrGh1"
+    }
+  }
 ]
