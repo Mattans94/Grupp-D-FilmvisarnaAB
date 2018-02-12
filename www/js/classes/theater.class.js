@@ -40,23 +40,107 @@ class Theater extends Base{
 		// let seatID; = seat.data('seatid');
 		// let rowID;  = seat.data('rowid');
 		// let status;  = seat.data('status');
-			$(document).on("click", '.seat', function() {
-			let seat = $(this);
 
-			console.log(that.booking.reservedSeats);
+		$(document).on("mouseenter", '.seat', function() {
+			let $seat = $(this);
 			if (that.booking.seatsTotal >= 1) {
-				if (seat.hasClass('free') && !(that.booking.reservedSeats == that.booking.seatsTotal)){
-					seat.removeClass('free');
-					seat.addClass('reserved');
 
-					that.booking.reservedSeats++;
-				} else if (seat.hasClass('reserved')){
-					seat.removeClass('reserved');
-					seat.addClass('free');
-					that.booking.reservedSeats--;
-				}
-			}
+				if($seat.hasClass('booked')){return};
+				if ($seat.hasClass('free')){
+					let amount = that.booking.seatsTotal;
+					let $allNext = $seat.prevAll();
+					let $seatsToSelect = [$seat];
+					let $errorSeats = [$seat];
+					let found = 1;
+					console.log(that.booking.seatsTotal);
+
+					$allNext.each(function(){
+						 if(found == amount){return;}
+						 if($(this).hasClass('booked')){
+							 $errorSeats.push($(this));
+						 }else{
+							 found++;
+							 $seatsToSelect.push($(this));
+							 $errorSeats.push($(this));
+						 }
+					});
+
+					if($errorSeats.length > $seatsToSelect.length) {
+						$errorSeats.splice(amount);
+						$errorSeats = $errorSeats.reverse();
+						let errorAmount = $errorSeats.length - $seatsToSelect.length;
+						$errorSeats.splice(errorAmount);
+						$errorSeats.forEach(function($el){
+							$el.addClass('errorHoverSeat');
+						})
+						$seatsToSelect.forEach(function($el){
+							$el.addClass('hoverSeat');
+						})
+					}
+
+					else {
+						$seatsToSelect.forEach(function($el){
+							$el.addClass('hoverSeat');
+					})}
+				}}});
+
+		$(document).on("mouseleave", '.seat', function() {
+			$(this).prevAll().addBack().removeClass('hoverSeat errorHoverSeat');
 		});
+
+		$(document).on("click", '.seat', function() {
+			that.booking.resetBookingButtons();
+			let $seat = $(this);
+
+			if (that.booking.seatsTotal >= 1) {
+
+				if($seat.hasClass('booked')){return};
+				if ($seat.hasClass('free') && !(that.booking.reservedSeats >= that.booking.seatsTotal)){
+				let amount = that.booking.seatsTotal;
+				let $allNext = $seat.prevAll();
+			  let $seatsToSelect = [$seat];
+			  let foundFirstBooked = false;
+			  let found = 1;
+
+				$allNext.each(function(){
+			     if(foundFirstBooked || found == amount){return;}
+			     if($(this).hasClass('booked')){
+			       foundFirstBooked = true;
+			     }else{
+			       found++;
+						 that.booking.reservedSeats++;
+			       $seatsToSelect.push($(this));
+			     }
+			  });
+
+				if(found<amount){return;}
+				console.log($seatsToSelect);
+				$seatsToSelect.forEach(function($el){
+					$el.addClass('reserved');
+				});
+			}}
+});
+
+
+
+
+
+
+    //  Välja en-stol-kod här. Kanske ha en knapp som togglar denna?
+		// 	console.log(that.booking.reservedSeats);
+		// 	if (that.booking.seatsTotal >= 1) {
+		// 		if (seat.hasClass('free') && !(that.booking.reservedSeats >= that.booking.seatsTotal)){
+		// 			seat.removeClass('free');
+		// 			seat.addClass('reserved');
+    //
+		// 			that.booking.reservedSeats++;
+		// 		} else if (seat.hasClass('reserved')){
+		// 			seat.removeClass('reserved');
+		// 			seat.addClass('free');
+		// 			that.booking.reservedSeats--;
+		// 		}
+		// 	}
+		// });
 	}// end eventhandler
 
 

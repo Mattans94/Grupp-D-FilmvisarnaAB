@@ -118,11 +118,8 @@ class Booking extends Base{
 	}
 
 	resetBookingButtons(){
-		if (this.seatsTotal < this.reservedSeats) {
-			$('.seat').addClass('free').removeClass('reserved');
-			this.reservedSeats = 0;
-		}
-
+		$('.seat').addClass('free').removeClass('reserved');
+		this.reservedSeats = 0;
 	}
 
 	bookingModal(){
