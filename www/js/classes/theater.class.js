@@ -52,6 +52,7 @@ class Theater extends Base{
 					let $seatsToSelect = [$seat];
 					let $errorSeats = [$seat];
 					let found = 1;
+					console.log(that.booking.seatsTotal);
 
 					$allNext.each(function(){
 						 if(found == amount){return;}
@@ -84,8 +85,7 @@ class Theater extends Base{
 				}}});
 
 		$(document).on("mouseleave", '.seat', function() {
-			$(this).prevAll().addBack().removeClass('hoverSeat');
-			$(this).prevAll().addBack().removeClass('errorHoverSeat');
+			$(this).prevAll().addBack().removeClass('hoverSeat errorHoverSeat');
 		});
 
 		$(document).on("click", '.seat', function() {
@@ -126,7 +126,7 @@ class Theater extends Base{
 
 
 
-
+    //  Välja en-stol-kod här. Kanske ha en knapp som togglar denna?
 		// 	console.log(that.booking.reservedSeats);
 		// 	if (that.booking.seatsTotal >= 1) {
 		// 		if (seat.hasClass('free') && !(that.booking.reservedSeats >= that.booking.seatsTotal)){
