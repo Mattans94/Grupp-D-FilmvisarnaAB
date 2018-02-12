@@ -132,8 +132,11 @@ class Booking extends Base{
 			bookedSeats.push(seatID);
 		});
 		// Skicka in allt modalen behöver veta
+
+		this.prices.calculateTotalPrice()
+		$('#modalInputContainer').empty();
     let bookingModal = new BookingModal(this.showObject, this.prices.totalPrice, bookedSeats);
-    $('main').append(bookingModal.template());
+    $('#modalInputContainer').append(bookingModal.template());
 		$('#bookingConfirmationModalToggler').trigger('click');
   }
 	// Lång eventHandler - kanske behövs.
