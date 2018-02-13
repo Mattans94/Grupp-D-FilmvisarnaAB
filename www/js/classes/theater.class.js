@@ -7,6 +7,8 @@ class Theater extends Base{
 		this.movieObject = this.getMovieObject(this.showObject.film);
 		this.booking = new Booking(this.showObject);
 
+		console.log(this.booking);
+
 		JSON._load('theaters').then((theater) => {
 			this.theaterObjects = theater;
 
@@ -38,6 +40,7 @@ class Theater extends Base{
 
 		$(document).on("mouseenter", '.seat', function() {
 			let $seat = $(this);
+			console.log(that.booking.seatsTotal);
 			if (that.booking.seatsTotal >= 1) {
 
 				if($seat.hasClass('booked')){return};

@@ -22,7 +22,14 @@ class Popstate extends Base{
       href = that.makeUrl(href);
       history.pushState(null, null, href);
       //Call the change page function
-      that.changePage();
+      if (href === '/Theater'){
+        let date = $(this).data('date');
+        let time = $(this).data('time');
+        let bookingShowObject = that.getBookingObject(date, time);
+        that.changePage(bookingShowObject);
+      }else {
+        that.changePage();
+      }
       //Stop the browers from starting a page reload
       e.preventDefault();
     })};
@@ -81,7 +88,6 @@ class Popstate extends Base{
       error.render('main');
     }else {
     // booking-showobject is the object that is being clicked when intilize theater
-
     let theater = new Theater(bookingShowObject);
     console.log(theater);
     theater.render('main');

@@ -22,6 +22,7 @@ class App extends Base {
     })
 
     .then(() => {
+      console.log('JSON loaded');
       this.start();
       // this.eventHandlers();
     }));
