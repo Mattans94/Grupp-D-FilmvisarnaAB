@@ -20,14 +20,6 @@ class Movie extends Base {
       })
     })
 
-    // Render theater with right show
-    $(document).on('click', '.bookingTimeDate', function(){
-      let date = $(this).data('date');
-      let time = $(this).data('time');
-      let bookingShowObject = that.getBookingObject(date, time);
-      console.log(bookingShowObject);
-      myApp.popstate.changePage(bookingShowObject);
-    })
 
   };
 

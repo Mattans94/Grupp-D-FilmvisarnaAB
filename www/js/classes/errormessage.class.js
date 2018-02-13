@@ -1,4 +1,4 @@
-class Error extends Base {
+class ErrorMessage extends Base {
   constructor(){
 		super();
 	}
