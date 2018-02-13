@@ -10,18 +10,18 @@ class Theater extends Base{
 		// Set the last created Theater as a static property
 		Theater.latestTheater = this;
 
+
+
 		JSON._load('theaters').then((theater) => {
 			this.theaterObjects = theater;
-
-		})
-		.then(JSON._load('shows').then((shows) => {
-			Data.showObjects = shows;
-
-		})
-		.then(() => {
+			JSON._load('shows').then((shows) => {
+				Data.showObjects = shows;
+				})
+				.then(() => {
 		      this.start();
-		      // this.eventHandlers();
-		}));
+			})
+		});
+
 
 
 	} //end
@@ -89,7 +89,6 @@ class Theater extends Base{
 
 		$(document).on("click", '.seat', function() {
 			let that = Theater.latestTheater;
-			console.log(that);
 			that.booking.resetBookingButtons();
 			let $seat = $(this);
 
@@ -115,7 +114,6 @@ class Theater extends Base{
 			  });
 
 				if(found<amount){return;}
-				console.log($seatsToSelect);
 				$seatsToSelect.forEach(function($el){
 					$el.addClass('reserved');
 				});
@@ -128,7 +126,7 @@ class Theater extends Base{
 
 
     //  Välja en-stol-kod här. Kanske ha en knapp som togglar denna?
-		// 	console.log(that.booking.reservedSeats);
+		//
 		// 	if (that.booking.seatsTotal >= 1) {
 		// 		if (seat.hasClass('free') && !(that.booking.reservedSeats >= that.booking.seatsTotal)){
 		// 			seat.removeClass('free');
@@ -158,17 +156,17 @@ class Theater extends Base{
 
 	  //let count = 0;
 		for(let booking of bookings){
-		  //console.log('film', booking.show.film);
+		  //
 		  // for(let show of shows){
 		  // 	// if(theShow && show != theShow){continue;}
 		  //   //count++;
 		    if(booking.show.date == theShow.date && booking.show.auditorium == theShow.auditorium && booking.show.time == theShow.time){
-		      //console.log('found it!', show, booking);
+		      //
 		      if(!theShow.bookedSeats){
 		        theShow.bookedSeats = [];
 		      }
 		      theShow.bookedSeats = [...theShow.bookedSeats, ...booking.show.bookedSeats]; // concat (merge) two arrays
-		      //console.log(show);
+		      //
 		      theShow.bookedSeats = new Set(theShow.bookedSeats);
 		      theShow.bookedSeats = Array.from(theShow.bookedSeats);
 		    }
@@ -237,7 +235,7 @@ class Theater extends Base{
 		let seatStatus = 'free';
 
 		let show = await this.getRichShow(this.showObject);
-		console.log('show', show);
+
 
 		for (let row = 0; row < this.seatsStoran.length; row++) {
 			this.seatsPerRow = this.seatsStoran[row];

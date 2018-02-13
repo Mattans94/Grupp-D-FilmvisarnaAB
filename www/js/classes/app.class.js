@@ -9,22 +9,18 @@ class App extends Base {
 
     // Load shows, add as a property, then start the app
     JSON._load('shows').then((shows) => {
-      // Retrieve the app from JSON
       Data.showObjects = shows;
-    })
-    .then(JSON._load('movies').then((movies) => {
-      // Retrieve the app from JSON
-      Data.movieObjects = movies;
+      JSON._load('movies').then((movies) => {
+        Data.movieObjects = movies;
+          JSON._load('prices').then((prices) => {
+            Data.priceObject = prices;
+          })
+            .then(() => {
+              this.start();
+            })
+          })
+        });
 
-      JSON._load('prices').then((prices) => {
-      Data.priceObject = prices;
-      })
-    })
-
-    .then(() => {
-      this.start();
-      // this.eventHandlers();
-    }));
 
 
   }
@@ -40,8 +36,6 @@ class App extends Base {
     $('footer').empty();
     this.footer.render('footer');
     this.footer.footerFix();
-
-
 
     this.loginform = new Loginform();
     this.loginform.render('.renderForm');

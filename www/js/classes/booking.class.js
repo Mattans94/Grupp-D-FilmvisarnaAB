@@ -136,7 +136,6 @@ class Booking extends Base{
 		$('.seat.reserved').each(function(){
 			let seat = $(this);
 			let seatID = seat.data('seatid');
-			console.log(seatID);
 			bookedSeats.push(seatID);
 		});
 		// Skicka in allt modalen behöver veta
@@ -161,18 +160,18 @@ class Booking extends Base{
 
 				// Temporärt objekt varje gång man klickar
 				let tempBookingObject = {};
+
+
 				// Laddar in all json som behövs
 				JSON._load('booking').then((data) => {
-						// Retrieve the app from JSON
 					that.bookedSeats = data;
-				})
-				.then(JSON._load('shows').then((shows) => {
-	      	Data.showObjects = shows;
-		    })
-				.then(JSON._load('session').then((userid) => {
-					that.loggedInUser = userid;
+						JSON._load('shows').then((shows) => {
+	      			Data.showObjects = shows;
+							JSON._load('session').then((userid) => {
+								that.loggedInUser = userid;
+							})
 
-				})
+
 
 
 				// Kör bokning
@@ -189,7 +188,6 @@ class Booking extends Base{
 					$('.seat.reserved').each(function(){
 						let seat = $(this);
 						let seatID = seat.data('seatid');
-						// console.log(seatID);
 						that.showObject.bookedSeats.push(seatID);
 						let showObjectIndex = that.getShowIndex();
 						Data.showObjects[showObjectIndex].bookedSeats.push(seatID);
@@ -200,7 +198,9 @@ class Booking extends Base{
 					JSON._save('shows', Data.showObjects);
 					$('#bookingConfirmationModalToggler').trigger('click');
 					$('#bookingConfirmedModalToggler').trigger('click');
-				}})))
+					}
+				})
+			})}); // End of then
 
 
 

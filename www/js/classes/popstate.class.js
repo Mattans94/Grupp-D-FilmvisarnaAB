@@ -95,7 +95,7 @@ class Popstate extends Base{
     if (!this.eventHandlerSet) {
       theater.eventHandlers();
       this.eventHandlerSet = true;
-      console.log('hej');
+       
     }
 
 

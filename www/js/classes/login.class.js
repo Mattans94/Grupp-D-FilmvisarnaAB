@@ -23,7 +23,7 @@ class Login extends Base{
      		this.userObjects = users;
    		})
    		.then(() => {
-				console.log("jkasdklajs");
+
 				let username = $("#login-username").val();
 				let password = $("#login-password").val();
 				let condition = this.checkUsername($("#login-username").val());
@@ -33,7 +33,7 @@ class Login extends Base{
 
 				if (condition) {
 
-					console.log("you're logged in!");
+
 					let loggedInUserObject = this.getUserObject(username);
 					this.loggedInUser = Object.assign(this.loggedInUser, loggedInUserObject);
 					this.emptyInputs();
@@ -46,7 +46,7 @@ class Login extends Base{
 
 		$("#togglelogin-btn").on('click', function() {
 			let text = $(this).text();
-			console.log(text);
+
 			$(this).text(text == "Skapa konto" ? "Logga in" : "Skapa konto");
 			$('.logintoggle').slideToggle(400);
 		});
@@ -59,7 +59,7 @@ class Login extends Base{
 
 		$(document).on("click", "#logout-btn", () => {
 			this.logout();
-			console.log("Logged out...");
+
 		});
 
 
@@ -103,7 +103,7 @@ class Login extends Base{
 		}
 
 		if (condition == false) {
-			console.log("username not found");
+
 			$('#login-username').css({"border": "1px solid red"});
 		}
 
@@ -118,25 +118,25 @@ class Login extends Base{
 		let usernameCondition = false;
 		let passwordCondition = false;
 		if (username == userObject.username) {
-			console.log("Username True");
+
 			usernameCondition = true;
 		} else {
-			console.log("Username False");
+
 		}
 		if (password == userObject.password) {
-			console.log("Password True");
+
 			passwordCondition = true;
 		} else {
-			console.log("Password False");
+
 		}
 
 		if (usernameCondition && passwordCondition) {
-			console.log("Login complete");
+
 			$('#login-username').css({"border": "1px solid green"});
 			$('#login-password').css({"border": "1px solid green"});
 			return true;
 		} else {
-			console.log("Username or password invalid");
+
 			$('#login-username').css({"border": "1px solid red"});
 			$('#login-password').css({"border": "1px solid red"});
 			return false;
@@ -146,7 +146,7 @@ class Login extends Base{
 
 	isLoggedIn(){
 		if (this.loggedInUser.isLoggedIn) {
-			console.log("is logged in");
+
 			return true;
 		}
 	}
