@@ -10,17 +10,17 @@ class App extends Base {
     // Load shows, add as a property, then start the app
     JSON._load('shows').then((shows) => {
       // Retrieve the app from JSON
-      Data.showObjects = this.showObjects = shows;
+      Data.showObjects = shows;
     })
     .then(JSON._load('movies').then((movies) => {
       // Retrieve the app from JSON
-      Data.movieObjects = this.showObjects = movies;
+      Data.movieObjects = movies;
 
       JSON._load('prices').then((prices) => {
-      Data.priceObject = prices;      
+      Data.priceObject = prices;
       })
     })
-    
+
     .then(() => {
       this.start();
       // this.eventHandlers();

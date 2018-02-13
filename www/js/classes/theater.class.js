@@ -2,11 +2,6 @@ class Theater extends Base{
 
 	constructor(showObject) {
 		super();
-		// this.booking = Booking;
-		// this.numberOfChildren = numberOfChildren;
-		// this.numberOfAdults = numberOfAdults;
-		// this.numberOfPensioners = numberOfPensioners;
-		// this.auditorium = auditorium;
 		this.showObject = showObject;
 		this.auditorium = showObject.auditorium;
 		this.movieObject = this.getMovieObject(this.showObject.film);
@@ -52,7 +47,6 @@ class Theater extends Base{
 					let $seatsToSelect = [$seat];
 					let $errorSeats = [$seat];
 					let found = 1;
-					console.log(that.booking.seatsTotal);
 
 					$allNext.each(function(){
 						 if(found == amount){return;}

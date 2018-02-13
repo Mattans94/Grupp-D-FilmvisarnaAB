@@ -25,7 +25,6 @@ class Movie extends Base {
       let date = $(this).data('date');
       let time = $(this).data('time');
       let bookingShowObject = that.getBookingObject(date, time);
-      console.log(bookingShowObject);
       myApp.popstate.changePage(bookingShowObject);
     })
 

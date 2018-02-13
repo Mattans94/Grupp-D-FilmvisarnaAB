@@ -182,10 +182,9 @@ class Login extends Base{
 
 	getCurrentDate(){
 		let dd = new Date();
-		let yy = dd.getYear();
+		let yy = dd.getFullYear();
 		let mm = dd.getMonth() + 1;
 		dd = dd.getDate();
-		if (yy < 2000) { yy += 1900; }
 		if (mm < 10) { mm = "0" + mm; }
 		if (dd < 10) { dd = "0" + dd; }
 		let currentDate = yy + "-" + mm + "-" + dd;
