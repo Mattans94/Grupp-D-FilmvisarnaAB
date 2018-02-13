@@ -1,3 +1,17 @@
 [
-  
+  {
+    "show": {
+      "date": "2018-03-03",
+      "auditorium": "Lilla Salongen",
+      "film": "Call Me By Your Name",
+      "time": "18.40",
+      "bookedSeats": [
+        18,
+        19,
+        20
+      ],
+      "userID": 4,
+      "orderID": "JzLugJZ9d"
+    }
+  }
 ]
