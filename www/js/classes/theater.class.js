@@ -64,6 +64,8 @@ class Theater extends Base{
 							 let $seatObj = {'seat' : $seat, 'seatMark': 'booked'}
 							 $seatsToSelect.push($seatObj);
 							 found++;
+							 // IF SATS: om denna har klassen booked och nästa har free gör detta och sen inte mer
+							 // Någonting ger alla klasser "free" när man klickar + - knappar inne i Booking-class. Kolla varför.
 						 }else{
 							 let $seatObj = {'seat' : $seat, 'seatMark': 'free'}
 							 found++;
