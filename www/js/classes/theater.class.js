@@ -7,7 +7,8 @@ class Theater extends Base{
 		this.movieObject = this.getMovieObject(this.showObject.film);
 		this.booking = new Booking(this.showObject);
 
-		console.log(this.booking);
+		// Set the last created Theater as a static property
+		Theater.latestTheater = this;
 
 		JSON._load('theaters').then((theater) => {
 			this.theaterObjects = theater;
@@ -27,20 +28,20 @@ class Theater extends Base{
 		this.setWidth();
 		this.setHeight();
 		this.renderTheater();
-		this.eventHandler();
+
 	}
 
 	// Eventhandlers
 
-	eventHandler() {
-		let that = this;
+
+	eventHandlers() {
 		// let seatID; = seat.data('seatid');
 		// let rowID;  = seat.data('rowid');
 		// let status;  = seat.data('status');
-
+		console.log('eventhandler');
 		$(document).on("mouseenter", '.seat', function() {
+			let that = Theater.latestTheater;
 			let $seat = $(this);
-			console.log(that.booking.seatsTotal);
 			if (that.booking.seatsTotal >= 1) {
 
 				if($seat.hasClass('booked')){return};

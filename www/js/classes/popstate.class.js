@@ -5,6 +5,7 @@ class Popstate extends Base{
     this.app = app;
     this.clickEvents();
     this.changePage();
+    this.eventHandlerSet = false;
     window.addEventListener('popstate', () => this.changePage());
   }
 
@@ -82,6 +83,7 @@ class Popstate extends Base{
 
   theaterPage(bookingShowObject){
     $('main').empty();
+
     // if no show is sent with the rendering show error msg in first if statement
     if (!bookingShowObject){
       let error = new ErrorMessage();
@@ -89,7 +91,14 @@ class Popstate extends Base{
     }else {
     // booking-showobject is the object that is being clicked when intilize theater
     let theater = new Theater(bookingShowObject);
-    console.log(theater);
+
+    if (!this.eventHandlerSet) {
+      theater.eventHandlers();
+      this.eventHandlerSet = true;
+      console.log('hej');
+    }
+
+
     theater.render('main');
     $(window).on('resize',function(){
       theater.scale();

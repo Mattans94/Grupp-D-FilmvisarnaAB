@@ -22,7 +22,6 @@ class App extends Base {
     })
 
     .then(() => {
-      console.log('JSON loaded');
       this.start();
       // this.eventHandlers();
     }));
@@ -31,6 +30,7 @@ class App extends Base {
   }
 
   start(){
+
     // Create a navbar
     this.navbar = new Navbar();
     $('header').empty();
@@ -41,6 +41,8 @@ class App extends Base {
     this.footer.render('footer');
     this.footer.footerFix();
 
+
+
     this.loginform = new Loginform();
     this.loginform.render('.renderForm');
 
@@ -49,7 +51,6 @@ class App extends Base {
     this.login = new Login(this);
     // Create a startpage
     this.signup = new Signup();
-
     this.popstate = new Popstate(this);
 
 

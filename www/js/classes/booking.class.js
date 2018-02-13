@@ -47,6 +47,12 @@ class Booking extends Base{
 		this.seatsTotal = (this.child + this.adult + this.pensioner);
 	}
 
+	resetSeatsTotal() {
+		this.child = 0;
+		this.adult = 0;
+		this.pensioner = 0;
+	}
+
 
 	returnGeneratedId(){
 		let generatedID;
