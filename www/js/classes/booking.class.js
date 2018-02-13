@@ -2,6 +2,8 @@ class Booking extends Base{
 	constructor(showObject) {
 		super();
 
+		Booking.latestBooking = this;
+
 		// This is from the right showObject
 		this.date = showObject.date;
 		this.time = showObject.time;
@@ -138,11 +140,12 @@ class Booking extends Base{
 			bookedSeats.push(seatID);
 		});
 		// Skicka in allt modalen behöver veta
-		this.prices.calculateTotalPrice()
-		this.updateTotalPrice();
-		$('#modalInputContainer').empty();
-    let bookingModal = new BookingModal(this.showObject, this.prices.totalPrice, bookedSeats);
+		Booking.latestBooking.prices.calculateTotalPrice()
+		Booking.latestBooking.updateTotalPrice();
+		$('#modalInputContainer').val('');
+    let bookingModal = new BookingModal(Booking.latestBooking.showObject, Booking.latestBooking.prices.totalPrice, bookedSeats);
     $('#modalInputContainer').append(bookingModal.template());
+		bookingModal.render('#modalInputContainer')
 		$('#bookingConfirmationModalToggler').trigger('click');
   }
 	// Lång eventHandler - kanske behövs.
