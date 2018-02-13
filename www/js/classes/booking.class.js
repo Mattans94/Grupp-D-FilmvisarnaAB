@@ -138,8 +138,8 @@ class Booking extends Base{
 			bookedSeats.push(seatID);
 		});
 		// Skicka in allt modalen behöver veta
-
 		this.prices.calculateTotalPrice()
+		this.updateTotalPrice();
 		$('#modalInputContainer').empty();
     let bookingModal = new BookingModal(this.showObject, this.prices.totalPrice, bookedSeats);
     $('#modalInputContainer').append(bookingModal.template());

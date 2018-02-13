@@ -16,8 +16,12 @@ class Theater extends Base{
 		})
 		.then(JSON._load('shows').then((shows) => {
 			Data.showObjects = shows;
-			this.start();
-		 }));
+
+		})
+		.then(() => {
+		      this.start();
+		      // this.eventHandlers();
+		}));
 
 
 	} //end
@@ -35,6 +39,7 @@ class Theater extends Base{
 
 
 	eventHandlers() {
+
 		// let seatID; = seat.data('seatid');
 		// let rowID;  = seat.data('rowid');
 		// let status;  = seat.data('status');
@@ -83,10 +88,12 @@ class Theater extends Base{
 				}}});
 
 		$(document).on("mouseleave", '.seat', function() {
+			let that = Theater.latestTheater;
 			$(this).prevAll().addBack().removeClass('hoverSeat errorHoverSeat');
 		});
 
 		$(document).on("click", '.seat', function() {
+			let that = Theater.latestTheater;
 			that.booking.resetBookingButtons();
 			let $seat = $(this);
 
