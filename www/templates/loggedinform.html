@@ -13,6 +13,8 @@ Object.assign(LoggedInForm.prototype, { template(){ return `
           <h3>Inloggad som:</h3>
           <h5>${myApp.login.loggedInUser.name}</h5>
           <div class="dropdown-divider"></div>
+        	<a class="btn btn-danger redbtn text-light col-12" id="myBookings-btn">Mina bokningar</a>
+          <div class="dropdown-divider"></div>
           <a class="btn btn-danger redbtn text-light col-12" id="logout-btn">Logga ut</a>
         </div>
       </form>

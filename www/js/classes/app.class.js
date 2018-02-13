@@ -15,7 +15,12 @@ class App extends Base {
     .then(JSON._load('movies').then((movies) => {
       // Retrieve the app from JSON
       Data.movieObjects = this.showObjects = movies;
+
+      JSON._load('prices').then((prices) => {
+      Data.priceObject = prices;      
+      })
     })
+    
     .then(() => {
       this.start();
       // this.eventHandlers();

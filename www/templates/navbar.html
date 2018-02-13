@@ -1,13 +1,14 @@
 Object.assign(Navbar.prototype, { template(){ return `
 <div class="container-fluid">
-  <div class="row">
+<div class="row">
     <nav class="navbar col-12 navbar-expand-lg navbar-dark">
-      <a class="navbar-brand col-4 ml-5 pop" href="/"><img src="/img/gfx/in_progress/logo_10_forslag_inverted.png" class="img-fluid"></a>
+      <a class="navbar-brand col-8 col-lg-3 ml-0 ml-lg-5 pop" href="/"><img src="/img/gfx/in_progress/logo_10_forslag_inverted.png" class="img-fluid"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse col-10 col-md-6 navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+      <div class="collapse navbar-collapse col-lg-6" id="navbarNav">
+
+        <ul class="navbar-nav text-center">
           <li class="nav-item">
             <a class="nav-link" href="#">Start<span class="sr-only">(current)</span></a>
           </li>
@@ -21,15 +22,14 @@ Object.assign(Navbar.prototype, { template(){ return `
             <a class="nav-link pop" href="/our_theaters">Om oss</a>
           </li>
         </ul>
-        <ul class="navbar-nav ml-auto renderForm">
+        <ul class="navbar-nav ml-lg-auto renderForm text-center">
 
         </ul>
-
       </div>
 
 
     </nav>
-  </div>
+</div>
 </div>
 
 
