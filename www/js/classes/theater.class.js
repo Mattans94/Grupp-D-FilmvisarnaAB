@@ -9,8 +9,8 @@ class Theater extends Base{
 		// this.auditorium = auditorium;
 		this.showObject = showObject;
 		this.auditorium = showObject.auditorium;
-
-		console.log('showObject', this.showObject);
+		this.movieObject = this.getMovieObject(this.showObject.film);
+		this.booking = new Booking(this.showObject);
 
 		JSON._load('theaters').then((theater) => {
 			this.theaterObjects = theater;
@@ -25,19 +25,131 @@ class Theater extends Base{
 	} //end
 
 	start(){
-
 		this.getTheaterObject(this.auditorium);
 		this.getSeatsPerRow(this.theaterObject);
 		this.setWidth();
 		this.setHeight();
 		this.renderTheater();
-		this.booking = new Booking(this.showObject);
-		this.booking.renderTicketButtons();
-		this.renderMovieInfo()
-
-		this.scale();
 		this.eventHandler();
+	}
 
+	// Eventhandlers
+
+	eventHandler() {
+		let that = this;
+		// let seatID; = seat.data('seatid');
+		// let rowID;  = seat.data('rowid');
+		// let status;  = seat.data('status');
+
+		$(document).on("mouseenter", '.seat', function() {
+			let $seat = $(this);
+			if (that.booking.seatsTotal >= 1) {
+
+				if($seat.hasClass('booked')){return};
+				if ($seat.hasClass('free')){
+					let amount = that.booking.seatsTotal;
+					let $allNext = $seat.prevAll();
+					let $seatsToSelect = [$seat];
+					let $errorSeats = [$seat];
+					let found = 1;
+					console.log(that.booking.seatsTotal);
+
+					$allNext.each(function(){
+						 if(found == amount){return;}
+						 if($(this).hasClass('booked')){
+							 $errorSeats.push($(this));
+						 }else{
+							 found++;
+							 $seatsToSelect.push($(this));
+							 $errorSeats.push($(this));
+						 }
+					});
+
+					if($errorSeats.length > $seatsToSelect.length) {
+						$errorSeats.splice(amount);
+						$errorSeats = $errorSeats.reverse();
+						let errorAmount = $errorSeats.length - $seatsToSelect.length;
+						$errorSeats.splice(errorAmount);
+						$errorSeats.forEach(function($el){
+							$el.addClass('errorHoverSeat');
+						})
+						$seatsToSelect.forEach(function($el){
+							$el.addClass('hoverSeat');
+						})
+					}
+
+					else {
+						$seatsToSelect.forEach(function($el){
+							$el.addClass('hoverSeat');
+					})}
+				}}});
+
+		$(document).on("mouseleave", '.seat', function() {
+			$(this).prevAll().addBack().removeClass('hoverSeat errorHoverSeat');
+		});
+
+		$(document).on("click", '.seat', function() {
+			that.booking.resetBookingButtons();
+			let $seat = $(this);
+
+			if (that.booking.seatsTotal >= 1) {
+
+				if($seat.hasClass('booked')){return};
+				if ($seat.hasClass('free') && !(that.booking.reservedSeats >= that.booking.seatsTotal)){
+				let amount = that.booking.seatsTotal;
+				let $allNext = $seat.prevAll();
+			  let $seatsToSelect = [$seat];
+			  let foundFirstBooked = false;
+			  let found = 1;
+
+				$allNext.each(function(){
+			     if(foundFirstBooked || found == amount){return;}
+			     if($(this).hasClass('booked')){
+			       foundFirstBooked = true;
+			     }else{
+			       found++;
+						 that.booking.reservedSeats++;
+			       $seatsToSelect.push($(this));
+			     }
+			  });
+
+				if(found<amount){return;}
+				console.log($seatsToSelect);
+				$seatsToSelect.forEach(function($el){
+					$el.addClass('reserved');
+				});
+			}}
+});
+
+
+
+
+
+
+    //  Välja en-stol-kod här. Kanske ha en knapp som togglar denna?
+		// 	console.log(that.booking.reservedSeats);
+		// 	if (that.booking.seatsTotal >= 1) {
+		// 		if (seat.hasClass('free') && !(that.booking.reservedSeats >= that.booking.seatsTotal)){
+		// 			seat.removeClass('free');
+		// 			seat.addClass('reserved');
+    //
+		// 			that.booking.reservedSeats++;
+		// 		} else if (seat.hasClass('reserved')){
+		// 			seat.removeClass('reserved');
+		// 			seat.addClass('free');
+		// 			that.booking.reservedSeats--;
+		// 		}
+		// 	}
+		// });
+	}// end eventhandler
+
+
+	// Finns redan i movie.class.js
+	convertMinutesToHours(movieObject){
+		let totalMinutes = movieObject.length;
+		let hours = Math.floor(totalMinutes / 60);
+		let minutes = totalMinutes % 60;
+		return hours + ' tim ' + minutes + ' min';
 	}
 
 	async getRichShow(theShow){
@@ -59,29 +171,11 @@ class Theater extends Base{
 		      theShow.bookedSeats = new Set(theShow.bookedSeats);
 		      theShow.bookedSeats = Array.from(theShow.bookedSeats);
 		    }
-
-
 		}
-    
     return theShow;
 	}
 
 
-	// This is Andreas try
-	renderMovieInfo(){
-		let time = this.showObject.time;
-		let date = this.showObject.date;
-		let movie = this.showObject.film;
-		let html = `
-		<h3 class="text-light">
-			Film: ${movie}
-			Salong: ${this.auditorium}
-			Datum & tid: ${date} ${time}
-		</h3>
-		`;
-		$('#movierepresentation').html(html);
-
-	}
 
 	// Snyggt! Kommer kunna användas med det show-objektet som kommer in till constructorn
 	getTheaterObject(theaterName) {
@@ -95,41 +189,13 @@ class Theater extends Base{
 		return rowlength;
 	}
 
-
-
-	async renderTheater() {
-		let html = '';
-		let seatnumber=1;
-		let seatStatus = 'free';
-
-		let show = await this.getRichShow(this.showObject);
-		console.log('show', show);
-
-		for (let row = 0; row < this.seatsStoran.length; row++) {
-			this.seatsPerRow = this.seatsStoran[row];
-			html += `<div class="col-12 row d-flex flex-row-reverse justify-content-center flex-nowrap seat-row m-0">`;
-
-			for (let seat = 0; seat < this.seatsPerRow; seat++) {
-         let taken = '';
-				if(show.bookedSeats.indexOf(seatnumber) >- 1){
-					taken = ' booked';
-				}
-
-				html += `<div class="${seatStatus + taken} seat mt-1 ml-1" id="seat" data-rowid="${row}" data-seatid="${seatnumber}" data-status="${seatStatus}">${seatnumber}</div>`;
-
-				seatnumber++;
-			}
-			html += '</div>';
+	removeClassFreeFromBookedSeats(){
+		if($('.seat').hasClass('booked')) {
+			$('.booked').removeClass('free');
 		}
-		$('#theater').html(html);
-
-		// $('html, body').animate({
-    //     scrollTop: $("#theater").offset().top -20
-    // }, 500);
 	}
 
-
-
+	// Scaling
 	setHeight(){
 		let fullHeight = this.seatsStoran.length * 55;
 		$('#theater').css('height', `${fullHeight}`);
@@ -148,132 +214,49 @@ class Theater extends Base{
 
 	scale() {
 		let orgW = $('#theater').width(), orgH = $('#theater').height();
-		let w = $(window).width()
+		let w = $('#theaterBackground').width();
 		let h = $(window).height();
-		w -= 20 * 2;
-		h -= 20 * 2;
 		const wScale = w / orgW;
 		const hScale = h / orgH;
 		let scaling = Math.min(wScale, hScale);
 
+		scaling = scaling * 0.8;
+
 		$('#theater').css('transform', `scale(${scaling})`);
+		$('#screenTransparenting').width(orgW + 80).height(orgH);
 		$('#theater-holder').width(orgW * scaling);
 		$('#theater-holder').height(orgH * scaling);
 	}
 
-	scaleToCenter(){
-		 let holderWidth = $('#theater-holder').width();
-		 let theaterWidth = $('#theater').width();
-		 let marginLeft = holderWidth - theaterWidth;
 
-		 $('#theater').css("margin-left",marginLeft);
+	// Renders
+	async renderTheater() {
+		let html = `<img src="/img/test.png" id="screenTransparenting">`;
+		let seatnumber=1;
+		let seatStatus = 'free';
+
+		let show = await this.getRichShow(this.showObject);
+		console.log('show', show);
+
+		for (let row = 0; row < this.seatsStoran.length; row++) {
+			this.seatsPerRow = this.seatsStoran[row];
+			html += `<div class="d-flex flex-row-reverse justify-content-center flex-nowrap seat-row m-0">`;
+
+			for (let seat = 0; seat < this.seatsPerRow; seat++) {
+         let taken = '';
+				if(show.bookedSeats.indexOf(seatnumber) >- 1){
+					taken = ' booked';
+				}
+
+				html += `<div class="${seatStatus + taken} seat mt-1 ml-1" id="seat" data-rowid="${row}" data-seatid="${seatnumber}" data-status="${seatStatus}">${seatnumber}</div>`;
+
+				seatnumber++;
+			}
+			html += '</div>';
+		}
+		$('#theater').html(html);
+		this.removeClassFreeFromBookedSeats();
+		this.scale();
 	}
-
-// checkFreeSeats(){
-// 		if($(this).hasClass('booked')){return;}
-// 		  let amount = booking.myNumberOfSeats;
-// 		  let $allNext = $(this).nextAll();
-// 		  let $elementsToSelect = [$(this)];
-// 		  console.log($elementsToSelect);
-
-// 		  let foundNextStop = false;
-// 		  let found = 1;
-// 		  $allNext.each(function() {
-// 		     if (foundNextStop || found == amount) {
-// 		     	return;
-// 		     }
-// 		     if ($(this).hasClass('booked')) {
-// 		       foundNextStop = true;
-// 		     }
-// 		     else {
-// 		       found++;
-// 		       $elementsToSelect.push($(this));
-// 		     }
-// 		  });
-
-// 		  if(found<amount) {
-// 		  	return;
-// 		  }
-// 		  console.log($elementsToSelect);
-// 		  $elementsToSelect.forEach(function($element) {
-// 		    $element.addClass('select');
-// 		  });
-// 	}
-
-	eventHandler() {
-		let that = this;
-
-		let seat = $(this);
-			let seatID; // = seat.data('seatid');
-			let rowID; // = seat.data('rowid');
-			let status; // = seat.data('status');
-
-		$(document).on("click", '.seat', function() {
-			let myNumberOfSeats=0;
-			myNumberOfSeats = that.booking.myNumberOfSeats;
-			let $seat = $(this);
-			seat = $(this);
-			console.log('Seat', seat);
-			seatID = seat.data('seatid');
-			console.log('seatID', seatID);
-			rowID = seat.data('rowid');
-			console.log('rowID', rowID);
-
-			if (seatID == seat.data('seatid') ) {
-    		$(seat).toggleClass('booked');
-    		$(seat).toggleClass('free');
-    	}
-
-		});
-
-$(document).on("mouseleave", '.seat', function() {
-			// seat = $(this);
-			// seatID = seat.data('seatid');
-			// rowID = seat.data('rowid');
-			// status = seat.data('status');
-			// console.log('11 status', status)
-
-    	if (seatID == seat.data('seatid') && status == 'reserving' ) {
-    		$(seat).removeClass('reserving');
-    		$(seat).addClass('free');
-    		$(seat).data('status', 'free');
-    		status = seat.data('status');
-    		// console.log('12 seatID', seatID);
-    		// console.log('13 seat',seat);
-    	}
-		});
-
-
-		$(document).on("click", '.seat', function() {
-
-			// seat = $(this);
-			// seatID = seat.data('seatid');
-			// rowID = seat.data('rowid');
-			// status = seat.data('status');
-			console.log('10 status', status)
-
-
-			if (seatID == seat.data('seatid') && status == 'reserving' ) {
-    		$(seat).addClass('booked');
-    		$(seat).removeClass('reserving');
-    		$(seat).data('status', 'booked');
-    		// status = seat.data('status');
-    		// console.log('4 seatID', seatID);
-    		// console.log('5 seat',seat);
-    		// console.log(status);
-    	}
-    	else
-    		if (seatID == seat.data('seatid') && status == 'booked' ) {
-	    		$(seat).addClass('free');
-	    		$(seat).removeClass('booked');
-	    		$(seat).data('status', 'free');
-    			status = seat.data('status');
-	    		console.log('6 seat', seat);
-    	}
-    		// console.log('7 status', status);
-		});
-
-
-	}// end eventhandler
 
 } //end class

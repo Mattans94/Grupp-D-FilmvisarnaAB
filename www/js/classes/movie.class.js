@@ -9,11 +9,9 @@ class Movie extends Base {
 
   eventHandlers(){
     let that = this;
-    $(document).on('click', '.showtrailer', function(){
-      console.log('hej');
+    $('.showtrailer').on('click', function(){
       $('.slide').toggleClass('d-none');
       $('.trailer').toggleClass('d-none');
-      console.log('hejdå');
       $(this).html(function(i, text){
         return text === `<i class="fa fa-video-camera mr-2" aria-hidden="true"></i>Show slides` ?
         `<i class="fa fa-video-camera mr-2" aria-hidden="true"></i>Show trailer`
@@ -21,12 +19,14 @@ class Movie extends Base {
         `<i class="fa fa-video-camera mr-2" aria-hidden="true"></i>Show slides`;
       })
     })
+
+    // Render theater with right show
     $(document).on('click', '.bookingTimeDate', function(){
       let date = $(this).data('date');
       let time = $(this).data('time');
       let bookingShowObject = that.getBookingObject(date, time);
       console.log(bookingShowObject);
-      myApp.popstate.theaterPage(bookingShowObject);
+      myApp.popstate.changePage(bookingShowObject);
     })
 
   };
@@ -43,7 +43,7 @@ class Movie extends Base {
     let totalMinutes = movieObject.length;
     let hours = Math.floor(totalMinutes / 60);
     let minutes = totalMinutes % 60;
-    return hours + 'h ' + minutes + 'm';
+    return hours + 'tim ' + minutes + 'min';
   }
 
   getAllReviews(movieObject){

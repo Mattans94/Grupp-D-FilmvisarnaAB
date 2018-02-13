@@ -1,17 +1,98 @@
 Object.assign(Theater.prototype, { template(){ return `
 
 	<div id="movierepresentation">
-	</div>
-
-	<div class="mt-5 ticketholder">
-
-	</div>
-		<section class="bg-dark mt-4 col-12 mx-auto" id="theater-holder">
-			<div class="bg-dark m-0 p-0" id="theater">
+		<div class="d-flex flex-nowrap flex-column flex-md-row m-0 mt-5 p-4" id="theaterBackground" style="background-image: url(/img/slides/${this.movieObject.slides[0]}); ">
+			<div class="col-5 col-md-3 col-lg-2">
+				<img class="img-fluid" src="/img/posters/${this.movieObject.images[0]}">
 			</div>
-		</section>
-	<div>
-		<button class="btn btn-danger book-btn">Forstätt</button>
+			<div class="col-12 col-md-9 text-light">
+				<h3>${this.showObject.film}</h3>
+				<p> ${this.movieObject.genre}, ${this.convertMinutesToHours(this.movieObject)}, tal: ${this.movieObject.language}, text: ${this.movieObject.subtitles}</p>
+				<h5><span class="pl-0 col-2 col-md-1 d-inline-block mr-3">Plats:</span> ${this.showObject.auditorium}</h5>
+				<h5><span class="pl-0 col-2 col-md-1 d-inline-block mr-3">Datum:</span> ${this.showObject.date}</h5>
+				<h5><span class="pl-0 col-2 col-md-1 d-inline-block mr-3">Tid:</span> ${this.showObject.time}</h5>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="ticketrepresentation">
+
+		<div class="ticketholder bg-dark p-4 pb-2">
+			<div class="d-flex flex-nowrap flex-column flex-md-row justify-content-md-around align-items-center">
+				<div class="text-center text-md-left">
+					<p class="text-white mb-0">Ordinarie</p>
+					<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+						<div class="btn-group mr-2" role="group" aria-label="adult group">
+							<button type="button" class="btn btn-danger removebtn" id="removeadult"><strong>-</strong></button>
+							<input disabled type="text" class="form-control" id="adultTickets" placeholder="${this.booking.adult}">
+							<button type="button" class="btn btn-danger addbtn" id="addadult"><strong>+</strong></button>
+						</div>
+					</div>
+				</div>
+
+				<div class="text-center text-md-left">
+					<p class="text-white mb-0">Barn (under 12 år)</p>
+					<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+						<div class="btn-group mr-2" role="group" aria-label="child group">
+							<button type="button" class="btn btn-danger removebtn" id="removechild"><strong>-</strong></button>
+							<input disabled type="text" class="form-control" id="childTickets" placeholder="${this.booking.child}"></input>
+							<button type="button" class="btn btn-danger addbtn" id="addchild"><strong>+</strong></button>
+						</div>
+					</div>
+				</div>
+				<div class="text-center text-md-left">
+					<p class="text-white mb-0">Pensionär</p>
+					<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+
+						<div class="btn-group mr-2" role="group" aria-label="pensioner group">
+							<button type="button" class="btn btn-danger removebtn" id="removepensioner"><strong>-</strong></button>
+							<input disabled type="text" class="form-control" id="pensionerTickets" placeholder="${this.booking.pensioner}" >
+							<button type="button" class="btn btn-danger addbtn" id="addpensioner"><strong>+</strong></button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="text-center text-md-left">
+				<small class="text-danger"> Max 8 biljetter per bokning
+				</small>
+			</div>
+		</div>
+	</div>
+
+	<div class="redHeader m-0 col-12 mb-0 mt-3 pb-0 pt-0">
+		<div id="screenSeatPick" class="col-12 col-xl-10 d-flex flex-nowrap mx-auto pr-0 pl-5">
+			<div id="screenSeatPickLeft" class="bg-light col-6 d-inline-block p-0"></div>
+			<div id="screenSeatPickRight" class="bg-light col-6 d-inline-block p-0"></div>
+		</div>
+	</div>
+	<section class="m-0 col-12 mx-auto" id="theater-holder">
+
+		<div class="m-0 p-0" id="theater">
+
+		</div>
+	</section>
+
+	<div class="redHeader m-0 col-12 mb-0 mt-3 pb-0 pt-0"></div>
+
+	<div class="orderCompilation pb-3">
+		<h2 class="m-3 pt-3 col-8 mx-auto">Sammanställning</h2>
+		<div class="col-8 mx-auto p-3 orderCompilation d-flex justify-content-between flex-column flex-md-row mt-3 bg-dark">
+			<div class="d-none d-md-block col-md-4 col-lg-3">
+				<img class="img-fluid" src="/img/posters/${this.movieObject.images[0]}">
+			</div>
+			<div class="col-12 col-md-9 text-light">
+				<h4>${this.showObject.film}</h4>
+				<p> ${this.movieObject.genre}, ${this.convertMinutesToHours(this.movieObject)}, tal: ${this.movieObject.language}, text: ${this.movieObject.subtitles}</p>
+				<p><span class="pl-0 col-2 col-md-2 d-inline-block mr-3">Plats:</span> ${this.showObject.auditorium}</p>
+				<p><span class="pl-0 col-2 col-md-2 d-inline-block mr-3">Datum:</span> ${this.showObject.date}</p>
+				<p><span class="pl-0 col-2 col-md-2 d-inline-block mr-3">Tid:</span> ${this.showObject.time}</p>
+			</div>
+		</div>
+		<h2 class="m-3 col-8 mx-auto">Kostnad</h2>
+		<div id="totalprice" class="col-8 mx-auto p-3 pl-4 bg-dark text-light">
+		</div>
 	</div>
 
 
