@@ -58,22 +58,17 @@ class Theater extends Base{
 					$allNext.each(function(){
 						 let $seat = $(this);
 						 if(found == amount){return;}
-
-
 						 if($(this).hasClass('booked')){
 							 let $seatObj = {'seat' : $seat, 'seatMark': 'booked'}
 							 $seatsToSelect.push($seatObj);
 							 found++;
-							 // IF SATS: om denna har klassen booked och nästa har free gör detta och sen inte mer
-							 // Någonting ger alla klasser "free" när man klickar + - knappar inne i Booking-class. Kolla varför.
+							 if($(this).prev().hasClass('free')){return false;}
 						 }else{
 							 let $seatObj = {'seat' : $seat, 'seatMark': 'free'}
 							 found++;
 							 $seatsToSelect.push($seatObj);
 						 }
 					})
-
-
 						$seatsToSelect.forEach(function($seatObject){
 							if($seatObject.seatMark === 'free'){
 								$seatObject.seat.addClass('hoverSeat');
@@ -81,8 +76,10 @@ class Theater extends Base{
 							} else {
 								$seatObject.seat.addClass('errorHoverSeat');
 							}
-					})}
-					}});
+					})
+				}
+			}
+		});
 
 
 		$(document).on("mouseleave", '.seat', function() {
@@ -92,6 +89,7 @@ class Theater extends Base{
 
 		$(document).on("click", '.seat', function() {
 			let that = Theater.latestTheater;
+			console.log(that);
 			that.booking.resetBookingButtons();
 			let $seat = $(this);
 

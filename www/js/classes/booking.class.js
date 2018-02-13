@@ -126,7 +126,7 @@ class Booking extends Base{
 	}
 
 	resetBookingButtons(){
-		$('.seat').addClass('free').removeClass('reserved');
+		$('.seat').not('.booked').addClass('free').removeClass('reserved');
 		this.reservedSeats = 0;
 	}
 
@@ -246,13 +246,6 @@ class Booking extends Base{
 			this.updateTotalPrice();
 			this.resetBookingButtons();
 		})
-
-		// $(document).on('click','.removebtn', () => {
-		// 	this.myNumberOfSeatsCheck();
-		// 	this.checkForDisable();
-		// 	this.updateTotalPrice();
-		// 	this.resetBookingButtons();
-		// })
 
 	} // end eventhandler
 

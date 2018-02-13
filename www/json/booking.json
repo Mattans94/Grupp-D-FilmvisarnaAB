@@ -139,5 +139,60 @@
       "userID": 4,
       "orderID": "HUa5RqiOI"
     }
+  },
+  {
+    "show": {
+      "date": "2018-03-03",
+      "auditorium": "Lilla Salongen",
+      "film": "Call Me By Your Name",
+      "time": "21.00",
+      "bookedSeats": [],
+      "userID": 4,
+      "orderID": "aEuujXEB2"
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-05",
+      "auditorium": "Stora Salongen",
+      "film": "Call Me By Your Name",
+      "time": "22.40",
+      "bookedSeats": [],
+      "userID": 4,
+      "orderID": "if0aa05OM"
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-03",
+      "auditorium": "Lilla Salongen",
+      "film": "Call Me By Your Name",
+      "time": "18.40",
+      "bookedSeats": [],
+      "userID": 4,
+      "orderID": "fyYYZprPe"
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-18",
+      "auditorium": "Lilla Salongen",
+      "film": "Call Me By Your Name",
+      "time": "18.40",
+      "bookedSeats": [],
+      "userID": 4,
+      "orderID": "6EiFwFS2Y"
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-03",
+      "auditorium": "Lilla Salongen",
+      "film": "Call Me By Your Name",
+      "time": "18.40",
+      "bookedSeats": [],
+      "userID": 4,
+      "orderID": "6HuYCKwJN"
+    }
   }
 ]
