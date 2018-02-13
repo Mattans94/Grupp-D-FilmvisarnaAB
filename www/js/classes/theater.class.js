@@ -43,7 +43,6 @@ class Theater extends Base{
 		// let seatID; = seat.data('seatid');
 		// let rowID;  = seat.data('rowid');
 		// let status;  = seat.data('status');
-		console.log('eventhandler');
 		$(document).on("mouseenter", '.seat', function() {
 			let that = Theater.latestTheater;
 			let $seat = $(this);
@@ -53,39 +52,36 @@ class Theater extends Base{
 				if ($seat.hasClass('free')){
 					let amount = that.booking.seatsTotal;
 					let $allNext = $seat.prevAll();
-					let $seatsToSelect = [$seat];
-					let $errorSeats = [$seat];
+					let $seatsToSelect = [{'seat' : $seat, 'seatMark': 'free'}];
 					let found = 1;
 
 					$allNext.each(function(){
+						 let $seat = $(this);
 						 if(found == amount){return;}
+
+
 						 if($(this).hasClass('booked')){
-							 $errorSeats.push($(this));
-						 }else{
+							 let $seatObj = {'seat' : $seat, 'seatMark': 'booked'}
+							 $seatsToSelect.push($seatObj);
 							 found++;
-							 $seatsToSelect.push($(this));
-							 $errorSeats.push($(this));
+						 }else{
+							 let $seatObj = {'seat' : $seat, 'seatMark': 'free'}
+							 found++;
+							 $seatsToSelect.push($seatObj);
 						 }
-					});
+					})
 
-					if($errorSeats.length > $seatsToSelect.length) {
-						$errorSeats.splice(amount);
-						$errorSeats = $errorSeats.reverse();
-						let errorAmount = $errorSeats.length - $seatsToSelect.length;
-						$errorSeats.splice(errorAmount);
-						$errorSeats.forEach(function($el){
-							$el.addClass('errorHoverSeat');
-						})
-						$seatsToSelect.forEach(function($el){
-							$el.addClass('hoverSeat');
-						})
-					}
 
-					else {
-						$seatsToSelect.forEach(function($el){
-							$el.addClass('hoverSeat');
+						$seatsToSelect.forEach(function($seatObject){
+							if($seatObject.seatMark === 'free'){
+								$seatObject.seat.addClass('hoverSeat');
+
+							} else {
+								$seatObject.seat.addClass('errorHoverSeat');
+							}
 					})}
-				}}});
+					}});
+
 
 		$(document).on("mouseleave", '.seat', function() {
 			let that = Theater.latestTheater;

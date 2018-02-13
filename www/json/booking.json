@@ -128,5 +128,16 @@
       "userID": 4,
       "orderID": "PhWHR2KBY"
     }
+  },
+  {
+    "show": {
+      "date": "2018-03-03",
+      "auditorium": "Lilla Salongen",
+      "film": "Tjuren Ferdinand",
+      "time": "22.40",
+      "bookedSeats": [],
+      "userID": 4,
+      "orderID": "HUa5RqiOI"
+    }
   }
 ]
