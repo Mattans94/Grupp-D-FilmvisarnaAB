@@ -194,5 +194,38 @@
       "userID": 4,
       "orderID": "6HuYCKwJN"
     }
+  },
+  {
+    "show": {
+      "date": "2018-03-23",
+      "auditorium": "Lilla Salongen",
+      "film": "Tjuren Ferdinand",
+      "time": "21.00",
+      "bookedSeats": [],
+      "userID": 4,
+      "orderID": "ItCOXNOCK"
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-05",
+      "auditorium": "Stora Salongen",
+      "film": "Tjuren Ferdinand",
+      "time": "18.40",
+      "bookedSeats": [],
+      "userID": 4,
+      "orderID": "k8qSDqFlG"
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-05",
+      "auditorium": "Stora Salongen",
+      "film": "Tjuren Ferdinand",
+      "time": "18.40",
+      "bookedSeats": [],
+      "userID": 4,
+      "orderID": "WWXx4dxi6"
+    }
   }
 ]

@@ -40,9 +40,6 @@ class Theater extends Base{
 
 	eventHandlers() {
 
-		// let seatID; = seat.data('seatid');
-		// let rowID;  = seat.data('rowid');
-		// let status;  = seat.data('status');
 		$(document).on("mouseenter", '.seat', function() {
 			let that = Theater.latestTheater;
 			let $seat = $(this);
@@ -51,11 +48,12 @@ class Theater extends Base{
 				if($seat.hasClass('booked')){return};
 				if ($seat.hasClass('free')){
 					let amount = that.booking.seatsTotal;
-					let $allNext = $seat.prevAll();
+					let $allPrev = $seat.prevAll();
+					let $allNext = $seat.nextAll();
 					let $seatsToSelect = [{'seat' : $seat, 'seatMark': 'free'}];
 					let found = 1;
 
-					$allNext.each(function(){
+					$allPrev.each(function(){
 						 let $seat = $(this);
 						 if(found == amount){return;}
 						 if($(this).hasClass('booked')){
@@ -75,6 +73,9 @@ class Theater extends Base{
 						$seatsToSelect.forEach(function($seatObject){
 							if (bookedSeatCheck) {
 								$seatObject.seat.addClass('errorHoverSeat');
+								if ($seatObject.seat.hasClass('free')  ) {
+									$seatObject.seat.addClass('errorHoverFreeSeat');
+								}
 							}
 							else {
 								$seatObject.seat.addClass('hoverSeat');
@@ -84,11 +85,52 @@ class Theater extends Base{
 				}
 			}
 		});
+		// $(document).on("mouseenter", '.seat', function() {
+		// 	let that = Theater.latestTheater;
+		// 	let $seat = $(this);
+		// 	if (that.booking.seatsTotal >= 1) {
+
+		// 		if($seat.hasClass('booked')){return};
+		// 		if ($seat.hasClass('free')){
+		// 			let amount = that.booking.seatsTotal;
+		// 			let $allNext = $seat.prevAll();
+		// 			let $seatsToSelect = [{'seat' : $seat, 'seatMark': 'free'}];
+		// 			let found = 1;
+
+		// 			$allNext.each(function(){
+		// 				 let $seat = $(this);
+		// 				 if(found == amount){return;}
+		// 				 if($(this).hasClass('booked')){
+		// 					 let $seatObj = {'seat' : $seat, 'seatMark': 'booked'}
+		// 					 $seatsToSelect.push($seatObj);
+		// 					 found++;
+		// 				 }else{
+		// 					 let $seatObj = {'seat' : $seat, 'seatMark': 'free'}
+		// 					 found++;
+		// 					 $seatsToSelect.push($seatObj);
+		// 				 }
+		// 			})
+
+		// 			let bookedSeatCheck = $seatsToSelect.find((oneSeat) => 'booked' == oneSeat.seatMark);
+
+
+		// 				$seatsToSelect.forEach(function($seatObject){
+		// 					if (bookedSeatCheck) {
+		// 						$seatObject.seat.addClass('errorHoverSeat');
+		// 					}
+		// 					else {
+		// 						$seatObject.seat.addClass('hoverSeat');
+
+		// 					} 
+		// 			})
+		// 		}
+		// 	}
+		// });
 
 
 		$(document).on("mouseleave", '.seat', function() {
 			let that = Theater.latestTheater;
-			$(this).prevAll().addBack().removeClass('hoverSeat errorHoverSeat');
+			$(this).prevAll().addBack().removeClass('hoverSeat errorHoverSeat errorHoverFreeSeat');
 		});
 
 		$(document).on("click", '.seat', function() {
@@ -101,12 +143,12 @@ class Theater extends Base{
 				if($seat.hasClass('booked')){return};
 				if ($seat.hasClass('free') && !(that.booking.reservedSeats >= that.booking.seatsTotal)){
 				let amount = that.booking.seatsTotal;
-				let $allNext = $seat.prevAll();
+				let $allPrev = $seat.prevAll();
 			  let $seatsToSelect = [$seat];
 			  let foundFirstBooked = false;
 			  let found = 1;
 
-				$allNext.each(function(){
+				$allPrev.each(function(){
 			     if(foundFirstBooked || found == amount){return;}
 			     if($(this).hasClass('booked')){
 			       foundFirstBooked = true;

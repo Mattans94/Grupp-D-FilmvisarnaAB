@@ -63,6 +63,9 @@ a {
 .errorHoverSeat {
   background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #991e1e 10px, #991e1e 20px);
 }
+.errorHoverFreeSeat {
+  background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #55bf4d 10px, #55bf4d 20px);
+}
 #seat {
   font-size: 0.65em;
   text-align: center;
@@ -70,7 +73,7 @@ a {
   height: 50px;
   border: 1px solid white;
   background-color: #949494;
-  border-radius: 15px;
+  border-radius: 15px 15px 0px 0px;
   color: white;
   /*font-weight: bold;*/
   z-index: 5;
