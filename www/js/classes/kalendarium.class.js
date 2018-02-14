@@ -25,7 +25,7 @@ class Kalendarium extends Base {
 		let myLis = "";
 
 		for (let i = 0; i < 3; i++){
-			myLis += `<li><div class="col-6 pr-0 d-inline">${this.makeSmallDate(allShows[i].date)}</div> <div class="col-6 d-inline pl-1 float-right">${allShows[i].time}</div></li>`
+			myLis += `<li><a href="${allShows[i].date}-${allShows[i].time.replace(".","-")}"><div class="col-6 pr-0 d-inline">${this.makeSmallDate(allShows[i].date)}</div> <div class="col-6 d-inline pl-1 float-right">${allShows[i].time}</div></a></li>`
 		}
 
 		return `

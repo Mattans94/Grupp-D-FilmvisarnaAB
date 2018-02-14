@@ -48,6 +48,15 @@ button,
 a {
   cursor: pointer;
 }
+h5,
+a {
+  color: #fff;
+  text-decoration: none;
+}
+h5,
+a:hover {
+  text-decoration: none;
+}
 .listShowTimes li {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -81,8 +90,17 @@ a {
 .errorHoverSeat {
   background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #991e1e 10px, #991e1e 20px) !important;
 }
-.errorHoverFreeSeat {
-  background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #55bf4d 10px, #55bf4d 20px) !important;
+#seat {
+  font-size: 0.65em;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid white;
+  background-color: #949494;
+  border-radius: 15px 15px 0px 0px;
+  color: white;
+  /*font-weight: bold;*/
+  z-index: 5;
 }
 #theaterBackground {
   position: relative;
@@ -287,6 +305,7 @@ header {
   color: #000;
 }
 .collapseShowtime a {
+  text-decoration: none;
   color: #000;
 }
 .collapseShowtime a .fa {
