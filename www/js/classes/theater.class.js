@@ -50,8 +50,14 @@ class Theater extends Base{
 					let amount = that.booking.seatsTotal;
 					let $allPrev = $seat.prevAll();
 					// let $allNext = $seat.nextAll();
-					let $seatsToSelect = [{'seat' : $seat, 'seatMark': 'free'}];
+					let  $seatsToSelect = [];
+					if ($(this).hasClass('booked')){
+						$seatsToSelect.push({'seat' : $seat, 'seatMark': 'booked'});
+					} else {
+						$seatsToSelect.push({'seat' : $seat, 'seatMark': 'free'});
+					}
 					let found = 1;
+
 
 					$allPrev.each(function(){
 						 let $seat = $(this);
@@ -80,7 +86,7 @@ class Theater extends Base{
 							else {
 								$seatObject.seat.addClass('hoverSeat');
 
-							} 
+							}
 					})
 				// }
 			}
@@ -123,7 +129,7 @@ class Theater extends Base{
 		// 					else {
 		// 						$seatObject.seat.addClass('hoverSeat');
 
-		// 					} 
+		// 					}
 		// 			})
 		// 		}
 		// 	}

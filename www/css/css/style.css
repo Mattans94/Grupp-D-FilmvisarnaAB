@@ -53,25 +53,6 @@ a {
   padding-bottom: 5px;
   border-radius: 5px;
 }
-.booked {
-  background-color: #991e1e !important;
-}
-.reserved {
-  background-color: #2d9725 !important;
-  cursor: pointer;
-}
-.free {
-  cursor: pointer;
-}
-.hoverSeat {
-  background-color: #55bf4d !important;
-}
-.errorHoverSeat {
-  background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #991e1e 10px, #991e1e 20px);
-}
-.errorHoverFreeSeat {
-  background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #55bf4d 10px, #55bf4d 20px);
-}
 #seat {
   font-size: 0.65em;
   text-align: center;
@@ -83,6 +64,25 @@ a {
   color: white;
   /*font-weight: bold;*/
   z-index: 5;
+}
+#seat .free {
+  cursor: pointer;
+}
+.booked {
+  background-color: #991e1e !important;
+}
+.reserved {
+  background-color: #2d9725 !important;
+  cursor: pointer;
+}
+.hoverSeat {
+  background-color: #55bf4d !important;
+}
+.errorHoverSeat {
+  background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #991e1e 10px, #991e1e 20px) !important;
+}
+.errorHoverFreeSeat {
+  background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #55bf4d 10px, #55bf4d 20px) !important;
 }
 #theaterBackground {
   position: relative;
