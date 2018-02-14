@@ -82,8 +82,7 @@ a:hover {
   background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #991e1e 10px, #991e1e 20px) !important;
 }
 .errorHoverFreeSeat {
-  background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #55bf4d 10px, #55bf4d 20px);
-}
+  background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #55bf4d 10px, #55bf4d 20px) !important;
 #seat {
   font-size: 0.65em;
   text-align: center;

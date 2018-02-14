@@ -40,6 +40,67 @@ class Theater extends Base{
 
 	eventHandlers() {
 
+
+		// Andreas test
+		// $(document).on("mouseenter", '.seat', function() {
+		// 	let that = Theater.latestTheater;
+		// 	let seats = $('.seat');
+		// 	let thisSeatId = $(this).data('seatid');
+		// 	let thisRowId = $(this).data('rowid');
+		// 	let amount = that.booking.seatsTotal;
+    //
+		// 	let hovoredSeats = [];
+    //
+		// 	function isOdd(i) { return i % 2 == 1}
+		// 	function isOnSameRow(i) { return thisRowId == $(seats[i-1]).data('rowid'); }
+		// 	function isBooked(i) { return $(seats[i-1]).hasClass('booked'); }
+    //
+		// 	let onlyCheckLeft = false;
+		// 	let onlyCheckRight = false;
+    //
+    //
+		// 	for (let i = 0; i < amount; i++) {
+		// 		if (onlyCheckLeft == true && onlyCheckRight == true) { break; };
+		// 		let shouldDivideBy2 = !onlyCheckLeft && !onlyCheckRight;
+		// 		let seatToCheck = thisSeatId
+    //
+		// 		if ((isOdd(i) && onlyCheckLeft == false) || onlyCheckRight == true) {
+		// 			seatToCheck -= Math.ceil(i/ (shouldDivideBy2 ? 2 : 1));
+		// 		} else {
+		// 			seatToCheck += Math.ceil(i/ (shouldDivideBy2 ? 2 : 1));
+		// 		}
+    //
+		// 		let canPlace =  seatToCheck > 0 && seatToCheck <= seats.length;
+    //
+		// 		if (canPlace) {
+		// 			canPlace = isOnSameRow(seatToCheck);
+		// 		}
+		// 		if (canPlace) {
+		// 			canPlace = !isBooked(seatToCheck);
+		// 		}
+    //
+		// 		console.log(seatToCheck, canPlace);
+    //
+		// 		if (!canPlace) {
+		// 			if (isOdd(i)) {
+		// 				onlyCheckLeft = true;
+		// 			} else {
+		// 				onlyCheckRight = true;
+		// 			}
+    //
+		// 			amount -= (i-1)/2;
+		// 			i -= Math.ceil(i/2);
+		// 			continue;
+		// 		}
+		//    if (hovoredSeats.includes(seatToCheck)){ break; }
+		// 		hovoredSeats.push(seatToCheck);
+		// 	}
+    //
+		// 	console.log(hovoredSeats);
+    //
+    //
+		// });
+
 		$(document).on("mouseenter", '.seat', function() {
 			let that = Theater.latestTheater;
 			let $seat = $(this);
