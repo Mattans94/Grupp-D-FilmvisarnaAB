@@ -62,6 +62,12 @@ a:hover {
   padding-bottom: 5px;
   border-radius: 5px;
 }
+.collapseShowtime .listShowTimes li:nth-child(odd):hover {
+  background-color: #e24857;
+}
+.collapseShowtime .listShowTimes li:nth-child(even):hover {
+  background-color: #e24857;
+}
 .booked {
   background-color: #991e1e !important;
 }
@@ -77,6 +83,9 @@ a:hover {
 }
 .errorHoverSeat {
   background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #991e1e 10px, #991e1e 20px);
+}
+.errorHoverFreeSeat {
+  background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #55bf4d 10px, #55bf4d 20px);
 }
 #seat {
   font-size: 0.65em;
@@ -214,10 +223,10 @@ footer .myheight {
 #accordion {
   box-shadow: 0px 0px 6px #000;
   background-color: #949494;
-  color: #FFF;
+  color: #000;
 }
 #accordion .listShowTimes {
-  color: #FFF;
+  color: #000;
   list-style: none;
   margin-left: -40px;
 }

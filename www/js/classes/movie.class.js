@@ -54,7 +54,7 @@ class Movie extends Base {
      let hrefTime = showTimeObject.time.replace('.', '-');
      showTimesRendered += `
       <li class= "data-movieTime="${co}">
-        <div class="col-4 d-inline-block"><strong>${showTimeObject.date}</strong></div>
+        <div class="col-4 d-inline-block">${showTimeObject.date}</div>
         <div class="col-4 d-inline-block">${showTimeObject.auditorium}</div>
         <div class="col-3 d-inline-block pr-0">${showTimeObject.time}
           <a class="pop bookingTimeDate" href="${showTimeObject.date}-${hrefTime}">
