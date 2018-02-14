@@ -23,14 +23,7 @@ class Popstate extends Base{
       href = that.makeUrl(href);
       history.pushState(null, null, href);
       //Call the change page function
-      if (href === '/Theater'){
-        let date = $(this).data('date');
-        let time = $(this).data('time');
-        let bookingShowObject = that.getBookingObject(date, time);
-        that.changePage(bookingShowObject);
-      }else {
-        that.changePage();
-      }
+      that.changePage();
       //Stop the browers from starting a page reload
       e.preventDefault();
     })};
@@ -39,7 +32,12 @@ class Popstate extends Base{
   changePage(bookingShowObject){
     //React on page changed, replace parts of DOM
     // get the current url
-    let url = location.pathname;
+
+    JSON._load('shows').then((shows) => {
+      Data.showObjects = shows;
+    });
+
+
 
     let urls = {
       '/' : 'startpage',
@@ -52,15 +50,21 @@ class Popstate extends Base{
       '/our_theaters': 'renderOurTheaters',
     }
 
+    for (let i = 0; i < Data.showObjects.length; i++){
+      let dateUrl = Data.showObjects[i].date;
+      let timeUrl = Data.showObjects[i].time;
+      let dateAndTimeUrl = '/' + dateUrl + '-' + timeUrl.replace('.', '-');
+      let target = 'theaterPage';
+      Object.assign(urls, {[dateAndTimeUrl] : target})
+    }
+
+    let url = location.pathname;
+
     let methodName = urls[url];
 
-    // Checking if there is any movie coming into theater
-    if (url == "/Theater") {
-      this.theaterPage(bookingShowObject);
-    } else {
     this[methodName]();
+
     this.app.login.readSession();
-    }
     if(url == '/our_theaters') {
       $('main').removeClass('container').addClass('container-fluid');
     }
@@ -81,29 +85,28 @@ class Popstate extends Base{
     this.renderKalendarium();
   }
 
-  theaterPage(bookingShowObject){
+  theaterPage(){
     $('main').empty();
-
+    let pathname = location.pathname;
+    let urlDate = pathname.substr(1, 10);
+    let urlTime = pathname.substr(12, 5).replace('-', '.');
+    let bookingShowObject = this.getBookingObject(urlDate, urlTime);
+    //     Loopa igenom json-show
+    // Om pathname tid + datum
+    // if (urlDate == mm.dtte) && urlTime -== json.time
     // if no show is sent with the rendering show error msg in first if statement
-    if (!bookingShowObject){
-      let error = new ErrorMessage();
-      error.render('main');
-    }else {
     // booking-showobject is the object that is being clicked when intilize theater
     let theater = new Theater(bookingShowObject);
-
+    //
     if (!this.eventHandlerSet) {
       theater.eventHandlers();
       this.eventHandlerSet = true;
-       
     }
-
-
+    //
     theater.render('main');
     $(window).on('resize',function(){
       theater.scale();
     });
-    }
   }
 
   // Movies
