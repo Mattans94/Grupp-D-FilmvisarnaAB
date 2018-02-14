@@ -69,9 +69,6 @@ a {
 .errorHoverSeat {
   background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #991e1e 10px, #991e1e 20px);
 }
-.errorHoverFreeSeat {
-  background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #55bf4d 10px, #55bf4d 20px);
-}
 #seat {
   font-size: 0.65em;
   text-align: center;
@@ -287,6 +284,7 @@ header {
   color: #000;
 }
 .collapseShowtime a {
+  text-decoration: none;
   color: #000;
 }
 .collapseShowtime a .fa {
