@@ -8,8 +8,8 @@
     "length": 71,
     "genre": "Komedi",
     "distributor": "Noble",
-    "language": "engelska",
-    "subtitles": "svenska",
+    "language": "Engelska",
+    "subtitles": "Svenska",
     "director": "Luca Guadagnino",
     "actors": [
       "Patricia Clarkson",
@@ -57,8 +57,8 @@
     "length": 107,
     "genre": "Kriminaldrama",
     "distributor": "Scanbox",
-    "language": "engelska",
-    "subtitles": "svenska",
+    "language": "Engelska",
+    "subtitles": "Svenska",
     "director": "Taylor Sheridan",
     "actors": [
       "Jeremy Renner",
@@ -81,13 +81,13 @@
     "reviews": [
       {
         "source": "Svenska Dagbladet",
-        "quote": "genrefilm med sorgsen twist",
+        "quote": "Genrefilm med sorgsen twist",
         "stars": 4,
         "max": 6
       },
       {
         "source": "SVT Kulturnyheterna",
-        "quote": "otäckt spännande",
+        "quote": "Otäckt spännande",
         "stars": 4,
         "max": 5
       }
@@ -102,8 +102,8 @@
     "length": 115,
     "genre": "Drama",
     "distributor": "Fox",
-    "language": "engelska",
-    "subtitles": "svenska",
+    "language": "Engelska",
+    "subtitles": "Svenska",
     "director": "Martin McDonagh",
     "actors": [
       "Woody Harrelson",
@@ -126,7 +126,7 @@
     "reviews": [
       {
         "source": "Svenska Dagbladet",
-        "quote": "självlysande Frances McDormand",
+        "quote": "Självlysande Frances McDormand",
         "stars": 4,
         "max": 6
       },
@@ -138,13 +138,13 @@
       },
       {
         "source": "P1 Kulturnytt",
-        "quote": "rör sig (...) mellan slapstick och svart drama",
+        "quote": "Rör sig (...) mellan slapstick och svart drama",
         "stars": 4,
         "max": 5
       },
       {
         "source": "SVT Kulturnyheterna",
-        "quote": "ingenting är riktigt som det verkar",
+        "quote": "Ingenting är riktigt som det verkar",
         "stars": 4,
         "max": 5
       }
@@ -159,8 +159,8 @@
     "length": 108,
     "genre": "Animerat",
     "distributor": "20th Century FOX",
-    "language": "engelska",
-    "subtitles": "svenska",
+    "language": "Engelska",
+    "subtitles": "Svenska",
     "director": "Carlos Saldanha",
     "actors": [
       "John Cena",
@@ -183,7 +183,7 @@
     "reviews": [
       {
         "source": "Svenska Dagbladet",
-        "quote": "självlysande Frances McDormand",
+        "quote": "Självlysande Frances McDormand",
         "stars": 4,
         "max": 6
       },
@@ -195,13 +195,13 @@
       },
       {
         "source": "P1 Kulturnytt",
-        "quote": "rör sig (...) mellan slapstick och svart drama",
+        "quote": "Rör sig (...) mellan slapstick och svart drama",
         "stars": 4,
         "max": 5
       },
       {
         "source": "SVT Kulturnyheterna",
-        "quote": "ingenting är riktigt som det verkar",
+        "quote": "Ingenting är riktigt som det verkar",
         "stars": 4,
         "max": 5
       }
@@ -217,7 +217,7 @@
     "genre": "Drama",
     "distributor": " ",
     "language": "franska",
-    "subtitles": "svenska",
+    "subtitles": "Svenska",
     "director": "Claire Denis",
     "actors": [
       "Juliette Binoche",
@@ -240,13 +240,13 @@
     "reviews": [
       {
         "source": "Svenska Dagbladet",
-        "quote": "en av årets mest sorglustiga filmer",
+        "quote": "En av årets mest sorglustiga filmer",
         "stars": 5,
         "max": 6
       },
       {
         "source": "DN",
-        "quote": "extra känslig och lysande",
+        "quote": "Extra känslig och lysande",
         "stars": 4,
         "max": 5
       }
@@ -262,8 +262,8 @@
     "length": 132,
     "genre": "Drama",
     "distributor": "UIP",
-    "language": "engelska",
-    "subtitles": "svenska",
+    "language": "Engelska",
+    "subtitles": "Svenska",
     "director": "Luca Guadagnino",
     "actors": [
       "Armie Hammer",
@@ -286,19 +286,19 @@
     "reviews": [
       {
         "source": "Sydsvenskan",
-        "quote": "ett drama berättat med stor ömhet",
+        "quote": "En drama berättat med stor ömhet",
         "stars": 4,
         "max": 5
       },
       {
         "source": "Svenska Dagbladet",
-        "quote": "en film att förälska sig i",
+        "quote": "En film att förälska sig i",
         "stars": 5,
         "max": 5
       },
       {
         "source": "DN",
-        "quote": "en het romans i åttiotalskostym",
+        "quote": "En het romans i åttiotalskostym",
         "stars": 4,
         "max": 5
       }

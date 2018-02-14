@@ -51,7 +51,16 @@ class Movie extends Base {
    let showTimesRendered = '';
    let co = 0;
    for (let showTimeObject of allShowTimes) {
-     showTimesRendered += `<li data-movieTime="${co}"><div class="col-4 d-inline-block"><strong>${showTimeObject.date}</strong></div><div class="col-4 d-inline-block">${showTimeObject.auditorium}</div> <div class="col-3 d-inline-block pr-0">${showTimeObject.time} <a class="pop bookingTimeDate" href="/Theater" data-date="${showTimeObject.date}" data-time="${showTimeObject.time}"><div class="book-btn float-right border border-dark bg-light"><strong>Boka</strong></div></a></div></li>`
+     showTimesRendered += `
+      <li class= "data-movieTime="${co}">
+        <div class="col-4 d-inline-block"><strong>${showTimeObject.date}</strong></div>
+        <div class="col-4 d-inline-block">${showTimeObject.auditorium}</div> 
+        <div class="col-3 d-inline-block pr-0">${showTimeObject.time} 
+          <a class="pop bookingTimeDate" href="/Theater" data-date="${showTimeObject.date}" data-time="${showTimeObject.time}">
+            <div class="btn btn-danger pl-2 pr-2 book-btn float-right"><strong>Boka</strong></div>
+          </a>
+        </div>
+      </li>`
      co++
    }
    return showTimesRendered;

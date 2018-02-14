@@ -16,7 +16,8 @@ html body {
 html body h1,
 html body h2,
 html body h3,
-html body h4 {
+html body h4,
+html body h5 {
   font-family: 'Amaranth', sans-serif;
 }
 html body .redHeader {
@@ -46,6 +47,11 @@ html body .redHeader {
 button,
 a {
   cursor: pointer;
+}
+.listShowTimes li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
 }
 .booked {
   background-color: #991e1e !important;
