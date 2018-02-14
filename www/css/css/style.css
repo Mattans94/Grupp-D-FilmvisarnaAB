@@ -16,7 +16,8 @@ html body {
 html body h1,
 html body h2,
 html body h3,
-html body h4 {
+html body h4,
+html body h5 {
   font-family: 'Amaranth', sans-serif;
 }
 html body .redHeader {
