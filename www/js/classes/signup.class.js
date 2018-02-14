@@ -27,7 +27,7 @@ class Signup {
 
 				this.saveUsers(tempObject);
 
-				console.log('Success!');
+
 				$(".user-created").show();
 				this.emptyInputs();
 				}
@@ -57,29 +57,29 @@ class Signup {
 
 		if (this.checkExistingUser($("#signup-username").val())){
 			conditionExist = true;
-			console.log('Username new');
-		} else {conditionExist = false; console.log('Username already exist')};
+
+		} else {conditionExist = false;}
 
 		if(this.checkPasswordLength($("#signup-password").val())){
 			conditionPasswordLength = true;
-			console.log('password length ok');
-		} else {conditionPasswordLength = false; console.log('Password too short')};
+
+		} else {conditionPasswordLength = false;}
 
 		if(this.checkValidEmail()){
 			conditionValidEmail = true;
-			console.log('Valid email');
-		} else {conditionValidEmail = false; console.log('Email not valid')};
+
+		} else {conditionValidEmail = false;}
 
 		if (conditionExist && conditionValidEmail && conditionPasswordLength && conditionValidName) {
 			return true;
-			console.log('everythings true');
+
 		}else {
 			return false;
 		};
 
 	}
 
-	getLastId(){
+	getLastId() {
 
 		let highestID = this.userObjects[0].id;
 
@@ -101,7 +101,7 @@ class Signup {
 	saveUsers(newUserObject){
 		this.userObjects.push(newUserObject);
 		JSON._save('users.json', this.userObjects).then(function(){
-			console.log('User saved');
+
 		});
 	}
 
@@ -142,7 +142,7 @@ class Signup {
 
 	checkValidName(){
 		if ($('#signup-name').val().length > 1) {
-			console.log("valid name");
+
 			return true;
 		} else {
 			$('#signup-name').css({"border": "1px solid red"});
@@ -158,21 +158,3 @@ class Signup {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

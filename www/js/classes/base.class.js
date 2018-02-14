@@ -71,7 +71,6 @@ class Base {
   }
 
   // New global methods
-
   getMovieObject(movieTitle) {
     return Data.movieObjects.find((m) => movieTitle == m.title)
   }

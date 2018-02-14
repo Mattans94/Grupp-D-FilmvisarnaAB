@@ -2,24 +2,26 @@ class Theater extends Base{
 
 	constructor(showObject) {
 		super();
-		// this.booking = Booking;
-		// this.numberOfChildren = numberOfChildren;
-		// this.numberOfAdults = numberOfAdults;
-		// this.numberOfPensioners = numberOfPensioners;
-		// this.auditorium = auditorium;
 		this.showObject = showObject;
 		this.auditorium = showObject.auditorium;
 		this.movieObject = this.getMovieObject(this.showObject.film);
 		this.booking = new Booking(this.showObject);
 
+		// Set the last created Theater as a static property
+		Theater.latestTheater = this;
+
+
+
 		JSON._load('theaters').then((theater) => {
 			this.theaterObjects = theater;
+			JSON._load('shows').then((shows) => {
+				Data.showObjects = shows;
+				})
+				.then(() => {
+		      this.start();
+			})
+		});
 
-		})
-		.then(JSON._load('shows').then((shows) => {
-			Data.showObjects = shows;
-			this.start();
-		 }));
 
 
 	} //end
@@ -30,18 +32,19 @@ class Theater extends Base{
 		this.setWidth();
 		this.setHeight();
 		this.renderTheater();
-		this.eventHandler();
+
 	}
 
 	// Eventhandlers
 
-	eventHandler() {
-		let that = this;
+
+	eventHandlers() {
+
 		// let seatID; = seat.data('seatid');
 		// let rowID;  = seat.data('rowid');
 		// let status;  = seat.data('status');
-
 		$(document).on("mouseenter", '.seat', function() {
+			let that = Theater.latestTheater;
 			let $seat = $(this);
 			if (that.booking.seatsTotal >= 1) {
 
@@ -49,46 +52,43 @@ class Theater extends Base{
 				if ($seat.hasClass('free')){
 					let amount = that.booking.seatsTotal;
 					let $allNext = $seat.prevAll();
-					let $seatsToSelect = [$seat];
-					let $errorSeats = [$seat];
+					let $seatsToSelect = [{'seat' : $seat, 'seatMark': 'free'}];
 					let found = 1;
-					console.log(that.booking.seatsTotal);
 
 					$allNext.each(function(){
+						 let $seat = $(this);
 						 if(found == amount){return;}
 						 if($(this).hasClass('booked')){
-							 $errorSeats.push($(this));
-						 }else{
+							 let $seatObj = {'seat' : $seat, 'seatMark': 'booked'}
+							 $seatsToSelect.push($seatObj);
 							 found++;
-							 $seatsToSelect.push($(this));
-							 $errorSeats.push($(this));
+							 if($(this).prev().hasClass('free')){return false;}
+						 }else{
+							 let $seatObj = {'seat' : $seat, 'seatMark': 'free'}
+							 found++;
+							 $seatsToSelect.push($seatObj);
 						 }
-					});
+					})
+						$seatsToSelect.forEach(function($seatObject){
+							if($seatObject.seatMark === 'free'){
+								$seatObject.seat.addClass('hoverSeat');
 
-					if($errorSeats.length > $seatsToSelect.length) {
-						$errorSeats.splice(amount);
-						$errorSeats = $errorSeats.reverse();
-						let errorAmount = $errorSeats.length - $seatsToSelect.length;
-						$errorSeats.splice(errorAmount);
-						$errorSeats.forEach(function($el){
-							$el.addClass('errorHoverSeat');
-						})
-						$seatsToSelect.forEach(function($el){
-							$el.addClass('hoverSeat');
-						})
-					}
+							} else {
+								$seatObject.seat.addClass('errorHoverSeat');
+							}
+					})
+				}
+			}
+		});
 
-					else {
-						$seatsToSelect.forEach(function($el){
-							$el.addClass('hoverSeat');
-					})}
-				}}});
 
 		$(document).on("mouseleave", '.seat', function() {
+			let that = Theater.latestTheater;
 			$(this).prevAll().addBack().removeClass('hoverSeat errorHoverSeat');
 		});
 
 		$(document).on("click", '.seat', function() {
+			let that = Theater.latestTheater;
 			that.booking.resetBookingButtons();
 			let $seat = $(this);
 
@@ -114,7 +114,6 @@ class Theater extends Base{
 			  });
 
 				if(found<amount){return;}
-				console.log($seatsToSelect);
 				$seatsToSelect.forEach(function($el){
 					$el.addClass('reserved');
 				});
@@ -127,7 +126,7 @@ class Theater extends Base{
 
 
     //  Välja en-stol-kod här. Kanske ha en knapp som togglar denna?
-		// 	console.log(that.booking.reservedSeats);
+		//
 		// 	if (that.booking.seatsTotal >= 1) {
 		// 		if (seat.hasClass('free') && !(that.booking.reservedSeats >= that.booking.seatsTotal)){
 		// 			seat.removeClass('free');
@@ -157,17 +156,17 @@ class Theater extends Base{
 
 	  //let count = 0;
 		for(let booking of bookings){
-		  //console.log('film', booking.show.film);
+		  //
 		  // for(let show of shows){
 		  // 	// if(theShow && show != theShow){continue;}
 		  //   //count++;
 		    if(booking.show.date == theShow.date && booking.show.auditorium == theShow.auditorium && booking.show.time == theShow.time){
-		      //console.log('found it!', show, booking);
+		      //
 		      if(!theShow.bookedSeats){
 		        theShow.bookedSeats = [];
 		      }
 		      theShow.bookedSeats = [...theShow.bookedSeats, ...booking.show.bookedSeats]; // concat (merge) two arrays
-		      //console.log(show);
+		      //
 		      theShow.bookedSeats = new Set(theShow.bookedSeats);
 		      theShow.bookedSeats = Array.from(theShow.bookedSeats);
 		    }
@@ -236,7 +235,7 @@ class Theater extends Base{
 		let seatStatus = 'free';
 
 		let show = await this.getRichShow(this.showObject);
-		console.log('show', show);
+
 
 		for (let row = 0; row < this.seatsStoran.length; row++) {
 			this.seatsPerRow = this.seatsStoran[row];

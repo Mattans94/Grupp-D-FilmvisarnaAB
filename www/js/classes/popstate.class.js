@@ -5,6 +5,7 @@ class Popstate extends Base{
     this.app = app;
     this.clickEvents();
     this.changePage();
+    this.eventHandlerSet = false;
     window.addEventListener('popstate', () => this.changePage());
   }
 
@@ -22,7 +23,14 @@ class Popstate extends Base{
       href = that.makeUrl(href);
       history.pushState(null, null, href);
       //Call the change page function
-      that.changePage();
+      if (href === '/Theater'){
+        let date = $(this).data('date');
+        let time = $(this).data('time');
+        let bookingShowObject = that.getBookingObject(date, time);
+        that.changePage(bookingShowObject);
+      }else {
+        that.changePage();
+      }
       //Stop the browers from starting a page reload
       e.preventDefault();
     })};
@@ -54,7 +62,7 @@ class Popstate extends Base{
     this.app.login.readSession();
     }
     if(url == '/our_theaters') {
-    $('main').removeClass('container').addClass('container-fluid');
+      $('main').removeClass('container').addClass('container-fluid');
     }
     else{
       $('main').removeClass('container-fluid').addClass('container');
@@ -75,14 +83,22 @@ class Popstate extends Base{
 
   theaterPage(bookingShowObject){
     $('main').empty();
+
     // if no show is sent with the rendering show error msg in first if statement
     if (!bookingShowObject){
-      let error = new Error();
+      let error = new ErrorMessage();
       error.render('main');
     }else {
     // booking-showobject is the object that is being clicked when intilize theater
-
     let theater = new Theater(bookingShowObject);
+
+    if (!this.eventHandlerSet) {
+      theater.eventHandlers();
+      this.eventHandlerSet = true;
+       
+    }
+
+
     theater.render('main');
     $(window).on('resize',function(){
       theater.scale();

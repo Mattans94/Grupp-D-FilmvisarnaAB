@@ -23,7 +23,7 @@ class Login extends Base{
      		this.userObjects = users;
    		})
    		.then(() => {
-				console.log("jkasdklajs");
+
 				let username = $("#login-username").val();
 				let password = $("#login-password").val();
 				let condition = this.checkUsername($("#login-username").val());
@@ -33,7 +33,7 @@ class Login extends Base{
 
 				if (condition) {
 
-					console.log("you're logged in!");
+
 					let loggedInUserObject = this.getUserObject(username);
 					this.loggedInUser = Object.assign(this.loggedInUser, loggedInUserObject);
 					this.emptyInputs();
@@ -46,7 +46,7 @@ class Login extends Base{
 
 		$("#togglelogin-btn").on('click', function() {
 			let text = $(this).text();
-			console.log(text);
+
 			$(this).text(text == "Skapa konto" ? "Logga in" : "Skapa konto");
 			$('.logintoggle').slideToggle(400);
 		});
@@ -59,7 +59,7 @@ class Login extends Base{
 
 		$(document).on("click", "#logout-btn", () => {
 			this.logout();
-			console.log("Logged out...");
+
 		});
 
 
@@ -103,7 +103,7 @@ class Login extends Base{
 		}
 
 		if (condition == false) {
-			console.log("username not found");
+
 			$('#login-username').css({"border": "1px solid red"});
 		}
 
@@ -118,25 +118,25 @@ class Login extends Base{
 		let usernameCondition = false;
 		let passwordCondition = false;
 		if (username == userObject.username) {
-			console.log("Username True");
+
 			usernameCondition = true;
 		} else {
-			console.log("Username False");
+
 		}
 		if (password == userObject.password) {
-			console.log("Password True");
+
 			passwordCondition = true;
 		} else {
-			console.log("Password False");
+
 		}
 
 		if (usernameCondition && passwordCondition) {
-			console.log("Login complete");
+
 			$('#login-username').css({"border": "1px solid green"});
 			$('#login-password').css({"border": "1px solid green"});
 			return true;
 		} else {
-			console.log("Username or password invalid");
+
 			$('#login-username').css({"border": "1px solid red"});
 			$('#login-password').css({"border": "1px solid red"});
 			return false;
@@ -146,7 +146,7 @@ class Login extends Base{
 
 	isLoggedIn(){
 		if (this.loggedInUser.isLoggedIn) {
-			console.log("is logged in");
+
 			return true;
 		}
 	}
@@ -176,8 +176,34 @@ class Login extends Base{
 		this.bookingObjects = await JSON._load('booking');
 		let loggedInId = this.session.id;
 		this.bookedUserShows = this.bookingObjects.filter((m) => loggedInId == m.show.userID);
-		
-		this.renderLoginTemplate();
+
+		this.checkIfBookingPassed();
+	}
+
+	getCurrentDate(){
+		let dd = new Date();
+		let yy = dd.getFullYear();
+		let mm = dd.getMonth() + 1;
+		dd = dd.getDate();
+		if (mm < 10) { mm = "0" + mm; }
+		if (dd < 10) { dd = "0" + dd; }
+		let currentDate = yy + "-" + mm + "-" + dd;
+		return currentDate;
+	}
+
+	checkIfBookingPassed(){
+		let that = this;
+		let oldBookings = [];
+		let newBookings = [];
+		this.bookedUserShows.forEach(function(bookedShow){
+			if (that.getCurrentDate() < bookedShow.show.date) {
+				newBookings.push(bookedShow);
+			} else {
+				oldBookings.push(bookedShow);
+			}
+		});
+
+		this.renderLoginTemplate(newBookings, oldBookings)
 	}
 
 	getBookedSeats(bookedSeats){
@@ -188,10 +214,10 @@ class Login extends Base{
 		return allSeats
 	}
 
-	renderEachShow(){
+	renderEachShow(bookingArray){
 		let html = '';
-		for (let i = 0; i < this.bookedUserShows.length; i++){
-			let movieObject = this.getMovieObject(this.bookedUserShows[i].show.film);
+		for (let i = 0; i < bookingArray.length; i++){
+			let movieObject = this.getMovieObject(bookingArray[i].show.film);
 
 			html += `
 			<div class="d-flex flex-nowrap mt-3 mb-3 bookingContainer bg-dark text-white p-3">
@@ -199,12 +225,12 @@ class Login extends Base{
 					<img class="img-fluid" src="/img/posters/${movieObject.images[0]}">
 				</div>
 				<div class="col-9">
-					<h3 class="mb-3">${this.bookedUserShows[i].show.film}</h3>
-					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Plats:</span> ${this.bookedUserShows[i].show.auditorium}</p>
-					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Datum:</span> ${this.bookedUserShows[i].show.date}</p>
-					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Tid:</span> ${this.bookedUserShows[i].show.time}</p>
-					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Platser:</span> ${this.getBookedSeats(this.bookedUserShows[i].show.bookedSeats)}</p>
-					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Order:</span> ${this.bookedUserShows[i].show.orderID}</p>
+					<h3 class="mb-3">${bookingArray[i].show.film}</h3>
+					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Plats:</span> ${bookingArray[i].show.auditorium}</p>
+					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Datum:</span> ${bookingArray[i].show.date}</p>
+					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Tid:</span> ${bookingArray[i].show.time}</p>
+					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Platser:</span> ${this.getBookedSeats(bookingArray[i].show.bookedSeats)}</p>
+					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Order:</span> ${bookingArray[i].show.orderID}</p>
 				</div>
 			</div>
 
@@ -213,7 +239,7 @@ class Login extends Base{
 		return html;
 	}
 
-	renderLoginTemplate(){
+	renderLoginTemplate(newBookings, oldBookings){
 		$('main').empty();
 		let html = `
 		<article class="row">
@@ -221,7 +247,7 @@ class Login extends Base{
 				<h3 class="redHeader m-0 col-12 mb-3 text-center">Aktuella bokningar</h3>
 				<div class="errorContainer d-flex justify-content-between flex-wrap flex-lg-nowrap">
 					<div class="col-12">
-						${this.renderEachShow()}
+						${this.renderEachShow(newBookings)}
 					</div>
 
 				</div>
@@ -230,7 +256,7 @@ class Login extends Base{
 				<h3 class="redHeader m-0 col-12 mb-3 text-center">Historik</h3>
 				<div class="errorContainer d-flex justify-content-between flex-wrap flex-lg-nowrap">
 					<div class="col-12">
-						${this.renderEachShow()}
+						${this.renderEachShow(oldBookings)}
 					</div>
 				</div>
 			</div>
