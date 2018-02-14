@@ -45,11 +45,11 @@ class Theater extends Base{
 			let $seat = $(this);
 			if (that.booking.seatsTotal >= 1) {
 
-				if($seat.hasClass('booked')){return};
-				if ($seat.hasClass('free')){
+				// if($seat.hasClass('booked')){return};
+				// if ($seat.hasClass('free') || $seat.hasClass('booked')){
 					let amount = that.booking.seatsTotal;
 					let $allPrev = $seat.prevAll();
-					let $allNext = $seat.nextAll();
+					// let $allNext = $seat.nextAll();
 					let $seatsToSelect = [{'seat' : $seat, 'seatMark': 'free'}];
 					let found = 1;
 
@@ -82,9 +82,11 @@ class Theater extends Base{
 
 							} 
 					})
-				}
+				// }
 			}
 		});
+
+		///////////// original clickevent below that is working as designed from left to right ////////
 		// $(document).on("mouseenter", '.seat', function() {
 		// 	let that = Theater.latestTheater;
 		// 	let $seat = $(this);
