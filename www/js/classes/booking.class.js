@@ -152,7 +152,13 @@ class Booking extends Base{
 	// Behöver man ladda json varje gång man trycker någonstans? Isåfall lägg inladdning på ett klick
 	eventHandler() {
 		$(document).on('click','.bookingConfirmation', () => {
-			this.bookingModal();
+			if (this.reservedSeats > 0) {
+				this.bookingModal();
+			} else {
+				$('.noSeatsChosenMessage').html('Du måste boka minst en plats');
+			}
+
+
 		});
 
 		let that = this;
