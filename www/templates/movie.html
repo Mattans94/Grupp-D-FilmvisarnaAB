@@ -6,7 +6,7 @@ Object.assign(Movie.prototype, { template(){ return `
         <div class="headerOfMoviePage ml-2 mr-2">
           ${this.renderCarousel(this.movieObject)}
           ${this.renderTrailer(this.movieObject)}
-          <button class="text-left btn btn-danger col-12 showtrailer"><i class="fa fa-video-camera mr-2" aria-hidden="true"></i>Show trailer</button>
+          <button class="text-left btn btn-danger col-12 showtrailer"><i class="fa fa-video-camera mr-2" aria-hidden="true"></i>Visa trailer</button>
         </div>
         <div class="bg-light roundedBottom ml-2 mr-2">
 
@@ -19,10 +19,10 @@ Object.assign(Movie.prototype, { template(){ return `
             </a>
 
             <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-              <div class="p-3">
-                <h3 class="ml-4">Visningar:</h3>
+              <div class="pb-3">
+               <!--  <h4 class="ml-4">Visningar:</h4> -->
                 <div class="col-12">
-                  <div class="col-4 d-inline-block"><strong>Datum:</strong></div><div class="col-4 d-inline-block"><strong>Biograf:</strong></div> <div class="col-3 d-inline-block"><strong>Tid:</strong></div>
+                  <div class="col-4 d-inline-block pb-1"><strong>Datum:</strong></div><div class="col-4 d-inline-block"><strong>Salong:</strong></div> <div class="col-3 d-inline-block"><strong>Tid:</strong></div>
                   <ul class="listShowTimes">${this.renderShowtime(this.movieObject)}</ul>
                 </div>
               </div>
@@ -42,6 +42,7 @@ Object.assign(Movie.prototype, { template(){ return `
             </div>
 
             <div class="col-md-12 p-3 pt-0">
+              <h4>${this.movieObject.title}</h4>
               <p>${this.movieObject.description}</p>
 
               ${this.getAllReviews(this.movieObject)}
