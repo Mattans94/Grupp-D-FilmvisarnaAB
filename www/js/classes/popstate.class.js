@@ -9,6 +9,7 @@ class Popstate extends Base{
     window.addEventListener('popstate', () => this.changePage());
   }
 
+
   makeUrl(url){
     url = url.replace(/,/g, "");
     url = url.replace(/ /g, "_");
@@ -18,25 +19,18 @@ class Popstate extends Base{
   clickEvents(){
     let that = this;
     $(document).on('click','.pop',function(e){
-      //Create a push state preventDefault
       let href = $(this).attr('href');
       href = that.makeUrl(href);
       history.pushState(null, null, href);
-      //Call the change page function
       that.changePage();
-      //Stop the browers from starting a page reload
       e.preventDefault();
     })};
 
 
   changePage(bookingShowObject){
-    //React on page changed, replace parts of DOM
-    // get the current url
-
     JSON._load('shows').then((shows) => {
       Data.showObjects = shows;
     });
-
 
 
     let urls = {
@@ -105,25 +99,19 @@ class Popstate extends Base{
     let notConvertedTime = pathname.substr(12, 4);
 
     let bookingShowObject = this.getBookingObject(getDate(notConvertedDate), getTime(notConvertedTime));
-    //     Loopa igenom json-show
-    // Om pathname tid + datum
-    // if (urlDate == mm.dtte) && urlTime -== json.time
-    // if no show is sent with the rendering show error msg in first if statement
-    // booking-showobject is the object that is being clicked when intilize theater
     let theater = new Theater(bookingShowObject);
-    //
+
     if (!this.eventHandlerSet) {
       theater.eventHandlers();
       this.eventHandlerSet = true;
     }
-    //
+
     theater.render('main');
     $(window).on('resize',function(){
       theater.scale();
     });
   }
 
-  // Movies
   movieFerdinand(){
     $('main').empty();
     let moviepage = new Movie('Tjuren Ferdinand');
@@ -164,7 +152,6 @@ class Popstate extends Base{
   renderOurTheaters(){
     $('main').empty();
     let ourtheaterspage = new OurTheaters();
-    //$('main').removeClass('container').addClass('container-fluid');
     ourtheaterspage.render('main');
 
   }

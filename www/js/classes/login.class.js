@@ -8,14 +8,14 @@ class Login extends Base{
 		this.readSession();
 	}
 
+
 	eventHandlers(){
 		$(document).on('click', '#myBookings-btn', () => {
 			if (!(this.session.id === null)){
 				this.getRightUserInfo();
+				}
 			}
-
-		});
-
+		);
 
 		$(document).on('click', '#login-btn', () => {
 
@@ -32,8 +32,6 @@ class Login extends Base{
 				}
 
 				if (condition) {
-
-
 					let loggedInUserObject = this.getUserObject(username);
 					this.loggedInUser = Object.assign(this.loggedInUser, loggedInUserObject);
 					this.emptyInputs();
