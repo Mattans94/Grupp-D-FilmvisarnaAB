@@ -40,7 +40,7 @@ class Login extends Base{
 			})
 		});
 
-		$("#togglelogin-btn").on('click', function() {
+		$(document).on('click', '#togglelogin-btn', function() {
 			let text = $(this).text();
 			$(this).text(text == "Skapa konto" ? "Logga in" : "Skapa konto");
 			$('.logintoggle').slideToggle(400);

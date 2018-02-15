@@ -117,7 +117,7 @@ class Booking extends Base{
 		});
 		Booking.latestBooking.prices.calculateTotalPrice()
 		Booking.latestBooking.updateTotalPrice();
-		$('#modalInputContainer').val('').empty();
+		$('#modalInputContainer').val('');
     let bookingModal = new BookingModal(Booking.latestBooking.showObject, Booking.latestBooking.prices.totalPrice, bookedSeats);
     $('#modalInputContainer').append(bookingModal.template());
 		bookingModal.render('#modalInputContainer')
