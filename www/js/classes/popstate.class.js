@@ -93,7 +93,6 @@ class Popstate extends Base{
     let pathname = location.pathname;
     let notConvertedDate = pathname.substr(6, 6);
     let notConvertedTime = pathname.substr(12, 4);
-
     let bookingShowObject = this.getBookingObject(getDate(notConvertedDate), getTime(notConvertedTime));
     let theater = new Theater(bookingShowObject);
 
@@ -143,7 +142,6 @@ class Popstate extends Base{
     let moviepage = new Movie('The Party');
     this.renderKalendarium();
   }
-
 
   renderOurTheaters(){
     $('main').empty();
