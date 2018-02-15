@@ -1,18 +1,16 @@
 class Prices extends Base {
+	
 	constructor(numberOfChildren, numberOfAdults, numberOfPensioners) {
 		super();
 		this.numberOfChildren = numberOfChildren;
 		this.numberOfAdults = numberOfAdults;
 		this.numberOfPensioners = numberOfPensioners;
-
 		this.childObject = Data.priceObject.child;
 		this.adultObject = Data.priceObject.adult;
 		this.pensionerObject = Data.priceObject.pensioner;
-
-
 		this.totalTickets = this.numberOfChildren + this.numberOfAdults + this.numberOfPensioners;
 		this.totalPrice = 0;
-	} //end constructor
+	}
 
 	start(){
 		this.ticketType;
@@ -46,9 +44,10 @@ class Prices extends Base {
 
 		html += `
 			<div class="d-flex justify-content-end">
+			<p class="noSeatsChosenMessage align-self-center m-0 mr-2 text-danger"></p>
 				<button class="btn btn-danger bookingConfirmation">Boka nu!</button>
 			</div>`
-
+			
 		$('#totalprice').html(html);
 	}
 
@@ -56,4 +55,4 @@ class Prices extends Base {
 		this.totalPrice = (this.childObject.price * this.numberOfChildren) + (this.adultObject.price * this.numberOfAdults) + (this.pensionerObject.price  * this.numberOfPensioners);
 	}
 
-} // end class
+}

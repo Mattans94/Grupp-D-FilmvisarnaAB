@@ -9,6 +9,7 @@ class Popstate extends Base{
     window.addEventListener('popstate', () => this.changePage());
   }
 
+
   makeUrl(url){
     url = url.replace(/,/g, "");
     url = url.replace(/ /g, "_");
@@ -18,28 +19,19 @@ class Popstate extends Base{
   clickEvents(){
     let that = this;
     $(document).on('click','.pop',function(e){
-      //Create a push state preventDefault
       let href = $(this).attr('href');
       href = that.makeUrl(href);
       history.pushState(null, null, href);
-      //Call the change page function
-      if (href === '/Theater'){
-        let date = $(this).data('date');
-        let time = $(this).data('time');
-        let bookingShowObject = that.getBookingObject(date, time);
-        that.changePage(bookingShowObject);
-      }else {
-        that.changePage();
-      }
-      //Stop the browers from starting a page reload
+      that.changePage();
       e.preventDefault();
     })};
 
 
   changePage(bookingShowObject){
-    //React on page changed, replace parts of DOM
-    // get the current url
-    let url = location.pathname;
+    JSON._load('shows').then((shows) => {
+      Data.showObjects = shows;
+    });
+
 
     let urls = {
       '/' : 'startpage',
@@ -52,15 +44,18 @@ class Popstate extends Base{
       '/our_theaters': 'renderOurTheaters',
     }
 
+    for (let i = 0; i < Data.showObjects.length; i++){
+      let dateAndTimeUrl = `/${this.makeMovieLink(Data.showObjects[i])}`;
+      let target = 'theaterPage';
+      Object.assign(urls, {[dateAndTimeUrl] : target})
+    }
+
+    let url = location.pathname;
     let methodName = urls[url];
 
-    // Checking if there is any movie coming into theater
-    if (url == "/Theater") {
-      this.theaterPage(bookingShowObject);
-    } else {
     this[methodName]();
+
     this.app.login.readSession();
-    }
     if(url == '/our_theaters') {
       $('main').removeClass('container').addClass('container-fluid');
     }
@@ -81,32 +76,36 @@ class Popstate extends Base{
     this.renderKalendarium();
   }
 
-  theaterPage(bookingShowObject){
+  theaterPage(){
+    function getDate(urlDate){
+      let year = '20' + urlDate.substr(0, 2);
+      let month = urlDate.substr(2, 2);
+      let day = urlDate.substr(4, 2);
+      return `${year}-${month}-${day}`
+    }
+    function getTime(urlTime){
+      let hours = urlTime.substr(0, 2);
+      let minutes = urlTime.substr(2, 2);
+      return `${hours}.${minutes}`;
+    }
     $('main').empty();
-
-    // if no show is sent with the rendering show error msg in first if statement
-    if (!bookingShowObject){
-      let error = new ErrorMessage();
-      error.render('main');
-    }else {
-    // booking-showobject is the object that is being clicked when intilize theater
+    let pathname = location.pathname;
+    let notConvertedDate = pathname.substr(6, 6);
+    let notConvertedTime = pathname.substr(12, 4);
+    let bookingShowObject = this.getBookingObject(getDate(notConvertedDate), getTime(notConvertedTime));
     let theater = new Theater(bookingShowObject);
 
     if (!this.eventHandlerSet) {
       theater.eventHandlers();
       this.eventHandlerSet = true;
-       
     }
-
 
     theater.render('main');
     $(window).on('resize',function(){
       theater.scale();
     });
-    }
   }
 
-  // Movies
   movieFerdinand(){
     $('main').empty();
     let moviepage = new Movie('Tjuren Ferdinand');
@@ -143,11 +142,9 @@ class Popstate extends Base{
     this.renderKalendarium();
   }
 
-
   renderOurTheaters(){
     $('main').empty();
     let ourtheaterspage = new OurTheaters();
-    //$('main').removeClass('container').addClass('container-fluid');
     ourtheaterspage.render('main');
 
   }

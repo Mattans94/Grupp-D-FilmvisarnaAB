@@ -4,11 +4,6 @@
 	min-height: 540px;
 }
 
-
-.movieContainer {
-
-}
-
 .movieBlock {
 	background-color: @secondaryColor;
 	border-radius: 10px;
@@ -26,8 +21,6 @@
 
 .bigSal{
 	border-right:1px dashed white;
-
-
 }
 
 .calenderTheaterBorder{
@@ -54,15 +47,16 @@
 	border-radius: 20px;
 
 
-  .listShowTimes {
-    list-style: none;
-    margin-left: -40px;
-    li:nth-child(odd) {
+	.listShowTimes {
+	  list-style: none;
+	  margin-left: -40px;
+    a:nth-child(odd) li {
       background-color: @secondaryColor;
 			color: #000;
     }
-  }
+	}
   a {
+  	text-decoration: none;
     color: #000;
 		.fa{
 			width: 13px;

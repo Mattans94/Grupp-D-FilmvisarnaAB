@@ -1,10 +1,10 @@
 class Movie extends Base {
+
   constructor(movieTitle){
     super();
     this.movieObject = this.getMovieObject(movieTitle);
     this.renderMovie();
     this.eventHandlers();
-
   }
 
   eventHandlers(){
@@ -19,9 +19,8 @@ class Movie extends Base {
         `<i class="fa fa-video-camera mr-2" aria-hidden="true"></i>Show slides`;
       })
     })
-
-
   };
+
 
   getActors(movieObject){
   	let actors = "";
@@ -51,7 +50,16 @@ class Movie extends Base {
    let showTimesRendered = '';
    let co = 0;
    for (let showTimeObject of allShowTimes) {
-     showTimesRendered += `<li data-movieTime="${co}"><div class="col-4 d-inline-block"><strong>${showTimeObject.date}</strong></div><div class="col-4 d-inline-block">${showTimeObject.auditorium}</div> <div class="col-3 d-inline-block pr-0">${showTimeObject.time} <a class="pop bookingTimeDate" href="/Theater" data-date="${showTimeObject.date}" data-time="${showTimeObject.time}"><div class="book-btn float-right border border-dark bg-light"><strong>Boka</strong></div></a></div></li>`
+     showTimesRendered += `
+      <li class= "data-movieTime="${co}">
+        <div class="col-4 d-inline-block">${showTimeObject.date}</div>
+        <div class="col-4 d-inline-block">${showTimeObject.auditorium}</div>
+        <div class="col-3 d-inline-block pr-0">${showTimeObject.time}
+          <a class="pop bookingTimeDate" href="${this.makeMovieLink(showTimeObject)}">
+            <div class="btn btn-danger pl-2 pr-2 float-right"><strong>Boka</strong></div>
+          </a>
+        </div>
+      </li>`
      co++
    }
    return showTimesRendered;
@@ -71,11 +79,11 @@ class Movie extends Base {
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
       </ol>
+
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img class="d-block w-100" src="/img/slides/${movieObject.slides[0]}" alt="First slide">
           <div class="carousel-caption d-flex flex-column d-none">
-
           </div>
         </div>
         <div class="carousel-item">
@@ -105,9 +113,7 @@ class Movie extends Base {
     </div>`
   }
 
-  // Renders movie with template.
   renderMovie() {
     this.render('main');
   }
-
 }

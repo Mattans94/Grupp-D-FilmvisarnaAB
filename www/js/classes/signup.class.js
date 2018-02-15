@@ -8,31 +8,23 @@ class Signup {
 	}
 
 	eventHandlers(){
-
 		$("#signup-btn").on("click", () => {
+			JSON._load('users').then((users) => {
+				this.userObjects = users;
+			}).then(() => {
 			this.clearAllInputs();
-
 			let condition = this.validateAllChecks();
-
-			if (condition){
-				let tempObject = {};
-
-				tempObject.username = $("#signup-username").val();
-
-				tempObject.name = $("#signup-name").val();
-
-				tempObject.password = $("#signup-password").val();
-
-				tempObject.id = this.generateId();
-
-				this.saveUsers(tempObject);
-
-
-				$(".user-created").show();
-				this.emptyInputs();
+				if (condition){
+					let tempObject = {};
+					tempObject.username = $("#signup-username").val();
+					tempObject.name = $("#signup-name").val();
+					tempObject.password = $("#signup-password").val();
+					tempObject.id = this.returnGeneratedId();
+					this.saveUsers(tempObject);
+					$(".user-created").show();
+					this.emptyInputs();
 				}
-
-
+			});
 		});
 	}
 
@@ -50,58 +42,55 @@ class Signup {
 		let conditionPasswordLength = false;
 		let conditionValidEmail = false;
 		let conditionValidName = false;
-
 		if (this.checkValidName()) {
 			conditionValidName = true;
-		}
-
+		} 
 		if (this.checkExistingUser($("#signup-username").val())){
 			conditionExist = true;
-
 		} else {conditionExist = false;}
-
-		if(this.checkPasswordLength($("#signup-password").val())){
+		if (this.checkPasswordLength($("#signup-password").val())){
 			conditionPasswordLength = true;
-
 		} else {conditionPasswordLength = false;}
-
-		if(this.checkValidEmail()){
+		if (this.checkValidEmail()){
 			conditionValidEmail = true;
-
 		} else {conditionValidEmail = false;}
-
 		if (conditionExist && conditionValidEmail && conditionPasswordLength && conditionValidName) {
 			return true;
-
-		}else {
+		} else {
 			return false;
 		};
-
 	}
 
-	getLastId() {
+	returnGeneratedId(){
+		let generatedID;
+		do {
+			generatedID = this.generateUserId();
+		}	while (this.checkExistingId(generatedID));
+		return generatedID;
+	}
 
-		let highestID = this.userObjects[0].id;
+	generateUserId(){
+		let generatedID = '';
+		let allCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+		for (let i = 0; i < 12; i++) {
+			generatedID += allCharacters.charAt(Math.floor(Math.random() * allCharacters.length));
+		}
+		return generatedID;
+	}
 
-		for(let i = 0; i < this.userObjects.length; i++){
-			if (this.userObjects[i].id > highestID) {
-				highestID = this.userObjects[i].id;
+	checkExistingId(generatedID){
+		for (let i = 0; i < this.userObjects.length; i++){
+			if (generatedID == this.userObjects[i].id){
+				return true;
+			} else {
+				return false;
 			}
 		}
-		return highestID;
-	}
-
-	generateId(){
-
-		let newId = this.getLastId() / 1;
-		newId += 1;
-		return newId;
 	}
 
 	saveUsers(newUserObject){
 		this.userObjects.push(newUserObject);
 		JSON._save('users.json', this.userObjects).then(function(){
-
 		});
 	}
 
@@ -142,7 +131,6 @@ class Signup {
 
 	checkValidName(){
 		if ($('#signup-name').val().length > 1) {
-
 			return true;
 		} else {
 			$('#signup-name').css({"border": "1px solid red"});
@@ -156,5 +144,4 @@ class Signup {
 		$('#signup-name').val('');
 		$('#signup-password').val('');
 	}
-
 }
