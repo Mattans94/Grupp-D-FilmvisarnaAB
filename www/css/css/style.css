@@ -399,12 +399,6 @@ header {
   text-align: center;
   margin: auto;
 }
-.regler {
-  margin: auto;
-}
-.regler h2 {
-  text-align: center;
-}
 .imgsalong {
   background: #991e1e;
   border-bottom: 14px solid #991e1e;
@@ -449,18 +443,21 @@ header {
 .separator {
   background-color: #991e1e;
   margin: auto;
-  width: 85%;
   height: 20px;
   box-shadow: 4px 4px 4px black;
   border-radius: 30px 10px;
   border-bottom: 14px solid #991e1e;
   border-top: 14px solid #991e1e;
 }
+.separator .card-title2 {
+  color: white;
+  text-align: center;
+}
 .infoombio {
   width: auto;
-}
-.infoombio .card {
-  min-height: 460px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px black;
 }
 .errorContainer {
   background-color: #949494;
