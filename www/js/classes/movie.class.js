@@ -1,5 +1,5 @@
 class Movie extends Base {
-  
+
   constructor(movieTitle){
     super();
     this.movieObject = this.getMovieObject(movieTitle);
@@ -56,7 +56,7 @@ class Movie extends Base {
         <div class="col-4 d-inline-block">${showTimeObject.auditorium}</div>
         <div class="col-3 d-inline-block pr-0">${showTimeObject.time}
           <a class="pop bookingTimeDate" href="${this.makeMovieLink(showTimeObject)}">
-            <div class="btn btn-danger pl-2 pr-2 book-btn float-right"><strong>Boka</strong></div>
+            <div class="btn btn-danger pl-2 pr-2 float-right"><strong>Boka</strong></div>
           </a>
         </div>
       </li>`
@@ -79,7 +79,7 @@ class Movie extends Base {
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
       </ol>
-      
+
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img class="d-block w-100" src="/img/slides/${movieObject.slides[0]}" alt="First slide">
