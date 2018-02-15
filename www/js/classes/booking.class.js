@@ -9,6 +9,9 @@ class Booking extends Base{
 		this.showObject = showObject;
 
 
+		Booking.latestBooking = this;
+
+
 		this.child=0;
 		this.adult=0;
 		this.pensioner=0;
@@ -129,7 +132,7 @@ class Booking extends Base{
 
 	eventHandler() {
 		$(document).on('click','.bookingConfirmation', () => {
-			if (this.reservedSeats > 0) {
+			if (Booking.latestBooking.reservedSeats > 0) {
 				this.bookingModal();
 			} else {
 				$('.noSeatsChosenMessage').html('Du måste boka minst en plats');
