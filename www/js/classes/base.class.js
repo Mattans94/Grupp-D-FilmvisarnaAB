@@ -64,7 +64,7 @@ class Base {
   }
 
   makeMovieLink(show){
-    let link = `${show.film.substr(0, 6)}${show.date}${show.time}`
+    let link = `${show.film.replace(' ', '').substr(0, 5)}${show.date}${show.time}`
     link = link.replace(".","-").replace(' ', '').replace('20', '').replace(/-/g, '');
     link = link.toLowerCase();
     return link;

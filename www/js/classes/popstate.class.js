@@ -51,7 +51,6 @@ class Popstate extends Base{
     }
 
     let url = location.pathname;
-
     let methodName = urls[url];
 
     this[methodName]();
