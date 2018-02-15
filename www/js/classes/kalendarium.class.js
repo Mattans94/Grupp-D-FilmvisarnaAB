@@ -7,11 +7,9 @@ class Kalendarium extends Base {
 		let month = date.slice(5, -3);
 		let day = date.slice(-2);
 		date = day + "/" + month;
-
 		for (let i = 0; i < date.length; i++) {
 			date = date.replace("0", "");
 		}
-
 		return date;
 	}
 
@@ -21,13 +19,11 @@ class Kalendarium extends Base {
   }
 
 	renderShowTime(movieTitle, theater, id){
-
 		let allShows = this.getTheater(theater, movieTitle);
 		let myLis = "";
 		for (let i = 0; i < 3; i++){
 			myLis += `<a href="${this.makeMovieLink(allShows[i])}"><li><div class="col-6 pr-0 d-inline">${this.makeSmallDate(allShows[i].date)}</div> <div class="col-6 d-inline pl-1 float-right">${allShows[i].time}</div></li></a>`
 		}
-
 		return `
 			<div class="collapseShowtime mb-2" role="tablist" class="mb-2">
 				<a data-toggle="collapse" href="#${id}" role="button" aria-expanded="true" aria-controls="collapseOne" class="collapsed">
@@ -46,8 +42,6 @@ class Kalendarium extends Base {
 						</div>
 					</div>
 			</div>
-
 		`
 	}
-	// Making dates into XX/XX
 }

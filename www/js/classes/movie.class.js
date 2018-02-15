@@ -116,5 +116,4 @@ class Movie extends Base {
   renderMovie() {
     this.render('main');
   }
-
 }

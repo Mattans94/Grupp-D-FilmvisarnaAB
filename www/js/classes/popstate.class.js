@@ -50,10 +50,7 @@ class Popstate extends Base{
       Object.assign(urls, {[dateAndTimeUrl] : target})
     }
 
-    console.log(urls);
-
     let url = location.pathname;
-    console.log(url);
 
     let methodName = urls[url];
 
@@ -94,7 +91,6 @@ class Popstate extends Base{
     }
     $('main').empty();
     let pathname = location.pathname;
-    console.log(pathname);
     let notConvertedDate = pathname.substr(6, 6);
     let notConvertedTime = pathname.substr(12, 4);
 
