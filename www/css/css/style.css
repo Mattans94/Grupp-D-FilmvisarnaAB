@@ -338,6 +338,7 @@ header {
 .myloginform h5,
 .myloggedinform h5 {
   text-align: center;
+  color: #3d3d3d;
 }
 .myloginform input,
 .myloggedinform input {
