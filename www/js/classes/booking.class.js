@@ -118,6 +118,7 @@ class Booking extends Base{
 		Booking.latestBooking.prices.calculateTotalPrice();
 		Booking.latestBooking.updateTotalPrice();
 		$('#modalInputContainer').empty();
+		$('#modalInputContainer').val('');
     let bookingModal = new BookingModal(Booking.latestBooking.showObject, Booking.latestBooking.prices.totalPrice, bookedSeats);
     $('#modalInputContainer').append(bookingModal.template());
 		bookingModal.render('#modalInputContainer')
@@ -133,7 +134,7 @@ class Booking extends Base{
 			}
 		});
 
-		let that = this;
+		let that = Booking.latestBooking;
 		$(document).on('click','.book-btn',function(){
 				let tempBookingObject = {};
 				JSON._load('booking').then((data) => {

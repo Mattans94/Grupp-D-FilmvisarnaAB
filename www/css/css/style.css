@@ -193,7 +193,7 @@ a:hover {
   background-color: #ccc;
 }
 .checkBoxContainer input:checked ~ .checkBoxMark {
-  background-color: #991e1e;
+  background-color: #2d9725;
 }
 .checkBoxMark:after {
   content: "";
@@ -206,7 +206,7 @@ a:hover {
 }
 .checkBoxContainer .checkBoxMark:after {
   left: 9px;
-  top: 2px;
+  top: 3px;
   width: 10px;
   height: 20px;
   border: solid white;
@@ -338,7 +338,7 @@ footer .myheight {
   transform: translate(-50%, -50%);
   color: white;
   pointer-events: none;
-  text-shadow: 1px 1px;
+  text-shadow: 3px 2px #000;
   margin-top: 25px;
   font-size: 30px;
   text-align: center;
