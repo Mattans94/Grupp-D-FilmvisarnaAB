@@ -280,7 +280,7 @@ class Theater extends Base{
 
 	getSeatsPerRow(theaterObject) {
 		let rowlength = theaterObject.seatsPerRow;
-		this.seatsStoran = rowlength;
+		this.theaterSeats = rowlength;
 		return rowlength;
 	}
 
@@ -291,13 +291,13 @@ class Theater extends Base{
 	}
 
 	setHeight(){
-		let fullHeight = this.seatsStoran.length * 55;
+		let fullHeight = this.theaterSeats.length * 55;
 		$('#theater').css('height', `${fullHeight}`);
 	}
 
 	setWidth(){
 		let longestRow = 0;
-		for (let rowLength of this.seatsStoran){
+		for (let rowLength of this.theaterSeats){
 			if (longestRow < rowLength) {
 				longestRow = rowLength;
 			}
@@ -331,8 +331,8 @@ class Theater extends Base{
 		let show = await this.getRichShow(this.showObject);
 
 
-		for (let row = 0; row < this.seatsStoran.length; row++) {
-			this.seatsPerRow = this.seatsStoran[row];
+		for (let row = 0; row < this.theaterSeats.length; row++) {
+			this.seatsPerRow = this.theaterSeats[row];
 			html += `<div class="d-flex flex-row-reverse justify-content-center flex-nowrap seat-row m-0">`;
 
 			for (let seat = 0; seat < this.seatsPerRow; seat++) {
