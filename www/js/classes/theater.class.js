@@ -29,163 +29,59 @@ class Theater extends Base{
 		this.renderTheater();
 	}
 
-
-	eventHandlers() {
-		// Andreas test
-		// $(document).on("mouseenter", '.seat', function() {
-		// 	let that = Theater.latestTheater;
-		// 	let seats = $('.seat');
-		// 	let thisSeatId = $(this).data('seatid');
-		// 	let thisRowId = $(this).data('rowid');
-		// 	let amount = that.booking.seatsTotal;
-    //
-		// 	let hovoredSeats = [];
-    //
-		// 	function isOdd(i) { return i % 2 == 1}
-		// 	function isOnSameRow(i) { return thisRowId == $(seats[i-1]).data('rowid'); }
-		// 	function isBooked(i) { return $(seats[i-1]).hasClass('booked'); }
-    //
-		// 	let onlyCheckLeft = false;
-		// 	let onlyCheckRight = false;
-    //
-    //
-		// 	for (let i = 0; i < amount; i++) {
-		// 		if (onlyCheckLeft == true && onlyCheckRight == true) { break; };
-		// 		let shouldDivideBy2 = !onlyCheckLeft && !onlyCheckRight;
-		// 		let seatToCheck = thisSeatId
-    //
-		// 		if ((isOdd(i) && onlyCheckLeft == false) || onlyCheckRight == true) {
-		// 			seatToCheck -= Math.ceil(i/ (shouldDivideBy2 ? 2 : 1));
-		// 		} else {
-		// 			seatToCheck += Math.ceil(i/ (shouldDivideBy2 ? 2 : 1));
-		// 		}
-    //
-		// 		let canPlace =  seatToCheck > 0 && seatToCheck <= seats.length;
-    //
-		// 		if (canPlace) {
-		// 			canPlace = isOnSameRow(seatToCheck);
-		// 		}
-		// 		if (canPlace) {
-		// 			canPlace = !isBooked(seatToCheck);
-		// 		}
-    //
-		// 		console.log(seatToCheck, canPlace);
-    //
-		// 		if (!canPlace) {
-		// 			if (isOdd(i)) {
-		// 				onlyCheckLeft = true;
-		// 			} else {
-		// 				onlyCheckRight = true;
-		// 			}
-    //
-		// 			amount -= (i-1)/2;
-		// 			i -= Math.ceil(i/2);
-		// 			continue;
-		// 		}
-		//    if (hovoredSeats.includes(seatToCheck)){ break; }
-		// 		hovoredSeats.push(seatToCheck);
-		// 	}
-    //
-		// 	console.log(hovoredSeats);
-    //
-    //
-		// });
-
+	manySeatsControl(){
 		$(document).on("mouseenter", '.seat', function() {
 			let that = Theater.latestTheater;
 			let $seat = $(this);
 			if (that.booking.seatsTotal >= 1) {
-
-				// if($seat.hasClass('booked')){return};
-				// if ($seat.hasClass('free') || $seat.hasClass('booked')){
-					let amount = that.booking.seatsTotal;
-					let $allPrev = $seat.prevAll();
-					// let $allNext = $seat.nextAll();
-					let  $seatsToSelect = [];
-					if ($(this).hasClass('booked')){
-						$seatsToSelect.push({'seat' : $seat, 'seatMark': 'booked'});
-					} else {
-						$seatsToSelect.push({'seat' : $seat, 'seatMark': 'free'});
-					}
-					let found = 1;
+				let amount = that.booking.seatsTotal;
+				let $allPrev = $seat.prevAll();
+				let  $seatsToSelect = [];
+				if ($(this).hasClass('booked') || amount > $allPrev.length + 1) {
+					$seatsToSelect.push({'seat' : $seat, 'seatMark': 'booked'});
+				} else {
+					$seatsToSelect.push({'seat' : $seat, 'seatMark': 'free'});
+				}
+				let found = 1;
 
 
-					$allPrev.each(function(){
-						 let $seat = $(this);
-						 if(found == amount){return;}
+				$allPrev.each(function(){
+					 let $seat = $(this);
+					 if(found == amount){return;}
+					  if(amount > $allPrev.length + 1) {
+							let $seatObj = {'seat' : $seat, 'seatMark': 'booked'}
+							$seatsToSelect.push($seatObj);
+							found++;
+					 } else {
 						 if($(this).hasClass('booked')){
 							 let $seatObj = {'seat' : $seat, 'seatMark': 'booked'}
 							 $seatsToSelect.push($seatObj);
 							 found++;
-						 }else{
+						 }else {
 							 let $seatObj = {'seat' : $seat, 'seatMark': 'free'}
 							 found++;
 							 $seatsToSelect.push($seatObj);
 						 }
-					})
+					 }
+				})
 
-					let bookedSeatCheck = $seatsToSelect.find((oneSeat) => 'booked' == oneSeat.seatMark);
+				let bookedSeatCheck = $seatsToSelect.find((oneSeat) => 'booked' == oneSeat.seatMark);
 
 
-						$seatsToSelect.forEach(function($seatObject){
-							if (bookedSeatCheck) {
-								$seatObject.seat.addClass('errorHoverSeat');
-								if ($seatObject.seat.hasClass('free')  ) {
-									$seatObject.seat.addClass('errorHoverFreeSeat');
-								}
-							}
-							else {
-								$seatObject.seat.addClass('hoverSeat');
+				$seatsToSelect.forEach(function($seatObject){
+					if (bookedSeatCheck) {
+						$seatObject.seat.addClass('errorHoverSeat');
+						if ($seatObject.seat.hasClass('free')  ) {
+							$seatObject.seat.addClass('errorHoverFreeSeat');
+						}
+					}
+					else {
+						$seatObject.seat.addClass('hoverSeat');
 
-							}
-					})
-				// }
+					}
+				})
 			}
 		});
-
-		///////////// original clickevent below that is working as designed from left to right ////////
-		// $(document).on("mouseenter", '.seat', function() {
-		// 	let that = Theater.latestTheater;
-		// 	let $seat = $(this);
-		// 	if (that.booking.seatsTotal >= 1) {
-
-		// 		if($seat.hasClass('booked')){return};
-		// 		if ($seat.hasClass('free')){
-		// 			let amount = that.booking.seatsTotal;
-		// 			let $allNext = $seat.prevAll();
-		// 			let $seatsToSelect = [{'seat' : $seat, 'seatMark': 'free'}];
-		// 			let found = 1;
-
-		// 			$allNext.each(function(){
-		// 				 let $seat = $(this);
-		// 				 if(found == amount){return;}
-		// 				 if($(this).hasClass('booked')){
-		// 					 let $seatObj = {'seat' : $seat, 'seatMark': 'booked'}
-		// 					 $seatsToSelect.push($seatObj);
-		// 					 found++;
-		// 				 }else{
-		// 					 let $seatObj = {'seat' : $seat, 'seatMark': 'free'}
-		// 					 found++;
-		// 					 $seatsToSelect.push($seatObj);
-		// 				 }
-		// 			})
-
-		// 			let bookedSeatCheck = $seatsToSelect.find((oneSeat) => 'booked' == oneSeat.seatMark);
-
-
-		// 				$seatsToSelect.forEach(function($seatObject){
-		// 					if (bookedSeatCheck) {
-		// 						$seatObject.seat.addClass('errorHoverSeat');
-		// 					}
-		// 					else {
-		// 						$seatObject.seat.addClass('hoverSeat');
-
-		// 					}
-		// 			})
-		// 		}
-		// 	}
-		// });
-
 
 		$(document).on("mouseleave", '.seat', function() {
 			let that = Theater.latestTheater;
@@ -224,15 +120,34 @@ class Theater extends Base{
 					$el.addClass('reserved');
 				});
 			}}
-});
+		});
+	}
+
+
+	eventHandlers() {
 
 
 
+		Theater.latestTheater.manySeatsControl();
 
-
-
-    //  Välja en-stol-kod här. Kanske ha en knapp som togglar denna?
-		//
+		// $(document).on("mouseenter", '.seat', function() {
+		// 	let that = Theater.latestTheater;
+		// 	let seat = $(this);
+		// 	if (seat.hasClass('booked')){
+		// 		seat.addClass('errorHoverSeat');
+		// 	} else {
+		// 		seat.addClass('hoverSeat');
+		// 	}
+		// })
+    //
+		// $(document).on("mouseleave", '.seat', function() {
+		// 	let that = Theater.latestTheater;
+		// 	$(this).prevAll().addBack().removeClass('hoverSeat errorHoverSeat errorHoverFreeSeat');
+		// });
+    //
+		// $(document).on("click", '.seat', function() {
+		// let that = Theater.latestTheater;
+		// let seat = $(this);
 		// 	if (that.booking.seatsTotal >= 1) {
 		// 		if (seat.hasClass('free') && !(that.booking.reservedSeats >= that.booking.seatsTotal)){
 		// 			seat.removeClass('free');
@@ -245,7 +160,7 @@ class Theater extends Base{
 		// 			that.booking.reservedSeats--;
 		// 		}
 		// 	}
-		// });
+		// })
 	}// end eventhandler
 
 

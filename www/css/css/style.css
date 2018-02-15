@@ -75,7 +75,7 @@ a:hover {
   height: 50px;
   border: 1px solid white;
   background-color: #949494;
-  border-radius: 15px 15px 0px 0px;
+  border-radius: 0px 0px 15px 15px;
   color: white;
   /*font-weight: bold;*/
   z-index: 5;

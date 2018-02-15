@@ -8,7 +8,6 @@ class Booking extends Base{
 		this.title = showObject.film;
 		this.showObject = showObject;
 
-
 		this.child=0;
 		this.adult=0;
 		this.pensioner=0;
@@ -23,7 +22,7 @@ class Booking extends Base{
 	}
 
 	start(){
-		this.eventHandler();
+		Booking.latestBooking.eventHandler();
 		this.checkForDisable();
 		this.updateTotalPrice();
 		this.updateTotalSeats();
@@ -110,14 +109,15 @@ class Booking extends Base{
 
 	bookingModal(){
 		let bookedSeats = [];
+
 		$('.seat.reserved').each(function(){
 			let seat = $(this);
 			let seatID = seat.data('seatid');
 			bookedSeats.push(seatID);
 		});
-		Booking.latestBooking.prices.calculateTotalPrice()
+		Booking.latestBooking.prices.calculateTotalPrice();
 		Booking.latestBooking.updateTotalPrice();
-		$('#modalInputContainer').val('');
+		$('#modalInputContainer').empty();
     let bookingModal = new BookingModal(Booking.latestBooking.showObject, Booking.latestBooking.prices.totalPrice, bookedSeats);
     $('#modalInputContainer').append(bookingModal.template());
 		bookingModal.render('#modalInputContainer')
@@ -127,7 +127,7 @@ class Booking extends Base{
 	eventHandler() {
 		$(document).on('click','.bookingConfirmation', () => {
 			if (Booking.latestBooking.reservedSeats > 0) {
-				this.bookingModal();
+				Booking.latestBooking.bookingModal();
 			} else {
 				$('.noSeatsChosenMessage').html('Du måste boka minst en plats!');
 			}
