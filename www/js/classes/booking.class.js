@@ -129,7 +129,7 @@ class Booking extends Base{
 			if (Booking.latestBooking.reservedSeats > 0) {
 				this.bookingModal();
 			} else {
-				$('.noSeatsChosenMessage').html('Du måste boka minst en plats');
+				$('.noSeatsChosenMessage').html('Du måste boka minst en plats!');
 			}
 		});
 
