@@ -9,13 +9,11 @@ class Booking extends Base{
 		this.showObject = showObject;
 
 
-		Booking.latestBooking = this;
-
-
 		this.child=0;
 		this.adult=0;
 		this.pensioner=0;
 		this.reservedSeats = 0;
+
 
 		JSON._load('booking').then((seats) => {
 	      this.bookedSeats = seats;
@@ -41,11 +39,7 @@ class Booking extends Base{
 		this.seatsTotal = (this.child + this.adult + this.pensioner);
 	}
 
-	resetSeatsTotal() {
-		this.child = 0;
-		this.adult = 0;
-		this.pensioner = 0;
-	}
+
 
 	returnGeneratedId(){
 		let generatedID;
@@ -111,7 +105,7 @@ class Booking extends Base{
 
 	resetBookingButtons(){
 		$('.seat').not('.booked').addClass('free').removeClass('reserved');
-		this.reservedSeats = 0;
+			this.reservedSeats = 0;
 	}
 
 	bookingModal(){
@@ -120,10 +114,11 @@ class Booking extends Base{
 			let seat = $(this);
 			let seatID = seat.data('seatid');
 			bookedSeats.push(seatID);
+			console.log(bookedSeats);
 		});
 		Booking.latestBooking.prices.calculateTotalPrice()
 		Booking.latestBooking.updateTotalPrice();
-		$('#modalInputContainer').val('');
+		$('#modalInputContainer').val('').empty();
     let bookingModal = new BookingModal(Booking.latestBooking.showObject, Booking.latestBooking.prices.totalPrice, bookedSeats);
     $('#modalInputContainer').append(bookingModal.template());
 		bookingModal.render('#modalInputContainer')
@@ -132,6 +127,8 @@ class Booking extends Base{
 
 	eventHandler() {
 		$(document).on('click','.bookingConfirmation', () => {
+			console.log(Booking.latestBooking.reservedSeats);
+			console.log(this.reservedSeats);
 			if (Booking.latestBooking.reservedSeats > 0) {
 				this.bookingModal();
 			} else {
@@ -207,10 +204,10 @@ class Booking extends Base{
 		})
 
 		$(document).on('click','.addbtn, .removebtn', () => {
-			this.myNumberOfSeatsCheck();
-			this.checkForDisable();
-			this.updateTotalPrice();
-			this.resetBookingButtons();
+			Booking.latestBooking.myNumberOfSeatsCheck();
+			Booking.latestBooking.checkForDisable();
+			Booking.latestBooking.updateTotalPrice();
+			Booking.latestBooking.resetBookingButtons();
 		})
 	}
 }

@@ -19,7 +19,7 @@ class Theater extends Base{
 			})
 		});
 
-	} 
+	}
 
 	start(){
 		this.getTheaterObject(this.auditorium);
@@ -206,6 +206,7 @@ class Theater extends Base{
 			  let $seatsToSelect = [$seat];
 			  let foundFirstBooked = false;
 			  let found = 1;
+				that.booking.reservedSeats++;
 
 				$allPrev.each(function(){
 			     if(foundFirstBooked || found == amount){return;}
