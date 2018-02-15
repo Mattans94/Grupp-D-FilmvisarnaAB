@@ -279,6 +279,8 @@ class Theater extends Base{
 			html += '</div>';
 		}
 		$('#theater').html(html);
+		$('html, body').animate({scrollTop: $('#theater').offset().top -200}, 500);
+	 
 		this.removeClassFreeFromBookedSeats();
 		this.scale();
 	}
