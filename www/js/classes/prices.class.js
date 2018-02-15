@@ -46,6 +46,7 @@ class Prices extends Base {
 
 		html += `
 			<div class="d-flex justify-content-end">
+			<p class="noSeatsChosenMessage align-self-center m-0 mr-2 text-danger"></p>
 				<button class="btn btn-danger bookingConfirmation">Boka nu!</button>
 			</div>`
 

@@ -23,14 +23,7 @@ class Popstate extends Base{
       href = that.makeUrl(href);
       history.pushState(null, null, href);
       //Call the change page function
-      if (href === '/Theater'){
-        let date = $(this).data('date');
-        let time = $(this).data('time');
-        let bookingShowObject = that.getBookingObject(date, time);
-        that.changePage(bookingShowObject);
-      }else {
-        that.changePage();
-      }
+      that.changePage();
       //Stop the browers from starting a page reload
       e.preventDefault();
     })};
@@ -39,7 +32,12 @@ class Popstate extends Base{
   changePage(bookingShowObject){
     //React on page changed, replace parts of DOM
     // get the current url
-    let url = location.pathname;
+
+    JSON._load('shows').then((shows) => {
+      Data.showObjects = shows;
+    });
+
+
 
     let urls = {
       '/' : 'startpage',
@@ -52,15 +50,22 @@ class Popstate extends Base{
       '/our_theaters': 'renderOurTheaters',
     }
 
+    for (let i = 0; i < Data.showObjects.length; i++){
+      let dateAndTimeUrl = `/${this.makeMovieLink(Data.showObjects[i])}`;
+      let target = 'theaterPage';
+      Object.assign(urls, {[dateAndTimeUrl] : target})
+    }
+
+    console.log(urls);
+
+    let url = location.pathname;
+    console.log(url);
+
     let methodName = urls[url];
 
-    // Checking if there is any movie coming into theater
-    if (url == "/Theater") {
-      this.theaterPage(bookingShowObject);
-    } else {
     this[methodName]();
+
     this.app.login.readSession();
-    }
     if(url == '/our_theaters') {
       $('main').removeClass('container').addClass('container-fluid');
     }
@@ -81,29 +86,41 @@ class Popstate extends Base{
     this.renderKalendarium();
   }
 
-  theaterPage(bookingShowObject){
+  theaterPage(){
+    function getDate(urlDate){
+      let year = '20' + urlDate.substr(0, 2);
+      let month = urlDate.substr(2, 2);
+      let day = urlDate.substr(4, 2);
+      return `${year}-${month}-${day}`
+    }
+    function getTime(urlTime){
+      let hours = urlTime.substr(0, 2);
+      let minutes = urlTime.substr(2, 2);
+      return `${hours}.${minutes}`;
+    }
     $('main').empty();
+    let pathname = location.pathname;
+    console.log(pathname);
+    let notConvertedDate = pathname.substr(6, 6);
+    let notConvertedTime = pathname.substr(12, 4);
 
+    let bookingShowObject = this.getBookingObject(getDate(notConvertedDate), getTime(notConvertedTime));
+    //     Loopa igenom json-show
+    // Om pathname tid + datum
+    // if (urlDate == mm.dtte) && urlTime -== json.time
     // if no show is sent with the rendering show error msg in first if statement
-    if (!bookingShowObject){
-      let error = new ErrorMessage();
-      error.render('main');
-    }else {
     // booking-showobject is the object that is being clicked when intilize theater
     let theater = new Theater(bookingShowObject);
-
+    //
     if (!this.eventHandlerSet) {
       theater.eventHandlers();
       this.eventHandlerSet = true;
-       
     }
-
-
+    //
     theater.render('main');
     $(window).on('resize',function(){
       theater.scale();
     });
-    }
   }
 
   // Movies

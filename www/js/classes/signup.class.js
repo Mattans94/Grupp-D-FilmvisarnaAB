@@ -10,6 +10,11 @@ class Signup {
 	eventHandlers(){
 
 		$("#signup-btn").on("click", () => {
+
+			JSON._load('users').then((users) => {
+				this.userObjects = users;
+			}).then(() => {
+
 			this.clearAllInputs();
 
 			let condition = this.validateAllChecks();
@@ -18,19 +23,15 @@ class Signup {
 				let tempObject = {};
 
 				tempObject.username = $("#signup-username").val();
-
 				tempObject.name = $("#signup-name").val();
-
 				tempObject.password = $("#signup-password").val();
-
-				tempObject.id = this.generateId();
-
+				tempObject.id = this.returnGeneratedId();
 				this.saveUsers(tempObject);
-
 
 				$(".user-created").show();
 				this.emptyInputs();
 				}
+			});
 
 
 		});
@@ -79,23 +80,33 @@ class Signup {
 
 	}
 
-	getLastId() {
+	returnGeneratedId(){
+		let generatedID;
+		do {
+			generatedID = this.generateUserId();
+		}	while (this.checkExistingId(generatedID));
 
-		let highestID = this.userObjects[0].id;
-
-		for(let i = 0; i < this.userObjects.length; i++){
-			if (this.userObjects[i].id > highestID) {
-				highestID = this.userObjects[i].id;
-			}
-		}
-		return highestID;
+		return generatedID;
 	}
 
-	generateId(){
+	generateUserId(){
+		let generatedID = '';
+		let allCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+		for (let i = 0; i < 12; i++) {
+			generatedID += allCharacters.charAt(Math.floor(Math.random() * allCharacters.length));
+		}
 
-		let newId = this.getLastId() / 1;
-		newId += 1;
-		return newId;
+		return generatedID;
+	}
+
+	checkExistingId(generatedID){
+		for (let i = 0; i < this.userObjects.length; i++){
+			if (generatedID == this.userObjects[i].id){
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 
 	saveUsers(newUserObject){
