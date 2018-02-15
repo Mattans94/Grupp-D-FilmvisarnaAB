@@ -1,10 +1,10 @@
 class Movie extends Base {
+  
   constructor(movieTitle){
     super();
     this.movieObject = this.getMovieObject(movieTitle);
     this.renderMovie();
     this.eventHandlers();
-
   }
 
   eventHandlers(){
@@ -19,9 +19,8 @@ class Movie extends Base {
         `<i class="fa fa-video-camera mr-2" aria-hidden="true"></i>Show slides`;
       })
     })
-
-
   };
+
 
   getActors(movieObject){
   	let actors = "";
@@ -114,9 +113,7 @@ class Movie extends Base {
     </div>`
   }
 
-  // Renders movie with template.
   renderMovie() {
     this.render('main');
   }
-
 }

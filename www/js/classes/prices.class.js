@@ -12,7 +12,7 @@ class Prices extends Base {
 
 		this.totalTickets = this.numberOfChildren + this.numberOfAdults + this.numberOfPensioners;
 		this.totalPrice = 0;
-	} //end constructor
+	}
 
 	start(){
 		this.ticketType;
@@ -57,4 +57,4 @@ class Prices extends Base {
 		this.totalPrice = (this.childObject.price * this.numberOfChildren) + (this.adultObject.price * this.numberOfAdults) + (this.pensionerObject.price  * this.numberOfPensioners);
 	}
 
-} // end class
+}

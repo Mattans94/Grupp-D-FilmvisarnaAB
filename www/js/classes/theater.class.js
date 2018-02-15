@@ -7,10 +7,7 @@ class Theater extends Base{
 		this.movieObject = this.getMovieObject(this.showObject.film);
 		this.booking = new Booking(this.showObject);
 
-		// Set the last created Theater as a static property
 		Theater.latestTheater = this;
-
-
 
 		JSON._load('theaters').then((theater) => {
 			this.theaterObjects = theater;
@@ -22,9 +19,7 @@ class Theater extends Base{
 			})
 		});
 
-
-
-	} //end
+	} 
 
 	start(){
 		this.getTheaterObject(this.auditorium);
@@ -32,15 +27,10 @@ class Theater extends Base{
 		this.setWidth();
 		this.setHeight();
 		this.renderTheater();
-
 	}
-
-	// Eventhandlers
 
 
 	eventHandlers() {
-
-
 		// Andreas test
 		// $(document).on("mouseenter", '.seat', function() {
 		// 	let that = Theater.latestTheater;
@@ -258,7 +248,6 @@ class Theater extends Base{
 	}// end eventhandler
 
 
-	// Finns redan i movie.class.js
 	convertMinutesToHours(movieObject){
 		let totalMinutes = movieObject.length;
 		let hours = Math.floor(totalMinutes / 60);
@@ -269,19 +258,13 @@ class Theater extends Base{
 	async getRichShow(theShow){
 	  let bookings = await JSON._load('booking');
 
-	  //let count = 0;
 		for(let booking of bookings){
-		  //
-		  // for(let show of shows){
-		  // 	// if(theShow && show != theShow){continue;}
-		  //   //count++;
 		    if(booking.show.date == theShow.date && booking.show.auditorium == theShow.auditorium && booking.show.time == theShow.time){
-		      //
+
 		      if(!theShow.bookedSeats){
 		        theShow.bookedSeats = [];
 		      }
 		      theShow.bookedSeats = [...theShow.bookedSeats, ...booking.show.bookedSeats]; // concat (merge) two arrays
-		      //
 		      theShow.bookedSeats = new Set(theShow.bookedSeats);
 		      theShow.bookedSeats = Array.from(theShow.bookedSeats);
 		    }
@@ -290,13 +273,10 @@ class Theater extends Base{
 	}
 
 
-
-	// Snyggt! Kommer kunna användas med det show-objektet som kommer in till constructorn
 	getTheaterObject(theaterName) {
 		this.theaterObject = this.theaterObjects.find((x) => theaterName == x.name);
 	}
 
-	// Vad betyder seatsStoran? Finns det bättre namn?
 	getSeatsPerRow(theaterObject) {
 		let rowlength = theaterObject.seatsPerRow;
 		this.seatsStoran = rowlength;
@@ -309,7 +289,6 @@ class Theater extends Base{
 		}
 	}
 
-	// Scaling
 	setHeight(){
 		let fullHeight = this.seatsStoran.length * 55;
 		$('#theater').css('height', `${fullHeight}`);
@@ -343,7 +322,6 @@ class Theater extends Base{
 	}
 
 
-	// Renders
 	async renderTheater() {
 		let html = `<img src="/img/transparent_theater.png" id="screenTransparenting">`;
 		let seatnumber=1;
@@ -373,4 +351,4 @@ class Theater extends Base{
 		this.scale();
 	}
 
-} //end class
+}

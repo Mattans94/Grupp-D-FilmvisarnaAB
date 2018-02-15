@@ -8,22 +8,20 @@ class Login extends Base{
 		this.readSession();
 	}
 
+
 	eventHandlers(){
 		$(document).on('click', '#myBookings-btn', () => {
 			if (!(this.session.id === null)){
 				this.getRightUserInfo();
+				}
 			}
-
-		});
-
+		);
 
 		$(document).on('click', '#login-btn', () => {
-
 			JSON._load('users').then((users) => {
      		this.userObjects = users;
    		})
    		.then(() => {
-
 				let username = $("#login-username").val();
 				let password = $("#login-password").val();
 				let condition = this.checkUsername($("#login-username").val());
@@ -32,8 +30,6 @@ class Login extends Base{
 				}
 
 				if (condition) {
-
-
 					let loggedInUserObject = this.getUserObject(username);
 					this.loggedInUser = Object.assign(this.loggedInUser, loggedInUserObject);
 					this.emptyInputs();
@@ -46,23 +42,17 @@ class Login extends Base{
 
 		$("#togglelogin-btn").on('click', function() {
 			let text = $(this).text();
-
 			$(this).text(text == "Skapa konto" ? "Logga in" : "Skapa konto");
 			$('.logintoggle').slideToggle(400);
 		});
-
 
 		$('.myAccBtn').on('click', function(){
 			$('.myloginform').fadeToggle(200);
 		});
 
-
 		$(document).on("click", "#logout-btn", () => {
 			this.logout();
-
 		});
-
-
 	}
 
 	async createSession(){
@@ -101,12 +91,9 @@ class Login extends Base{
 				return true;
 			}
 		}
-
 		if (condition == false) {
-
 			$('#login-username').css({"border": "1px solid red"});
 		}
-
 	}
 
 	getUserObject(username){
@@ -117,21 +104,18 @@ class Login extends Base{
 		let userObject = this.getUserObject(username);
 		let usernameCondition = false;
 		let passwordCondition = false;
-		if (username == userObject.username) {
 
+		if (username == userObject.username) {
 			usernameCondition = true;
 		} else {
-
 		}
-		if (password == userObject.password) {
 
+		if (password == userObject.password) {
 			passwordCondition = true;
 		} else {
-
 		}
 
 		if (usernameCondition && passwordCondition) {
-
 			$('#login-username').css({"border": "1px solid green"});
 			$('#login-password').css({"border": "1px solid green"});
 			return true;
@@ -141,12 +125,10 @@ class Login extends Base{
 			$('#login-password').css({"border": "1px solid red"});
 			return false;
 		}
-
 	}
 
 	isLoggedIn(){
 		if (this.loggedInUser.isLoggedIn) {
-
 			return true;
 		}
 	}
@@ -170,13 +152,10 @@ class Login extends Base{
 		myApp.loginform.render('.renderForm');
 	}
 
-
-	// Userpage no history yet
 	async getRightUserInfo(){
 		this.bookingObjects = await JSON._load('booking');
 		let loggedInId = this.session.id;
 		this.bookedUserShows = this.bookingObjects.filter((m) => loggedInId == m.show.userID);
-
 		this.checkIfBookingPassed();
 	}
 
@@ -202,7 +181,6 @@ class Login extends Base{
 				oldBookings.push(bookedShow);
 			}
 		});
-
 		this.renderLoginTemplate(newBookings, oldBookings)
 	}
 
@@ -233,7 +211,6 @@ class Login extends Base{
 					<p class="m-0"><span class="pl-0 col-3 d-inline-block mr-3">Order:</span> ${bookingArray[i].show.orderID}</p>
 				</div>
 			</div>
-
 		`
 		}
 		return html;
@@ -264,7 +241,4 @@ class Login extends Base{
 		</article>`
 		$('main').html(html);
 	}
-
-
-
 }
