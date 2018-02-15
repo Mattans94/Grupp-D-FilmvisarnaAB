@@ -345,7 +345,7 @@ class Theater extends Base{
 
 	// Renders
 	async renderTheater() {
-		let html = `<img src="/img/test.png" id="screenTransparenting">`;
+		let html = `<img src="/img/transparent_theater.png" id="screenTransparenting">`;
 		let seatnumber=1;
 		let seatStatus = 'free';
 
