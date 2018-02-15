@@ -51,14 +51,15 @@ class Popstate extends Base{
     }
 
     for (let i = 0; i < Data.showObjects.length; i++){
-      let dateUrl = Data.showObjects[i].date;
-      let timeUrl = Data.showObjects[i].time;
-      let dateAndTimeUrl = '/' + dateUrl + '-' + timeUrl.replace('.', '-');
+      let dateAndTimeUrl = `/${this.makeMovieLink(Data.showObjects[i])}`;
       let target = 'theaterPage';
       Object.assign(urls, {[dateAndTimeUrl] : target})
     }
 
+    console.log(urls);
+
     let url = location.pathname;
+    console.log(url);
 
     let methodName = urls[url];
 
@@ -86,11 +87,24 @@ class Popstate extends Base{
   }
 
   theaterPage(){
+    function getDate(urlDate){
+      let year = '20' + urlDate.substr(0, 2);
+      let month = urlDate.substr(2, 2);
+      let day = urlDate.substr(4, 2);
+      return `${year}-${month}-${day}`
+    }
+    function getTime(urlTime){
+      let hours = urlTime.substr(0, 2);
+      let minutes = urlTime.substr(2, 2);
+      return `${hours}.${minutes}`;
+    }
     $('main').empty();
     let pathname = location.pathname;
-    let urlDate = pathname.substr(1, 10);
-    let urlTime = pathname.substr(12, 5).replace('-', '.');
-    let bookingShowObject = this.getBookingObject(urlDate, urlTime);
+    console.log(pathname);
+    let notConvertedDate = pathname.substr(6, 6);
+    let notConvertedTime = pathname.substr(12, 4);
+
+    let bookingShowObject = this.getBookingObject(getDate(notConvertedDate), getTime(notConvertedTime));
     //     Loopa igenom json-show
     // Om pathname tid + datum
     // if (urlDate == mm.dtte) && urlTime -== json.time

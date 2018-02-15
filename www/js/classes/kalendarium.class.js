@@ -21,11 +21,11 @@ class Kalendarium extends Base {
   }
 
 	renderShowTime(movieTitle, theater, id){
+
 		let allShows = this.getTheater(theater, movieTitle);
 		let myLis = "";
-
 		for (let i = 0; i < 3; i++){
-			myLis += `<li><a href="${allShows[i].date}-${allShows[i].time.replace(".","-")}"><div class="col-6 pr-0 d-inline">${this.makeSmallDate(allShows[i].date)}</div> <div class="col-6 d-inline pl-1 float-right">${allShows[i].time}</div></a></li>`
+			myLis += `<li><a href="${this.makeMovieLink(allShows[i])}"><div class="col-6 pr-0 d-inline">${this.makeSmallDate(allShows[i].date)}</div> <div class="col-6 d-inline pl-1 float-right">${allShows[i].time}</div></a></li>`
 		}
 
 		return `

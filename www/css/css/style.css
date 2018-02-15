@@ -68,6 +68,21 @@ a:hover {
 .collapseShowtime .listShowTimes li:nth-child(even):hover {
   background-color: #e24857;
 }
+#seat {
+  font-size: 0.65em;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid white;
+  background-color: #949494;
+  border-radius: 15px 15px 0px 0px;
+  color: white;
+  /*font-weight: bold;*/
+  z-index: 5;
+}
+#seat .free {
+  cursor: pointer;
+}
 .booked {
   background-color: #991e1e !important;
 }
@@ -83,17 +98,6 @@ a:hover {
 }
 .errorHoverFreeSeat {
   background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #55bf4d 10px, #55bf4d 20px) !important;
-#seat {
-  font-size: 0.65em;
-  text-align: center;
-  width: 50px;
-  height: 50px;
-  border: 1px solid white;
-  background-color: #949494;
-  border-radius: 15px 15px 0px 0px;
-  color: white;
-  /*font-weight: bold;*/
-  z-index: 5;
 }
 #theaterBackground {
   position: relative;
