@@ -22,7 +22,7 @@ class Kalendarium extends Base {
 		let allShows = this.getTheater(theater, movieTitle);
 		let myLis = "";
 		for (let i = 0; i < 3; i++){
-			myLis += `<a href="${this.makeMovieLink(allShows[i])}"><li><div class="col-6 pl-0 pl-sm-3 pl-lg-1 pl-xl-2 pr-0 d-inline">${this.makeSmallDate(allShows[i].date)}</div> <div class="col-6 d-inline pl-1 float-right">${allShows[i].time}</div></li></a>`
+			myLis += `<a href="${this.makeTheaterUrl(allShows[i])}"><li><div class="col-6 pr-0 d-inline">${this.makeSmallDate(allShows[i].date)}</div> <div class="col-6 d-inline pl-1 float-right">${allShows[i].time}</div></li></a>`
 		}
 		return `
 			<div class="collapseShowtime mb-2" role="tablist" class="mb-2">

@@ -55,7 +55,7 @@ class Movie extends Base {
         <div class="col-4 d-inline-block">${showTimeObject.date}</div>
         <div class="col-4 d-inline-block">${showTimeObject.auditorium}</div>
         <div class="col-3 d-inline-block pr-0">${showTimeObject.time}
-          <a class="pop bookingTimeDate" href="${this.makeMovieLink(showTimeObject)}">
+          <a class="pop bookingTimeDate" href="${this.makeTheaterUrl(showTimeObject)}">
             <div class="btn btn-danger pl-2 pr-2 book-btn float-right"><strong>Boka</strong></div>
           </a>
         </div>

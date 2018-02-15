@@ -45,7 +45,7 @@ class Popstate extends Base{
     }
 
     for (let i = 0; i < Data.showObjects.length; i++){
-      let dateAndTimeUrl = `/${this.makeMovieLink(Data.showObjects[i])}`;
+      let dateAndTimeUrl = `/${this.makeTheaterUrl(Data.showObjects[i])}`;
       let target = 'theaterPage';
       Object.assign(urls, {[dateAndTimeUrl] : target})
     }
