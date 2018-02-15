@@ -26,7 +26,7 @@ class Booking extends Base{
 		this.eventHandler();
 		this.checkForDisable();
 		this.updateTotalPrice();
-		this.myNumberOfSeatsCheck();
+		this.updateTotalSeats();
 	}
 
 	updateTotalPrice(){
@@ -35,7 +35,7 @@ class Booking extends Base{
 		this.prices.renderTotalAmount();
 	}
 
-	myNumberOfSeatsCheck() {
+	updateTotalSeats() {
 		this.seatsTotal = (this.child + this.adult + this.pensioner);
 	}
 
@@ -201,10 +201,10 @@ class Booking extends Base{
 		})
 
 		$(document).on('click','.addbtn, .removebtn', () => {
-			Booking.latestBooking.myNumberOfSeatsCheck();
-			Booking.latestBooking.checkForDisable();
-			Booking.latestBooking.updateTotalPrice();
-			Booking.latestBooking.resetBookingButtons();
+			this.updateTotalSeats();
+			this.checkForDisable();
+			this.updateTotalPrice();
+			this.resetBookingButtons();
 		})
 	}
 }

@@ -63,7 +63,7 @@ class Base {
     return rightShowTime;
   }
 
-  makeMovieLink(show){
+  makeTheaterUrl(show){
     let link = `${show.film.replace(' ', '').substr(0, 5)}${show.date}${show.time}`
     link = link.replace(".","-").replace(' ', '').replace('20', '').replace(/-/g, '');
     link = link.toLowerCase();
