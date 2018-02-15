@@ -26,6 +26,9 @@ class Popstate extends Base{
       e.preventDefault();
     })};
 
+  scrollToTop(){
+    $('html,body').scrollTop(0);
+  }
 
   changePage(bookingShowObject){
     JSON._load('shows').then((shows) => {
@@ -54,7 +57,7 @@ class Popstate extends Base{
     let methodName = urls[url];
 
     this[methodName]();
-
+    this.scrollToTop();
     this.app.login.readSession();
     if(url == '/our_theaters') {
       $('main').removeClass('container').addClass('container-fluid');

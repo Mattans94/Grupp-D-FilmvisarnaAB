@@ -121,7 +121,7 @@ class Booking extends Base{
 		$('#modalInputContainer').val('');
     let bookingModal = new BookingModal(Booking.latestBooking.showObject, Booking.latestBooking.prices.totalPrice, bookedSeats);
     $('#modalInputContainer').append(bookingModal.template());
-		bookingModal.render('#modalInputContainer')
+		bookingModal.render('#modalInputContainer');
 		$('#bookingConfirmationModalToggler').trigger('click');
   }
 

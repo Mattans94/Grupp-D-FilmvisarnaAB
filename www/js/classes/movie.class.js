@@ -9,6 +9,11 @@ class Movie extends Base {
 
   eventHandlers(){
     let that = this;
+
+    $('.accordionToggleAnchorTag').on('click', function(){
+      $('html, body').animate({scrollTop: $('#accordion').offset().top}, 500);
+    })
+
     $('.showtrailer').on('click', function(){
       $('.slide').toggleClass('d-none');
       $('.trailer').toggleClass('d-none');
