@@ -297,7 +297,7 @@ header {
   list-style: none;
   margin-left: -40px;
 }
-.collapseShowtime .listShowTimes li:nth-child(odd) {
+.collapseShowtime .listShowTimes a:nth-child(odd) li {
   background-color: #949494;
   color: #000;
 }
