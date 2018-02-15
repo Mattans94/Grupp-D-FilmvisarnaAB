@@ -18,7 +18,8 @@ Object.assign(Theater.prototype, { template(){ return `
 
 	<div class="ticketrepresentation">
 
-		<div class="ticketholder bg-dark p-4 pb-2">
+
+		<div class="ticketholder bg-dark pl-4 pr-4 pt-4 pb-2">
 			<div class="d-flex flex-nowrap flex-column flex-md-row justify-content-md-around align-items-center">
 				<div class="text-center text-md-left">
 					<p class="text-white mb-0">Ordinarie</p>
@@ -36,7 +37,7 @@ Object.assign(Theater.prototype, { template(){ return `
 					<div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 						<div class="btn-group mr-2" role="group" aria-label="child group">
 							<button type="button" class="btn btn-danger removebtn" id="removechild"><strong>-</strong></button>
-							<input disabled type="text" class="form-control" id="childTickets" placeholder="${this.booking.child}"></input>
+							<input disabled type="text" class="form-control" id="childTickets" placeholder="${this.booking.child}">
 							<button type="button" class="btn btn-danger addbtn" id="addchild"><strong>+</strong></button>
 						</div>
 					</div>
@@ -53,10 +54,19 @@ Object.assign(Theater.prototype, { template(){ return `
 					</div>
 				</div>
 			</div>
+			<div class="d-flex justify-content-between flex-nowrap mt-3 flex-column flex-sm-row align-items-center align-items-sm-stretch">
+				<div class="text-center text-md-left">
+					<small class="text-danger"> Max 8 biljetter per bokning
+					</small>
+				</div>
+				<div class="form-check d-flex bigCheckBoxContainer mt-3 mt-sm-0 mr-lg-5">
+					<h4 class="text-light mr-2 mr-lg-3">Skilda platser</h4>
+					<label class="form-check-label text-white checkBoxContainer" for="oneSeatPicker">
+						<input class="form-check-input" type="checkbox" value="" id="oneSeatPicker">
+						<span class="checkBoxMark"></span>
+					</label>
 
-			<div class="text-center text-md-left">
-				<small class="text-danger"> Max 8 biljetter per bokning
-				</small>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -121,3 +121,59 @@
 #theater {
   transform-origin: 0 0;
 }
+
+.checkBoxContainer {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+	input {
+	  position: absolute;
+	  opacity: 0;
+	  cursor: pointer;
+	}
+
+	.checkBoxMark {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  height: 32px;
+	  width: 32px;
+	  background-color: #eee;
+	}
+}
+
+.checkBoxContainer:hover input ~ .checkBoxMark {
+  background-color: #ccc;
+}
+
+.checkBoxContainer input:checked ~ .checkBoxMark {
+  background-color: @mainRed;
+}
+
+.checkBoxMark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkBoxContainer input:checked ~ .checkBoxMark:after {
+  display: block;
+}
+
+.checkBoxContainer .checkBoxMark:after {
+  left: 9px;
+  top: 2px;
+  width: 10px;
+  height: 20px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

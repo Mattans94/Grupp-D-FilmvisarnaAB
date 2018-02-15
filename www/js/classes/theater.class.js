@@ -29,138 +29,154 @@ class Theater extends Base{
 		this.renderTheater();
 	}
 
-	manySeatsControl(){
-		$(document).on("mouseenter", '.seat', function() {
-			let that = Theater.latestTheater;
-			let $seat = $(this);
-			if (that.booking.seatsTotal >= 1) {
-				let amount = that.booking.seatsTotal;
-				let $allPrev = $seat.prevAll();
-				let  $seatsToSelect = [];
-				if ($(this).hasClass('booked') || amount > $allPrev.length + 1) {
-					$seatsToSelect.push({'seat' : $seat, 'seatMark': 'booked'});
-				} else {
-					$seatsToSelect.push({'seat' : $seat, 'seatMark': 'free'});
-				}
-				let found = 1;
 
 
-				$allPrev.each(function(){
-					 let $seat = $(this);
-					 if(found == amount){return;}
-					  if(amount > $allPrev.length + 1) {
-							let $seatObj = {'seat' : $seat, 'seatMark': 'booked'}
-							$seatsToSelect.push($seatObj);
-							found++;
-					 } else {
-						 if($(this).hasClass('booked')){
-							 let $seatObj = {'seat' : $seat, 'seatMark': 'booked'}
-							 $seatsToSelect.push($seatObj);
-							 found++;
-						 }else {
-							 let $seatObj = {'seat' : $seat, 'seatMark': 'free'}
-							 found++;
-							 $seatsToSelect.push($seatObj);
-						 }
-					 }
-				})
-
-				let bookedSeatCheck = $seatsToSelect.find((oneSeat) => 'booked' == oneSeat.seatMark);
-
-
-				$seatsToSelect.forEach(function($seatObject){
-					if (bookedSeatCheck) {
-						$seatObject.seat.addClass('errorHoverSeat');
-						if ($seatObject.seat.hasClass('free')  ) {
-							$seatObject.seat.addClass('errorHoverFreeSeat');
-						}
-					}
-					else {
-						$seatObject.seat.addClass('hoverSeat');
-
-					}
-				})
-			}
-		});
-
-		$(document).on("mouseleave", '.seat', function() {
-			let that = Theater.latestTheater;
-			$(this).prevAll().addBack().removeClass('hoverSeat errorHoverSeat errorHoverFreeSeat');
-		});
-
-		$(document).on("click", '.seat', function() {
-			let that = Theater.latestTheater;
-			that.booking.resetBookingButtons();
-			let $seat = $(this);
-
-			if (that.booking.seatsTotal >= 1) {
-
-				if($seat.hasClass('booked')){return};
-				if ($seat.hasClass('free') && !(that.booking.reservedSeats >= that.booking.seatsTotal)){
-				let amount = that.booking.seatsTotal;
-				let $allPrev = $seat.prevAll();
-			  let $seatsToSelect = [$seat];
-			  let foundFirstBooked = false;
-			  let found = 1;
-				that.booking.reservedSeats++;
-
-				$allPrev.each(function(){
-			     if(foundFirstBooked || found == amount){return;}
-			     if($(this).hasClass('booked')){
-			       foundFirstBooked = true;
-			     }else{
-			       found++;
-						 that.booking.reservedSeats++;
-			       $seatsToSelect.push($(this));
-			     }
-			  });
-
-				if(found<amount){return;}
-				$seatsToSelect.forEach(function($el){
-					$el.addClass('reserved');
-				});
-			}}
-		});
-	}
 
 
 	eventHandlers() {
+		manySeatsControl();
+
+		$(document).on('change', '#oneSeatPicker', function() {
+			let that = Theater.latestTheater;
+			that.booking.resetBookingButtons();
+			if(this.checked){
+				oneSeatControl();
+			} else {
+				manySeatsControl();
+			}
+		});
+
+		function oneSeatControl(){
+			$(document).off('mouseenter mouseleave click', '.seat');
+			$(document).on("mouseenter", '.seat', function() {
+				let that = Theater.latestTheater;
+				let seat = $(this);
+				if (seat.hasClass('booked')){
+					seat.addClass('errorHoverSeat');
+				} else {
+					seat.addClass('hoverSeat');
+				}
+			})
+
+			$(document).on("mouseleave", '.seat', function() {
+				let that = Theater.latestTheater;
+				$(this).prevAll().addBack().removeClass('hoverSeat errorHoverSeat errorHoverFreeSeat');
+			});
+
+			$(document).on("click", '.seat', function() {
+			let that = Theater.latestTheater;
+			let seat = $(this);
+				if (that.booking.seatsTotal >= 1) {
+					if (seat.hasClass('free') && !(that.booking.reservedSeats >= that.booking.seatsTotal)){
+						seat.removeClass('free');
+						seat.addClass('reserved');
+
+						that.booking.reservedSeats++;
+					} else if (seat.hasClass('reserved')){
+						seat.removeClass('reserved');
+						seat.addClass('free');
+						that.booking.reservedSeats--;
+					}
+				}
+			})
+		}
+
+		function manySeatsControl(){
+			$(document).off('mouseenter mouseleave click', '.seat');
+			$(document).on("mouseenter", '.seat', function() {
+				let that = Theater.latestTheater;
+				let $seat = $(this);
+				if (that.booking.seatsTotal >= 1) {
+					let amount = that.booking.seatsTotal;
+					let $allPrev = $seat.prevAll();
+					let  $seatsToSelect = [];
+					if ($(this).hasClass('booked') || amount > $allPrev.length + 1) {
+						$seatsToSelect.push({'seat' : $seat, 'seatMark': 'booked'});
+					} else {
+						$seatsToSelect.push({'seat' : $seat, 'seatMark': 'free'});
+					}
+					let found = 1;
 
 
+					$allPrev.each(function(){
+						 let $seat = $(this);
+						 if(found == amount){return;}
+						  if(amount > $allPrev.length + 1) {
+								let $seatObj = {'seat' : $seat, 'seatMark': 'booked'}
+								$seatsToSelect.push($seatObj);
+								found++;
+						 } else {
+							 if($(this).hasClass('booked')){
+								 let $seatObj = {'seat' : $seat, 'seatMark': 'booked'}
+								 $seatsToSelect.push($seatObj);
+								 found++;
+							 }else {
+								 let $seatObj = {'seat' : $seat, 'seatMark': 'free'}
+								 found++;
+								 $seatsToSelect.push($seatObj);
+							 }
+						 }
+					})
 
-		Theater.latestTheater.manySeatsControl();
+					let bookedSeatCheck = $seatsToSelect.find((oneSeat) => 'booked' == oneSeat.seatMark);
 
-		// $(document).on("mouseenter", '.seat', function() {
-		// 	let that = Theater.latestTheater;
-		// 	let seat = $(this);
-		// 	if (seat.hasClass('booked')){
-		// 		seat.addClass('errorHoverSeat');
-		// 	} else {
-		// 		seat.addClass('hoverSeat');
-		// 	}
-		// })
-    //
-		// $(document).on("mouseleave", '.seat', function() {
-		// 	let that = Theater.latestTheater;
-		// 	$(this).prevAll().addBack().removeClass('hoverSeat errorHoverSeat errorHoverFreeSeat');
-		// });
-    //
-		// $(document).on("click", '.seat', function() {
-		// let that = Theater.latestTheater;
-		// let seat = $(this);
-		// 	if (that.booking.seatsTotal >= 1) {
-		// 		if (seat.hasClass('free') && !(that.booking.reservedSeats >= that.booking.seatsTotal)){
-		// 			seat.removeClass('free');
-		// 			seat.addClass('reserved');
-    //
-		// 			that.booking.reservedSeats++;
-		// 		} else if (seat.hasClass('reserved')){
-		// 			seat.removeClass('reserved');
-		// 			seat.addClass('free');
-		// 			that.booking.reservedSeats--;
-		// 		}
-		// 	}
-		// })
+
+					$seatsToSelect.forEach(function($seatObject){
+						if (bookedSeatCheck) {
+							$seatObject.seat.addClass('errorHoverSeat');
+							if ($seatObject.seat.hasClass('free')  ) {
+								$seatObject.seat.addClass('errorHoverFreeSeat');
+							}
+						}
+						else {
+							$seatObject.seat.addClass('hoverSeat');
+
+						}
+					})
+				}
+			});
+
+			$(document).on("mouseleave", '.seat', function() {
+				let that = Theater.latestTheater;
+				$(this).prevAll().addBack().removeClass('hoverSeat errorHoverSeat errorHoverFreeSeat');
+			});
+
+			$(document).on("click", '.seat', function() {
+				let that = Theater.latestTheater;
+				that.booking.resetBookingButtons();
+				let $seat = $(this);
+
+				if (that.booking.seatsTotal >= 1) {
+
+					if($seat.hasClass('booked')){return};
+					if ($seat.hasClass('free') && !(that.booking.reservedSeats >= that.booking.seatsTotal)){
+					let amount = that.booking.seatsTotal;
+					let $allPrev = $seat.prevAll();
+				  let $seatsToSelect = [$seat];
+				  let foundFirstBooked = false;
+				  let found = 1;
+					that.booking.reservedSeats++;
+
+					$allPrev.each(function(){
+				     if(foundFirstBooked || found == amount){return;}
+				     if($(this).hasClass('booked')){
+				       foundFirstBooked = true;
+				     }else{
+				       found++;
+							 that.booking.reservedSeats++;
+				       $seatsToSelect.push($(this));
+				     }
+				  });
+
+					if(found<amount){return;}
+					$seatsToSelect.forEach(function($el){
+						$el.addClass('reserved');
+					});
+				}}
+			});
+		}
+
+
 	}// end eventhandler
 
 
