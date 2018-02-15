@@ -114,7 +114,6 @@ class Booking extends Base{
 			let seat = $(this);
 			let seatID = seat.data('seatid');
 			bookedSeats.push(seatID);
-			console.log(bookedSeats);
 		});
 		Booking.latestBooking.prices.calculateTotalPrice()
 		Booking.latestBooking.updateTotalPrice();
@@ -127,8 +126,6 @@ class Booking extends Base{
 
 	eventHandler() {
 		$(document).on('click','.bookingConfirmation', () => {
-			console.log(Booking.latestBooking.reservedSeats);
-			console.log(this.reservedSeats);
 			if (Booking.latestBooking.reservedSeats > 0) {
 				this.bookingModal();
 			} else {
