@@ -1,3 +1,47 @@
 [
-  
+  {
+    "show": {
+      "date": "2018-02-03",
+      "auditorium": "Lilla Salongen",
+      "film": "Let The Sunshine In",
+      "time": "21.00",
+      "bookedSeats": [
+        1,
+        2,
+        3
+      ],
+      "userID": "4ARVGJUZn77h",
+      "orderID": "QW32zlGEk"
+    }
+  },
+  {
+    "show": {
+      "date": "2018-02-13",
+      "auditorium": "Lilla Salongen",
+      "film": "Call Me By Your Name",
+      "time": "21.00",
+      "bookedSeats": [
+        1,
+        2,
+        3
+      ],
+      "userID": "4ARVGJUZn77h",
+      "orderID": "3s4sl2Q3T"
+    }
+  },
+  {
+    "show": {
+      "date": "2018-03-03",
+      "auditorium": "Lilla Salongen",
+      "film": "Tjuren Ferdinand",
+      "time": "22.40",
+      "bookedSeats": [
+        1,
+        2,
+        3
+      ],
+      "userID": "4ARVGJUZn77h",
+      "orderID": "MQOWRAGEk"
+    }
+  }
 ]
