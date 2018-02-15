@@ -226,9 +226,9 @@ class Login extends Base{
 					<div class="col-12">
 						${this.renderEachShow(newBookings)}
 					</div>
-
 				</div>
 			</div>
+
 			<div class="col-12 col-lg-6 mt-5 pl-2">
 				<h3 class="redHeader m-0 col-12 mb-3 text-center">Historik</h3>
 				<div class="errorContainer d-flex justify-content-between flex-wrap flex-lg-nowrap">
@@ -237,7 +237,6 @@ class Login extends Base{
 					</div>
 				</div>
 			</div>
-
 		</article>`
 		$('main').html(html);
 	}

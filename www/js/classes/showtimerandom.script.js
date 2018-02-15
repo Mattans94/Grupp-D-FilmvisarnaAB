@@ -7,7 +7,8 @@ class Showtime{
     this.myArrayOfObjects = [];
     this.randomWriteObjectsToArray();
     this.saveToJSON(this.myArrayOfObjects);
-      }
+  }
+  
   randomMovie() {
     let rnd = Math.floor(Math.random() * 6);
     return this.movieNames[rnd];
@@ -21,8 +22,6 @@ class Showtime{
   randomWriteObjectsToArray() {
     let currentDate;
     let myDateCo = 1;
-
-
     for (let j = 0; j < 28; j++){
       if (myDateCo < 10) {
         currentDate = '2018-03-0'+myDateCo; 
@@ -30,7 +29,6 @@ class Showtime{
         currentDate = '2018-03-'+myDateCo;
       }
       myDateCo++;
-
       for (let i = 0; i < 3; i++) {
         let tempObject = {};
         tempObject.date = currentDate;
@@ -38,17 +36,14 @@ class Showtime{
         tempObject.film = this.randomMovie();
         tempObject.time = this.times[i];
         tempObject.bookedSeats = [];
-
         this.myArrayOfObjects.push(tempObject);
       }
     }
   }
-
 
   saveToJSON(object){
     JSON._save('shows.json', {
       object
     });
   }
-
 }
