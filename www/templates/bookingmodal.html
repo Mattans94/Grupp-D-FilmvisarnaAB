@@ -60,6 +60,7 @@ Object.assign(BookingModal.prototype, { template(){ return `
             </div>
             <div class="col-12 col-md-7 col-lg-10 text-light">
               <h4>${this.movie}</h4>
+              <p class="mb-1"><span class="pl-0 col-5 d-inline-block mr-3">Bokningsnummer:</span> ${this.orderID}</p>
               <p class="mb-1"><span class="pl-0 col-5 d-inline-block mr-3">Salong:</span> ${this.auditorium}</p>
               <p class="mb-1"><span class="pl-0 col-5 d-inline-block mr-3">Datum:</span> ${this.date}</p>
               <p class="mb-1"><span class="pl-0 col-5 d-inline-block mr-3">Tid:</span> ${this.time}</p>

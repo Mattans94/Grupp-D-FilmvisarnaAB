@@ -7,6 +7,7 @@ class Booking extends Base{
 		this.auditorium = showObject.auditorium;
 		this.title = showObject.film;
 		this.showObject = showObject;
+		this.orderID;
 
 		this.child=0;
 		this.adult=0;
@@ -119,22 +120,23 @@ class Booking extends Base{
 		Booking.latestBooking.updateTotalPrice();
 		$('#modalInputContainer').empty();
 		$('#modalInputContainer').val('');
-    let bookingModal = new BookingModal(Booking.latestBooking.showObject, Booking.latestBooking.prices.totalPrice, bookedSeats);
-    $('#modalInputContainer').append(bookingModal.template());
-		bookingModal.render('#modalInputContainer');
+    Booking.latestBooking.modal = new BookingModal(Booking.latestBooking.showObject, Booking.latestBooking.prices.totalPrice, bookedSeats, Booking.latestBooking.orderID);
+    $('#modalInputContainer').append(Booking.latestBooking.modal.template());
+		Booking.latestBooking.modal.render('#modalInputContainer');
 		$('#bookingConfirmationModalToggler').trigger('click');
   }
 
 	eventHandler() {
+		let that = Booking.latestBooking;
 		$(document).on('click','.bookingConfirmation', () => {
-			if (Booking.latestBooking.reservedSeats > 0) {
-				Booking.latestBooking.bookingModal();
+			if (that.reservedSeats > 0) {
+				that.orderID = that.returnGeneratedId();
+				that.bookingModal();
 			} else {
 				$('.noSeatsChosenMessage').html('Du måste boka minst en plats!');
 			}
 		});
 
-		let that = Booking.latestBooking;
 		$(document).on('click','.book-btn',function(){
 				let tempBookingObject = {};
 				JSON._load('booking').then((data) => {
@@ -151,8 +153,9 @@ class Booking extends Base{
 					} else {
 					tempBookingObject.show = that.showObject;
 					tempBookingObject.show.userID = that.loggedInUser.id;
-					tempBookingObject.show.orderID = that.returnGeneratedId();
+					tempBookingObject.show.orderID = that.orderID;
 					tempBookingObject.show.bookedSeats = [];
+
 
 					$('.seat.reserved').each(function(){
 						let seat = $(this);
@@ -166,6 +169,7 @@ class Booking extends Base{
 					JSON._save('shows', Data.showObjects);
 					$('#bookingConfirmationModalToggler').trigger('click');
 					$('#bookingConfirmedModalToggler').trigger('click');
+					console.log(that.bookingModal.orderId);
 					}
 				})
 			})});

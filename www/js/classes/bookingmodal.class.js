@@ -1,5 +1,5 @@
 class BookingModal extends Base {
-  constructor(showObject, totalPrice, bookedSeats){
+  constructor(showObject, totalPrice, bookedSeats, orderID){
 		super();
     this.movie = showObject.film;
     this.auditorium = showObject.auditorium;
@@ -8,6 +8,7 @@ class BookingModal extends Base {
     this.totalPrice = totalPrice;
     this.bookedSeats = bookedSeats;
     this.movieObject = this.getMovieObject(showObject.film);
+    this.orderID = orderID;
 	}
 
   getAllSeats(){

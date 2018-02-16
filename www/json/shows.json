@@ -32,10 +32,7 @@
     "auditorium": "Lilla Salongen",
     "film": "The Party",
     "time": "21.00",
-    "bookedSeats": [
-      18,
-      19
-    ]
+    "bookedSeats": []
   },
   {
     "date": "2018-03-02",
@@ -63,11 +60,7 @@
     "auditorium": "Lilla Salongen",
     "film": "Tjuren Ferdinand",
     "time": "22.40",
-    "bookedSeats": [
-      1,
-      2,
-      3
-    ]
+    "bookedSeats": []
   },
   {
     "date": "2018-03-04",
