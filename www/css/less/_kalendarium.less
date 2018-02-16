@@ -1,0 +1,78 @@
+.kalendariumContainer {
+	background-color: @secondaryColor;
+	box-shadow: 0px 2px 2px #000;
+	min-height: 540px;
+}
+
+.movieBlock {
+	background-color: @secondaryColor;
+	border-radius: 10px;
+	padding: 10px;
+	color: #FFF;
+	.showmorebtn {
+		background-color: @mainRed;
+		border: 1px solid @mainColor;
+	}
+}
+
+.card ul{
+	list-style: none;
+}
+
+.bigSal{
+	border-right:1px dashed white;
+}
+
+.calenderTheaterBorder{
+	border-bottom: 1px dashed white;
+	margin-bottom: 8px;
+}
+
+.movieTitleHeight:hover{
+	background-color: #2f4f4f;
+}
+
+.card:focus{
+	background-color: red;
+}
+
+.main-card{
+	border-radius: 10px;
+}
+
+
+.collapseShowtime {
+  background-color: #ddd;
+	color: #000;
+	border-radius: 20px;
+
+
+	.listShowTimes {
+	  list-style: none;
+	  margin-left: -40px;
+    a:nth-child(odd) li {
+      background-color: @secondaryColor;
+			color: #000;
+    }
+	}
+  a {
+  	text-decoration: none;
+    color: #000;
+		.fa{
+			width: 13px;
+		}
+		.fa {
+			width: 13px;
+		}
+  }
+}
+
+[data-toggle="collapse"].collapsed i:before{
+    content: "\f0da";
+		color: red;
+}
+
+[data-toggle="collapse"] i:before{
+    content: "\f0d7";
+		color: green;
+}

@@ -1,0 +1,83 @@
+*,
+*:before,
+*:after {
+ -webkit-box-sizing: border-box;
+ -moz-box-sizing: border-box;
+ box-sizing: border-box;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+
+
+  body {
+    background-color: @mainColor;
+    font-family: 'Roboto', sans-serif;
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Amaranth', sans-serif;
+    }
+
+    .redHeader {
+    	border-bottom:1px solid black;
+    	background: @mainRed;
+    	color: white;
+    	border-radius: 30px 10px;
+    	padding: 15px 22px;
+    	box-shadow: 0px 2px 2px #000;
+      min-height: 30px;
+    }
+
+  }
+}
+
+
+.card-img-top{
+	margin-top:7px;
+}
+
+.card{
+	border:none;
+	box-shadow: 2px 2px 2px 2px;
+	border-radius: 10px;
+}
+
+.btn-info{
+	float: right;
+}
+
+.card-title{
+	text-align: center;
+	margin-top: 5px;
+}
+
+button, a {
+	cursor: pointer;
+}
+
+h5, a {
+  color:#fff;
+  text-decoration: none;
+}
+
+h5, a:hover{
+  text-decoration: none;
+}
+
+
+
+.listShowTimes li{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+}
+
+.collapseShowtime .listShowTimes li:nth-child(odd):hover{
+  background-color: #e24857;
+}
+
+.collapseShowtime .listShowTimes li:nth-child(even):hover{
+  background-color: #e24857;
+}
+

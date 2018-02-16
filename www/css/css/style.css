@@ -1,0 +1,582 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+html body {
+  background-color: #3a3a3a;
+  font-family: 'Roboto', sans-serif;
+}
+html body h1,
+html body h2,
+html body h3,
+html body h4,
+html body h5 {
+  font-family: 'Amaranth', sans-serif;
+}
+html body .redHeader {
+  border-bottom: 1px solid black;
+  background: #991e1e;
+  color: white;
+  border-radius: 30px 10px;
+  padding: 15px 22px;
+  box-shadow: 0px 2px 2px #000;
+  min-height: 30px;
+}
+.card-img-top {
+  margin-top: 7px;
+}
+.card {
+  border: none;
+  box-shadow: 2px 2px 2px 2px;
+  border-radius: 10px;
+}
+.btn-info {
+  float: right;
+}
+.card-title {
+  text-align: center;
+  margin-top: 5px;
+}
+button,
+a {
+  cursor: pointer;
+}
+h5,
+a {
+  color: #fff;
+  text-decoration: none;
+}
+h5,
+a:hover {
+  text-decoration: none;
+}
+.listShowTimes li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+}
+.collapseShowtime .listShowTimes li:nth-child(odd):hover {
+  background-color: #e24857;
+}
+.collapseShowtime .listShowTimes li:nth-child(even):hover {
+  background-color: #e24857;
+}
+#seat {
+  font-size: 0.65em;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid white;
+  background-color: #949494;
+  border-radius: 0px 0px 15px 15px;
+  color: white;
+  /*font-weight: bold;*/
+  z-index: 5;
+}
+#seat .free {
+  cursor: pointer;
+}
+.booked {
+  background-color: #991e1e !important;
+}
+.reserved {
+  background-color: #2d9725 !important;
+  cursor: pointer;
+}
+.hoverSeat {
+  background-color: #55bf4d !important;
+}
+.errorHoverSeat {
+  background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #991e1e 10px, #991e1e 20px) !important;
+}
+.errorHoverFreeSeat {
+  background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #55bf4d 10px, #55bf4d 20px) !important;
+}
+#theaterBackground {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+#theaterBackground:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));
+}
+.removebtn,
+.addbtn {
+  width: 40px;
+  text-align: center;
+  border: 0;
+}
+#pensionerTickets,
+#adultTickets,
+#childTickets {
+  width: 40px;
+  background-color: white;
+  text-align: center;
+  border: 0;
+  cursor: default;
+}
+.ticketrepresentation,
+.orderCompilation {
+  background-color: #949494;
+}
+#notLoggedIn {
+  color: #ff3232;
+  font-size: 0.9em;
+}
+#screenSeatPick {
+  height: 30px;
+}
+#screenSeatPickRight {
+  transform: skewX(130deg);
+  margin-left: -20px;
+}
+#screenSeatPickLeft {
+  transform: skewX(40deg);
+  margin-right: -20px;
+}
+#screenTransparenting {
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  /* top of #tobecovered */
+  left: -40px;
+  /* left of #tobecovered */
+  z-index: 4;
+}
+.curtain {
+  width: 65%;
+  height: 15%;
+}
+#theater-holder {
+  /* set width and height from js*/
+  position: relative;
+}
+#theater {
+  transform-origin: 0 0;
+}
+.checkBoxContainer {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.checkBoxContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkBoxContainer .checkBoxMark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 32px;
+  width: 32px;
+  background-color: #eee;
+}
+.checkBoxContainer:hover input ~ .checkBoxMark {
+  background-color: #ccc;
+}
+.checkBoxContainer input:checked ~ .checkBoxMark {
+  background-color: #2d9725;
+}
+.checkBoxMark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the checkmark when checked */
+.checkBoxContainer input:checked ~ .checkBoxMark:after {
+  display: block;
+}
+.checkBoxContainer .checkBoxMark:after {
+  left: 9px;
+  top: 3px;
+  width: 10px;
+  height: 20px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+footer {
+  background-color: #949494;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: auto;
+  line-height: 30px;
+  /* Vertically center the text there */
+  border-top: 1px solid #717171;
+}
+footer .color {
+  background-color: #3a3a3a;
+  border-radius: 20px 20px;
+  padding: 10px 30px;
+}
+footer p {
+  line-height: 1.6em;
+  margin-bottom: 0;
+  color: #fff;
+}
+footer p .fa {
+  line-height: 30px;
+  font-size: 20px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  text-decoration: none;
+}
+footer p .fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+footer p .fa-envelope,
+footer p .fa-address-card,
+footer p .fa-phone {
+  background: black;
+  color: white;
+}
+footer p a,
+footer p a:hover {
+  color: #fff;
+}
+footer .myheight {
+  height: 120px;
+}
+.info-box {
+  background-color: #949494;
+  color: #FFF;
+}
+.info-box li {
+  list-style: none;
+}
+#accordion {
+  box-shadow: 0px 0px 6px #000;
+  background-color: #949494;
+  color: #000;
+}
+#accordion .listShowTimes {
+  color: #000;
+  list-style: none;
+  margin-left: -40px;
+}
+#accordion .listShowTimes li:nth-child(odd) {
+  background-color: #FFF;
+  color: #000;
+}
+#accordion a {
+  color: #000;
+}
+.headerOfMoviePage img,
+.headerOfMoviePage div {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.headerOfMoviePage #showtrailer {
+  border-radius: 0px !important;
+  background-color: #991e1e;
+}
+.roundedBottom {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+#wrapper {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.animation {
+  border-radius: 15px;
+  position: relative;
+}
+.animation:hover {
+  box-shadow: 0px 0px 150px #000000;
+  z-index: 1;
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1.5);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1.5);
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1.5);
+  transition: all 200ms ease-in;
+  transform: scale(1.24);
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(3px);
+}
+#wrapper .wrap-text {
+  position: relative;
+  bottom: 30px;
+  display: none;
+}
+#wrapper:hover .wrap-text {
+  z-index: 2;
+  display: block;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  pointer-events: none;
+  text-shadow: 3px 2px #000;
+  margin-top: 25px;
+  font-size: 30px;
+  text-align: center;
+  -webkit-animation: fadein 2s;
+  /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 2s;
+  /* Firefox < 16 */
+  -ms-animation: fadein 2s;
+  /* Internet Explorer */
+  -o-animation: fadein 2s;
+  /* Opera < 12.1 */
+  animation: fadein 2s;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+header {
+  background: linear-gradient(#ff3232, #000000);
+  box-shadow: 0px 5px 10px #000;
+}
+.kalendariumContainer {
+  background-color: #949494;
+  box-shadow: 0px 2px 2px #000;
+  min-height: 540px;
+}
+.movieBlock {
+  background-color: #949494;
+  border-radius: 10px;
+  padding: 10px;
+  color: #FFF;
+}
+.movieBlock .showmorebtn {
+  background-color: #991e1e;
+  border: 1px solid #3a3a3a;
+}
+.card ul {
+  list-style: none;
+}
+.bigSal {
+  border-right: 1px dashed white;
+}
+.calenderTheaterBorder {
+  border-bottom: 1px dashed white;
+  margin-bottom: 8px;
+}
+.movieTitleHeight:hover {
+  background-color: #2f4f4f;
+}
+.card:focus {
+  background-color: red;
+}
+.main-card {
+  border-radius: 10px;
+}
+.collapseShowtime {
+  background-color: #ddd;
+  color: #000;
+  border-radius: 20px;
+}
+.collapseShowtime .listShowTimes {
+  list-style: none;
+  margin-left: -40px;
+}
+.collapseShowtime .listShowTimes a:nth-child(odd) li {
+  background-color: #949494;
+  color: #000;
+}
+.collapseShowtime a {
+  text-decoration: none;
+  color: #000;
+}
+.collapseShowtime a .fa {
+  width: 13px;
+}
+.collapseShowtime a .fa {
+  width: 13px;
+}
+[data-toggle="collapse"].collapsed i:before {
+  content: "\f0da";
+  color: red;
+}
+[data-toggle="collapse"] i:before {
+  content: "\f0d7";
+  color: green;
+}
+@media (min-width: 992px) {
+  .myloginform,
+  .myloggedinform {
+    width: 300px;
+    left: 50% !important;
+    right: auto !important;
+    transform: translate(-50%, 0) !important;
+  }
+}
+.myloginform,
+.myloggedinform {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.myloginform h3,
+.myloggedinform h3,
+.myloginform h5,
+.myloggedinform h5 {
+  text-align: center;
+  color: #3d3d3d;
+}
+.myloginform input,
+.myloggedinform input {
+  border: 1px solid green;
+}
+.redbtn {
+  background-color: #991e1e;
+  border: 1px solid #3a3a3a;
+}
+.error-message {
+  color: red;
+  font-size: 0.7em;
+}
+.user-created {
+  display: none;
+  text-align: center;
+  color: green;
+}
+.loginContainer h3,
+.loginContainer #login-btn {
+  color: #32A432;
+}
+.loginContainer #login-btn {
+  background-color: #32A432;
+}
+.loginContainer #togglelogin-btn {
+  background-color: #f8e168;
+}
+.signupContainer h3 {
+  color: #991e1e;
+}
+.bookingContainer {
+  border-radius: 10px;
+}
+.lillasalong {
+  margin: auto;
+}
+.storasalong {
+  margin: auto;
+}
+.salonger {
+  border-bottom: 1px solid black;
+  background: #991e1e;
+  color: white;
+  border-radius: 30px 10px;
+  padding: 15px 22px;
+  box-shadow: 0px 2px 2px #000;
+  text-align: center;
+  margin: auto;
+}
+.titeltext {
+  border-bottom: 1px solid black;
+  background: #991e1e;
+  color: white;
+  border-radius: 30px 10px;
+  padding: 15px 22px;
+  box-shadow: 2px 2px 2px #000;
+  text-align: center;
+  margin: auto;
+}
+.imgsalong {
+  background: #991e1e;
+  border-bottom: 14px solid #991e1e;
+  border-top: 14px solid #991e1e;
+  box-shadow: 2px 2px 2px #000;
+  border-radius: 30px 10px;
+  margin: auto;
+  width: auto;
+}
+.imgsalong img {
+  border-radius: 30px 10px;
+}
+.imgsalong2 {
+  background: #991e1e;
+  border-bottom: 14px solid #991e1e;
+  border-top: 14px solid #991e1e;
+  box-shadow: 2px 2px 2px #000;
+  border-radius: 30px 10px;
+  margin: auto;
+  width: auto;
+  max-height: 400px;
+  max-width: 500px;
+}
+.imgsalong2 img {
+  border-radius: 30px 10px;
+  max-height: 350px;
+}
+.imgbild {
+  background: #991e1e;
+  border-bottom: 14px solid #991e1e;
+  border-top: 14px solid #991e1e;
+  box-shadow: 2px 2px 2px #000;
+  border-radius: 30px 10px;
+  margin: auto;
+}
+.imgbild img {
+  border-radius: 30px 10px;
+}
+.info {
+  margin: auto;
+}
+.separator {
+  background-color: #991e1e;
+  margin: auto;
+  height: 20px;
+  box-shadow: 4px 4px 4px black;
+  border-radius: 30px 10px;
+  border-bottom: 14px solid #991e1e;
+  border-top: 14px solid #991e1e;
+}
+.separator .card-title2 {
+  color: white;
+  text-align: center;
+}
+.infoombio {
+  width: auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px black;
+}
+.errorContainer {
+  background-color: #949494;
+  box-shadow: 0px 2px 2px #000;
+  border-radius: 10px;
+}
+.goBackBtn {
+  background-color: #991e1e;
+  border: 1px solid #3a3a3a;
+  min-height: 40px;
+  border-radius: 5px;
+}

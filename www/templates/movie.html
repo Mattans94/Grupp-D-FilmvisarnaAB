@@ -1,0 +1,57 @@
+Object.assign(Movie.prototype, { template(){ return `
+
+    <article class="row">
+      <section class="col-lg-7 d-flex flex-wrap d-md-block mt-5 leftContainer p-0">
+        <div class="px-2 col-12"><h3 class="redHeader m-0 col-12 mb-3"><i class="fa fa-film mr-3" aria-hidden="true"></i>${this.movieObject.title}</h3></div>
+        <div class="headerOfMoviePage ml-2 mr-2">
+          ${this.renderCarousel(this.movieObject)}
+          ${this.renderTrailer(this.movieObject)}
+          <button class="text-left btn btn-danger col-12 showtrailer"><i class="fa fa-video-camera mr-2" aria-hidden="true"></i>Visa trailer</button>
+        </div>
+        <div class="bg-light roundedBottom ml-2 mr-2">
+
+
+          <div id="accordion" role="tablist">
+            <a data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne" class="accordionToggleAnchorTag">
+              <div class="col-12 m-0 p-2 pl-3">
+                <i class="fa fa-film mr-2" aria-hidden="true"></i>Boka/Visa tider här
+              </div>
+            </a>
+
+            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="pb-3">
+               <!--  <h4 class="ml-4">Visningar:</h4> -->
+                <div class="col-12">
+                  <div class="col-4 d-inline-block pb-1"><strong>Datum:</strong></div><div class="col-4 d-inline-block"><strong>Salong:</strong></div> <div class="col-3 d-inline-block"><strong>Tid:</strong></div>
+                  <ul class="listShowTimes">${this.renderShowtime(this.movieObject)}</ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap d-md-block">
+            <div class="col-12 col-md-auto float-md-right m-0 m-md-3 p-0 order-2">
+              <ul class="p-3 info-box mb-0">
+                <li><strong>Land: </strong>${this.movieObject.productionCountries}</li>
+                <li><strong>Produktionsår: </strong>${this.movieObject.productionYear}</li>
+                <li><strong>Längd: </strong>${this.convertMinutesToHours(this.movieObject)}</li>
+                <li><strong>Genre: </strong>${this.movieObject.genre}</li>
+                <li><strong>Språk: </strong>${this.movieObject.language}</li>
+                <li><strong>Textning: </strong>${this.movieObject.subtitles}</li>
+              </ul>
+            </div>
+
+            <div class="col-md-12 p-3 pt-0">
+              <h4>${this.movieObject.title}</h4>
+              <p>${this.movieObject.description}</p>
+
+              ${this.getAllReviews(this.movieObject)}
+              <p><strong class="mb-0">Medverkande:</strong></p>
+              <ul>${this.getActors(this.movieObject)}</ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
+
+`;}});

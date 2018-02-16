@@ -1,0 +1,24 @@
+Object.assign(LoggedInForm.prototype, { template(){ return `
+
+	<li class="nav-item">
+    <div class="dropdown show">
+      <button class="btn btn-secondary dropdown-toggle myAccBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Mitt konto
+      </button>
+
+      <form class="dropdown-menu p-4 myloggedinform">
+        <div class="loggedin">
+          <form class="dropdown-menu p-4 myloginform">
+        <div class="logintoggle loginContainer">
+          <h3>Inloggad som:</h3>
+          <h5>${myApp.login.loggedInUser.name}</h5>
+          <div class="dropdown-divider"></div>
+        	<a class="btn btn-danger redbtn text-light col-12" id="myBookings-btn">Mina bokningar</a>
+          <div class="dropdown-divider"></div>
+          <a class="btn btn-danger redbtn text-light col-12" id="logout-btn">Logga ut</a>
+        </div>
+      </form>
+    </div>
+  </li>
+
+`;}});

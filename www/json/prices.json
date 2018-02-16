@@ -1,0 +1,17 @@
+{
+	"child":
+		{
+			"unit": "barn",
+			"price": 65
+		},
+	"adult":
+		{
+			"unit": "ordinarie",
+			"price": 85
+		},
+	"pensioner":
+		{
+			"unit": "pensionär",
+			"price": 75
+		}
+}

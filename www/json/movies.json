@@ -1,0 +1,307 @@
+[
+  {
+    "title": "The Party",
+    "productionCountries": [
+      "UK"
+    ],
+    "productionYear": 2017,
+    "length": 71,
+    "genre": "Komedi",
+    "distributor": "Noble",
+    "language": "Engelska",
+    "subtitles": "Svenska",
+    "director": "Luca Guadagnino",
+    "actors": [
+      "Patricia Clarkson",
+      "Bruno Ganz",
+      "Cherry Jones",
+      "Emily Mortimer",
+      "Cillian Murphy"
+    ],
+    "description": "<p>Janet har en liten tillställning för sina närmsta vänner för att fira sin nya roll i parlamentet. Allt går, nästan, som planerat tills hennes man Bill avslöjar två stora hemligheter som sparkar igång en serie händelser som påverkar alla i rummet. Innan kvällen är över har glas krossats, pistoler riktats och blod spillts.</p>",
+    "images": [
+       "the_party.jpg"
+    ],
+    "slides": [
+       "theparty1.jpg",
+       "theparty2.jpg",
+       "theparty3.jpg"
+    ],
+    "youtubeTrailers": [
+      "FCRLyidKR2k",
+      "Z9AYPxH5NTM"
+    ],
+    "reviews": [
+      {
+        "source": "Sydsvenskan",
+        "quote": "Mumma för skådespelare med kammarspelet i blodet",
+        "stars": 4,
+        "max": 5
+      },
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "En regelrätt fest för biobesökarna",
+        "stars": 5,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "title": "Wind River",
+    "productionCountries": [
+      "Storbrittanien",
+      "USA",
+      "Kanada"
+    ],
+    "productionYear": 2017,
+    "length": 107,
+    "genre": "Kriminaldrama",
+    "distributor": "Scanbox",
+    "language": "Engelska",
+    "subtitles": "Svenska",
+    "director": "Taylor Sheridan",
+    "actors": [
+      "Jeremy Renner",
+      "Elizabeth Olsen",
+      "Jon Bernthal"
+    ],
+    "description": "<p>En flicka av uramerikanskt ursprung hittas död av lokale vildmarkspolisen Cory Lambert (Jeremy Renner). För att lösa fallet skickar FBI Jane Banner (Elizabeth Olsen) från Las Vegas-kontoret, som anländer i en vräkig suv. Banner och Lambert utgör ett högst omaka par i jakten på mördaren.</p>",
+    "images": [
+       "Wind_river_.jpg",
+       "call-me-poster2.jpg"
+    ],
+    "slides": [
+       "windriver1.jpg",
+       "windriver2.jpg",
+       "windriver3.jpg"
+    ],
+    "youtubeTrailers": [
+      "zN9PDOoLAfg"
+    ],
+    "reviews": [
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "Genrefilm med sorgsen twist",
+        "stars": 4,
+        "max": 6
+      },
+      {
+        "source": "SVT Kulturnyheterna",
+        "quote": "Otäckt spännande",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "title": "Three Billboards Outside Ebbing, Missouri",
+    "productionCountries": [
+      "USA"
+    ],
+    "productionYear": 2017,
+    "length": 115,
+    "genre": "Drama",
+    "distributor": "Fox",
+    "language": "Engelska",
+    "subtitles": "Svenska",
+    "director": "Martin McDonagh",
+    "actors": [
+      "Woody Harrelson",
+      "Frances McDormand",
+      "Sam Rockwell"
+    ],
+    "description": "<p>En flicka av uramerikanskt ursprung hittas död av lokale vildmarkspolisen Cory Lambert (Jeremy Renner). För att lösa fallet skickar FBI Jane Banner (Elizabeth Olsen) från Las Vegas-kontoret, som anländer i en vräkig suv. Banner och Lambert utgör ett högst omaka par i jakten på mördaren.</p>",
+    "images": [
+       "Three_Billboards.jpg",
+       "call-me-poster2.jpg"
+    ],
+    "slides": [
+       "tboem1.jpg",
+       "tboem2.jpg",
+       "tboem3.jpg"
+    ],
+    "youtubeTrailers": [
+      "Jit3YhGx5pU"
+    ],
+    "reviews": [
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "Självlysande Frances McDormand",
+        "stars": 4,
+        "max": 6
+      },
+      {
+        "source": "Sydsvenskan",
+        "quote": "Martin McDonagh komplicerar och nyanserar.",
+        "stars": 5,
+        "max": 5
+      },
+      {
+        "source": "P1 Kulturnytt",
+        "quote": "Rör sig (...) mellan slapstick och svart drama",
+        "stars": 4,
+        "max": 5
+      },
+      {
+        "source": "SVT Kulturnyheterna",
+        "quote": "Ingenting är riktigt som det verkar",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "title": "Tjuren Ferdinand",
+    "productionCountries": [
+      "USA"
+    ],
+    "productionYear": 2017,
+    "length": 108,
+    "genre": "Animerat",
+    "distributor": "20th Century FOX",
+    "language": "Engelska",
+    "subtitles": "Svenska",
+    "director": "Carlos Saldanha",
+    "actors": [
+      "John Cena",
+      "Kate McKinnon",
+      "Anthony Anderson"
+    ],
+    "description": "<p>Den klassiska berättelsen om den stora tjuren med ett stort hjärta, som hellre luktar på blommor än stångas med de andra tjurarna. En dag misstas Ferdinand för att vara farlig och blir bortförd för att delta vid tjurfäktningar. Fast besluten att återvända till sin familj samlar han ett udda gäng och ger sig ut på ett fantastiskt äventyr. Du kommer bli förtjurst!</p>",
+    "images": [
+       "Ferdinand.jpg",
+       "call-me-poster2.jpg"
+    ],
+    "slides": [
+       "ferdinand1.jpg",
+       "ferdinand2.jpg",
+       "ferdinand3.jpg"
+    ],
+    "youtubeTrailers": [
+      "n7RkOfN8KvE"
+    ],
+    "reviews": [
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "Självlysande Frances McDormand",
+        "stars": 4,
+        "max": 6
+      },
+      {
+        "source": "Sydsvenskan",
+        "quote": "Martin McDonagh komplicerar och nyanserar.",
+        "stars": 5,
+        "max": 5
+      },
+      {
+        "source": "P1 Kulturnytt",
+        "quote": "Rör sig (...) mellan slapstick och svart drama",
+        "stars": 4,
+        "max": 5
+      },
+      {
+        "source": "SVT Kulturnyheterna",
+        "quote": "Ingenting är riktigt som det verkar",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "title": "Let The Sunshine In",
+    "productionCountries": [
+      "Frankrike"
+    ],
+    "productionYear": 2017,
+    "length": 94,
+    "genre": "Drama",
+    "distributor": " ",
+    "language": "franska",
+    "subtitles": "Svenska",
+    "director": "Claire Denis",
+    "actors": [
+      "Juliette Binoche",
+      "Gérard Depardieu",
+      "Valeria Bruni Tedeschi",
+      "Philippe Katerine"
+    ],
+    "description": "<p>Juliette Binoche är lysande i rollen som Isabelle, en frånskild konstnär i 50-års åldern, som försöker sålla bland alla självcentrerade män i hopp om att åter finna kärleken. En elegant romantisk komedi av kritikerrosade Claire Denis om vad som är viktigt i livet och om vad man vill ha i en mogen relation.</p>",
+    "images": [
+       "sunshine.jpg"
+    ],
+    "slides": [
+       "ltsi1.jpg",
+       "ltsi2.jpg",
+       "ltsi3.jpg"
+    ],
+    "youtubeTrailers": [
+      "0w_thDNw8Ww"
+    ],
+    "reviews": [
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "En av årets mest sorglustiga filmer",
+        "stars": 5,
+        "max": 6
+      },
+      {
+        "source": "DN",
+        "quote": "Extra känslig och lysande",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  },
+  {
+    "title": "Call Me By Your Name",
+    "productionCountries": [
+      "Italien",
+      "USA"
+    ],
+    "productionYear": 2017,
+    "length": 132,
+    "genre": "Drama",
+    "distributor": "UIP",
+    "language": "Engelska",
+    "subtitles": "Svenska",
+    "director": "Luca Guadagnino",
+    "actors": [
+      "Armie Hammer",
+      "Timothée Chalamet",
+      "Michael Stuhlbarg"
+    ],
+    "description": "<p>Filmen utspelas i norra Italien sommaren 1983. En ung amerikansk-italienare blir förälskad i en amerikansk student som kommer för att studera och bo hos hans familj.</p><p>Tillsammans upplever de en oförglömlig sommar - full av musik, mat och kärlek - som för evigt kommer att förändra dem.</p>",
+    "images": [
+       "Call_Me.jpg",
+       "call-me-poster2.jpg"
+    ],
+    "slides": [
+       "cmbyn1.jpg",
+       "cmbyn2.jpg",
+       "cmbyn3.jpg"
+    ],
+    "youtubeTrailers": [
+      "Z9AYPxH5NTM"
+    ],
+    "reviews": [
+      {
+        "source": "Sydsvenskan",
+        "quote": "En drama berättat med stor ömhet",
+        "stars": 4,
+        "max": 5
+      },
+      {
+        "source": "Svenska Dagbladet",
+        "quote": "En film att förälska sig i",
+        "stars": 5,
+        "max": 5
+      },
+      {
+        "source": "DN",
+        "quote": "En het romans i åttiotalskostym",
+        "stars": 4,
+        "max": 5
+      }
+    ]
+  }
+]

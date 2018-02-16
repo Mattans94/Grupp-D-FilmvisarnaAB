@@ -1,0 +1,48 @@
+//main: style.less
+footer {
+  background-color: @secondaryColor;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: auto;
+  line-height: 30px;
+  /* Vertically center the text there */
+  border-top: 1px solid @mainColor + 55;
+  .color {
+    background-color: @mainColor;
+    border-radius: 20px 20px;
+    padding: 10px 30px;
+  }
+  p {
+    line-height: 1.6em;
+    margin-bottom: 0;
+    color: #fff;
+    // Icons
+    .fa {
+      line-height: 30px;
+      font-size: 20px;
+      width: 30px;
+      height: 30px;
+      text-align:center;
+      text-decoration: none;
+    }
+    .fa-facebook {
+      background: #3B5998;
+      color: white;
+    }
+    .fa-envelope, .fa-address-card, .fa-phone  {
+      background: black;
+      color: white;
+    }
+    // Links in footer
+    a, a:hover {
+      color: #fff;
+    }
+  }
+  // Set hight for boxes
+  .myheight {
+    height: 120px;
+  }
+
+}

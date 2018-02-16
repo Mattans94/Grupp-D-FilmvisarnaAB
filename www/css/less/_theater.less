@@ -1,0 +1,179 @@
+#seat {
+	font-size: 0.65em;
+	text-align: center;
+	width: 50px;
+	height: 50px;
+	border: 1px solid white;
+	background-color: @secondaryColor;
+	border-radius: 0px 0px 15px 15px;
+	color: white;
+	/*font-weight: bold;*/
+	z-index: 5;
+
+
+
+	.free {
+		cursor: pointer;
+	};
+}
+
+.booked {
+	background-color: @mainRed !important;
+}
+
+.reserved {
+	background-color: rgb(45, 151, 37) !important;
+	cursor: pointer;
+};
+
+.hoverSeat {
+	background-color: rgb(85, 191, 77) !important;
+};
+
+.errorHoverSeat {
+	background: repeating-linear-gradient(
+	-55deg,
+	#222,
+	#222 10px,
+	@mainRed 10px,
+	@mainRed 20px
+	) !important;
+};
+
+.errorHoverFreeSeat {
+	background: repeating-linear-gradient(-55deg, #222222, #222222 10px, #55bf4d 10px, #55bf4d 20px) !important;
+};
+
+
+
+
+#theaterBackground {
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	&:before {
+  content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image: linear-gradient(to top, rgba(0,0,0, 0.6), rgba(0,0,0, 0.9));
+  }
+}
+
+.removebtn, .addbtn {
+	width: 40px;
+	text-align: center;
+	border: 0;
+}
+
+#pensionerTickets, #adultTickets, #childTickets {
+	width: 40px;
+	background-color: white;
+	text-align: center;
+	border: 0;
+	cursor: default;
+}
+
+.ticketrepresentation, .orderCompilation {
+	background-color: @secondaryColor;
+}
+
+#notLoggedIn {
+	color: @secondaryRed;
+	font-size: 0.9em;
+}
+
+// Scaling/Theater/Screen here
+#screenSeatPick{
+	height: 30px;
+}
+
+#screenSeatPickRight {
+ 	transform: skewX(130deg);
+	margin-left: -20px;
+}
+#screenSeatPickLeft {
+	transform: skewX(40deg);
+	margin-right: -20px;
+}
+
+#screenTransparenting {
+	opacity: 0.3;
+	position: absolute;
+	top: 0; /* top of #tobecovered */
+	left: -40px; /* left of #tobecovered */
+	z-index: 4;
+}
+
+.curtain {
+	width: 65%;
+	height: 15%;
+}
+
+#theater-holder {
+  /* set width and height from js*/
+	position: relative;
+}
+
+
+#theater {
+  transform-origin: 0 0;
+}
+
+.checkBoxContainer {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+	input {
+	  position: absolute;
+	  opacity: 0;
+	  cursor: pointer;
+	}
+
+	.checkBoxMark {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  height: 32px;
+	  width: 32px;
+	  background-color: #eee;
+	}
+}
+
+.checkBoxContainer:hover input ~ .checkBoxMark {
+  background-color: #ccc;
+}
+
+.checkBoxContainer input:checked ~ .checkBoxMark {
+  background-color: rgb(45, 151, 37);
+}
+
+.checkBoxMark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkBoxContainer input:checked ~ .checkBoxMark:after {
+  display: block;
+}
+
+.checkBoxContainer .checkBoxMark:after {
+  left: 9px;
+  top: 3px;
+  width: 10px;
+  height: 20px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
